@@ -42,7 +42,7 @@ if (isset($_SESSION['user_id'])): ?>
 
         <nav class="main-nav">
             <a href="index.php" class="nav-link active">Home</a>
-            <a href="#services" class="nav-link">Services</a>
+            <a href="services.php" class="nav-link">Services</a>
             <a href="#gallery" class="nav-link">Gallery</a>
             <a href="about.php" class="nav-link">About Us</a>
             <a href="#contact" class="nav-link">Contact</a>

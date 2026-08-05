@@ -493,15 +493,7 @@ body {
         grid-template-columns: 1fr;
     }
 }
-/*photos*/
-/* ==========================================================================
-   HOMEPAGE COMPLETE STYLES (HERO, VISION/MISSION, JOURNEY & GALLERY)
-   Note: Photos are rendered pure & natural (No filter/No zoom/No overlays)
-   ========================================================================== */
 
-/* --------------------------------------------------------------------------
-   1. HERO SECTION
-   -------------------------------------------------------------------------- */
 .hero-section {
     min-height: 75vh;
     background-size: cover;
@@ -724,15 +716,12 @@ body {
 }
 .vm-card {
     display: grid;
-    grid-template-columns: 1fr 1.2fr; /* Image (left) | Text (right) */
+    grid-template-columns: 1fr 1.2fr; 
     gap: 2rem;
     align-items: center;
 }
-/* ==========================================================================
-   SERVICES (QUAD GRID), PRODUCTS & TEAM LAYOUT STYLES
-   ========================================================================== */
 
-/* 1. Quad Grid: Splitting single image space into 4 equal photos (2x2) */
+/* 1. Quad Grid*/
 .quad-image-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -1018,3 +1007,615 @@ section.hero-section {
     /* Animation call */
     animation: rgbGlowAnimation 6s infinite linear !important;
 }
+
+:root {
+    --bg-dark: #0b0c10;
+    --card-dark: #12141d;
+    --gold-accent: #c5a880;
+    --gold-glow: rgba(197, 168, 128, 0.2);
+    --text-light: #ffffff;
+    --text-muted: #9a9caf;
+    --font-heading: 'Cinzel', serif;
+    --font-body: 'Plus Jakarta Sans', sans-serif;
+}
+
+body.luxury-theme {
+    background-color: var(--bg-dark);
+    color: var(--text-light);
+    font-family: var(--font-body);
+    margin: 0;
+}
+
+.luxury-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 60px 20px;
+}
+
+.text-center { text-align: center; }
+
+/* Subtitle & Headings */
+.gold-subtitle {
+    color: var(--gold-accent);
+    font-size: 0.85rem;
+    letter-spacing: 3px;
+    font-weight: 600;
+}
+
+.luxury-heading {
+    font-family: var(--font-heading);
+    font-size: 2.8rem;
+    line-height: 1.2;
+    margin: 15px 0 20px;
+    color: #ffffff;
+}
+
+.gold-text { color: var(--gold-accent); }
+.about-desc { color: var(--text-muted); max-width: 600px; margin: 0 auto; line-height: 1.7; }
+
+/* Brand Bar */
+.brand-bar {
+    border-top: 1px solid rgba(255,255,255,0.08);
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    background: #0e1017;
+}
+
+.brand-grid {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px 20px;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.brand-item {
+    font-family: var(--font-heading);
+    color: var(--text-muted);
+    font-size: 1.1rem;
+    letter-spacing: 2px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Services Grid */
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 25px;
+}
+
+@media (max-width: 992px) {
+    .services-grid {
+        grid-template-columns: repeat(2, 1fr); 
+    }
+}
+
+@media (max-width: 576px) {
+    .services-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.luxury-service-card {
+    background: var(--card-dark);
+    border: 1px solid rgba(197, 168, 128, 0.15);
+    border-radius: 14px;
+    overflow: hidden;
+    transition: 0.3s ease;
+}
+
+.luxury-service-card:hover {
+    transform: translateY(-8px);
+    border-color: var(--gold-accent);
+    box-shadow: 0 10px 30px var(--gold-glow);
+}
+
+.card-img-box { position: relative; height: 220px; }
+.card-img-box img { width: 100%; height: 100%; object-fit: cover; }
+
+.luxury-price {
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+    background: rgba(11, 12, 16, 0.85);
+    color: var(--gold-accent);
+    border: 1px solid var(--gold-accent);
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-weight: 600;
+}
+
+.card-body { padding: 25px; }
+.card-body h3 { font-family: var(--font-heading); color: #fff; margin-bottom: 10px; font-size: 1.3rem; }
+.card-body p { color: var(--text-muted); font-size: 0.95rem; margin: 0; line-height: 1.5; }
+
+/* LUXURY GOLD CATEGORY BUTTON TABS */
+.brand-bar {
+    background: #08090c;
+    padding: 25px 0;
+    border-top: 1px solid rgba(197, 168, 128, 0.2);
+    border-bottom: 1px solid rgba(197, 168, 128, 0.2);
+}
+
+.brand-grid {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 18px;
+    flex-wrap: wrap;
+}
+
+.category-btn {
+    background: rgba(197, 168, 128, 0.04);
+    border: 1px solid rgba(197, 168, 128, 0.3);
+    color: #c5a880 !important; /* Premium Gold Text */
+    font-family: 'Cinzel', serif !important; /* Forces Cinzel Font */
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 12px 24px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.category-btn i {
+    color: #d4af37;
+    font-size: 0.95rem;
+}
+
+/* Hover State */
+.category-btn:hover {
+    background: rgba(197, 168, 128, 0.15);
+    border-color: #d4af37;
+    color: #ffffff !important;
+    box-shadow: 0 0 15px rgba(212, 175, 55, 0.25);
+    transform: translateY(-2px);
+}
+
+/* Active Selected Tab */
+.category-btn.active {
+    background: linear-gradient(135deg, rgba(197, 168, 128, 0.3) 0%, rgba(12, 14, 20, 0.95) 100%);
+    border: 1px solid #d4af37;
+    color: #ffd700 !important; /* Shiny Bright Gold */
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.35);
+    text-shadow: 0 0 8px rgba(212, 175, 55, 0.5);
+}
+
+.category-btn.active i {
+    color: #ffd700;
+    transform: scale(1.15);
+}
+
+.stylist-section {
+    padding: 40px 0 20px;
+}
+
+.stylist-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 25px;
+    margin-top: 30px;
+}
+
+.stylist-card {
+    background: #12141d;
+    border: 2px solid rgba(197, 168, 128, 0.2);
+    border-radius: 12px;
+    padding: 15px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    text-align: center;
+}
+
+.stylist-card:hover {
+    border-color: #c5a880;
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(197, 168, 128, 0.15);
+}
+
+/* Active Selected Stylist */
+.stylist-card.active {
+    border-color: #d4af37;
+    background: linear-gradient(180deg, rgba(197, 168, 128, 0.1) 0%, #12141d 100%);
+    box-shadow: 0 0 25px rgba(212, 175, 55, 0.25);
+}
+
+.stylist-img-box {
+    position: relative;
+    width: 50%;
+    aspect-ratio: 1 / 1;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.stylist-img-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.badge-selected {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: #d4af37;
+    color: #000000;
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: 20px;
+    display: none;
+}
+
+.stylist-card.active .badge-selected {
+    display: block;
+}
+
+.stylist-info h3 {
+    font-family: 'Cinzel', serif;
+    color: #ffffff;
+    font-size: 1.1rem;
+    margin: 15px 0 5px;
+}
+
+.stylist-role {
+    color: #c5a880;
+    font-size: 0.85rem;
+    margin-bottom: 8px;
+}
+
+.stylist-rating {
+    color: #ffd700;
+    font-size: 0.8rem;
+}
+
+.stylist-rating span {
+    color: #9a9caf;
+    margin-left: 4px;
+}
+
+
+/* Service Card Hover & Selected State */
+.luxury-service-card {
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.luxury-service-card.selected {
+    border-color: #d4af37 !important;
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+    border-radius: 10px;
+}
+
+.luxury-service-card .badge-selected {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: #d4af37;
+    color: #000000;
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: 20px;
+    display: none;
+}
+
+.luxury-service-card.selected .badge-selected {
+    display: block;
+}
+
+/* Floating Bottom Summary Bar */
+.booking-summary-bar {
+    position: fixed;
+    bottom: -100px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    max-width: 900px;
+    background: rgba(18, 20, 29, 0.95);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(212, 175, 55, 0.4);
+    padding: 15px 30px;
+    border-radius: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+    z-index: 999;
+    transition: bottom 0.4s ease-in-out;
+}
+
+.booking-summary-bar.active {
+    bottom: 25px; /* Slide up when selected */
+}
+
+.summary-details {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.summary-item {
+    display: flex;
+    flex-direction: column;
+}
+
+.summary-item small {
+    color: #8a8d9b;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.summary-item strong {
+    color: #ffffff;
+    font-size: 0.95rem;
+    font-family: 'Cinzel', serif;
+}
+
+.summary-divider {
+    width: 1px;
+    height: 30px;
+    background: rgba(197, 168, 128, 0.2);
+}
+
+.btn-book-now {
+    background: linear-gradient(135deg, #d4af37 0%, #aa7c11 100%);
+    color: #000000;
+    font-weight: 700;
+    padding: 12px 28px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.btn-book-now:hover {
+    box-shadow: 0 0 15px rgba(212, 175, 55, 0.5);
+    transform: translateY(-2px);
+}
+
+.luxury-service-card .card-img-box img {
+
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+
+    
+    object-position: center 20%;
+}
+
+.luxury-service-card .card-img-box {
+    
+    height: 380px !important; 
+}
+
+
+.luxury-service-card .card-img-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+}
+
+/* Brand Switcher Toggle Buttons */
+.brand-toggle-wrapper {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.brand-toggle-btn {
+    background: #1c1c1c;
+    color: #ccc;
+    border: 1px solid #444;
+    padding: 12px 24px;
+    border-radius: 30px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.brand-toggle-btn i {
+    margin-right: 8px;
+    color: #d4af37;
+}
+
+.brand-toggle-btn:hover,
+.brand-toggle-btn.active {
+    background: #d4af37;
+    color: #000;
+    border-color: #d4af37;
+    box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+}
+
+.brand-toggle-btn.active i {
+    color: #000;
+}
+
+/* Color Category Group Styling */
+.color-group {
+    margin-bottom: 25px;
+    background: rgba(255, 255, 255, 0.02);
+    padding: 15px;
+    border-radius: 8px;
+    border-left: 3px solid #d4af37;
+}
+
+.color-cat-title {
+    color: #d4af37;
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.color-cat-title i {
+    font-size: 0.75rem;
+}
+
+.color-options-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 15px; 
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.color-radio-card {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: #181818;
+    border: 1px solid #333;
+    border-radius: 8px;
+    padding: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+/* Hover Effect */
+.color-radio-card:hover {
+    border-color: #d4af37;
+    background: #222;
+    transform: translateY(-2px);
+}
+
+
+.color-radio-card:has(input[type="radio"]:checked) {
+    border-color: #d4af37;
+    background: rgba(212, 175, 55, 0.12);
+    box-shadow: 0 0 10px rgba(212, 175, 55, 0.2);
+}
+
+/* Color Dot Visual Circle */
+.color-dot {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: inline-block;
+    flex-shrink: 0;
+}
+
+/* Text Layout formatting */
+.color-name {
+    font-size: 0.88rem;
+    color: #e0e0e0;
+    flex-grow: 1;
+    line-height: 1.2;
+}
+
+.color-price {
+    font-size: 0.82rem;
+    color: #d4af37;
+    font-weight: bold;
+    white-space: nowrap;
+    flex-shrink: 0; 
+    margin-left: auto;
+}
+
+/* Treatments Responsive Grid */
+.treatments-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 20px;
+    margin-top: 15px;
+}
+
+/* Individual Treatment Card */
+.treatment-card {
+    position: relative;
+    background: #181818;
+    border: 1px solid #333;
+    border-radius: 12px;
+    padding: 22px 20px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* Hide or Style Radio inside Card */
+.treatment-card input[type="radio"] {
+    position: absolute;
+    top: 18px;
+    right: 18px;
+    accent-color: #d4af37;
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+}
+
+/* Hover State */
+.treatment-card:hover {
+    border-color: #d4af37;
+    background: #222;
+    transform: translateY(-4px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+}
+
+/* Selected Active State */
+.treatment-card:has(input[type="radio"]:checked) {
+    border-color: #d4af37;
+    background: rgba(212, 175, 55, 0.1);
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.25);
+}
+
+.treatment-card-content {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.treatment-icon {
+    font-size: 2rem;
+    color: #d4af37;
+    margin-bottom: 5px;
+}
+
+.treatment-card h4 {
+    color: #ffffff;
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin: 0;
+}
+
+.treatment-card p {
+    color: #aaa;
+    font-size: 0.85rem;
+    line-height: 1.4;
+    margin: 0;
+}
+
+.treatment-price {
+    display: inline-block;
+    margin-top: 12px;
+    color: #d4af37;
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+
+
+
