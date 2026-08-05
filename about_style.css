@@ -1,0 +1,270 @@
+/* ==========================================================================
+   ABOUT US PAGE STYLES
+   ========================================================================== */
+
+/* Page Hero Header Section */
+.page-hero {
+    padding: 6rem 1.5rem 3rem 1.5rem;
+    background: radial-gradient(circle at center, rgba(168, 85, 247, 0.15) 0%, transparent 70%);
+}
+
+/* ==========================================================================
+   NEW: VISION & MISSION WITH IMAGE LAYOUT
+   ========================================================================== */
+.about-grid-layout {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 2rem;
+    align-items: center;
+    margin-top: 2rem;
+}
+
+/* Vision & Mission Cards Column */
+.vision-mission-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+/* About Cards */
+.about-card {
+    background: var(--surface-card, #1e293b);
+    border: 1px solid var(--border-color, #2d3748);
+    border-radius: 1.25rem;
+    padding: 2.5rem;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.about-card:hover {
+    transform: translateY(-5px);
+    border-color: #a855f7;
+}
+
+.card-icon {
+    font-size: 2.5rem;
+    color: #a855f7;
+    margin-bottom: 1rem;
+}
+
+.about-card h3 {
+    font-size: 1.5rem;
+    color: #ffffff;
+    margin-bottom: 1rem;
+}
+
+.about-card p {
+    color: #94a3b8;
+    line-height: 1.7;
+}
+
+/* Salon Feature Image Box (Vision/Mission side) */
+.about-image-box {
+    position: relative;
+    border-radius: 1.25rem;
+    overflow: hidden;
+    height: 50%;
+    min-height: 380px;
+    border: 1px solid var(--border-color, #2d3748);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+}
+
+.about-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s ease;
+}
+
+.about-image-box:hover .about-img {
+    transform: scale(1.05);
+}
+
+.image-overlay-badge {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    background: rgba(15, 23, 42, 0.85);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(168, 85, 247, 0.4);
+    padding: 0.8rem 1.2rem;
+    border-radius: 0.8rem;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    color: #ffffff;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.image-overlay-badge i {
+    color: #a855f7;
+    font-size: 1.2rem;
+}
+
+/* ==========================================================================
+   VIDEO SHOWCASE STYLES
+   ========================================================================== */
+.about-image-container {
+    max-width: 900px;
+    margin: 2rem auto 0 auto;
+    border-radius: 1.25rem;
+    overflow: hidden;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5);
+    border: 1px solid var(--border-color, #2d3748);
+}
+
+.about-image-container img {
+    width: 100%;
+    display: block;
+}
+
+/* ==========================================================================
+   JOURNEY / TIMELINE STYLES
+   ========================================================================== */
+.journey-section {
+    padding: 4rem 1.5rem;
+}
+
+.journey-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+}
+
+.journey-image-box {
+    position: relative;
+    border-radius: 1.25rem;
+    overflow: hidden;
+    border: 1px solid var(--border-color, #2d3748);
+    background-color: var(--bg-dark, #0a0f1d);
+}
+
+.journey-image-box img {
+    width: 100%;
+    height: 100%;
+    max-height: 480px;
+    object-fit: cover;
+    display: block;
+    filter: none !important;
+    transform: none !important;
+    transition: none !important;
+}
+
+.experience-badge {
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
+    background: rgba(10, 15, 29, 0.9);
+    border: 1px solid var(--you-amber, #f59e0b);
+    padding: 0.8rem 1.2rem;
+    border-radius: 0.85rem;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+}
+
+.exp-number {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: var(--you-amber, #f59e0b);
+}
+
+.exp-text {
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #ffffff;
+    line-height: 1.2;
+}
+
+.journey-desc {
+    color: var(--text-muted, #94a3b8);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin: 1rem 0 1.5rem 0;
+}
+
+.journey-section .timeline {
+    position: relative;
+    max-width: 800px;
+    margin: 3rem auto 0 auto;
+    padding-left: 2rem;
+    border-left: 2px solid #a855f7;
+}
+
+.timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    border-left: 2px solid var(--border-color, #2d3748);
+    padding-left: 1.2rem;
+    margin-top: 1.5rem;
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 2.5rem;
+}
+
+.timeline-dot {
+    position: absolute;
+    left: -2.55rem;
+    top: 0.2rem;
+    width: 1rem;
+    height: 1rem;
+    border-radius: 50%;
+    background: #a855f7;
+    box-shadow: 0 0 10px #a855f7;
+}
+
+.timeline-content {
+    background: var(--surface-card, #1e293b);
+    padding: 1.5rem;
+    border-radius: 1rem;
+    border: 1px solid var(--border-color, #2d3748);
+}
+
+.timeline-date {
+    color: #a855f7;
+    font-weight: 700;
+    font-size: 0.9rem;
+}
+
+.timeline-content h4 {
+    color: #ffffff;
+    font-size: 1.2rem;
+    margin: 0.4rem 0;
+}
+
+.timeline-content p {
+    color: #94a3b8;
+    font-size: 0.95rem;
+}
+
+.timeline-info h4 {
+    color: #ffffff;
+    font-size: 0.95rem;
+    font-weight: 700;
+}
+
+.timeline-info p {
+    color: var(--text-muted, #94a3b8);
+    font-size: 0.85rem;
+    margin-top: 0.2rem;
+}
+
+/* ==========================================================================
+   RESPONSIVE DESIGN (Mobile & Tablets)
+   ========================================================================== */
+@media (max-width: 992px) {
+    .about-grid-layout,
+    .journey-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .about-image-box {
+        min-height: 280px;
+    }
+}
