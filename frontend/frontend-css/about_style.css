@@ -1,0 +1,254 @@
+
+
+/*page hero section */
+.page-hero {
+    padding: 6rem 1.5rem 3rem 1.5rem;
+    background: radial-gradient(circle at center, rgba(168, 85, 247, 0.15) 0%, transparent 70%);
+}
+
+.page-hero .hero-desc {
+    color: #94a3b8;
+    max-width: 650px;
+    margin: 1rem auto 0 auto;
+    font-size: 1.05rem;
+    line-height: 1.6;
+}
+
+/* journey section */
+.journey {
+    padding: 4rem 1.5rem;
+}
+
+.journey-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Video Box in Journey Section */
+.journey-img {
+    position: relative;
+    border-radius: 1.25rem;
+    overflow: hidden;
+    border: 1px solid var(--border-color, #2d3748);
+    background-color: #0a0f1d;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+}
+
+.journey-img video {
+    width: 100%;
+    height: 100%;
+    max-height: 500px;
+    object-fit: cover;
+    display: block;
+}
+
+.journey-content .journey-desc {
+    color: #94a3b8;
+    font-size: 1rem;
+    line-height: 1.6;
+    margin: 1rem 0 2rem 0;
+}
+
+/* Timeline Layout */
+.timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    position: relative;
+    padding-left: 1.5rem;
+    border-left: 2px solid rgba(168, 85, 247, 0.4);
+    margin-top: 1.5rem;
+}
+
+.t-item {
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+}
+
+/* Glowing Timeline Dot */
+.t-dot {
+    position: absolute;
+    left: -1.95rem;
+    top: 0.35rem;
+    width: 0.85rem;
+    height: 0.85rem;
+    border-radius: 50%;
+    background: #a855f7;
+    box-shadow: 0 0 10px #a855f7, 0 0 20px #a855f7;
+}
+
+.t-info {
+    background: var(--surface-card, #1e293b);
+    border: 1px solid var(--border-color, #2d3748);
+    padding: 1.2rem 1.5rem;
+    border-radius: 1rem;
+    width: 100%;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.t-info:hover {
+    transform: translateX(5px);
+    border-color: #a855f7;
+}
+
+.t-info h4 {
+    color: #ffffff;
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+}
+
+.t-info p {
+    color: #94a3b8;
+    font-size: 0.9rem;
+    margin: 0;
+    line-height: 1.5;
+}
+
+/* vision missoin*/
+.vision-mission-section {
+    padding: 4rem 1.5rem;
+}
+
+.grid2 {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 2.5rem;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.vm-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.vm-card2 {
+    background: var(--surface-card, #1e293b);
+    border: 1px solid var(--border-color, #2d3748);
+    border-radius: 1.25rem;
+    padding: 2rem;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.vm-card2:hover {
+    transform: translateY(-5px);
+    border-color: #a855f7;
+}
+
+.vm-icon {
+    font-size: 2rem;
+    color: #a855f7;
+    margin-bottom: 1rem;
+    width: 50px;
+    height: 50px;
+    background: rgba(168, 85, 247, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+}
+
+.vm-card2 h3 {
+    font-size: 1.4rem;
+    color: #ffffff;
+    margin-bottom: 0.75rem;
+    font-weight: 600;
+}
+
+.vm-card2 p {
+    color: #94a3b8;
+    line-height: 1.6;
+    font-size: 0.95rem;
+}
+
+/* Feature image box*/
+.vm-img-box2 {
+    position: relative;
+    border-radius: 1.25rem;
+    overflow: hidden;
+    height: 100%;
+    min-height: 400px;
+    border: 1px solid var(--border-color, #2d3748);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+}
+
+.vm-img2 {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s ease;
+}
+
+.vm-img-box2:hover .vm-img2 {
+    transform: scale(1.05);
+}
+
+/* video image section */
+.video-showcase {
+    padding: 4rem 1.5rem 6rem 1.5rem;
+}
+
+.video-box {
+    max-width: 950px;
+    margin: 2.5rem auto 0 auto;
+    border-radius: 1.25rem;
+    overflow: hidden;
+    box-shadow: 0 20px 30px rgba(0, 0, 0, 0.5);
+    border: 1px solid var(--border-color, #2d3748);
+    position: relative;
+}
+
+.video-box img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.video-box:hover img {
+    transform: scale(1.02);
+}
+
+/* mobile ajusment */
+@media (max-width: 992px) {
+    .journey-grid,
+    .grid2 {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .vm-img-box2 {
+        min-height: 300px;
+        height: 300px;
+    }
+}
+
+@media (max-width: 576px) {
+    .page-hero {
+        padding: 4rem 1rem 2rem 1rem;
+    }
+
+    .journey,
+    .vision-mission-section,
+    .video-showcase {
+        padding: 2.5rem 1rem;
+    }
+
+    .vm-card2 {
+        padding: 1.5rem;
+    }
+
+    .t-info {
+        padding: 1rem;
+    }
+}

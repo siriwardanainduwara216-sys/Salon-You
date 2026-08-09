@@ -1,0 +1,45 @@
+/* Booking modal - pops up when a service card is clicked */
+.modal-overlay {
+    position: fixed; inset: 0; background: rgba(0,0,0,0.7);
+    display: none; align-items: center; justify-content: center;
+    z-index: 1000; padding: 20px;
+}
+.modal-overlay.show { display: flex; }
+.booking-modal {
+    background: #1a1a1a; color: #fff; border-radius: 14px;
+    max-width: 420px; width: 100%; padding: 28px;
+    position: relative;
+}
+.modal-close {
+    position: absolute; top: 14px; right: 16px; background: none; border: none;
+    color: #888; font-size: 20px; cursor: pointer;
+}
+.modal-close:hover { color: #fff; }
+.booking-modal h3 { color: #d4af37; font-size: 19px; margin-bottom: 4px; }
+.booking-modal .modal-price { color: #9a9aa5; font-size: 14px; margin-bottom: 20px; }
+.modal-field { margin-bottom: 16px; }
+.modal-field label { display: block; font-size: 13px; color: #9a9aa5; margin-bottom: 6px; }
+.modal-field select, .modal-field input {
+    width: 100%; background: #0f0f12; border: 1px solid #2c2d35; color: #fff;
+    padding: 10px 12px; border-radius: 8px; font-size: 14px;
+}
+.btn-confirm-booking {
+    width: 100%; background: #d4af37; color: #1a1a1a; border: none; padding: 13px;
+    border-radius: 8px; font-weight: 600; cursor: pointer; font-size: 15px; margin-top: 6px;
+}
+.btn-confirm-booking:hover { opacity: 0.9; }
+
+.booking-alert {
+    position: fixed; top: 20px; left: 50%; transform: translateX(-50%);
+    background: #22c55e; color: white; padding: 14px 24px; border-radius: 8px;
+    font-size: 14px; z-index: 1001; display: none;
+}
+.booking-alert.error { background: #ef4444; }
+
+/* Icon placeholder for services without a photo (coloring/facials) */
+.card-icon-placeholder {
+    width: 100%; height: 220px;
+    display: flex; align-items: center; justify-content: center;
+    background: linear-gradient(135deg, #2a2a2a, #1a1a1a);
+}
+.card-icon-placeholder i { font-size: 48px; color: #d4af37; }

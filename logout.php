@@ -10,5 +10,5 @@ session_destroy();
 
 // Safely redirect back to your main application front page
 header("Location: index.php");
-exit;
+
 ?>
