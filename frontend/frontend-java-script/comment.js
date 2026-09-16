@@ -1,5 +1,5 @@
 function initCommentSlider() {
-    const track = document.getElementById("commentTrack");
+    const track = document.getElementById("commenttrack");
     const cards = document.querySelectorAll(".comment-card");
     const wrapper = document.querySelector(".comment-slider-wrapper");
 

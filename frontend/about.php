@@ -20,20 +20,20 @@ $user_name = $_SESSION['user_name'] ?? 'Guest User';
     <link rel="stylesheet" href="frontend-css/about_style.css">
 </head>
 <body>
-    <header class="header">
-        <a href="index.php" class="logo">
-          <img src="../logo/logo.png" alt="Salon You Logo" class="logo-img">
+    <header class="site-header">
+        <a href="index.php" class="logo-container">
+          <img src="../logo/logo.png" alt="Salon You Logo" class="site-logo">
             <span class="logo-name">SALON YOU</span>
         </a>
 
-       <nav class="nav">
-    <a href="index.php" class="link">Home</a>
-    <a href="services.php" class="link">Services</a>
-    <a href="../index.php#gallery" class="link">Gallery</a>
-    <a href="about.php" class="link active">About Us</a>
-    <a href="../index.php#contact" class="link">Contact</a>
+       <nav class="main-nav">
+    <a href="index.php" class="nav-link">Home</a>
+    <a href="services.php" class="nav-link">Services</a>
+    <a href="index.php#gallery" class="nav-link">Gallery</a>
+    <a href="about.php" class="nav-link active">About Us</a>
+    <a href="index.php#contact" class="nav-link">Contact</a>
 </nav>
-      
+
 
         <div class="actions">
             <?php if (!$is_logged_in): ?>
@@ -42,7 +42,7 @@ $user_name = $_SESSION['user_name'] ?? 'Guest User';
             <?php else: ?>
                 <div class="profile">
                 <span class="uname"><?php echo htmlspecialchars($user_name); ?></span>
-                <a href="logout.php" class="logout-btn" title="Logout"><i class="fas fa-sign-out-alt"></i></a>
+                <a href="../backend/logout.php" class="logout-btn" title="Logout"><i class="fas fa-sign-out-alt"></i></a>
                 </div>
             <?php endif; ?>
         </div>
@@ -62,7 +62,7 @@ $user_name = $_SESSION['user_name'] ?? 'Guest User';
                 <source src="../uploads/images/salon/journey-video.mp4" type="video/mp4">
                 Your browser does not support the video tag.
             </video>
-           
+
         </div>
 
         <div class="journey-content">
@@ -70,7 +70,7 @@ $user_name = $_SESSION['user_name'] ?? 'Guest User';
             <h2 class="sec-title">The Story Behind <span class="highlight">Salon You</span></h2>
             <p class="journey-desc">Our journey that began with a humble start has now grown into a complete beauty studio equipped with
                  the latest AI technology and the highest quality tools.</p>
-                
+
 
             <div class="timeline">
                 <div class="t-item">
@@ -101,7 +101,7 @@ $user_name = $_SESSION['user_name'] ?? 'Guest User';
    <!-- vision and mission -->
     <section class="section vision-mission-section">
         <div class="grid2">
-            
+
             <!-- cards -->
             <div class="vm-cards">
                 <div class="vm-card2">
@@ -120,7 +120,7 @@ $user_name = $_SESSION['user_name'] ?? 'Guest User';
             <!-- right image -->
             <div class="vm-img-box2">
                 <img src="../uploads/images/salon/vision.jpg" alt="Salon You Interior" class="vm-img2">
-               
+
             </div>
 
         </div>
@@ -131,9 +131,7 @@ $user_name = $_SESSION['user_name'] ?? 'Guest User';
             <h2 class="big-title">Take a Look <span class="highlight">Inside</span></h2>
         </div>
         <div class="video-box">
-            <img src="uploads/images/salon/about.jpg">
-                
-            </img>
+            <img src="../uploads/images/salon/about.jpg" alt="Inside Salon You">
         </div>
     </section>
 
@@ -142,8 +140,6 @@ $user_name = $_SESSION['user_name'] ?? 'Guest User';
             <p>&copy; 2026 Salon You. All Rights Reserved.</p>
         </div>
      </footer>
-    
-     </script>
-     
+
 </body>
 </html>

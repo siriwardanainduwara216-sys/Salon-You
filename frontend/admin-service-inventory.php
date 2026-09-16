@@ -19,9 +19,8 @@ global $conn;
 $success_msg = '';
 $error_msg = '';
 
-// ============================================================
 // ADD NEW USAGE MAPPING
-// ============================================================
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_usage'])) {
     $service_id = (int) $_POST['service_id'];
     $inventory_id = (int) $_POST['inventory_id'];
@@ -54,9 +53,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_usage'])) {
     }
 }
 
-// ============================================================
 // DELETE USAGE MAPPING
-// ============================================================
+
 if (isset($_GET['delete_id'])) {
     $delete_id = (int) $_GET['delete_id'];
     $sql = "DELETE FROM service_inventory_usage WHERE id = ?";
@@ -70,7 +68,7 @@ if (isset($_GET['delete_id'])) {
     mysqli_stmt_close($stmt);
 }
 
-require_once __DIR__ . '/admin-service-inventory-data.php';
+require_once __DIR__ . '/../backend/admin-service-inventory-data.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -78,7 +76,6 @@ require_once __DIR__ . '/admin-service-inventory-data.php';
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Salon You - Service Inventory Usage</title>
-<!-- FontAwesome Icons -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <!-- External CSS Link -->
 <link rel="stylesheet" href="frontend-css/service-inventory.css">
@@ -92,9 +89,12 @@ require_once __DIR__ . '/admin-service-inventory-data.php';
             <li><a href="admin-staff.php"><i class="fas fa-users"></i><span> Staff Management</span></a></li>
             <li><a href="admin-customers.php"><i class="fas fa-user-friends"></i><span> Customer Management</span></a></li>
             <li><a href="admin-appointments.php"><i class="fas fa-calendar-check"></i><span> Appointments</span></a></li>
+             <li><a href="admin-queue.php"><i class="fas fa-list-ol"></i><span> Today's Queue</span></a></li>
+            <li><a href="admin-services.php"><i class="fas fa-cut"></i><span> Services</span></a></li>
             <li class="active"><a href="admin-inventory.php"><i class="fas fa-box"></i><span> Inventory</span></a></li>
             <li><a href="admin-billing.php"><i class="fas fa-money-bill"></i><span> Billing & Payments</span></a></li>
             <li><a href="admin-reports.php"><i class="fas fa-file-invoice-dollar"></i><span> Reports</span></a></li>
+            <li><a href="admin-closed-dates.php"><i class="fas fa-calendar-times"></i><span> Closed Dates</span></a></li>
             <li><a href="admin-notifications.php"><i class="fas fa-bell"></i><span> Notifications</span></a></li>
             <li><a href="../backend/logout.php"><i class="fas fa-sign-out-alt"></i><span> Logout</span></a></li>
         </ul>

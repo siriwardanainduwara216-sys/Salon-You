@@ -22,7 +22,7 @@ if (!$conn) {
 mysqli_set_charset($conn, "utf8mb4");
 
 
-// Sanitize user input (security)
+// Sanitize user input 
 function sanitize_input($data) {
     global $conn;
     $data = trim($data); // Remove extra spaces
@@ -45,7 +45,7 @@ function requireLogin() {
 }
 
 
-// Check user role (Admin/Customer)
+// Check user role 
 function requireRole($role) {
     requireLogin(); // Must be logged in first
     
@@ -56,7 +56,7 @@ function requireRole($role) {
 }
 
 
-// Send JSON response (for AJAX)
+// Send JSON response 
 function jsonResponse($success, $message = "") {
     header('Content-Type: application/json');
     

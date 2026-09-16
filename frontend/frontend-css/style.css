@@ -1,6 +1,6 @@
 :root {
-    --bg-dark: #0F172A;
-    --surface-dark: #1E293B;
+    --bg-dark: #050c22;
+    --surface-dark: #081c44;
     --you-amber: #F59E0B;
     --you-purple: #8B5CF6;
     --text-main: #F8FAFC;
@@ -51,7 +51,7 @@ body {
 }
 
 .site-logo {
-    height: 42px; /* Logo එකේ උස */
+    height: 42px; 
     width: auto;
     object-fit: contain;
     display: block;
@@ -198,9 +198,9 @@ body {
     justify-content: center;
     gap: 1.2rem;
 }
-/* ==========================================================================
-   AI HAIRSTYLE RECOMMENDER ENGINE STYLES
-   ========================================================================== */
+
+/*   AI HAIRSTYLE RECOMMENDER ENGINE STYLES
+
 
 /* Main Container & Idle State */
 .ai-section {
@@ -691,7 +691,7 @@ body {
 /* Photo styling */
 .vm-img-box {
     width: 100%;
-    height: 380px; /* Vertical නිසා image height එක වැඩි කර ඇත */
+    height: 380px; 
     border-radius: 1.25rem;
     overflow: hidden;
     margin-bottom: 1.25rem;
@@ -751,11 +751,22 @@ body {
 
 .product-img-box,
 .team-img-box {
-    width: 100%;
+    width: 80%;
     height: 320px;
     border-radius: 1.25rem;
     overflow: hidden;
+    margin-left: 50px;
+    
 }
+.large-text{
+    text-align: justify,center;
+    margin-right: 10px;
+    margin-top: 10px;
+    margin-bottom: 50px;
+    margin-left: 50px;
+}
+
+
 
 .product-img-box img,
 .team-img-box img {
@@ -764,7 +775,12 @@ body {
     object-fit: cover;
     display: block;
     filter: none !important;
+    
 }
+.team-card .name-text {
+    margin-left:  50px !important;
+}
+
 
 .product-card h3,
 .team-card h3 {
@@ -772,10 +788,16 @@ body {
     color: #ffffff;
     margin-top: 0.4rem;
 }
+.intro-text{
+    font-weight: bold;
+    margin-bottom: 40px;
+    margin-left: 50px;
+}
 
 .text-center {
     text-align: center;
 }
+
 
 /* Mobile Responsiveness for Quad Grid */
 @media (max-width: 600px) {
@@ -1609,6 +1631,5 @@ body.luxury-theme {
     font-weight: bold;
     font-size: 1.1rem;
 }
-
 
 

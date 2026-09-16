@@ -34,7 +34,7 @@ if (isset($_SESSION['user_id'])) {
                 <!-- Email Field -->
                 <div class="form-group">
                     <label for="email"><i class="fas fa-envelope"></i> Email Address</label>
-                    <input type="email" id="email" name="email" class="form-control" required placeholder="name@example.com">
+                    <input type="email" id="email" name="email" class="form-control" required placeholder="Email@example.com">
                 </div>
 
                 <!-- Password Field -->

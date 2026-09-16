@@ -16,7 +16,7 @@ $admin_name = $_SESSION['user_name'];
 require_once __DIR__ . '/../backend/config.php';
 global $conn;
 
-require_once __DIR__ . '/admin-notifications-data.php';
+require_once __DIR__ . '/../backend/admin-notification-data.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -25,7 +25,6 @@ require_once __DIR__ . '/admin-notifications-data.php';
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Salon You - Notifications</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-<!-- External CSS Link -->
 <link rel="stylesheet" href="frontend-css/notification.css">
 </head>
 <body> 
@@ -37,7 +36,11 @@ require_once __DIR__ . '/admin-notifications-data.php';
             <li><a href="admin-staff.php"><i class="fas fa-users"></i><span> Staff Management</span></a></li>
             <li><a href="admin-customers.php"><i class="fas fa-user-friends"></i><span> Customer Management</span></a></li>
             <li><a href="admin-appointments.php"><i class="fas fa-calendar-check"></i><span> Appointments</span></a></li>
+            <li><a href="admin-queue.php"><i class="fas fa-list-ol"></i><span> Today's Queue</span></a></li>
             <li><a href="admin-inventory.php"><i class="fas fa-box"></i><span> Inventory</span></a></li>
+            <li><a href="admin-products.php"><i class="fas fa-pump-soap"></i><span> Products</span></a></li>
+            <li><a href="admin-product-orders.php"><i class="fas fa-shopping-basket"></i><span> Product Orders</span></a></li>
+            <li><a href="admin-closed-dates.php"><i class="fas fa-calendar-times"></i><span> Closed Dates</span></a></li>
             <li><a href="admin-billing.php"><i class="fas fa-money-bill"></i><span> Billing & Payments</span></a></li>
             <li><a href="admin-reports.php"><i class="fas fa-file-invoice-dollar"></i><span> Reports</span></a></li>
             <li class="active"><a href="admin-notifications.php"><i class="fas fa-bell"></i><span> Notifications</span>
@@ -53,14 +56,14 @@ require_once __DIR__ . '/admin-notifications-data.php';
 
         <div class="page-header"><h2>Notifications</h2></div>
 
-        <!-- Low Stock Alerts -->
+        <!-- Low Stock Alerts (Inventory & Products) -->
         <div class="panel">
             <div class="panel-header">
                 <h4><i class="fas fa-box" style="color: var(--danger-red);"></i> Low Stock Alerts</h4>
-                <span class="count-badge"><?php echo count($low_stock_items); ?></span>
+                <span class="count-badge"><?php echo count($low_stock_items) + count($low_stock_products ?? []); ?></span>
             </div>
-            <?php if (empty($low_stock_items)): ?>
-                <p class="empty-msg">All inventory items are well stocked.</p>
+            <?php if (empty($low_stock_items) && empty($low_stock_products)): ?>
+                <p class="empty-msg">All items and products are well stocked.</p>
             <?php else: ?>
                 <?php foreach ($low_stock_items as $item): ?>
                     <div class="notif-item urgent">
@@ -69,6 +72,37 @@ require_once __DIR__ . '/admin-notifications-data.php';
                             <div class="sub"><?php echo $item['quantity']; ?> <?php echo htmlspecialchars($item['unit']); ?> left (threshold: <?php echo $item['low_stock_threshold']; ?>)</div>
                         </div>
                         <div class="notif-action"><a href="admin-inventory.php">Restock →</a></div>
+                    </div>
+                <?php endforeach; ?>
+
+                <?php foreach ($low_stock_products ?? [] as $product): ?>
+                    <div class="notif-item urgent">
+                        <div class="notif-text">
+                            <strong><?php echo htmlspecialchars($product['product_name']); ?></strong> is running low
+                            <div class="sub"><?php echo $product['stock_quantity']; ?> units left</div>
+                        </div>
+                        <div class="notif-action"><a href="admin-products.php">Restock →</a></div>
+                    </div>
+                <?php endforeach; ?>
+            <?php endif; ?>
+        </div>
+
+        <!-- Pending Product Orders -->
+        <div class="panel">
+            <div class="panel-header">
+                <h4><i class="fas fa-shopping-basket" style="color: var(--accent-amber);"></i> Pending Product Orders</h4>
+                <span class="count-badge"><?php echo count($pending_product_orders ?? []); ?></span>
+            </div>
+            <?php if (empty($pending_product_orders)): ?>
+                <p class="empty-msg">No pending product orders.</p>
+            <?php else: ?>
+                <?php foreach ($pending_product_orders as $order): ?>
+                    <div class="notif-item">
+                        <div class="notif-text">
+                            <strong><?php echo htmlspecialchars($order['customer_name']); ?></strong> - Rs. <?php echo number_format($order['total_amount'], 2); ?> order awaiting pickup
+                            <div class="sub">Placed on <?php echo date('Y-m-d', strtotime($order['created_at'])); ?></div>
+                        </div>
+                        <div class="notif-action"><a href="admin-product-orders.php">View →</a></div>
                     </div>
                 <?php endforeach; ?>
             <?php endif; ?>

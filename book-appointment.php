@@ -62,6 +62,43 @@ if (!$error) {
     }
 }
 
+// ---- Verify the appointment time is within business hours (9 AM - 5 PM) ----
+if (!$error) {
+    if ($appointment_time < '09:00' || $appointment_time > '17:00') {
+        $error = 'Appointments are only available between 9:00 AM and 5:00 PM.';
+    }
+}
+
+// ---- Check the salon isn't closed on this date (Poya days, holidays) ----
+if (!$error) {
+    $sql = "SELECT reason FROM salon_closed_dates WHERE closed_date = ?";
+    $stmt = mysqli_prepare($conn, $sql);
+    mysqli_stmt_bind_param($stmt, "s", $appointment_date);
+    mysqli_stmt_execute($stmt);
+    $closed_row = mysqli_fetch_assoc(mysqli_stmt_get_result($stmt));
+    mysqli_stmt_close($stmt);
+
+    if ($closed_row) {
+        $error = 'The salon is closed on this date (' . $closed_row['reason'] . '). Please choose another date.';
+    }
+}
+
+// ---- Check this stylist isn't already booked at this exact date and time ----
+if (!$error) {
+    $sql = "SELECT id FROM appointments
+            WHERE staff_id = ? AND appointment_date = ? AND appointment_time = ?
+            AND status IN ('pending', 'confirmed')";
+    $stmt = mysqli_prepare($conn, $sql);
+    mysqli_stmt_bind_param($stmt, "iss", $staff_id, $appointment_date, $appointment_time);
+    mysqli_stmt_execute($stmt);
+    mysqli_stmt_store_result($stmt);
+
+    if (mysqli_stmt_num_rows($stmt) > 0) {
+        $error = 'This time slot is already booked for the selected stylist. Please choose a different time or stylist.';
+    }
+    mysqli_stmt_close($stmt);
+}
+
 // ---- Insert the appointment ----
 if (!$error) {
     $sql = "INSERT INTO appointments (user_id, staff_id, service_id, appointment_date, appointment_time, status)

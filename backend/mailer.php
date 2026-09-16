@@ -7,11 +7,7 @@ require __DIR__ . '/phpmailer/Exception.php';
 require __DIR__ . '/phpmailer/SMTP.php';
 require __DIR__ . '/phpmailer/PHPMailer.php';
 
-// ============================================================
-// Shared helper: builds a PHPMailer instance with the salon's
-// SMTP settings already configured. Every email function below
-// calls this instead of repeating the SMTP setup each time.
-// ============================================================
+
 function get_configured_mailer() {
     $mail = new PHPMailer(true);
 
@@ -40,9 +36,7 @@ function get_configured_mailer() {
     return $mail;
 }
 
-// ============================================================
-// OTP verification email (existing - unchanged)
-// ============================================================
+
 function send_otp_email($to_email, $user_name, $otp_code) {
     try {
         $mail = get_configured_mailer();
@@ -59,10 +53,7 @@ function send_otp_email($to_email, $user_name, $otp_code) {
     }
 }
 
-// ============================================================
-// Appointment confirmation email
-// Sent when an admin changes an appointment's status to 'confirmed'
-// ============================================================
+
 function send_appointment_confirmation_email($to_email, $customer_name, $service_name, $staff_name, $appointment_date, $appointment_time) {
     try {
         $mail = get_configured_mailer();
@@ -95,10 +86,7 @@ function send_appointment_confirmation_email($to_email, $customer_name, $service
     }
 }
 
-// ============================================================
-// Payment receipt email
-// Sent when a payment's status is set to 'paid'
-// ============================================================
+
 function send_payment_receipt_email($to_email, $customer_name, $service_name, $amount, $payment_method, $payment_date) {
     try {
         $mail = get_configured_mailer();

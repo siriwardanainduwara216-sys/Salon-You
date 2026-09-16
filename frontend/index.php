@@ -9,6 +9,40 @@ $user_name = $_SESSION['user_name'] ?? 'Guest User';
 
 // Correct Relative Path to Config File
 require_once __DIR__ . '/../backend/config.php';
+
+// ---- Fetch today's queue position for this customer 
+$today_queue_appt = null;
+if ($is_logged_in && $user_role === 'customer') {
+    $sql = "SELECT a.id, a.appointment_time, s.service_name, st.name AS staff_name
+            FROM appointments a
+            JOIN services s ON a.service_id = s.id
+            LEFT JOIN users st ON a.staff_id = st.id
+            WHERE a.user_id = ?
+            AND a.appointment_date = CURDATE()
+            AND a.status IN ('pending', 'confirmed')
+            ORDER BY a.appointment_time ASC
+            LIMIT 1";
+    $stmt = mysqli_prepare($conn, $sql);
+    mysqli_stmt_bind_param($stmt, "i", $_SESSION['user_id']);
+    mysqli_stmt_execute($stmt);
+    $today_queue_appt = mysqli_fetch_assoc(mysqli_stmt_get_result($stmt));
+    mysqli_stmt_close($stmt);
+
+    // If they have an appointment today, find their position in that stylist's queue
+    if ($today_queue_appt && $today_queue_appt['staff_name']) {
+        $sql = "SELECT COUNT(*) AS position FROM appointments
+                WHERE staff_id = (SELECT staff_id FROM appointments WHERE id = ?)
+                AND appointment_date = CURDATE()
+                AND status IN ('pending', 'confirmed')
+                AND queue_status IN ('waiting', 'in_progress')
+                AND appointment_time <= ?";
+        $stmt = mysqli_prepare($conn, $sql);
+        mysqli_stmt_bind_param($stmt, "is", $today_queue_appt['id'], $today_queue_appt['appointment_time']);
+        mysqli_stmt_execute($stmt);
+        $today_queue_appt['position'] = mysqli_fetch_assoc(mysqli_stmt_get_result($stmt))['position'] ?? null;
+        mysqli_stmt_close($stmt);
+    }
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -16,13 +50,11 @@ require_once __DIR__ . '/../backend/config.php';
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Salon You - Management System</title>
-    
-    <!-- Fonts & Icons -->
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <!-- CSS Stylesheets -->
     <link rel="stylesheet" href="frontend-css/style.css">
+   
+
 
     <!-- AI Recommender Custom Styles -->
     <style>
@@ -120,6 +152,7 @@ require_once __DIR__ . '/../backend/config.php';
        <nav class="main-nav">
     <a href="index.php" class="nav-link active">Home</a>
     <a href="services.php" class="nav-link">Services</a>
+    <a href="products.php" class="nav-link">Products</a>
     <a href="#gallery" class="nav-link">Gallery</a>
     <a href="about.php" class="nav-link">About Us</a>
     <a href="#contact" class="nav-link">Contact</a>
@@ -133,7 +166,7 @@ require_once __DIR__ . '/../backend/config.php';
                 <div class="user-profile">
                     <span class="user-name"><?php echo htmlspecialchars($user_name); ?></span>
                     <?php if ($_SESSION['user_role'] === 'customer'): ?>
-                        <a href="my-appointments.php" class="btn-login" style="margin-right: 8px;">
+                        <a href="my-appointments.php" class="btn-register" style="margin-right: 8px;">
                             <i class="fas fa-calendar-check"></i> My Appointments
                         </a>
                     <?php endif; ?>
@@ -145,8 +178,33 @@ require_once __DIR__ . '/../backend/config.php';
         </div>
     </header>
 
+    <?php if ($today_queue_appt): ?>
+    <div style="background: linear-gradient(135deg, #7c3aed, #a855f7); padding: 16px 20px; text-align: center; color: #fff; position: relative; z-index: 10;">
+        <div style="max-width: 900px; margin: 0 auto; display: flex; align-items: center; justify-content: center; gap: 16px; flex-wrap: wrap;">
+            <span style="font-weight: 600;">
+                <i class="fas fa-list-ol"></i>
+                Today's Queue:
+                <?php if ($today_queue_appt['position']): ?>
+                    You're <strong>#<?php echo $today_queue_appt['position']; ?></strong> in line
+                    for <?php echo htmlspecialchars($today_queue_appt['service_name']); ?>
+                    with <?php echo htmlspecialchars($today_queue_appt['staff_name']); ?>
+                    at <?php echo date('h:i A', strtotime($today_queue_appt['appointment_time'])); ?>
+                <?php else: ?>
+                    Your <?php echo htmlspecialchars($today_queue_appt['service_name']); ?> appointment
+                    is today at <?php echo date('h:i A', strtotime($today_queue_appt['appointment_time'])); ?>
+                <?php endif; ?>
+            </span>
+            <a href="my-appointments.php" style="background: #fff; color: #7c3aed; padding: 6px 16px; border-radius: 20px; text-decoration: none; font-weight: 600; font-size: 0.85rem; white-space: nowrap;">
+                View Full Queue <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+    </div>
+    <?php endif; ?>
+
     <main class="main-container">
-        <!-- 1. HERO SECTION WITH BACKGROUND VIDEO -->
+
+    <main class="main-container">
+        <!-- HERO SECTION WITH BACKGROUND VIDEO -->
         <section class="hero-section" style="position: relative; width: 100%; min-height: 85vh; display: flex; align-items: center; justify-content: center; overflow: hidden;">
             <!-- Background Video -->
             <video autoplay loop muted playsinline style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 30% !important; z-index: 1;">
@@ -168,7 +226,7 @@ require_once __DIR__ . '/../backend/config.php';
             </div>
         </section>
 
-        <!-- 2. AI RECOMMENDER SECTION -->
+        <!-- AI RECOMMENDER SECTION -->
         <section id="ai-recommender" class="section-container">
             <div class="section-header text-center">
                 <span class="section-badge"><i class="fas fa-magic"></i> AI POWERED</span>
@@ -201,7 +259,7 @@ require_once __DIR__ . '/../backend/config.php';
             </div>
         </section>
 
-        <!-- 3. BRAND / STORY HERO BANNER -->
+        <!-- BRAND / STORY HERO BANNER -->
         <section class="hero-section" style="background-image: url('../uploads/images/salon/hero-bg.jpg'); background-size: cover; background-position: center; padding: 80px 20px;">
             <div class="hero-content text-center">
                 <span class="section-badge"><i class="fas fa-crown"></i> WELCOME TO SALON YOU</span>
@@ -214,7 +272,7 @@ require_once __DIR__ . '/../backend/config.php';
             </div>
         </section>
 
-        <!-- 4. SERVICES SHOWCASE SECTION -->
+        <!-- SERVICES SHOWCASE SECTION -->
         <section class="section-container services-section">
             <div class="side-by-side-grid">
                 <div class="quad-image-grid">
@@ -251,7 +309,7 @@ require_once __DIR__ . '/../backend/config.php';
             </div>
         </section>
 
-        <!-- 5. PRODUCTS SECTION -->
+        <!-- PRODUCTS SECTION -->
         <section class="section-container products-section">
             <div class="section-header text-center">
                 <span class="section-badge"><i class="fas fa-pump-soap"></i> EXCLUSIVE PRODUCTS</span>
@@ -277,7 +335,7 @@ require_once __DIR__ . '/../backend/config.php';
             </div>
         </section>
 
-        <!-- 6. EXPERT TEAM SECTION -->
+        <!-- EXPERT TEAM SECTION -->
         <section class="section-container team-section">
             <div class="section-header text-center">
                 <span class="section-badge"><i class="fas fa-users"></i> EXPERT STYLISTS</span>
@@ -289,21 +347,21 @@ require_once __DIR__ . '/../backend/config.php';
                     <div class="team-img-box">
                         <img src="../uploads/images/salon/service-1.jpg" alt="Team Member 1" onerror="this.src='https://via.placeholder.com/300x400?text=Senior+Stylist'">
                     </div>
-                    <h3>Senior Hair Designer</h3>
-                    <p class="large-text">Leading hairstylists with over 8 years of experience.</p>
+                   <h3 class="name-text" style="margin-left: 50px !important;">Senior Hair Designer</h3>
+                    <p class="intro-text">Leading hairstylists with over 8 years of experience.</p>
                 </div>
 
                 <div class="team-card">
                     <div class="team-img-box">
                         <img src="../uploads/images/salon/service-1.jpg" alt="Team Member 2" onerror="this.src='https://via.placeholder.com/300x400?text=Beauty+Expert'">
                     </div>
-                    <h3>Skin & Bridal Specialist</h3>
-                    <p class="large-text">International-level experts in beauty and bridal styling.</p>
+                    <h3 class="name-text" style="margin-left: 50px !important;">Skin & Bridal Specialist</h3>
+                    <p class="intro-text">International-level experts in beauty and bridal styling.</p>
                 </div>
             </div>
         </section>
 
-        <!-- 7. CLIENT FEEDBACK & REVIEWS SECTION -->
+        <!-- CLIENT FEEDBACK & REVIEWS SECTION -->
         <section class="section-container comment-section">
             <div class="section-header text-center">
                 <span class="section-badge"><i class="fas fa-star"></i> CLIENT FEEDBACK</span>

@@ -23,7 +23,6 @@ function sanitize_input($data) {
     return mysqli_real_escape_string($conn, trim($data));
 }
 
-<?php
 require_once 'config.php';
 
 header('Content-Type: application/json');
@@ -84,7 +83,7 @@ if ($action === 'check_session') {
     exit;
 }
 
-<?php
+
 require_once 'config.php';
 
 header('Content-Type: application/json');

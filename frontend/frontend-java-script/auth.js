@@ -145,7 +145,7 @@ document.addEventListener('DOMContentLoaded', function () {
             const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
             passwordInput.setAttribute('type', type);
             
-            // Eye Icon එක Toggle කිරීම (fa-eye <-> fa-eye-slash)
+            
             this.classList.toggle('fa-eye');
             this.classList.toggle('fa-eye-slash');
         });

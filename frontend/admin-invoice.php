@@ -23,7 +23,7 @@ if ($customer_id <= 0) {
     exit();
 }
 
-// ---- Customer details ----
+// Customer details 
 $sql = "SELECT id, name, email, phone FROM users WHERE id = ? AND role = 'customer'";
 $stmt = mysqli_prepare($conn, $sql);
 mysqli_stmt_bind_param($stmt, "i", $customer_id);
@@ -36,7 +36,7 @@ if (!$customer) {
     exit();
 }
 
-// ---- All payments for this customer (itemized) ----
+//  All payments for this customer 
 $invoice_items = [];
 $sql = "SELECT p.id, p.amount, p.payment_method, p.payment_status, p.payment_date,
                a.appointment_date, s.service_name
@@ -54,7 +54,7 @@ while ($row = mysqli_fetch_assoc($result)) {
 }
 mysqli_stmt_close($stmt);
 
-// ---- Totals ----
+// Totals 
 $grand_total = 0;
 $paid_total = 0;
 $pending_total = 0;
@@ -75,9 +75,7 @@ $invoice_number = 'INV-' . str_pad($customer_id, 4, '0', STR_PAD_LEFT) . '-' . d
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Salon You - Invoice for <?php echo htmlspecialchars($customer['name']); ?></title>
-<!-- FontAwesome Icons -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-<!-- External CSS Link -->
 <link rel="stylesheet" href="frontend-css/invoice.css">
 </head>
 <body>

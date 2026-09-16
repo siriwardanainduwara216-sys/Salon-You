@@ -252,3 +252,18 @@
         padding: 1rem;
     }
 }
+/* Logo Image Styling */
+.logo-img {
+    height: 45px;        
+    width: auto;         
+    object-fit: contain;
+    display: block;
+}
+
+/* Header Logo Container */
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+}

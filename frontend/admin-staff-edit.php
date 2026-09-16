@@ -20,7 +20,6 @@ global $conn;
 $error_msg = '';
 $success_msg = '';
 
-// ---- Staff ID URL eken gannawa ----
 $staff_id = isset($_GET['id']) ? (int) $_GET['id'] : 0;
 
 if ($staff_id <= 0) {
@@ -28,7 +27,7 @@ if ($staff_id <= 0) {
     exit();
 }
 
-// ---- UPDATE (Form submit una gaman) ----
+// UPDATE 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_staff'])) {
     $name   = trim($_POST['name']);
     $email  = trim($_POST['email']);
@@ -61,7 +60,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_staff'])) {
     }
 }
 
-// ---- Staff details fetch karanawa (form eke pennanna) ----
+// ---- Staff details fetch karanawa 
 $sql = "SELECT id, name, email, phone, status FROM users WHERE id = ? AND role = 'employee'";
 $stmt = mysqli_prepare($conn, $sql);
 mysqli_stmt_bind_param($stmt, "i", $staff_id);
@@ -94,9 +93,12 @@ if (!$staff) {
             <li class="active"><a href="admin-staff.php"><i class="fas fa-users"></i><span> Staff Management</span></a></li>
             <li><a href="admin-customers.php"><i class="fas fa-user-friends"></i><span> Customer Management</span></a></li>
             <li><a href="admin-appointments.php"><i class="fas fa-calendar-check"></i><span> Appointments</span></a></li>
+             <li><a href="admin-queue.php"><i class="fas fa-list-ol"></i><span> Today's Queue</span></a></li>
+            <li><a href="admin-services.php"><i class="fas fa-cut"></i><span> Services</span></a></li>
             <li><a href="admin-inventory.php"><i class="fas fa-box"></i><span> Inventory</span></a></li>
             <li><a href="admin-billing.php"><i class="fas fa-money-bill"></i><span> Billing & Payments</span></a></li>
             <li><a href="admin-reports.php"><i class="fas fa-file-invoice-dollar"></i><span> Reports</span></a></li>
+            <li><a href="admin-closed-dates.php"><i class="fas fa-calendar-times"></i><span> Closed Dates</span></a></li>
             <li><a href="admin-notifications.php"><i class="fas fa-bell"></i><span> Notifications</span></a></li>
             <li><a href="../backend/logout.php"><i class="fas fa-sign-out-alt"></i><span> Logout</span></a></li>
         </ul>
@@ -136,7 +138,7 @@ if (!$staff) {
                             <option value="suspended" <?php echo $staff['status'] === 'suspended' ? 'selected' : ''; ?>>Suspended</option>
                         </select>
                     </div>
-                    <div class="form-group" style="grid-column: 1 / -1;">
+                    <div class="form-group full-width">
                         <label>New Password</label>
                         <input type="password" name="password" placeholder="Leave blank to keep current password">
                         <small>Leaving this blank will not change the password.</small>

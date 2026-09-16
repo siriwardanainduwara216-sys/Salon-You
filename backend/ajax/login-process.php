@@ -1,5 +1,5 @@
 <?php
-ob_start(); // JSON Break වීම වැළැක්වීමට Output Buffering ආරම්භ කිරීම
+ob_start(); 
 
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
@@ -23,7 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email    = trim($_POST['email'] ?? '');
     $password = $_POST['password'] ?? '';
 
-    // 1. Required Inputs Validation
+    // Required Inputs Validation
     if (empty($email) || empty($password)) {
         ob_end_clean();
         echo json_encode([
@@ -33,7 +33,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit;
     }
 
-    // 2. Find User in Database
+    // Find User in Database
     $sql  = "SELECT id, name, email, password, role, is_verified FROM users WHERE email = ?";
     $stmt = mysqli_prepare($conn, $sql);
 
@@ -44,10 +44,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         if ($user = mysqli_fetch_assoc($result)) {
 
-            // 3. Password Verification Check
+            // Password Verification Check
             if (password_verify($password, $user['password'])) {
 
-                // 4. OTP Verification Check (Verify වී නැත්නම් OTP Page එකට Redirect කරයි)
+                // OTP Verification Check (Verify වී නැත්නම් OTP Page එකට Redirect කරයි)
                 if ((int)$user['is_verified'] !== 1) {
                     $_SESSION['temp_user_id']    = $user['id'];
                     $_SESSION['temp_user_email'] = $user['email'];
@@ -63,12 +63,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     exit;
                 }
 
-                // 5. Successful Login - Set Active Session Variables
+                // Successful Login - Set Active Session Variables
                 $_SESSION['user_id']   = $user['id'];
                 $_SESSION['user_name'] = $user['name'];
                 $_SESSION['user_role'] = $user['role'];
 
-                // 6. Role-Based Redirection Page Destination
+                // Role-Based Redirection Page Destination
                 $redirect_page = ($user['role'] === 'admin') ? 'admin-dashboard.php' : 'index.php';
 
                 mysqli_stmt_close($stmt);

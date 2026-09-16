@@ -23,7 +23,7 @@ require_once __DIR__ . '/../backend/config.php';
 global $conn;
 
 // 5. All dashboard data queries live in a separate file
-require_once __DIR__ . '/admin-dashboard-data.php';
+require_once __DIR__ . '/../backend/admin-dashboard-data.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -32,7 +32,7 @@ require_once __DIR__ . '/admin-dashboard-data.php';
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Salon You - Admin Dashboard</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-<!-- External CSS Link -->
+<!-- External CSS File Link -->
 <link rel="stylesheet" href="frontend-css/dashboard.css">
 </head>
 <body>
@@ -50,10 +50,14 @@ require_once __DIR__ . '/admin-dashboard-data.php';
             <li><a href="admin-staff.php"><i class="fas fa-users"></i><span> Staff Management</span></a></li>
             <li><a href="admin-customers.php"><i class="fas fa-user-friends"></i><span> Customer Management</span></a></li>
             <li><a href="admin-appointments.php"><i class="fas fa-calendar-check"></i><span> Appointments</span></a></li>
+             <li><a href="admin-queue.php"><i class="fas fa-list-ol"></i><span> Today's Queue</span></a></li>  
             <li><a href="admin-services.php"><i class="fas fa-cut"></i><span> Services</span></a></li>
+             <li><a href="admin-products.php"><i class="fas fa-pump-soap"></i><span> Product</span></a></li>
+             <li><a href="admin-product-orders.php"><i class="fas fa-shopping-basket"></i><span> Product Orders</span></a></li>
             <li><a href="admin-inventory.php"><i class="fas fa-box"></i><span> Inventory</span></a></li>
             <li><a href="admin-billing.php"><i class="fas fa-money-bill"></i><span> Billing & Payments</span></a></li>
             <li><a href="admin-reports.php"><i class="fas fa-file-invoice-dollar"></i><span> Reports</span></a></li>
+            <li><a href="admin-closed-dates.php"><i class="fas fa-calendar-times"></i><span> Closed Dates</span></a></li>
             <li><a href="admin-notifications.php"><i class="fas fa-bell"></i><span> Notifications</span></a></li>
             <li><a href="../backend/logout.php"><i class="fas fa-sign-out-alt"></i><span> Logout</span></a></li>
         </ul>
@@ -97,6 +101,28 @@ require_once __DIR__ . '/admin-dashboard-data.php';
                 </div>
             </div>
 
+           
+
+            <h3 style="margin-top:30px; margin-bottom:15px; font-size:18px;">Product Sales Overview</h3>
+            <div class="cards-row">
+                <div class="card purple">
+                    <h4>Orders Today</h4>
+                    <p class="card-number"><?php echo $products_today_count; ?></p>
+                </div>
+                <div class="card amber">
+                    <h4>This Week</h4>
+                    <p class="card-number"><?php echo $products_week_count; ?></p>
+                </div>
+                <div class="card blue">
+                    <h4>This Month</h4>
+                    <p class="card-number"><?php echo $products_month_count; ?></p>
+                </div>
+                <div class="card green">
+                    <h4>Product Revenue</h4>
+                    <p class="card-number">Rs. <?php echo number_format($product_revenue, 2); ?></p>
+                </div>
+            </div>
+
             <div class="section-row">
                 <div class="panel">
                     <h4>Recent Appointments</h4>
@@ -118,7 +144,7 @@ require_once __DIR__ . '/admin-dashboard-data.php';
                 </div>
 
                 <div class="panel">
-                    <h4>Low Stock Alerts</h4>
+                    <h4>Low Stock Alerts for retail item</h4>
                     <?php if (empty($low_stock_items)): ?>
                         <p style="color: var(--text-muted); font-size: 13px;">All stock levels are OK.</p>
                     <?php else: ?>
@@ -126,6 +152,25 @@ require_once __DIR__ . '/admin-dashboard-data.php';
                             <div class="panel-list-item">
                                 <span><?php echo htmlspecialchars($item['item_name']); ?></span>
                                 <span class="badge low"><?php echo $item['quantity'] . ' ' . htmlspecialchars($item['unit']); ?> left</span>
+                            </div>
+                        <?php endforeach; ?>
+                    <?php endif; ?>
+                </div>
+                <div class="panel">
+                    <h4>Low Stock Alerts for Products</h4>
+                    <?php if (empty($low_stock_items) && empty($low_stock_products)): ?>
+                        <p style="color: var(--text-muted); font-size: 13px;">All stock levels are OK.</p>
+                    <?php else: ?>
+                        <?php foreach ($low_stock_items as $item): ?>
+                            <div class="panel-list-item">
+                                <span><i class="fas fa-flask" style="font-size:11px; color:var(--text-muted);"></i> <?php echo htmlspecialchars($item['item_name']); ?></span>
+                                <span class="badge low"><?php echo $item['quantity'] . ' ' . htmlspecialchars($item['unit']); ?> left</span>
+                            </div>
+                        <?php endforeach; ?>
+                        <?php foreach ($low_stock_products as $product): ?>
+                            <div class="panel-list-item">
+                                <span><i class="fas fa-pump-soap" style="font-size:11px; color:var(--text-muted);"></i> <?php echo htmlspecialchars($product['product_name']); ?></span>
+                                <span class="badge low"><?php echo $product['stock_quantity']; ?> units left</span>
                             </div>
                         <?php endforeach; ?>
                     <?php endif; ?>

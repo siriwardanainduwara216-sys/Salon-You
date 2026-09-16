@@ -19,9 +19,8 @@ global $conn;
 $success_msg = '';
 $error_msg = '';
 
-// ============================================================
 // ADD NEW ITEM
-// ============================================================
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_item'])) {
     $item_name = trim($_POST['item_name']);
     $category = trim($_POST['category']);
@@ -37,6 +36,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_item'])) {
         $error_msg = "Uses per unit must be at least 1.";
     } else {
         // Convert bottles into total usable units before saving.
+        // e.g. 5 bottles x 20 uses each = 100 total uses in stock.
         $total_uses = $bottles_added * $uses_per_unit;
 
         $sql = "INSERT INTO inventory (item_name, category, quantity, unit, uses_per_unit, low_stock_threshold, price)
@@ -52,9 +52,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_item'])) {
     }
 }
 
-// ============================================================
-// UPDATE ITEM (item details only - not stock quantity)
-// ============================================================
+// UPDATE ITEM 
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_item'])) {
     $item_id = (int) $_POST['item_id'];
     $item_name = trim($_POST['item_name']);
@@ -75,9 +74,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_item'])) {
     mysqli_stmt_close($stmt);
 }
 
-// ============================================================
-// RESTOCK ITEM (add more bottles to existing stock)
-// ============================================================
+// RESTOCK ITEM 
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['restock_item'])) {
     $item_id = (int) $_POST['item_id'];
     $bottles_to_add = (int) $_POST['bottles_to_add'];
@@ -106,9 +104,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['restock_item'])) {
     }
 }
 
-// ============================================================
 // DELETE ITEM
-// ============================================================
+
 if (isset($_GET['delete_id'])) {
     $delete_id = (int) $_GET['delete_id'];
     $sql = "DELETE FROM inventory WHERE id = ?";
@@ -122,7 +119,7 @@ if (isset($_GET['delete_id'])) {
     mysqli_stmt_close($stmt);
 }
 
-require_once __DIR__ . '/admin-inventory-data.php';
+require_once __DIR__ . '/../backend/admin-inventory-data.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -130,7 +127,6 @@ require_once __DIR__ . '/admin-inventory-data.php';
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Salon You - Inventory Management</title>
-<!-- FontAwesome Icons -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <!-- External CSS Link -->
 <link rel="stylesheet" href="frontend-css/inventory.css">
@@ -144,9 +140,12 @@ require_once __DIR__ . '/admin-inventory-data.php';
             <li><a href="admin-staff.php"><i class="fas fa-users"></i><span> Staff Management</span></a></li>
             <li><a href="admin-customers.php"><i class="fas fa-user-friends"></i><span> Customer Management</span></a></li>
             <li><a href="admin-appointments.php"><i class="fas fa-calendar-check"></i><span> Appointments</span></a></li>
+             <li><a href="admin-queue.php"><i class="fas fa-list-ol"></i><span> Today's Queue</span></a></li>
+            <li><a href="admin-services.php"><i class="fas fa-cut"></i><span> Services</span></a></li>
             <li class="active"><a href="admin-inventory.php"><i class="fas fa-box"></i><span> Inventory</span></a></li>
             <li><a href="admin-billing.php"><i class="fas fa-money-bill"></i><span> Billing & Payments</span></a></li>
             <li><a href="admin-reports.php"><i class="fas fa-file-invoice-dollar"></i><span> Reports</span></a></li>
+            <li><a href="admin-closed-dates.php"><i class="fas fa-calendar-times"></i><span> Closed Dates</span></a></li>
             <li><a href="admin-notifications.php"><i class="fas fa-bell"></i><span> Notifications</span></a></li>
             <li><a href="../backend/logout.php"><i class="fas fa-sign-out-alt"></i><span> Logout</span></a></li>
         </ul>
@@ -158,6 +157,7 @@ require_once __DIR__ . '/admin-inventory-data.php';
 
         <div class="page-header">
             <h2>Inventory Management</h2>
+            <a href="admin-inventory-report.php" class="btn" style="float: right; margin-right: 10px;"><i class="fas fa-chart-bar"></i> Usage Report</a>
             <a href="admin-service-inventory.php" class="btn" style="float: right;"><i class="fas fa-link"></i> Manage Service Usage Links</a>
         </div>
 
@@ -296,6 +296,7 @@ require_once __DIR__ . '/admin-inventory-data.php';
     </div>
 </div>
 
+<!-- Inline JavaScript Code -->
 <script>
 function toggleEdit(id) {
     const row = document.getElementById('edit-' + id);
