@@ -29,6 +29,7 @@ $user_name = $_SESSION['user_name'] ?? 'Guest User';
        <nav class="main-nav">
     <a href="index.php" class="nav-link">Home</a>
     <a href="services.php" class="nav-link">Services</a>
+     <a href="products.php" class="nav-link active">products</a>
     <a href="index.php#gallery" class="nav-link">Gallery</a>
     <a href="about.php" class="nav-link active">About Us</a>
     <a href="index.php#contact" class="nav-link">Contact</a>

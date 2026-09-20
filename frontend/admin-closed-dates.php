@@ -135,6 +135,8 @@ require_once __DIR__ . '/../backend/admin-closed-dates-data.php';
             <li><a href="admin-appointments.php"><i class="fas fa-calendar-check"></i><span> Appointments</span></a></li>
              <li><a href="admin-queue.php"><i class="fas fa-list-ol"></i><span> Today's Queue</span></a></li>
             <li><a href="admin-services.php"><i class="fas fa-cut"></i><span> Services</span></a></li>
+            <li><a href="admin-products.php"><i class="fas fa-pump-soap"></i><span> Product</span></a></li>
+            <li><a href="admin-product-orders.php"><i class="fas fa-shopping-basket"></i><span> Product Orders</span></a></li>
             <li><a href="admin-inventory.php"><i class="fas fa-box"></i><span> Inventory</span></a></li>
             <li><a href="admin-billing.php"><i class="fas fa-money-bill"></i><span> Billing & Payments</span></a></li>
             <li><a href="admin-reports.php"><i class="fas fa-file-invoice-dollar"></i><span> Reports</span></a></li>

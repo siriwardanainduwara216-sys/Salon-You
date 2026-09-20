@@ -119,6 +119,28 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_product'])) {
 }
 
 // ============================================================
+// RESTOCK PRODUCT (add more units to existing stock)
+// ============================================================
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['restock_product'])) {
+    $product_id = (int) $_POST['product_id'];
+    $units_to_add = (int) $_POST['units_to_add'];
+
+    if ($units_to_add > 0) {
+        $sql = "UPDATE products SET stock_quantity = stock_quantity + ? WHERE id = ?";
+        $stmt = mysqli_prepare($conn, $sql);
+        mysqli_stmt_bind_param($stmt, "ii", $units_to_add, $product_id);
+        if (mysqli_stmt_execute($stmt)) {
+            $success_msg = "Restocked with $units_to_add more unit(s)!";
+        } else {
+            $error_msg = "Error: " . mysqli_error($conn);
+        }
+        mysqli_stmt_close($stmt);
+    } else {
+        $error_msg = "Enter a valid number of units to add.";
+    }
+}
+
+// ============================================================
 // TOGGLE ACTIVE / INACTIVE
 // ============================================================
 if (isset($_GET['toggle_id'])) {
@@ -169,6 +191,7 @@ require_once __DIR__ . '/../backend/admin-products-data.php';
             <li><a href="admin-appointments.php"><i class="fas fa-calendar-check"></i><span> Appointments</span></a></li>
             <li><a href="admin-queue.php"><i class="fas fa-list-ol"></i><span> Today's Queue</span></a></li>
             <li><a href="admin-services.php"><i class="fas fa-cut"></i><span> Services</span></a></li>
+            <li><a href="admin-product-orders.php"><i class="fas fa-shopping-basket"></i><span> Product Orders</span></a></li>
             <li class="active"><a href="admin-products.php"><i class="fas fa-pump-soap"></i><span> Products</span></a></li>
             <li><a href="admin-inventory.php"><i class="fas fa-box"></i><span> Inventory</span></a></li>
             <li><a href="admin-billing.php"><i class="fas fa-money-bill"></i><span> Billing & Payments</span></a></li>
@@ -261,6 +284,7 @@ require_once __DIR__ . '/../backend/admin-products-data.php';
 
                                 <div class="card-actions">
                                     <button type="button" class="edit-btn" onclick="toggleEdit(<?php echo $product['id']; ?>)"><i class="fas fa-edit"></i> Edit</button>
+                                    <button type="button" class="edit-btn" onclick="toggleRestock(<?php echo $product['id']; ?>)"><i class="fas fa-plus-circle"></i> Restock</button>
                                     <a href="admin-products.php?toggle_id=<?php echo $product['id']; ?>" class="edit-btn">
                                         <i class="fas fa-eye<?php echo $product['is_active'] ? '-slash' : ''; ?>"></i> <?php echo $product['is_active'] ? 'Hide' : 'Show'; ?>
                                     </a>
@@ -268,6 +292,17 @@ require_once __DIR__ . '/../backend/admin-products-data.php';
                                        onclick="return confirm('Delete this product? This cannot be undone.');"><i class="fas fa-trash"></i> Delete</a>
                                 </div>
 
+                                <!-- Restock Panel (hidden by default) -->
+                                <div class="edit-panel" id="restock-<?php echo $product['id']; ?>">
+                                    <form method="POST" action="admin-products.php" style="display:flex; gap:10px; align-items:end;">
+                                        <input type="hidden" name="product_id" value="<?php echo $product['id']; ?>">
+                                        <div class="form-group">
+                                            <label>Units to Add (current: <?php echo $product['stock_quantity']; ?>)</label>
+                                            <input type="number" name="units_to_add" value="1" min="1" required style="width:120px;">
+                                        </div>
+                                        <button type="submit" name="restock_product" class="btn"><i class="fas fa-plus"></i> Add Stock</button>
+                                    </form>
+                                </div>
                                 <div class="edit-panel" id="edit-<?php echo $product['id']; ?>">
                                     <form method="POST" action="admin-products.php" enctype="multipart/form-data">
                                         <input type="hidden" name="product_id" value="<?php echo $product['id']; ?>">
@@ -307,6 +342,9 @@ require_once __DIR__ . '/../backend/admin-products-data.php';
 <script>
 function toggleEdit(id) {
     document.getElementById('edit-' + id).classList.toggle('show');
+}
+function toggleRestock(id) {
+    document.getElementById('restock-' + id).classList.toggle('show');
 }
 </script>
 </body>

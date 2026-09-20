@@ -129,6 +129,7 @@ $closed_dates = $closed_dates ?? [];
         <nav class="main-nav">
             <a href="index.php" class="nav-link">Home</a>
             <a href="services.php" class="nav-link active">Services</a>
+             <a href="products.php" class="nav-link active">products</a>
             <a href="index.php#gallery" class="nav-link">Gallery</a>
             <a href="about.php" class="nav-link">About Us</a>
             <a href="index.php#contact" class="nav-link">Contact</a>

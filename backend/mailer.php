@@ -16,7 +16,7 @@ function get_configured_mailer() {
     $mail->SMTPAuth   = true;
 
     $mail->Username   = 'siriwardanainduwara216@gmail.com';
-    $mail->Password   = 'farmmgkbnymejzjz'; // without spaces
+    $mail->Password   = 'zkihuhpsrsyrorrb'; // without spaces
 
     $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
     $mail->Port       = 587;

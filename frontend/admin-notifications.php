@@ -37,6 +37,9 @@ require_once __DIR__ . '/../backend/admin-notification-data.php';
             <li><a href="admin-customers.php"><i class="fas fa-user-friends"></i><span> Customer Management</span></a></li>
             <li><a href="admin-appointments.php"><i class="fas fa-calendar-check"></i><span> Appointments</span></a></li>
             <li><a href="admin-queue.php"><i class="fas fa-list-ol"></i><span> Today's Queue</span></a></li>
+            <li><a href="admin-services.php"><i class="fas fa-cut"></i><span> Services</span></a></li>
+            <li><a href="admin-products.php"><i class="fas fa-pump-soap"></i><span> Product</span></a></li>
+            <li><a href="admin-product-orders.php"><i class="fas fa-shopping-basket"></i><span> Product Orders</span></a></li>
             <li><a href="admin-inventory.php"><i class="fas fa-box"></i><span> Inventory</span></a></li>
             <li><a href="admin-products.php"><i class="fas fa-pump-soap"></i><span> Products</span></a></li>
             <li><a href="admin-product-orders.php"><i class="fas fa-shopping-basket"></i><span> Product Orders</span></a></li>

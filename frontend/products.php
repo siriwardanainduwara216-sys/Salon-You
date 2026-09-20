@@ -91,6 +91,29 @@ if (isset($_SESSION['cart'])) {
         border-top: 1px solid #2c2d35;
     }
     .empty-cart-msg { color: #9a9aa5; font-size: 14px; text-align: center; padding: 20px 0; }
+
+    .payment-options {
+    display: flex;
+    gap: 10px;
+    margin-top: 16px;
+}
+.payment-options button {
+    flex: 1;
+    padding: 12px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 13px;
+}
+.btn-cash {
+    background: #2c2d35;
+    color: #fff;
+}
+.btn-online {
+    background: #d4af37;
+    color: #1a1a1a;
+}
     </style>
 </head>
 <body class="luxury-theme">
@@ -105,9 +128,10 @@ if (isset($_SESSION['cart'])) {
         <nav class="main-nav">
             <a href="index.php" class="nav-link">Home</a>
             <a href="services.php" class="nav-link">Services</a>
-            <a href="products.php" class="nav-link active">Shop</a>
+            <a href="products.php" class="nav-link active">products</a>
             <a href="index.php#gallery" class="nav-link">Gallery</a>
             <a href="about.php" class="nav-link">About Us</a>
+            <a href="#contact" class="nav-link">Contact</a>
         </nav>
 
         <div class="header-actions" style="display:flex; align-items:center; gap:12px;">
@@ -191,14 +215,20 @@ if (isset($_SESSION['cart'])) {
                 <input type="date" id="pickup-date" min="<?php echo date('Y-m-d'); ?>" required>
             </div>
 
-            <button class="btn-confirm-booking" id="place-order-btn">
-                <i class="fas fa-check-circle"></i> Place Order (Pay Cash on Pickup)
-            </button>
+            <div class="payment-options">
+                <button type="button" class="btn-cash" id="place-order-cash-btn">
+                    <i class="fas fa-money-bill"></i> Cash on Pickup
+                </button>
+                <button type="button" class="btn-online" id="place-order-online-btn">
+                    <i class="fas fa-credit-card"></i> Pay Online
+                </button>
+            </div>
         </div>
     </div>
 
     <div class="booking-alert" id="cart-alert"></div>
 
+   <script src="https://www.payhere.lk/lib/payhere.js"></script>
     <script>
     const isLoggedIn = <?php echo $is_customer ? 'true' : 'false'; ?>;
     const cartOverlay = document.getElementById('cart-overlay');
@@ -320,32 +350,85 @@ if (isset($_SESSION['cart'])) {
         });
     }
 
-    // ---------- PLACE ORDER ----------
-    if (placeOrderBtn) {
-        placeOrderBtn.addEventListener('click', async function () {
-            const pickupDate = document.getElementById('pickup-date').value;
-            if (!pickupDate) {
-                showAlert('Please choose a pickup date.', true);
-                return;
-            }
+    // ---------- PLACE ORDER: CASH ON PICKUP ----------
+    document.getElementById('place-order-cash-btn').addEventListener('click', async function () {
+        const pickupDate = document.getElementById('pickup-date').value;
+        if (!pickupDate) {
+            showAlert('Please choose a pickup date.', true);
+            return;
+        }
 
-            const response = await fetch('place-order.php', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-                body: `pickup_date=${pickupDate}`,
-            });
-            const data = await response.json();
-
-            if (data.success) {
-                cartOverlay.classList.remove('show');
-                cartBadge.textContent = '0';
-                cartBadge.style.display = 'none';
-                showAlert('Order placed! Come collect and pay cash at the salon.');
-            } else {
-                showAlert(data.message || 'Could not place order.', true);
-            }
+        const response = await fetch('place-order.php', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: `pickup_date=${pickupDate}&payment_method=cash`,
         });
-    }
+        const data = await response.json();
+
+        if (data.success) {
+            cartOverlay.classList.remove('show');
+            cartBadge.textContent = '0';
+            cartBadge.style.display = 'none';
+            showAlert('Order placed! Come collect and pay cash at the salon.');
+        } else {
+            showAlert(data.message || 'Could not place order.', true);
+        }
+    });
+
+    // ---------- PLACE ORDER: PAY ONLINE (PayHere) ----------
+    document.getElementById('place-order-online-btn').addEventListener('click', async function () {
+        const pickupDate = document.getElementById('pickup-date').value;
+        if (!pickupDate) {
+            showAlert('Please choose a pickup date.', true);
+            return;
+        }
+
+        // Step 1: create the order in the database (status: pending, payment_method: online)
+        const response = await fetch('place-order.php', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: `pickup_date=${pickupDate}&payment_method=online`,
+        });
+        const data = await response.json();
+
+        if (!data.success) {
+            showAlert(data.message || 'Could not place order.', true);
+            return;
+        }
+
+        // Step 2: get PayHere payment details (hash, merchant id, etc.) for this order
+        const payResponse = await fetch(`payhere-init.php?order_id=${data.order_id}`);
+        const payData = await payResponse.json();
+
+        if (!payData.success) {
+            showAlert(payData.message || 'Could not start payment.', true);
+            return;
+        }
+
+        // Step 3: open the PayHere payment popup
+        payhere.onCompleted = function (orderId) {
+            // TESTING ONLY: client-side confirmation. Move to server-side notify_url for production.
+            fetch('payhere-confirm-testing.php?order_id=' + orderId)
+                .then(() => {
+                    cartOverlay.classList.remove('show');
+                    cartBadge.textContent = '0';
+                    cartBadge.style.display = 'none';
+                    showAlert('Payment successful! Your order is confirmed.');
+                });
+        };
+
+        payhere.onDismissed = function () {
+            showAlert('Payment was cancelled.', true);
+        };
+
+        payhere.onError = function (error) {
+            showAlert('Payment error: ' + error, true);
+        };
+
+        payhere.startPayment(payData.payment);
+    });
+
+    
     </script>
 
 </body>
