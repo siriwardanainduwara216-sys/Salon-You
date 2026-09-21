@@ -1,0 +1,123 @@
+* { 
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box; 
+    font-family: 'Segoe UI', sans-serif; 
+}
+
+body { 
+    background: #0f0f12; 
+    color: #f1f1f3; 
+    min-height: 100vh; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    padding: 20px; 
+}
+
+.booking-box { 
+    background: #1a1a1f; 
+    border: 1px solid #2c2d35; 
+    border-radius: 14px; 
+    padding: 35px; 
+    max-width: 460px; 
+    width: 100%; 
+}
+
+.booking-box h2 { 
+    color: #d4af37; 
+    font-size: 22px; 
+    margin-bottom: 6px; 
+}
+
+.booking-box .subtitle { 
+    color: #9a9aa5; 
+    font-size: 13px; 
+    margin-bottom: 25px; 
+}
+
+.detail-row { 
+    display: flex; 
+    justify-content: space-between; 
+    padding: 10px 0; 
+    border-bottom: 1px solid #2c2d35; 
+    font-size: 14px; 
+}
+
+.detail-row span:first-child { 
+    color: #9a9aa5; 
+}
+
+.detail-row span:last-child { 
+    font-weight: 600; 
+}
+
+.form-group { 
+    margin-top: 18px; 
+}
+
+.form-group label { 
+    display: block; 
+    font-size: 13px; 
+    color: #9a9aa5; 
+    margin-bottom: 6px; 
+}
+
+.form-group input {
+    width: 100%; 
+    background: #0f0f12; 
+    border: 1px solid #2c2d35; 
+    color: #f1f1f3;
+    padding: 10px 12px; 
+    border-radius: 8px; 
+    font-size: 14px;
+}
+
+.btn-submit {
+    width: 100%; 
+    margin-top: 22px; 
+    background: #d4af37; 
+    color: #1a1a1a; 
+    border: none;
+    padding: 13px; 
+    border-radius: 8px; 
+    font-size: 15px; 
+    font-weight: 600; 
+    cursor: pointer;
+}
+
+.btn-submit:hover { 
+    opacity: 0.9; 
+}
+
+.login-notice { 
+    text-align: center; 
+    padding: 20px 0; 
+}
+
+.login-notice p { 
+    color: #9a9aa5; 
+    margin-bottom: 15px; 
+    font-size: 14px; 
+}
+
+.login-notice a {
+    display: inline-block; 
+    background: #d4af37; 
+    color: #1a1a1a; 
+    padding: 11px 26px;
+    border-radius: 8px; 
+    text-decoration: none; 
+    font-weight: 600; 
+    font-size: 14px;
+}
+
+.error-msg { 
+    background: rgba(239, 68, 68, 0.15); 
+    color: #ef4444; 
+    padding: 10px 14px; 
+    border-radius: 8px; 
+    font-size: 13px; 
+    margin-bottom: 15px; 
+    display: none; 
+}
