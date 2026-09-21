@@ -59,37 +59,46 @@ $user_name    = $_SESSION['user_name'] ?? 'Guest User';
                     <div class="swiper-wrapper">
                         <div class="swiper-slide">
                             <div class="gallery-card">
-                                <img src="../uploads/images/salon/servicebg2.jpeg" alt="Featured Style 1">
+                                <img src="../uploads/images/salon/gallery/gallery1.jpeg" alt="Featured Style 1">
                                 <div class="card-overlay">
                                     <h3 class="card-title">Modern Style & Finish</h3>
-                                    <span class="card-badge">FEATURED</span>
+                                    
                                 </div>
                             </div>
                         </div>
                         <div class="swiper-slide">
                             <div class="gallery-card">
-                                <img src="../uploads/images/salon/about_header.jpeg" alt="Featured Style 2">
+                                <img src="../uploads/images/salon/gallery/gallery2.jpeg" alt="Featured Style 2">
                                 <div class="card-overlay">
                                     <h3 class="card-title">Premium Hair Coloring</h3>
-                                    <span class="card-badge">POPULAR</span>
+                                
                                 </div>
                             </div>
                         </div>
                         <div class="swiper-slide">
                             <div class="gallery-card">
-                                <img src="../uploads/images/salon/contactbg.jpeg" alt="Featured Style 3">
+                                <img src="../uploads/images/salon/gallery/gallery3.jpeg" alt="Featured Style 3">
                                 <div class="card-overlay">
                                     <h3 class="card-title">Precision Cut & Grooming</h3>
-                                    <span class="card-badge">NEW</span>
+                                
                                 </div>
                             </div>
                         </div>
                         <div class="swiper-slide">
                             <div class="gallery-card">
-                                <img src="../uploads/images/salon/servicebg2.jpeg" alt="Featured Style 4">
+                                <img src="../uploads/images/salon/gallery/gallery4.jpeg" alt="Featured Style 4">
                                 <div class="card-overlay">
                                     <h3 class="card-title">Creative Hair Styling</h3>
-                                    <span class="card-badge">TRENDING</span>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                         <div class="swiper-slide">
+                            <div class="gallery-card">
+                                <img src="../uploads/images/salon/gallery/cut3.jpeg" alt="Featured Style 4">
+                                <div class="card-overlay">
+                                    <h3 class="card-title">Creative Hair Styling</h3>
+                                    
                                 </div>
                             </div>
                         </div>
@@ -115,58 +124,259 @@ $user_name    = $_SESSION['user_name'] ?? 'Guest User';
                     <div class="swiper-wrapper">
                         <div class="swiper-slide">
                             <div class="gallery-card">
-                                <img src="../uploads/images/salon/servicebg2.jpeg" alt="Modern Fade Cut">
+                                <img src="../uploads/images/salon/gallery/gallery1.jpeg" alt="Modern Fade Cut">
                                 <div class="card-overlay">
-                                    <h3 class="card-title">Modern Fade Cut</h3>
-                                    <span class="card-badge">FEATURED</span>
+                                    
+                                    
                                 </div>
                             </div>
                         </div>
                         <div class="swiper-slide">
                             <div class="gallery-card">
-                                <img src="../uploads/images/salon/about_header.jpeg" alt="Classic Gents Trim">
+                                <img src="../uploads/images/salon/gallery/gallery2.jpeg" alt="Classic Gents Trim">
                                 <div class="card-overlay">
-                                    <h3 class="card-title">Classic Gents Trim</h3>
-                                    <span class="card-badge">NEW</span>
+                                    
+                                   
                                 </div>
                             </div>
                         </div>
                         <div class="swiper-slide">
                             <div class="gallery-card">
-                                <img src="../uploads/images/salon/contactbg.jpeg" alt="Textured Crop Cut">
+                                <img src="../uploads/images/salon/gallery/cut1.jpeg" alt="Textured Crop Cut">
                                 <div class="card-overlay">
-                                    <h3 class="card-title">Textured Crop Cut</h3>
-                                    <span class="card-badge">POPULAR</span>
+                                    
+                                   
                                 </div>
                             </div>
                         </div>
                         <div class="swiper-slide">
                             <div class="gallery-card">
-                                <img src="../uploads/images/salon/servicebg2.jpeg" alt="Beard & Hair Combo">
+                                <img src="../uploads/images/salon/gallery/cut2.jpeg" alt="Beard & Hair Combo">
                                 <div class="card-overlay">
-                                    <h3 class="card-title">Beard & Hair Combo</h3>
-                                    <span class="card-badge">TRENDING</span>
+                            
+                                    
                                 </div>
                             </div>
                         </div>
                         <div class="swiper-slide">
                             <div class="gallery-card">
-                                <img src="../uploads/images/salon/about_header.jpeg" alt="Buzz Cut Styling">
+                                <img src="../uploads/images/salon/gallery/cut3.jpeg" alt="Buzz Cut Styling">
                                 <div class="card-overlay">
-                                    <h3 class="card-title">Buzz Cut & Lineup</h3>
-                                    <span class="card-badge">NEW</span>
+                                    
+                                   
                                 </div>
                             </div>
                         </div>
                         <div class="swiper-slide">
                             <div class="gallery-card">
-                                <img src="../uploads/images/salon/contactbg.jpeg" alt="Gentlemen Pompadour">
+                                <img src="../uploads/images/salon/gallery/cut4.jpeg" alt="Gentlemen Pompadour">
                                 <div class="card-overlay">
-                                    <h3 class="card-title">Gentlemen Pompadour</h3>
-                                    <span class="card-badge">POPULAR</span>
+            
+                                    
                                 </div>
                             </div>
                         </div>
+                         <div class="swiper-slide">
+                            <div class="gallery-card">
+                                <img src="../uploads/images/salon/gallery/cut5.jpeg" alt="Gentlemen Pompadour">
+                                <div class="card-overlay">
+            
+                                    
+                                </div>
+                            </div>
+                        </div>
+                         <div class="swiper-slide">
+                            <div class="gallery-card">
+                                <img src="../uploads/images/salon/gallery/cut6.jpeg" alt="Gentlemen Pompadour">
+                                <div class="card-overlay">
+            
+                                    
+                                </div>
+                            </div>
+                        </div>
+                         <div class="swiper-slide">
+                            <div class="gallery-card">
+                                <img src="../uploads/images/salon/gallery/cut7.jpeg" alt="Gentlemen Pompadour">
+                                <div class="card-overlay">
+            
+                                    
+                                </div>
+                            </div>
+                        </div>
+                         <div class="swiper-slide">
+                            <div class="gallery-card">
+                                <img src="../uploads/images/salon/gallery/cut8.jpeg" alt="Gentlemen Pompadour">
+                                <div class="card-overlay">
+            
+                                    
+                                </div>
+                            </div>
+                        </div>
+                         <div class="swiper-slide">
+                            <div class="gallery-card">
+                                <img src="../uploads/images/salon/gallery/cut9.jpeg" alt="Gentlemen Pompadour">
+                                <div class="card-overlay">
+            
+                                    
+                                </div>
+                            </div>
+                        </div>
+                         <div class="swiper-slide">
+                            <div class="gallery-card">
+                                <img src="../uploads/images/salon/gallery/cut10.jpeg" alt="Gentlemen Pompadour">
+                                <div class="card-overlay">
+            
+                                    
+                                </div>
+                            </div>
+                        </div>
+                         <div class="swiper-slide">
+                            <div class="gallery-card">
+                                <img src="../uploads/images/salon/gallery/cut11.jpeg" alt="Gentlemen Pompadour">
+                                <div class="card-overlay">
+            
+                                    
+                                </div>
+                            </div>
+                        </div>
+                         <div class="swiper-slide">
+                            <div class="gallery-card">
+                                <img src="../uploads/images/salon/gallery/cut12.jpeg" alt="Gentlemen Pompadour">
+                                <div class="card-overlay">
+            
+                                    
+                                </div>
+                            </div>
+                        </div>
+                         <div class="swiper-slide">
+                            <div class="gallery-card">
+                                <img src="../uploads/images/salon/gallery/cut13.jpeg" alt="Gentlemen Pompadour">
+                                <div class="card-overlay">
+            
+                                    
+                                </div>
+                            </div>
+                        </div>
+                      
+                         <div class="swiper-slide">
+                            <div class="gallery-card">
+                                <img src="../uploads/images/salon/gallery/cut15.jpeg" alt="Gentlemen Pompadour">
+                                <div class="card-overlay">
+            
+                                    
+                                </div>
+                            </div>
+                        </div>
+                         <div class="swiper-slide">
+                            <div class="gallery-card">
+                                <img src="../uploads/images/salon/gallery/cut16.jpeg" alt="Gentlemen Pompadour">
+                                <div class="card-overlay">
+            
+                                    
+                                </div>
+                            </div>
+                        </div>
+                         <div class="swiper-slide">
+                            <div class="gallery-card">
+                                <img src="../uploads/images/salon/gallery/cut18.jpeg" alt="Gentlemen Pompadour">
+                                <div class="card-overlay">
+            
+                                    
+                                </div>
+                            </div>
+                        </div>
+                         <div class="swiper-slide">
+                            <div class="gallery-card">
+                                <img src="../uploads/images/salon/gallery/cut19.jpeg" alt="Gentlemen Pompadour">
+                                <div class="card-overlay">
+            
+                                    
+                                </div>
+                            </div>
+                        </div>
+                         <div class="swiper-slide">
+                            <div class="gallery-card">
+                                <img src="../uploads/images/salon/gallery/cut20.jpeg" alt="Gentlemen Pompadour">
+                                <div class="card-overlay">
+            
+                                    
+                                </div>
+                            </div>
+                        </div>
+                         <div class="swiper-slide">
+                            <div class="gallery-card">
+                                <img src="../uploads/images/salon/gallery/cut21.jpeg" alt="Gentlemen Pompadour">
+                                <div class="card-overlay">
+            
+                                    
+                                </div>
+                            </div>
+                        </div>
+                         <div class="swiper-slide">
+                            <div class="gallery-card">
+                                <img src="../uploads/images/salon/gallery/cut22.jpeg" alt="Gentlemen Pompadour">
+                                <div class="card-overlay">
+            
+                                    
+                                </div>
+                            </div>
+                        </div>
+                         <div class="swiper-slide">
+                            <div class="gallery-card">
+                                <img src="../uploads/images/salon/gallery/cut23.jpeg" alt="Gentlemen Pompadour">
+                                <div class="card-overlay">
+            
+                                    
+                                </div>
+                            </div>
+                        </div>
+                         <div class="swiper-slide">
+                            <div class="gallery-card">
+                                <img src="../uploads/images/salon/gallery/cut24.jpeg" alt="Gentlemen Pompadour">
+                                <div class="card-overlay">
+            
+                                    
+                                </div>
+                            </div>
+                        </div>
+                         <div class="swiper-slide">
+                            <div class="gallery-card">
+                                <img src="../uploads/images/salon/gallery/cut25.jpeg" alt="Gentlemen Pompadour">
+                                <div class="card-overlay">
+            
+                                    
+                                </div>
+                            </div>
+                        </div>
+                         <div class="swiper-slide">
+                            <div class="gallery-card">
+                                <img src="../uploads/images/salon/gallery/cut26.jpeg" alt="Gentlemen Pompadour">
+                                <div class="card-overlay">
+            
+                                    
+                                </div>
+                            </div>
+                        </div>
+                         <div class="swiper-slide">
+                            <div class="gallery-card">
+                                <img src="../uploads/images/salon/gallery/cut27.jpeg" alt="Gentlemen Pompadour">
+                                <div class="card-overlay">
+            
+                                    
+                                </div>
+                            </div>
+                        </div>
+                         <div class="swiper-slide">
+                            <div class="gallery-card">
+                                <img src="../uploads/images/salon/gallery/cut28S.jpeg" alt="Gentlemen Pompadour">
+                                <div class="card-overlay">
+            
+                                    
+                                </div>
+                            </div>
+                        </div>
+
+
                     </div>
                 </div>
             </div>

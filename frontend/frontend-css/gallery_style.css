@@ -203,7 +203,7 @@
 }
 
 .card-title {
-    color: #ffffff;
+    color: #ffffff !important;
     font-size: 1.15rem;
     font-weight: 700;
     margin: 0;
