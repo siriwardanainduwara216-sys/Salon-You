@@ -50,20 +50,78 @@ if ($is_logged_in && $user_role === 'customer') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Salon You - Management System</title>
+    
+    <!-- Fonts & Icons -->
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="frontend-css/style.css">
-   
+    
+    <!-- CSS Stylesheets -->
+    <link rel="stylesheet" href="frontend-css/style.css?v=<?php echo time(); ?>">
 
-
-    <!-- AI Recommender Custom Styles -->
+    <!-- Custom Styles -->
     <style>
+        body {
+            padding-top: 80px !important; /* Header overlay prevention */
+        }
+
+        .hero-section {
+            position: relative !important;
+        }
+
+        /* Video darkness layer */
+        .hero-section::after {
+            content: '' !important;
+            position: absolute !important;
+            top: 0 !important;
+            left: 0 !important;
+            width: 100% !important;
+            height: 100% !important;
+            background: rgba(0, 0, 0, 0.6) !important;
+            z-index: 2 !important;
+        }
+
+        .hero-content {
+            position: relative !important;
+            z-index: 10 !important;
+        }
+
+        .hero-title, .hero-title * {
+            color: #ffffff !important;
+            text-shadow: 0 4px 15px rgba(0, 0, 0, 0.9) !important;
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #f59e0b, #fbbf24) !important;
+            -webkit-background-clip: text !important;
+            background-clip: text !important;
+            -webkit-text-fill-color: transparent !important;
+        }
+
+        .hero-subtitle {
+            color: #f1f5f9 !important;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.9) !important;
+        }
+
+        .welcome-badge {
+            color: #fbbf24 !important;
+            background: rgba(0, 0, 0, 0.5) !important;
+            border: 1px solid rgba(251, 191, 36, 0.6) !important;
+        }
+
+        .btn-secondary {
+            background: rgba(0, 0, 0, 0.6) !important;
+            color: #ffffff !important;
+            border: 1px solid rgba(255, 255, 255, 0.5) !important;
+        }
+
+        /* ===== AI RECOMMENDER STYLES ===== */
         #ai-recommender {
             padding: 60px 20px !important;
             text-align: center !important;
-            background: #0b0f19 !important;
+            background: #f8fafc !important;
             width: 100% !important;
             display: block !important;
+            border-top: 1px solid #e2e8f0 !important;
         }
 
         #ai-recommender .section-header {
@@ -72,12 +130,13 @@ if ($is_logged_in && $user_role === 'customer') {
         }
 
         #ai-recommender .section-title {
-            color: #ffffff !important;
+            color: #0f172a !important;
             font-size: 2.2rem !important;
+            font-weight: 700 !important;
         }
 
         #ai-recommender .section-subtitle {
-            color: #94a3b8 !important;
+            color: #64748b !important;
         }
 
         #ai-recommender-card {
@@ -86,8 +145,8 @@ if ($is_logged_in && $user_role === 'customer') {
         }
 
         #ai-recommender .ai-upload-box {
-            border: 2px dashed #a855f7 !important;
-            background: #111827 !important;
+            border: 2px dashed #d97706 !important;
+            background: #ffffff !important;
             border-radius: 20px !important;
             padding: 40px 25px !important;
             cursor: pointer !important;
@@ -97,87 +156,58 @@ if ($is_logged_in && $user_role === 'customer') {
             flex-direction: column !important;
             align-items: center !important;
             justify-content: center !important;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5) !important;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05) !important;
         }
 
         #ai-recommender .ai-upload-box:hover {
-            border-color: #ec4899 !important;
-            background: #1f2937 !important;
-            box-shadow: 0 0 25px rgba(168, 85, 247, 0.4) !important;
+            border-color: #b45309 !important;
+            background: #fffbe2 !important;
+            box-shadow: 0 12px 25px rgba(217, 119, 6, 0.15) !important;
             transform: translateY(-3px) !important;
         }
 
         #ai-recommender .upload-icon-wrapper {
             width: 70px !important;
             height: 70px !important;
-            background: rgba(168, 85, 247, 0.15) !important;
+            background: rgba(217, 119, 6, 0.1) !important;
             border-radius: 50% !important;
             display: flex !important;
             align-items: center !important;
             justify-content: center !important;
             margin: 0 auto 15px auto !important;
             font-size: 30px !important;
-            color: #c084fc !important;
-            border: 1px solid rgba(168, 85, 247, 0.3) !important;
+            color: #d97706 !important;
+            border: 1px solid rgba(217, 119, 6, 0.25) !important;
         }
 
         #ai-recommender h3 {
             font-size: 1.2rem !important;
-            color: #ffffff !important;
+            color: #1e293b !important;
             margin-bottom: 8px !important;
             font-weight: 600 !important;
         }
 
         #ai-recommender h3 span {
-            color: #c084fc !important;
+            color: #d97706 !important;
             text-decoration: underline !important;
         }
 
         #ai-recommender p {
-            color: #94a3b8 !important;
+            color: #64748b !important;
             font-size: 0.88rem !important;
             margin-bottom: 20px !important;
         }
     </style>
 </head>
-
 <body>
-    <!-- HEADER SECTION -->
-    <header class="site-header">
-        <a href="index.php" class="logo-container">
-            <img src="../logo/logo.png" alt="Salon You Logo" class="site-logo">
-            <span class="logo-text">SALON YOU</span>
-        </a>
 
-       <nav class="main-nav">
-    <a href="index.php" class="nav-link active">Home</a>
-    <a href="services.php" class="nav-link">Services</a>
-    <a href="products.php" class="nav-link">Products</a>
-    <a href="#gallery" class="nav-link">Gallery</a>
-    <a href="about.php" class="nav-link">About Us</a>
-    <a href="#contact" class="nav-link">Contact</a>
-</nav>
+    <!-- SHARED HEADER INCLUDE WITH ACTIVE PAGE STATE -->
+    <?php 
+    $active_page = 'home';
+    include 'indexheader.php'; 
+    ?>
 
-       <div class="header-actions">
-            <?php if (!$is_logged_in): ?>
-                <a href="login.php" class="btn-login">Login</a>
-                <a href="register.php" class="btn-register">Register</a>
-            <?php else: ?>
-                <div class="user-profile">
-                    <span class="user-name"><?php echo htmlspecialchars($user_name); ?></span>
-                    <?php if ($_SESSION['user_role'] === 'customer'): ?>
-                        <a href="my-appointments.php" class="btn-register" style="margin-right: 8px;">
-                            <i class="fas fa-calendar-check"></i> My Appointments
-                        </a>
-                    <?php endif; ?>
-                    <a href="../backend/logout.php" class="btn-logout" title="Logout">
-                        <i class="fas fa-sign-out-alt"></i> Logout
-                    </a>
-                </div>
-            <?php endif; ?>
-        </div>
-    </header>
-
+    <!-- TODAY'S QUEUE BANNER (customers with an appointment today) -->
     <?php if ($today_queue_appt): ?>
     <div style="background: linear-gradient(135deg, #7c3aed, #a855f7); padding: 16px 20px; text-align: center; color: #fff; position: relative; z-index: 10;">
         <div style="max-width: 900px; margin: 0 auto; display: flex; align-items: center; justify-content: center; gap: 16px; flex-wrap: wrap;">
@@ -202,20 +232,15 @@ if ($is_logged_in && $user_role === 'customer') {
     <?php endif; ?>
 
     <main class="main-container">
-
-    <main class="main-container">
-        <!-- HERO SECTION WITH BACKGROUND VIDEO -->
-        <section class="hero-section" style="position: relative; width: 100%; min-height: 85vh; display: flex; align-items: center; justify-content: center; overflow: hidden;">
-            <!-- Background Video -->
-            <video autoplay loop muted playsinline style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 30% !important; z-index: 1;">
+        <!-- 1. HERO SECTION WITH BACKGROUND VIDEO -->
+        <section class="hero-section">
+            <video autoplay loop muted playsinline class="hero-bg-video">
                 <source src="../uploads/videos/bg-video.mp4" type="video/mp4">
             </video>
-            
-            <!-- Dark Overlay -->
-            <div class="hero-overlay" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(15, 23, 42, 0.65); z-index: 2;"></div>
 
-            <!-- Hero Content -->
-            <div class="hero-content" style="position: relative; z-index: 3; text-align: center;">
+            <div class="hero-overlay"></div>
+
+            <div class="hero-content">
                 <span class="welcome-badge">Welcome to Salon You</span>
                 <h1 class="hero-title">WHERE EXPERT CARE MEETS <br><span class="gradient-text">LUXURY BEAUTY</span></h1>
                 <p class="hero-subtitle">Book your next appointment today and experience the best ever salon service.</p>
@@ -226,7 +251,7 @@ if ($is_logged_in && $user_role === 'customer') {
             </div>
         </section>
 
-        <!-- AI RECOMMENDER SECTION -->
+        <!-- 2. AI RECOMMENDER SECTION -->
         <section id="ai-recommender" class="section-container">
             <div class="section-header text-center">
                 <span class="section-badge"><i class="fas fa-magic"></i> AI POWERED</span>
@@ -234,10 +259,8 @@ if ($is_logged_in && $user_role === 'customer') {
                 <p class="section-subtitle">Upload your selfie to analyze face shape and get a 360 hairstyle preview.</p>
             </div>
             
-            <!-- Hidden File Input -->
             <input type="file" id="ai-photo-input" accept="image/*" onchange="analyzeFaceShape()" hidden>
             
-            <!-- Dropzone Box -->
             <div id="ai-recommender-card">
                 <div class="ai-upload-box" onclick="document.getElementById('ai-photo-input').click()">
                     <div class="upload-icon-wrapper">
@@ -259,20 +282,20 @@ if ($is_logged_in && $user_role === 'customer') {
             </div>
         </section>
 
-        <!-- BRAND / STORY HERO BANNER -->
-        <section class="hero-section" style="background-image: url('../uploads/images/salon/hero-bg.jpg'); background-size: cover; background-position: center; padding: 80px 20px;">
+        <!-- 3. SECONDARY BANNER -->
+        <section class="hero-section" style="background-image: linear-gradient(rgba(15, 23, 42, 0.35), rgba(15, 23, 42, 0.45)), url('../uploads/images/salon/hero-bg.jpg') !important; background-size: cover !important; background-position: center !important; min-height: 80vh;">
             <div class="hero-content text-center">
-                <span class="section-badge"><i class="fas fa-crown"></i> WELCOME TO SALON YOU</span>
+                <span class="section-badge">WELCOME TO SALON YOU</span>
                 <h1 class="hero-title">Redefining Your <span class="gradient-text">Beauty & Style</span></h1>
                 <p class="hero-subtitle">AI technology and the services of top-tier stylists under one roof.</p>
                 <div class="hero-btns" style="margin-top: 20px;">
-                    <a href="#ai-recommender" class="btn-primary"><i class="fas fa-magic"></i> Try AI Mirror</a>
-                    <a href="about.php" class="btn-secondary"><i class="fas fa-arrow-down"></i> Explore Our Story</a>
+                    <a href="#ai-recommender" class="btn-primary">Try AI Mirror</a>
+                    <a href="about.php" class="btn-secondary">Explore Our Story</a>
                 </div>
             </div>
         </section>
 
-        <!-- SERVICES SHOWCASE SECTION -->
+        <!-- 4. SERVICES SHOWCASE SECTION -->
         <section class="section-container services-section">
             <div class="side-by-side-grid">
                 <div class="quad-image-grid">
@@ -283,12 +306,11 @@ if ($is_logged_in && $user_role === 'customer') {
                 </div>
 
                 <div class="side-by-side-content">
-                    <span class="section-badge"><i class="fas fa-cut"></i> WHAT WE OFFER</span>
+                    <span class="section-badge">WHAT WE OFFER</span>
                     <h2 class="large-title">Our Premium <span class="gradient-text">Services</span></h2>
 
                     <div class="purpose-block">
                         <div class="purpose-header">
-                            <i class="fas fa-magic purpose-icon-inline"></i>
                             <h3>Hair Care & Styling</h3>
                         </div>
                         <p class="large-text">
@@ -298,7 +320,6 @@ if ($is_logged_in && $user_role === 'customer') {
 
                     <div class="purpose-block">
                         <div class="purpose-header">
-                            <i class="fas fa-spa purpose-icon-inline"></i>
                             <h3>Skin & Beauty Treatments</h3>
                         </div>
                         <p class="large-text">
@@ -309,10 +330,10 @@ if ($is_logged_in && $user_role === 'customer') {
             </div>
         </section>
 
-        <!-- PRODUCTS SECTION -->
+        <!-- 5. PRODUCTS SECTION -->
         <section class="section-container products-section">
             <div class="section-header text-center">
-                <span class="section-badge"><i class="fas fa-pump-soap"></i> EXCLUSIVE PRODUCTS</span>
+                <span class="section-badge">EXCLUSIVE PRODUCTS</span>
                 <h2 class="large-title">Our Quality <span class="gradient-text">Beauty Products</span></h2>
             </div>
 
@@ -335,7 +356,7 @@ if ($is_logged_in && $user_role === 'customer') {
             </div>
         </section>
 
-        <!-- EXPERT TEAM SECTION -->
+        <!-- 6. EXPERT TEAM SECTION -->
         <section class="section-container team-section">
             <div class="section-header text-center">
                 <span class="section-badge"><i class="fas fa-users"></i> EXPERT STYLISTS</span>
@@ -347,36 +368,34 @@ if ($is_logged_in && $user_role === 'customer') {
                     <div class="team-img-box">
                         <img src="../uploads/images/salon/service-1.jpg" alt="Team Member 1" onerror="this.src='https://via.placeholder.com/300x400?text=Senior+Stylist'">
                     </div>
-                   <h3 class="name-text" style="margin-left: 50px !important;">Senior Hair Designer</h3>
-                    <p class="intro-text">Leading hairstylists with over 8 years of experience.</p>
+                    <h3>Senior Hair Designer</h3>
+                    <p class="large-text">Leading hairstylists with over 8 years of experience.</p>
                 </div>
 
                 <div class="team-card">
                     <div class="team-img-box">
                         <img src="../uploads/images/salon/service-1.jpg" alt="Team Member 2" onerror="this.src='https://via.placeholder.com/300x400?text=Beauty+Expert'">
                     </div>
-                    <h3 class="name-text" style="margin-left: 50px !important;">Skin & Bridal Specialist</h3>
-                    <p class="intro-text">International-level experts in beauty and bridal styling.</p>
+                    <h3>Skin & Bridal Specialist</h3>
+                    <p class="large-text">International-level experts in beauty and bridal styling.</p>
                 </div>
             </div>
         </section>
 
-        <!-- CLIENT FEEDBACK & REVIEWS SECTION -->
+        <!-- 7. CLIENT FEEDBACK & REVIEWS SECTION -->
         <section class="section-container comment-section">
             <div class="section-header text-center">
-                <span class="section-badge"><i class="fas fa-star"></i> CLIENT FEEDBACK</span>
+                <span class="section-badge">CLIENT FEEDBACK</span>
                 <h2 class="large-title">What Our <span class="gradient-text">Clients Say</span></h2>
                 
                 <div style="margin-top: 15px;">
                     <?php if ($is_logged_in && $user_role === 'customer'): ?>
-                        <!-- Show review button only to logged-in customers -->
                         <a href="leave-review.php" class="btn-primary" style="display: inline-block;">
-                            <i class="fas fa-pen"></i> Leave a Review
+                            Leave a Review
                         </a>
                     <?php elseif (!$is_logged_in): ?>
-                        <!-- Guests get redirected to login -->
                         <button type="button" onclick="alert('Please login or register to leave a review!'); window.location.href='login.php';" class="btn-primary">
-                            <i class="fas fa-lock"></i> Login to Leave a Review
+                            Login to Leave a Review
                         </button>
                     <?php endif; ?>
                 </div>
@@ -441,6 +460,9 @@ if ($is_logged_in && $user_role === 'customer') {
             </div>
         </section>
     </main>
+
+    <!-- FOOTER COMPONENT LINK -->
+    <?php include_once __DIR__ . '/indexfooter.php'; ?>
 
     <!-- SCRIPTS -->
     <script src="frontend-java-script/script.js"></script>

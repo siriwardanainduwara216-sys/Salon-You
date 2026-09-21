@@ -8,6 +8,8 @@ global $conn;
 
 require_once __DIR__ . '/../backend/services-data.php';
 
+$active_page = 'services';
+
 $is_logged_in = isset($_SESSION['user_id']);
 $is_customer = $is_logged_in && ($_SESSION['user_role'] ?? '') === 'customer';
 $staff_list = $staff_list ?? [];
@@ -20,136 +22,174 @@ $closed_dates = $closed_dates ?? [];
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Our Services - Salon You</title>
-    
+
+    <!-- Google Fonts & FontAwesome -->
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <link rel="stylesheet" href="frontend-css/services.css">
+
+    <!-- CSS Files -->
     <link rel="stylesheet" href="frontend-css/style.css">
+    <link rel="stylesheet" href="frontend-css/services.css?v=2.0">
     <link rel="stylesheet" href="frontend-css/services-modal.css">
 
     <style>
-    /* AI PREVIEW BUTTON - sits next to the haircut name, not on the image */
-    .card-body {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        gap: 10px;
-    }
+        /* BRAND BAR & CONTAINER WIDTH INCREASE */
+        .brand-bar .luxury-container,
+        .services-list-section .luxury-container {
+            max-width: 1400px !important;
+            width: 95% !important;
+        }
 
-    .btn-ai-card-preview {
-        background: linear-gradient(135deg, #d4af37, #996515);
-        color: #0f172a;
-        border: none;
-        border-radius: 20px;
-        padding: 6px 12px;
-        font-size: 0.75rem;
-        font-weight: 700;
-        cursor: pointer;
-        box-shadow: 0 2px 8px rgba(212, 175, 55, 0.4);
-        transition: all 0.2s ease;
-        white-space: nowrap;
-        flex-shrink: 0;
-    }
+        /* 3 CARDS PER ROW */
+        .services-grid {
+            max-width: 1400px !important;
+            display: grid !important;
+            grid-template-columns: repeat(3, 1fr) !important;
+            gap: 25px !important;
+        }
 
-    .btn-ai-card-preview:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 4px 12px rgba(212, 175, 55, 0.6);
-    }
+        /* RESPONSIVE BREAKPOINTS */
+        @media (max-width: 992px) {
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr) !important;
+            }
+        }
 
-    .ai-modal {
-        position: fixed;
-        z-index: 10000;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(0, 0, 0, 0.85);
-        backdrop-filter: blur(5px);
-    }
+        @media (max-width: 600px) {
+            .services-grid {
+                grid-template-columns: 1fr !important;
+            }
+        }
 
-    .ai-modal-content {
-        background-color: #0f172a;
-        border: 1px solid rgba(212, 175, 55, 0.3);
-        color: #ffffff;
-        margin: 4% auto;
-        padding: 25px;
-        width: 90%;
-        max-width: 460px;
-        border-radius: 12px;
-        position: relative;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
-        max-height: 85vh;
-        overflow-y: auto;
-    }
+        /* AI PREVIEW BUTTON - sits next to the haircut name, not on the image */
+        .card-body {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 10px;
+        }
 
-    #outputImage {
-        max-width: 100%; 
-        max-height: 320px;
-        object-fit: contain;
-        border-radius: 10px; 
-        box-shadow: 0 4px 15px rgba(0,0,0,0.5); 
-        border: 1px solid #d4af37;
-    }
+        .btn-ai-card-preview {
+            background: linear-gradient(135deg, #d4af37, #996515) !important;
+            color: #0f172a !important;
+            border: none !important;
+            border-radius: 20px !important;
+            padding: 6px 12px !important;
+            font-size: 0.75rem !important;
+            font-weight: 700;
+            cursor: pointer;
+            box-shadow: 0 2px 8px rgba(212, 175, 55, 0.4);
+            transition: all 0.2s ease;
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
 
-    .close-ai-modal {
-        position: absolute;
-        right: 18px;
-        top: 12px;
-        font-size: 26px;
-        cursor: pointer;
-        color: #94a3b8;
-    }
+        .btn-ai-card-preview i {
+            color: #0f172a !important;
+        }
 
-    .close-ai-modal:hover {
-        color: #fff;
-    }
+        .btn-ai-card-preview:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(212, 175, 55, 0.6);
+        }
 
-    .ai-selected-style-label {
-        background: rgba(212, 175, 55, 0.1);
-        border: 1px solid rgba(212, 175, 55, 0.3);
-        color: #d4af37;
-        padding: 10px 14px;
-        border-radius: 8px;
-        font-weight: 600;
-        margin-bottom: 15px;
-        font-size: 0.95rem;
-    }
+        /* AI modal buttons (keep their own colours over the global button style) */
+        #aiVisualizerModal #submitBtn {
+            background: linear-gradient(135deg, #d4af37, #aa7c11) !important;
+            color: #000 !important;
+            border: none !important;
+            border-radius: 6px !important;
+        }
+
+        #aiVisualizerModal #submitBtn i {
+            color: #000 !important;
+        }
+
+        #aiVisualizerModal #proceedToBookBtn {
+            background: #22c55e !important;
+            color: #fff !important;
+            border: none !important;
+            border-radius: 6px !important;
+        }
+
+        .ai-modal {
+            position: fixed;
+            z-index: 10000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(5px);
+        }
+
+        .ai-modal-content {
+            background-color: #0f172a;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            color: #ffffff;
+            margin: 4% auto;
+            padding: 25px;
+            width: 90%;
+            max-width: 460px;
+            border-radius: 12px;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+            max-height: 85vh;
+            overflow-y: auto;
+        }
+
+        #outputImage {
+            max-width: 100%; 
+            max-height: 320px;
+            object-fit: contain;
+            border-radius: 10px; 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5); 
+            border: 1px solid #d4af37;
+        }
+
+        .close-ai-modal {
+            position: absolute;
+            right: 18px;
+            top: 12px;
+            font-size: 26px;
+            cursor: pointer;
+            color: #94a3b8;
+        }
+
+        .close-ai-modal:hover {
+            color: #fff;
+        }
+
+        .ai-selected-style-label {
+            background: rgba(212, 175, 55, 0.1);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            color: #d4af37;
+            padding: 10px 14px;
+            border-radius: 8px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            font-size: 0.95rem;
+        }
     </style>
 </head>
 <body class="luxury-theme">
 
-    <!-- NAVIGATION HEADER -->
-    <header class="site-header">
-        <a href="index.php" class="logo-container">
-            <img src="../logo/logo.png" alt="Salon You Logo" class="site-logo">
-            <span class="logo-text">SALON YOU</span>
-        </a>
-
-        <nav class="main-nav">
-            <a href="index.php" class="nav-link">Home</a>
-            <a href="services.php" class="nav-link active">Services</a>
-             <a href="products.php" class="nav-link active">products</a>
-            <a href="index.php#gallery" class="nav-link">Gallery</a>
-            <a href="about.php" class="nav-link">About Us</a>
-            <a href="index.php#contact" class="nav-link">Contact</a>
-        </nav>
-
-        <div class="header-actions">
-            <?php if ($is_logged_in): ?>
-                <a href="../backend/logout.php" class="btn-register">Logout</a>
-            <?php else: ?>
-                <a href="../register.php" class="btn-register">Register</a>
-            <?php endif; ?>
-        </div>
-    </header>
+    <!-- INCLUDE HEADER COMPONENT -->
+    <?php include_once __DIR__ . '/indexheader.php'; ?>
 
     <!-- SERVICES HERO -->
-    <section class="services-hero">
-        <div class="luxury-container text-center">
-            <span class="gold-subtitle">OUR SERVICES</span>
-            <h1 class="luxury-heading">EXCLUSIVE HAIR & BEAUTY <br><span class="gold-text">SERVICES</span></h1>
-            <p class="about-desc">We use only the finest products, carefully selected for their quality and performance.</p>
+   <section class="services-hero" style="background: url('../uploads/images/salon/servicebg2.jpeg') no-repeat center 20%/cover; padding: 120px 20px; text-align: center;">
+        <div class="luxury-container text-center" style="max-width: 1050px; margin: 0 auto; background: rgba(0, 0, 0, 0.65); padding: 55px 45px; border-radius: 20px; backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.2); box-shadow: 0 15px 35px rgba(0,0,0,0.6);">
+            
+            <!-- SUBTITLE -->
+            <span class="gold-subtitle" style="color: #FFD700 !important; font-weight: 700; letter-spacing: 3px; font-size: 1.15rem; display: inline-block;">OUR SERVICES</span>
+            
+            <!-- MAIN HEADING -->
+            <h1 class="luxury-heading" style="color: #FFFFFF !important; font-size: 3.3rem; font-weight: 800; margin: 20px 0; line-height: 1.25;">EXCLUSIVE HAIR & BEAUTY <br><span class="gold-text" style="color: #FFD700 !important;">SERVICES</span></h1>
+            
+            <!-- PARAGRAPH -->
+            <p class="about-desc" style="color: #FFFFFF !important; font-size: 1.25rem; font-weight: 400; margin: 20px auto 0 auto; line-height: 1.6; max-width: 750px; text-align: center;">We use only the finest products, carefully selected for their quality and performance.</p>
+            
         </div>
     </section>
 
@@ -201,22 +241,30 @@ $closed_dates = $closed_dates ?? [];
         </div>
     </div>
 
-    <!-- STYLIST SELECTION -->
+    <!-- STYLIST SELECTION SECTION -->
     <section class="stylist-section">
         <div class="luxury-container text-center">
             <span class="gold-subtitle">OUR TEAM</span>
             <h2 class="luxury-heading">MEET OUR <span class="gold-text">STYLISTS</span></h2>
             <p class="about-desc">Browse our expert team below, then click on any service you'd like to book.</p>
 
+            <!-- Stylists Cards Grid -->
             <div class="stylist-grid" id="stylist-grid">
                 <?php if (empty($staff_list)): ?>
                     <p style="color:#888;">No stylists available right now.</p>
                 <?php else: ?>
                     <?php foreach ($staff_list as $index => $staff): ?>
+                        <?php 
+                            $staff_image = !empty($staff['image']) 
+                                ? $staff['image'] 
+                                : ('stylist-' . (($index % 2) + 1) . '.jpg');
+                        ?>
                         <div class="stylist-card" data-staff-id="<?php echo $staff['id']; ?>" data-staff-name="<?php echo htmlspecialchars($staff['name']); ?>">
                             <div class="stylist-img-box">
-                                <img src="../uploads/images/salon/stylist-<?php echo ($index % 2) + 1; ?>.jpg" alt="<?php echo htmlspecialchars($staff['name']); ?>">
-                                <span class="badge-selected"><i class="fas fa-check-circle"></i> Selected</span>
+                                <img src="../uploads/images/salon/<?php echo htmlspecialchars($staff_image); ?>" 
+                                     alt="<?php echo htmlspecialchars($staff['name']); ?>"
+                                     onerror="this.src='../uploads/images/salon/owner1.jpg'">
+                                <span class="badge-selected">Selected</span>
                             </div>
                             <div class="stylist-info">
                                 <h3><?php echo htmlspecialchars($staff['name']); ?></h3>
@@ -229,7 +277,7 @@ $closed_dates = $closed_dates ?? [];
         </div>
     </section>
 
-    <!-- CATEGORY SELECTION TABS -->
+    <!-- INTERACTIVE CATEGORY TABS BAR -->
     <section class="brand-bar">
         <div class="luxury-container text-center" style="padding-top: 20px;">
             <span class="gold-subtitle">PICK A SERVICE</span>
@@ -259,7 +307,7 @@ $closed_dates = $closed_dates ?? [];
         <div class="luxury-container">
             <div class="services-grid" id="services-container">
                 <?php foreach ($services_by_category as $category => $service_list): ?>
-                    <?php if ($category === 'other') continue; ?>
+                    <?php if ($category === 'other') continue; // legacy generic services not shown in tabs ?>
                     <?php foreach ($service_list as $service): ?>
                         <div class="luxury-service-card"
                              data-category="<?php echo htmlspecialchars($category); ?>"
@@ -348,9 +396,15 @@ $closed_dates = $closed_dates ?? [];
 
     <div class="booking-alert" id="booking-alert"></div>
 
+    <!-- FOOTER COMPONENT LINK -->
+    <?php include_once __DIR__ . '/indexfooter.php'; ?>
+
     <!-- CLIENT INTERACTION SCRIPTS -->
     <script type="module">
 import { InferenceClient } from "https://cdn.jsdelivr.net/npm/@huggingface/inference@4/+esm";
+
+const isLoggedIn = <?php echo $is_logged_in ? 'true' : 'false'; ?>;
+const isCustomer = <?php echo $is_customer ? 'true' : 'false'; ?>;
 
 let selectedService = { id: null, name: null, price: null };
 let selectedStaffId = null;
@@ -396,8 +450,9 @@ if (stylistGrid) {
         const card = e.target.closest('.stylist-card');
         if (!card) return;
 
-        stylistGrid.querySelectorAll('.stylist-card').forEach(c => c.classList.remove('selected'));
-        card.classList.add('selected');
+        // 'active' is used by the new stylesheet, 'selected' by the older one
+        stylistGrid.querySelectorAll('.stylist-card').forEach(c => c.classList.remove('selected', 'active'));
+        card.classList.add('selected', 'active');
 
         selectedStaffId = card.dataset.staffId;
         if (modalStylistSelect) {
@@ -535,6 +590,17 @@ if (confirmBookingBtn) {
             return;
         }
 
+        // Login / role checks
+        if (!isLoggedIn) {
+            showBookingAlert('Please login to book an appointment. Redirecting...');
+            setTimeout(() => { window.location.href = 'login.php'; }, 1800);
+            return;
+        }
+        if (!isCustomer) {
+            showBookingAlert('Only customer accounts can book appointments.');
+            return;
+        }
+
         const time = hour + ':' + minute;
 
         // Busy Time Validation Check
@@ -567,9 +633,10 @@ if (confirmBookingBtn) {
     });
 }
 
-function showBookingAlert(message) {
+function showBookingAlert(message, isError = true) {
     if (!bookingAlert) return;
     bookingAlert.textContent = message;
+    bookingAlert.className = 'booking-alert' + (isError ? ' error' : '');
     bookingAlert.style.display = 'block';
     setTimeout(() => { bookingAlert.style.display = 'none'; }, 4000);
 }
@@ -602,7 +669,7 @@ if (aiFormHandler) {
         loadingSpinner.style.display = 'block';
         submitBtn.disabled = true;
 
-        const apiToken = "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";
+       const apiToken = "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";
         const client = new InferenceClient(apiToken);
 
         try {

@@ -99,6 +99,10 @@ require_once __DIR__ . '/../backend/admin-dashboard-data.php';
                     <h4>Total Revenue</h4>
                     <p class="card-number">Rs. <?php echo number_format($total_revenue, 2); ?></p>
                 </div>
+                <div class="card purple">
+                    <h4>Total Customers</h4>
+                    <p class="card-number"><?php echo $total_customers; ?></p>
+                </div>
             </div>
 
            

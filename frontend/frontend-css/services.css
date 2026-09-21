@@ -43,3 +43,47 @@
     background: linear-gradient(135deg, #2a2a2a, #1a1a1a);
 }
 .card-icon-placeholder i { font-size: 48px; color: #d4af37; }
+
+.services-hero {
+    text-align: center;
+    padding: 100px 20px 80px 20px; /* Hero section එක උස වැඩි කරගන්න padding වැඩි කලා */
+    
+    /* Dark overlay එකක් සමඟ Background Image එක එකතු කිරීම */
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../images/hero-bg.jpg');
+    
+    background-size: cover;          /* Image එක මුළු section එක පුරාම හරියට span වෙන්න */
+    background-position: center;     /* Image එක මැදට center වෙන්න */
+    background-repeat: no-repeat;    /* Image එක repeat වීම වැළැක්වීමට */
+    color: #ffffff;                  /* Text එක සුදු පාට කිරීමට */
+}
+
+/* Gold Subtitle එක image එක උඩ පැහැදිලිව පෙනෙන්න */
+.gold-subtitle {
+    color: #d4af37;
+    font-weight: 600;
+    letter-spacing: 2px;
+    display: block;
+    margin-bottom: 10px;
+}
+
+/* Heading style */
+.luxury-heading {
+    color: #ffffff;
+    font-size: 2.8rem;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 15px;
+}
+
+.gold-text {
+    color: #d4af37;
+}
+
+/* Description text */
+.about-desc {
+    color: #e0e0e0;
+    max-width: 600px;
+    margin: 0 auto;
+    font-size: 1rem;
+}
+

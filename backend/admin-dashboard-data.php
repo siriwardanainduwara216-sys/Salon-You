@@ -104,3 +104,9 @@ if ($result = mysqli_query($conn, $sql)) {
         $low_stock_products[] = $row;
     }
 }
+//Total Customers Count
+$total_customers = 0;
+$sql = "SELECT COUNT(*) AS total FROM users WHERE role = 'customer'";
+if ($result = mysqli_query($conn, $sql)) {
+    $total_customers = mysqli_fetch_assoc($result)['total'];
+}
