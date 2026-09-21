@@ -19,7 +19,11 @@ global $conn;
 $success_msg = '';
 $error_msg = '';
 
+<<<<<<< HEAD
 // ---- Helper: fetch payment + customer + service details and email a receipt ----
+=======
+//Helper: fetch payment + customer + service details and email a receipt
+>>>>>>> subbranch3
 function send_receipt_for_payment($conn, $payment_id) {
     $sql = "SELECT p.amount, p.payment_method, p.payment_date,
                    u.name AS customer_name, u.email AS customer_email,
@@ -48,6 +52,10 @@ function send_receipt_for_payment($conn, $payment_id) {
     }
 }
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> subbranch3
 // RECORD NEW PAYMENT
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_payment'])) {
@@ -102,7 +110,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_payment_status
     }
 }
 
+<<<<<<< HEAD
 require_once __DIR__ . '/../backend/admin-billing-data.php';
+=======
+require_once __DIR__ . '/admin-billing-data.php';
+>>>>>>> subbranch3
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -123,6 +135,7 @@ require_once __DIR__ . '/../backend/admin-billing-data.php';
             <li><a href="admin-staff.php"><i class="fas fa-users"></i><span> Staff Management</span></a></li>
             <li><a href="admin-customers.php"><i class="fas fa-user-friends"></i><span> Customer Management</span></a></li>
             <li><a href="admin-appointments.php"><i class="fas fa-calendar-check"></i><span> Appointments</span></a></li>
+<<<<<<< HEAD
              <li><a href="admin-queue.php"><i class="fas fa-list-ol"></i><span> Today's Queue</span></a></li>
             <li><a href="admin-services.php"><i class="fas fa-cut"></i><span> Services</span></a></li>
             <li><a href="admin-products.php"><i class="fas fa-pump-soap"></i><span> Product</span></a></li>
@@ -131,6 +144,12 @@ require_once __DIR__ . '/../backend/admin-billing-data.php';
             <li class="active"><a href="admin-billing.php"><i class="fas fa-money-bill"></i><span> Billing & Payments</span></a></li>
             <li><a href="admin-reports.php"><i class="fas fa-file-invoice-dollar"></i><span> Reports</span></a></li>
             <li><a href="admin-closed-dates.php"><i class="fas fa-calendar-times"></i><span> Closed Dates</span></a></li>
+=======
+            <li><a href="admin-services.php"><i class="fas fa-cut"></i><span> Services</span></a></li>
+            <li><a href="admin-inventory.php"><i class="fas fa-box"></i><span> Inventory</span></a></li>
+            <li class="active"><a href="admin-billing.php"><i class="fas fa-money-bill"></i><span> Billing & Payments</span></a></li>
+            <li><a href="admin-reports.php"><i class="fas fa-file-invoice-dollar"></i><span> Reports</span></a></li>
+>>>>>>> subbranch3
             <li><a href="admin-notifications.php"><i class="fas fa-bell"></i><span> Notifications</span></a></li>
             <li><a href="../backend/logout.php"><i class="fas fa-sign-out-alt"></i><span> Logout</span></a></li>
         </ul>
@@ -204,19 +223,92 @@ require_once __DIR__ . '/../backend/admin-billing-data.php';
         <div class="panel">
             <h4>Generate Customer Bill</h4>
             <p class="hint">Search a customer by name or email to generate a printable invoice of all their recorded payments.</p>
+<<<<<<< HEAD
             <form method="GET" action="admin-invoice.php" id="invoice-form" class="invoice-form-inline">
                 <div class="form-group invoice-form-group">
+=======
+            <form method="GET" action="admin-invoice.php" id="invoice-form" style="display:flex; gap:12px; align-items:end; flex-wrap:wrap;">
+                <div class="form-group" style="flex:1; min-width:260px; position:relative;">
+>>>>>>> subbranch3
                     <label>Customer</label>
                     <input type="text" id="customer-search" placeholder="Type name or email..." autocomplete="off" required>
                     <input type="hidden" name="customer_id" id="customer-id-input">
                     <div id="customer-results" class="search-results"></div>
                 </div>
+<<<<<<< HEAD
                 <button type="submit" class="btn btn-disabled" id="generate-invoice-btn" disabled>
                     <i class="fas fa-file-invoice"></i> Generate Invoice
                 </button>
             </form>
         </div>
 
+=======
+                <button type="submit" class="btn"><i class="fas fa-file-invoice"></i> Generate Invoice</button>
+            </form>
+        </div>
+
+        <script>
+        // Customer list passed from PHP for client-side search (name + email)
+        const customerList = <?php echo json_encode($customers_with_payments); ?>;
+
+        const searchInput = document.getElementById('customer-search');
+        const idInput = document.getElementById('customer-id-input');
+        const resultsBox = document.getElementById('customer-results');
+        const invoiceForm = document.getElementById('invoice-form');
+
+        searchInput.addEventListener('input', function() {
+            const query = this.value.trim().toLowerCase();
+            idInput.value = ''; // reset selection whenever the user types again
+            resultsBox.innerHTML = '';
+
+            if (query.length === 0) {
+                resultsBox.style.display = 'none';
+                return;
+            }
+
+            const matches = customerList.filter(c =>
+                c.name.toLowerCase().includes(query) || c.email.toLowerCase().includes(query)
+            );
+
+            if (matches.length === 0) {
+                resultsBox.innerHTML = '<div class="search-result-item no-match">No matching customer found</div>';
+                resultsBox.style.display = 'block';
+                return;
+            }
+
+            matches.forEach(c => {
+                const item = document.createElement('div');
+                item.className = 'search-result-item';
+                item.innerHTML = '<strong>' + c.name + '</strong><br><span>' + c.email + '</span>';
+                item.addEventListener('click', function() {
+                    searchInput.value = c.name + ' (' + c.email + ')';
+                    idInput.value = c.id;
+                    resultsBox.innerHTML = '';
+                    resultsBox.style.display = 'none';
+                });
+                resultsBox.appendChild(item);
+            });
+
+            resultsBox.style.display = 'block';
+        });
+
+        // Hide the results dropdown when clicking elsewhere on the page
+        document.addEventListener('click', function(e) {
+            if (!e.target.closest('#customer-search') && !e.target.closest('#customer-results')) {
+                resultsBox.style.display = 'none';
+            }
+        });
+
+        // Prevent submitting the form without actually picking a customer from the list
+        invoiceForm.addEventListener('submit', function(e) {
+            if (!idInput.value) {
+                e.preventDefault();
+                alert('Please select a customer from the search results.');
+            }
+        });
+        </script>
+
+>>>>>>> subbranch3
         <!-- Payments List -->
         <div class="panel">
             <h4>Payment History (<?php echo count($payments_list); ?>)</h4>
@@ -260,7 +352,11 @@ require_once __DIR__ . '/../backend/admin-billing-data.php';
                                         </form>
                                     </td>
                                     <td>
+<<<<<<< HEAD
                                         <a href="admin-invoice.php?customer_id=<?php echo $p['customer_id']; ?>" title="View Invoice" class="invoice-icon-link">
+=======
+                                        <a href="admin-invoice.php?customer_id=<?php echo $p['customer_id']; ?>" title="View Invoice" style="color: var(--accent-blue); font-size:16px;">
+>>>>>>> subbranch3
                                             <i class="fas fa-file-invoice"></i>
                                         </a>
                                     </td>
@@ -275,6 +371,7 @@ require_once __DIR__ . '/../backend/admin-billing-data.php';
 </div>
 
 <script>
+<<<<<<< HEAD
 // Customer list passed from PHP for client-side search (name + email)
 const customerList = <?php echo json_encode($customers_with_payments); ?>;
 
@@ -346,6 +443,8 @@ invoiceForm.addEventListener('submit', function(e) {
     }
 });
 
+=======
+>>>>>>> subbranch3
 // Auto-fill the amount field with the service price when an appointment is selected
 document.querySelector('select[name="appointment_id"]').addEventListener('change', function() {
     const selected = this.options[this.selectedIndex];
@@ -355,5 +454,9 @@ document.querySelector('select[name="appointment_id"]').addEventListener('change
     }
 });
 </script>
+<<<<<<< HEAD
+=======
+
+>>>>>>> subbranch3
 </body>
 </html>

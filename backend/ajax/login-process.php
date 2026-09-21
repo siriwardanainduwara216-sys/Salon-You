@@ -1,5 +1,9 @@
 <?php
+<<<<<<< HEAD
 ob_start(); 
+=======
+ob_start(); // JSON Break වීම වැළැක්වීමට Output Buffering ආරම්භ කිරීම
+>>>>>>> subbranch3
 
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
@@ -23,7 +27,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email    = trim($_POST['email'] ?? '');
     $password = $_POST['password'] ?? '';
 
+<<<<<<< HEAD
     // Required Inputs Validation
+=======
+    // 1. Required Inputs Validation
+>>>>>>> subbranch3
     if (empty($email) || empty($password)) {
         ob_end_clean();
         echo json_encode([
@@ -33,7 +41,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit;
     }
 
+<<<<<<< HEAD
     // Find User in Database
+=======
+    // 2. Find User in Database
+>>>>>>> subbranch3
     $sql  = "SELECT id, name, email, password, role, is_verified FROM users WHERE email = ?";
     $stmt = mysqli_prepare($conn, $sql);
 
@@ -44,10 +56,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         if ($user = mysqli_fetch_assoc($result)) {
 
+<<<<<<< HEAD
             // Password Verification Check
             if (password_verify($password, $user['password'])) {
 
                 // OTP Verification Check (Verify වී නැත්නම් OTP Page එකට Redirect කරයි)
+=======
+            // 3. Password Verification Check
+            if (password_verify($password, $user['password'])) {
+
+                // 4. OTP Verification Check (Verify වී නැත්නම් OTP Page එකට Redirect කරයි)
+>>>>>>> subbranch3
                 if ((int)$user['is_verified'] !== 1) {
                     $_SESSION['temp_user_id']    = $user['id'];
                     $_SESSION['temp_user_email'] = $user['email'];
@@ -63,12 +82,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     exit;
                 }
 
+<<<<<<< HEAD
                 // Successful Login - Set Active Session Variables
+=======
+                // 5. Successful Login - Set Active Session Variables
+>>>>>>> subbranch3
                 $_SESSION['user_id']   = $user['id'];
                 $_SESSION['user_name'] = $user['name'];
                 $_SESSION['user_role'] = $user['role'];
 
+<<<<<<< HEAD
                 // Role-Based Redirection Page Destination
+=======
+                // 6. Role-Based Redirection Page Destination
+>>>>>>> subbranch3
                 $redirect_page = ($user['role'] === 'admin') ? 'admin-dashboard.php' : 'index.php';
 
                 mysqli_stmt_close($stmt);

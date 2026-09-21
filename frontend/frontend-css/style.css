@@ -1,4 +1,5 @@
 :root {
+<<<<<<< HEAD
     --bg-dark: #050c22;
     --surface-dark: #081c44;
     --you-amber: #F59E0B;
@@ -9,6 +10,29 @@
     --gradient-primary: linear-gradient(135deg, var(--you-amber), var(--you-purple));
 }
 
+=======
+    /* Main Background Colors (Light Theme) */
+    --bg-dark: #f8fafc;            
+    --surface-dark: #ffffff;        
+    --card-dark: #ffffff;         
+    
+    /* Text Colors (Light Theme  */
+    --text-main: #0f172a;          
+    --text-light: #1e293b;          
+    --text-muted: #64748b;         
+    --border-color: #e2e8f0;        
+    
+    /* Accent Colors (Luxury Gold & Purple) */
+    --gold-accent: #c5a880;         
+    --gold-glow: rgba(197, 168, 128, 0.25);
+    --you-amber: #d97706;         
+    --you-purple: #7c3aed;         
+    
+    --gradient-primary: linear-gradient(135deg, var(--you-amber), var(--you-purple));
+    --font-heading: 'Cinzel', serif;
+    --font-body: 'Plus Jakarta Sans', sans-serif;
+}
+>>>>>>> subbranch3
 /* Base Reset & Link Color Fixes */
 * {
     margin: 0;
@@ -30,7 +54,11 @@ body {
 
 /* Header Navigation */
 .site-header {
+<<<<<<< HEAD
     background-color: rgba(15, 23, 42, 0.95);
+=======
+    background-color: rgba(255,255,255,0.92);
+>>>>>>> subbranch3
     backdrop-filter: blur(12px);
     border-bottom: 1px solid var(--border-color);
     position: sticky;
@@ -61,6 +89,10 @@ body {
     font-size: 1.25rem;
     font-weight: 700;
     background: var(--gradient-primary);
+<<<<<<< HEAD
+=======
+    background-clip: text;
+>>>>>>> subbranch3
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     letter-spacing: 0.05em;
@@ -177,11 +209,20 @@ body {
     margin: 1.8rem 0 1.2rem;
     line-height: 1.2;
     font-weight: 800;
+<<<<<<< HEAD
     color: #ffffff;
+=======
+    color: #ffffff  !important;;
+    
+>>>>>>> subbranch3
 }
 
 .gradient-text {
     background: var(--gradient-primary);
+<<<<<<< HEAD
+=======
+    background-clip: text;
+>>>>>>> subbranch3
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
@@ -198,9 +239,15 @@ body {
     justify-content: center;
     gap: 1.2rem;
 }
+<<<<<<< HEAD
 
 /*   AI HAIRSTYLE RECOMMENDER ENGINE STYLES
 
+=======
+/* ==========================================================================
+   AI HAIRSTYLE RECOMMENDER ENGINE STYLES
+   ========================================================================== */
+>>>>>>> subbranch3
 
 /* Main Container & Idle State */
 .ai-section {
@@ -691,7 +738,11 @@ body {
 /* Photo styling */
 .vm-img-box {
     width: 100%;
+<<<<<<< HEAD
     height: 380px; 
+=======
+    height: 380px; /* Vertical නිසා image height එක වැඩි කර ඇත */
+>>>>>>> subbranch3
     border-radius: 1.25rem;
     overflow: hidden;
     margin-bottom: 1.25rem;
@@ -751,6 +802,7 @@ body {
 
 .product-img-box,
 .team-img-box {
+<<<<<<< HEAD
     width: 80%;
     height: 320px;
     border-radius: 1.25rem;
@@ -767,6 +819,13 @@ body {
 }
 
 
+=======
+    width: 100%;
+    height: 320px;
+    border-radius: 1.25rem;
+    overflow: hidden;
+}
+>>>>>>> subbranch3
 
 .product-img-box img,
 .team-img-box img {
@@ -775,12 +834,16 @@ body {
     object-fit: cover;
     display: block;
     filter: none !important;
+<<<<<<< HEAD
     
 }
 .team-card .name-text {
     margin-left:  50px !important;
 }
 
+=======
+}
+>>>>>>> subbranch3
 
 .product-card h3,
 .team-card h3 {
@@ -788,17 +851,23 @@ body {
     color: #ffffff;
     margin-top: 0.4rem;
 }
+<<<<<<< HEAD
 .intro-text{
     font-weight: bold;
     margin-bottom: 40px;
     margin-left: 50px;
 }
+=======
+>>>>>>> subbranch3
 
 .text-center {
     text-align: center;
 }
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> subbranch3
 /* Mobile Responsiveness for Quad Grid */
 @media (max-width: 600px) {
     .quad-image-grid img {
@@ -858,6 +927,10 @@ body {
     }
 }
 
+<<<<<<< HEAD
+=======
+/* ===== HERO SECTION LAYOUT ===== */
+>>>>>>> subbranch3
 .hero-section {
     position: relative;      
     width: 100%;             
@@ -868,6 +941,10 @@ body {
     overflow: hidden; 
 }       
 
+<<<<<<< HEAD
+=======
+/* Video Style */
+>>>>>>> subbranch3
 .hero-bg-video {
     position: absolute;  
     top: 0;              
@@ -875,6 +952,7 @@ body {
     width: 100%;         
     height: 100%;        
     object-fit: cover; 
+<<<<<<< HEAD
    object-position: top center !important;
    transform: scale(1.0) !important;       
     transform-origin: top center !important;
@@ -893,6 +971,119 @@ body {
     text-align: center;  
 }
 
+=======
+    object-position: top center;
+    transform: scale(1.0);       
+    transform-origin: top center;
+    z-index: 1;          
+}
+
+/* Video darkness (Overlay Layer) */
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.2);
+    z-index: 2;
+}
+
+/* Content Container */
+.hero-content {
+    position: relative;
+    z-index: 3;          
+    text-align: center;
+    max-width: 800px;
+    padding: 0 20px;
+}
+
+
+
+/* Welcome Badge */
+.welcome-badge {
+    display: inline-block;
+    padding: 6px 16px;
+    margin-bottom: 15px;
+    border-radius: 50px;
+    background: rgba(255, 255, 255, 0.12);
+    color: #f59e0b; /* Amber Gold */
+    border: 1px solid rgba(245, 158, 11, 0.4);
+    backdrop-filter: blur(8px);
+    font-size: 0.85rem;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+}
+
+/* Main Title */
+.hero-title {
+    color: #ffffff;
+    font-size: 2.5rem;
+    font-weight: 800;
+    line-height: 1.2;
+    margin-bottom: 15px;
+    text-shadow: 0 4px 15px rgba(0, 0, 0, 0.7);
+}
+
+/* Metallic Gold Gradient Text */
+.gradient-text {
+    background: linear-gradient(135deg, #f59e0b 0%, #fbbf24 50%, #d4af37 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Subtitle */
+.hero-subtitle {
+    color: #e2e8f0;
+    font-size: 1.1rem;
+    margin-bottom: 25px;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.7);
+}
+
+/* Buttons Container */
+.hero-buttons {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+}
+
+/* Primary Button */
+.btn-primary {
+    padding: 12px 28px;
+    border-radius: 8px;
+    background: linear-gradient(135deg, #d97706, #b45309);
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 600;
+    box-shadow: 0 4px 15px rgba(217, 119, 6, 0.4);
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(217, 119, 6, 0.6);
+}
+
+/* Secondary Button (Glassmorphism) */
+.btn-secondary {
+    padding: 12px 28px;
+    border-radius: 8px;
+    background: rgba(15, 23, 42, 0.6);
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 600;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(8px);
+    transition: all 0.3s ease;
+}
+
+.btn-secondary:hover {
+    background: #ffffff;
+    color: #0f172a;
+    transform: translateY(-2px);
+}
+>>>>>>> subbranch3
 .ai-section {
     padding: 60px 20px;
     text-align: center;
@@ -983,6 +1174,7 @@ body {
     cursor: pointer;
 }
 
+<<<<<<< HEAD
 /* RGB Border Glow Animation */
 @keyframes rgbGlowAnimation {
     0% {
@@ -1002,6 +1194,9 @@ body {
         border-color: #ff0080;
     }
 }
+=======
+
+>>>>>>> subbranch3
 
 
 section.hero-section {
@@ -1025,21 +1220,43 @@ section.hero-section {
 }
 
 :root {
+<<<<<<< HEAD
     --bg-dark: #0b0c10;
     --card-dark: #12141d;
     --gold-accent: #c5a880;
     --gold-glow: rgba(197, 168, 128, 0.2);
     --text-light: #ffffff;
     --text-muted: #9a9caf;
+=======
+    --bg-dark: #faf9f5;          /* Warm Creamy Light Background */
+    --card-dark: #ffffff;        /* Pure White Cards */
+    --gold-accent: #b38728;      /* Warm Metallic Luxury Gold */
+    --gold-dark: #8c6517;        /* Deep Bronze Gold for crisp text */
+    --gold-glow: rgba(179, 135, 40, 0.15);
+    
+    /* Luxury Text Hierarchy (Warm Dark Tones) */
+    --text-main: #1d1b18;        /* Deep Luxury Charcoal (For Titles) */
+    --text-body: #383430;        /* Soft Dark Brownish Charcoal (For Body Text) */
+    --text-muted: #736d66;       /* Warm Taupe Gray (For Secondary Text) */
+    --border-color: #e8e3d9;     /* Soft Warm Border */
+    
+>>>>>>> subbranch3
     --font-heading: 'Cinzel', serif;
     --font-body: 'Plus Jakarta Sans', sans-serif;
 }
 
 body.luxury-theme {
     background-color: var(--bg-dark);
+<<<<<<< HEAD
     color: var(--text-light);
     font-family: var(--font-body);
     margin: 0;
+=======
+    color: var(--text-body);
+    font-family: var(--font-body);
+    margin: 0;
+    -webkit-font-smoothing: antialiased; /* Makes fonts crisp and sharp */
+>>>>>>> subbranch3
 }
 
 .luxury-container {
@@ -1053,14 +1270,22 @@ body.luxury-theme {
 /* Subtitle & Headings */
 .gold-subtitle {
     color: var(--gold-accent);
+<<<<<<< HEAD
     font-size: 0.85rem;
     letter-spacing: 3px;
     font-weight: 600;
+=======
+    font-size: 0.8rem;
+    letter-spacing: 4px; /* Premium letter spacing */
+    font-weight: 700;
+    text-transform: uppercase;
+>>>>>>> subbranch3
 }
 
 .luxury-heading {
     font-family: var(--font-heading);
     font-size: 2.8rem;
+<<<<<<< HEAD
     line-height: 1.2;
     margin: 15px 0 20px;
     color: #ffffff;
@@ -1074,21 +1299,64 @@ body.luxury-theme {
     border-top: 1px solid rgba(255,255,255,0.08);
     border-bottom: 1px solid rgba(255,255,255,0.08);
     background: #0e1017;
+=======
+    line-height: 1.25;
+    margin: 15px 0 20px;
+    color: var(--text-main);
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+/* Metallic Gold Text Highlight */
+.gold-text { 
+    background: linear-gradient(135deg, #b38728 0%, #8c6517 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 700;
+}
+
+.about-desc { 
+    color: var(--text-muted); 
+    max-width: 600px; 
+    margin: 0 auto; 
+    line-height: 1.8; 
+    font-size: 0.98rem;
+}
+
+/* Brand Bar / Category Bar */
+.brand-bar {
+    background: #ffffff;
+    padding: 25px 0;
+    border-top: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
+>>>>>>> subbranch3
 }
 
 .brand-grid {
     display: flex;
+<<<<<<< HEAD
     justify-content: space-between;
     align-items: center;
     padding: 30px 20px;
     flex-wrap: wrap;
     gap: 20px;
+=======
+    justify-content: center;
+    align-items: center;
+    gap: 18px;
+    flex-wrap: wrap;
+>>>>>>> subbranch3
 }
 
 .brand-item {
     font-family: var(--font-heading);
     color: var(--text-muted);
+<<<<<<< HEAD
     font-size: 1.1rem;
+=======
+    font-size: 1.05rem;
+>>>>>>> subbranch3
     letter-spacing: 2px;
     display: flex;
     align-items: center;
@@ -1103,6 +1371,7 @@ body.luxury-theme {
 }
 
 @media (max-width: 992px) {
+<<<<<<< HEAD
     .services-grid {
         grid-template-columns: repeat(2, 1fr); 
     }
@@ -1112,29 +1381,59 @@ body.luxury-theme {
     .services-grid {
         grid-template-columns: 1fr;
     }
+=======
+    .services-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 576px) {
+    .services-grid { grid-template-columns: 1fr; }
+>>>>>>> subbranch3
 }
 
 .luxury-service-card {
     background: var(--card-dark);
+<<<<<<< HEAD
     border: 1px solid rgba(197, 168, 128, 0.15);
     border-radius: 14px;
     overflow: hidden;
     transition: 0.3s ease;
+=======
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    overflow: hidden;
+    transition: all 0.35s ease;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+    cursor: pointer;
+>>>>>>> subbranch3
 }
 
 .luxury-service-card:hover {
     transform: translateY(-8px);
     border-color: var(--gold-accent);
+<<<<<<< HEAD
     box-shadow: 0 10px 30px var(--gold-glow);
 }
 
 .card-img-box { position: relative; height: 220px; }
 .card-img-box img { width: 100%; height: 100%; object-fit: cover; }
+=======
+    box-shadow: 0 12px 30px var(--gold-glow);
+}
+
+.card-img-box { position: relative; height: 380px !important; }
+.card-img-box img { 
+    width: 100%; 
+    height: 100%; 
+    object-fit: cover; 
+    object-position: top center;
+}
+>>>>>>> subbranch3
 
 .luxury-price {
     position: absolute;
     bottom: 15px;
     right: 15px;
+<<<<<<< HEAD
     background: rgba(11, 12, 16, 0.85);
     color: var(--gold-accent);
     border: 1px solid var(--gold-accent);
@@ -1169,16 +1468,56 @@ body.luxury-theme {
     color: #c5a880 !important; /* Premium Gold Text */
     font-family: 'Cinzel', serif !important; /* Forces Cinzel Font */
     font-size: 0.85rem;
+=======
+    background: rgba(255, 255, 255, 0.95);
+    color: var(--gold-dark);
+    border: 1px solid var(--gold-accent);
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-weight: 700;
+    font-size: 0.9rem;
+    letter-spacing: 0.5px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+}
+
+.card-body { padding: 25px; }
+.card-body h3 { 
+    font-family: var(--font-heading); 
+    color: var(--text-main); 
+    margin-bottom: 10px; 
+    font-size: 1.35rem; 
+    letter-spacing: 0.5px;
+}
+.card-body p { 
+    color: var(--text-muted); 
+    font-size: 0.92rem; 
+    margin: 0; 
+    line-height: 1.6; 
+}
+
+/* Category Button Tabs */
+.category-btn {
+    background: #ffffff;
+    border: 1px solid var(--border-color);
+    color: var(--gold-dark) !important;
+    font-family: var(--font-heading) !important;
+    font-size: 0.82rem;
+>>>>>>> subbranch3
     font-weight: 700;
     letter-spacing: 2px;
     text-transform: uppercase;
     padding: 12px 24px;
+<<<<<<< HEAD
     border-radius: 6px;
+=======
+    border-radius: 8px;
+>>>>>>> subbranch3
     cursor: pointer;
     transition: all 0.3s ease;
     display: inline-flex;
     align-items: center;
     gap: 10px;
+<<<<<<< HEAD
 }
 
 .category-btn i {
@@ -1209,6 +1548,37 @@ body.luxury-theme {
     transform: scale(1.15);
 }
 
+=======
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
+}
+
+.category-btn i {
+    color: var(--gold-accent);
+    font-size: 0.95rem;
+}
+
+.category-btn:hover {
+    background: #fcfaf7;
+    border-color: var(--gold-accent);
+    color: var(--gold-dark) !important;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px var(--gold-glow);
+}
+
+.category-btn.active {
+    background: linear-gradient(135deg, #b38728 0%, #8c6517 100%);
+    border: 1px solid var(--gold-accent);
+    color: #ffffff !important;
+    box-shadow: 0 4px 18px rgba(140, 101, 23, 0.35);
+}
+
+.category-btn.active i {
+    color: #ffffff;
+    transform: scale(1.15);
+}
+
+/* Stylist Section */
+>>>>>>> subbranch3
 .stylist-section {
     padding: 40px 0 20px;
 }
@@ -1221,14 +1591,22 @@ body.luxury-theme {
 }
 
 .stylist-card {
+<<<<<<< HEAD
     background: #12141d;
     border: 2px solid rgba(197, 168, 128, 0.2);
     border-radius: 12px;
     padding: 15px;
+=======
+    background: #ffffff;
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    padding: 20px;
+>>>>>>> subbranch3
     cursor: pointer;
     transition: all 0.3s ease;
     position: relative;
     text-align: center;
+<<<<<<< HEAD
 }
 
 .stylist-card:hover {
@@ -1242,14 +1620,38 @@ body.luxury-theme {
     border-color: #d4af37;
     background: linear-gradient(180deg, rgba(197, 168, 128, 0.1) 0%, #12141d 100%);
     box-shadow: 0 0 25px rgba(212, 175, 55, 0.25);
+=======
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02);
+}
+
+.stylist-card:hover {
+    border-color: var(--gold-accent);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px var(--gold-glow);
+}
+
+.stylist-card.active {
+    border-color: var(--gold-accent);
+    background: linear-gradient(180deg, #fdfbf7 0%, #ffffff 100%);
+    box-shadow: 0 6px 20px rgba(179, 135, 40, 0.2);
+>>>>>>> subbranch3
 }
 
 .stylist-img-box {
     position: relative;
+<<<<<<< HEAD
     width: 50%;
     aspect-ratio: 1 / 1;
     border-radius: 8px;
     overflow: hidden;
+=======
+    width: 60%;
+    aspect-ratio: 1 / 1;
+    border-radius: 50%;
+    overflow: hidden;
+    margin: 0 auto;
+    border: 2px solid var(--border-color);
+>>>>>>> subbranch3
 }
 
 .stylist-img-box img {
@@ -1260,6 +1662,7 @@ body.luxury-theme {
 
 .badge-selected {
     position: absolute;
+<<<<<<< HEAD
     top: 10px;
     right: 10px;
     background: #d4af37;
@@ -1269,6 +1672,18 @@ body.luxury-theme {
     padding: 4px 10px;
     border-radius: 20px;
     display: none;
+=======
+    top: 12px;
+    right: 12px;
+    background: var(--gold-accent);
+    color: #ffffff;
+    font-size: 0.72rem;
+    font-weight: 700;
+    padding: 4px 12px;
+    border-radius: 20px;
+    display: none;
+    letter-spacing: 0.5px;
+>>>>>>> subbranch3
 }
 
 .stylist-card.active .badge-selected {
@@ -1276,6 +1691,7 @@ body.luxury-theme {
 }
 
 .stylist-info h3 {
+<<<<<<< HEAD
     font-family: 'Cinzel', serif;
     color: #ffffff;
     font-size: 1.1rem;
@@ -1285,10 +1701,24 @@ body.luxury-theme {
 .stylist-role {
     color: #c5a880;
     font-size: 0.85rem;
+=======
+    font-family: var(--font-heading);
+    color: var(--text-main);
+    font-size: 1.15rem;
+    margin: 15px 0 4px;
+    letter-spacing: 0.5px;
+}
+
+.stylist-role {
+    color: var(--gold-dark);
+    font-size: 0.85rem;
+    font-weight: 600;
+>>>>>>> subbranch3
     margin-bottom: 8px;
 }
 
 .stylist-rating {
+<<<<<<< HEAD
     color: #ffd700;
     font-size: 0.8rem;
 }
@@ -1310,10 +1740,28 @@ body.luxury-theme {
     border-color: #d4af37 !important;
     box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
     border-radius: 10px;
+=======
+    color: #d97706;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.stylist-rating span {
+    color: var(--text-muted);
+    margin-left: 4px;
+    font-weight: 400;
+}
+
+/* Service Card Selected State */
+.luxury-service-card.selected {
+    border-color: var(--gold-accent) !important;
+    box-shadow: 0 0 25px var(--gold-glow);
+>>>>>>> subbranch3
 }
 
 .luxury-service-card .badge-selected {
     position: absolute;
+<<<<<<< HEAD
     top: 10px;
     left: 10px;
     background: #d4af37;
@@ -1323,6 +1771,18 @@ body.luxury-theme {
     padding: 4px 10px;
     border-radius: 20px;
     display: none;
+=======
+    top: 12px;
+    left: 12px;
+    background: var(--gold-accent);
+    color: #ffffff;
+    font-size: 0.72rem;
+    font-weight: 700;
+    padding: 4px 12px;
+    border-radius: 20px;
+    display: none;
+    letter-spacing: 0.5px;
+>>>>>>> subbranch3
 }
 
 .luxury-service-card.selected .badge-selected {
@@ -1337,27 +1797,46 @@ body.luxury-theme {
     transform: translateX(-50%);
     width: 90%;
     max-width: 900px;
+<<<<<<< HEAD
     background: rgba(18, 20, 29, 0.95);
     backdrop-filter: blur(10px);
     border: 1px solid rgba(212, 175, 55, 0.4);
     padding: 15px 30px;
+=======
+    background: rgba(255, 255, 255, 0.96);
+    backdrop-filter: blur(12px);
+    border: 1px solid var(--border-color);
+    padding: 16px 32px;
+>>>>>>> subbranch3
     border-radius: 50px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+<<<<<<< HEAD
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+=======
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+>>>>>>> subbranch3
     z-index: 999;
     transition: bottom 0.4s ease-in-out;
 }
 
 .booking-summary-bar.active {
+<<<<<<< HEAD
     bottom: 25px; /* Slide up when selected */
+=======
+    bottom: 25px;
+>>>>>>> subbranch3
 }
 
 .summary-details {
     display: flex;
     align-items: center;
+<<<<<<< HEAD
     gap: 20px;
+=======
+    gap: 25px;
+>>>>>>> subbranch3
 }
 
 .summary-item {
@@ -1366,6 +1845,7 @@ body.luxury-theme {
 }
 
 .summary-item small {
+<<<<<<< HEAD
     color: #8a8d9b;
     font-size: 0.75rem;
     text-transform: uppercase;
@@ -1376,10 +1856,24 @@ body.luxury-theme {
     color: #ffffff;
     font-size: 0.95rem;
     font-family: 'Cinzel', serif;
+=======
+    color: var(--text-muted);
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    font-weight: 600;
+}
+
+.summary-item strong {
+    color: var(--text-main);
+    font-size: 1rem;
+    font-family: var(--font-heading);
+>>>>>>> subbranch3
 }
 
 .summary-divider {
     width: 1px;
+<<<<<<< HEAD
     height: 30px;
     background: rgba(197, 168, 128, 0.2);
 }
@@ -1392,6 +1886,22 @@ body.luxury-theme {
     border-radius: 30px;
     text-decoration: none;
     font-size: 0.9rem;
+=======
+    height: 32px;
+    background: var(--border-color);
+}
+
+.btn-book-now {
+    background: linear-gradient(135deg, #b38728 0%, #8c6517 100%);
+    color: #ffffff;
+    font-weight: 700;
+    padding: 12px 30px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-size: 0.88rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+>>>>>>> subbranch3
     transition: all 0.3s ease;
     display: inline-flex;
     align-items: center;
@@ -1399,6 +1909,7 @@ body.luxury-theme {
 }
 
 .btn-book-now:hover {
+<<<<<<< HEAD
     box-shadow: 0 0 15px rgba(212, 175, 55, 0.5);
     transform: translateY(-2px);
 }
@@ -1426,6 +1937,12 @@ body.luxury-theme {
     object-position: top center;
 }
 
+=======
+    box-shadow: 0 6px 20px rgba(140, 101, 23, 0.4);
+    transform: translateY(-2px);
+}
+
+>>>>>>> subbranch3
 /* Brand Switcher Toggle Buttons */
 .brand-toggle-wrapper {
     display: flex;
@@ -1435,6 +1952,7 @@ body.luxury-theme {
 }
 
 .brand-toggle-btn {
+<<<<<<< HEAD
     background: #1c1c1c;
     color: #ccc;
     border: 1px solid #444;
@@ -1444,15 +1962,32 @@ body.luxury-theme {
     font-weight: 600;
     cursor: pointer;
     transition: all 0.3s ease;
+=======
+    background: #ffffff;
+    color: var(--text-main);
+    border: 1px solid var(--border-color);
+    padding: 12px 26px;
+    border-radius: 30px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
+>>>>>>> subbranch3
 }
 
 .brand-toggle-btn i {
     margin-right: 8px;
+<<<<<<< HEAD
     color: #d4af37;
+=======
+    color: var(--gold-accent);
+>>>>>>> subbranch3
 }
 
 .brand-toggle-btn:hover,
 .brand-toggle-btn.active {
+<<<<<<< HEAD
     background: #d4af37;
     color: #000;
     border-color: #d4af37;
@@ -1461,11 +1996,22 @@ body.luxury-theme {
 
 .brand-toggle-btn.active i {
     color: #000;
+=======
+    background: var(--gold-accent);
+    color: #ffffff;
+    border-color: var(--gold-accent);
+    box-shadow: 0 4px 15px var(--gold-glow);
+}
+
+.brand-toggle-btn.active i {
+    color: #ffffff;
+>>>>>>> subbranch3
 }
 
 /* Color Category Group Styling */
 .color-group {
     margin-bottom: 25px;
+<<<<<<< HEAD
     background: rgba(255, 255, 255, 0.02);
     padding: 15px;
     border-radius: 8px;
@@ -1476,29 +2022,51 @@ body.luxury-theme {
     color: #d4af37;
     font-size: 1rem;
     font-weight: 600;
+=======
+    background: #ffffff;
+    padding: 18px;
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+    border-left: 4px solid var(--gold-accent);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.02);
+}
+
+.color-cat-title {
+    color: var(--gold-dark);
+    font-size: 0.95rem;
+    font-weight: 700;
+>>>>>>> subbranch3
     margin-bottom: 12px;
     display: flex;
     align-items: center;
     gap: 8px;
     text-transform: uppercase;
+<<<<<<< HEAD
     letter-spacing: 0.5px;
 }
 
 .color-cat-title i {
     font-size: 0.75rem;
+=======
+    letter-spacing: 1px;
+>>>>>>> subbranch3
 }
 
 .color-options-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
     gap: 15px; 
+<<<<<<< HEAD
     margin-top: 10px;
     margin-bottom: 10px;
+=======
+>>>>>>> subbranch3
 }
 
 .color-radio-card {
     display: flex;
     align-items: center;
+<<<<<<< HEAD
     gap: 10px;
     background: #181818;
     border: 1px solid #333;
@@ -1548,6 +2116,52 @@ body.luxury-theme {
     white-space: nowrap;
     flex-shrink: 0; 
     margin-left: auto;
+=======
+    gap: 12px;
+    background: #faf9f5;
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    padding: 12px 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 100%;
+}
+
+.color-radio-card:hover {
+    border-color: var(--gold-accent);
+    background: #ffffff;
+    transform: translateY(-2px);
+}
+
+.color-radio-card:has(input[type="radio"]:checked) {
+    border-color: var(--gold-accent);
+    background: #fdfbf7;
+    box-shadow: 0 3px 12px var(--gold-glow);
+}
+
+.color-dot {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    display: inline-block;
+    flex-shrink: 0;
+    border: 2px solid #ffffff;
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.15);
+}
+
+.color-name {
+    font-size: 0.9rem;
+    color: var(--text-main);
+    font-weight: 500;
+    flex-grow: 1;
+}
+
+.color-price {
+    font-size: 0.88rem;
+    color: var(--gold-dark);
+    font-weight: 700;
+    white-space: nowrap;
+>>>>>>> subbranch3
 }
 
 /* Treatments Responsive Grid */
@@ -1558,6 +2172,7 @@ body.luxury-theme {
     margin-top: 15px;
 }
 
+<<<<<<< HEAD
 /* Individual Treatment Card */
 .treatment-card {
     position: relative;
@@ -1565,11 +2180,20 @@ body.luxury-theme {
     border: 1px solid #333;
     border-radius: 12px;
     padding: 22px 20px;
+=======
+.treatment-card {
+    position: relative;
+    background: #ffffff;
+    border: 1px solid var(--border-color);
+    border-radius: 14px;
+    padding: 24px 20px;
+>>>>>>> subbranch3
     cursor: pointer;
     transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+<<<<<<< HEAD
 }
 
 /* Hide or Style Radio inside Card */
@@ -1578,11 +2202,22 @@ body.luxury-theme {
     top: 18px;
     right: 18px;
     accent-color: #d4af37;
+=======
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.02);
+}
+
+.treatment-card input[type="radio"] {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    accent-color: var(--gold-accent);
+>>>>>>> subbranch3
     width: 18px;
     height: 18px;
     cursor: pointer;
 }
 
+<<<<<<< HEAD
 /* Hover State */
 .treatment-card:hover {
     border-color: #d4af37;
@@ -1602,10 +2237,23 @@ body.luxury-theme {
     display: flex;
     flex-direction: column;
     gap: 8px;
+=======
+.treatment-card:hover {
+    border-color: var(--gold-accent);
+    transform: translateY(-4px);
+    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.06);
+}
+
+.treatment-card:has(input[type="radio"]:checked) {
+    border-color: var(--gold-accent);
+    background: #fdfbf7;
+    box-shadow: 0 4px 18px var(--gold-glow);
+>>>>>>> subbranch3
 }
 
 .treatment-icon {
     font-size: 2rem;
+<<<<<<< HEAD
     color: #d4af37;
     margin-bottom: 5px;
 }
@@ -1621,15 +2269,807 @@ body.luxury-theme {
     color: #aaa;
     font-size: 0.85rem;
     line-height: 1.4;
+=======
+    color: var(--gold-accent);
+    margin-bottom: 8px;
+}
+
+.treatment-card h4 {
+    color: var(--text-main);
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin: 0 0 6px 0;
+}
+
+.treatment-card p {
+    color: var(--text-muted);
+    font-size: 0.88rem;
+    line-height: 1.5;
+>>>>>>> subbranch3
     margin: 0;
 }
 
 .treatment-price {
     display: inline-block;
+<<<<<<< HEAD
     margin-top: 12px;
     color: #d4af37;
     font-weight: bold;
     font-size: 1.1rem;
 }
 
+=======
+    margin-top: 14px;
+    color: var(--gold-dark);
+    font-weight: 700;
+    font-size: 1.1rem;
+}
+
+/* 1. Main Headings Fix ("Our Premium", "Our Quality" visibility fix) */
+.luxury-heading,
+.luxury-heading span:not(.gold-text):not(.gradient-text),
+h1, h2, h3, h4 {
+    color: #1d1b18 !important; /* Force Dark Charcoal color */
+}
+
+/* 2. Sub-headings Fix ("Hair Care & Styling", "Skin & Beauty Treatments") */
+.section-title,
+.service-title,
+.card-body h3,
+.stylist-info h3,
+div[class*="title"] {
+    color: #1d1b18 !important;
+    font-weight: 700;
+}
+
+/* 3. Description Texts Fix (All Paragraphs & Subtexts) */
+p, 
+.about-desc,
+.service-desc,
+.section-desc,
+div[class*="desc"] {
+    color: #524d46 !important; /* Legible Dark Gray */
+}
+
+/* 4. Subtitles (WHAT WE OFFER / EXCLUSIVE PRODUCTS) */
+.gold-subtitle,
+.section-subtitle {
+    color: #b38728 !important; /* Crisp Luxury Gold */
+    letter-spacing: 3px;
+    font-weight: 700;
+}
+
+/* 1. Review Box Outer Styling (White Card with Soft Shadow) */
+.comment-card,
+.review-card,
+.feedback-card,
+.testimonial-card {
+    background: #ffffff !important;
+    border: 1px solid #e8e3d9 !important;
+    border-radius: 16px !important;
+    padding: 30px 25px !important;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.04) !important;
+    transition: all 0.3s ease !important;
+}
+
+/* Hover Effect on Review Cards */
+.comment-card:hover,
+.review-card:hover,
+.feedback-card:hover {
+    transform: translateY(-5px) !important;
+    border-color: #b38728 !important;
+    box-shadow: 0 12px 30px rgba(179, 135, 40, 0.15) !important;
+}
+
+/* 2. Star Ratings Color Fix */
+.stars, 
+.review-rating, 
+.card-rating,
+.comment-card i,
+.review-card i {
+    color: #d97706 !important; /* Vibrant Warm Gold Stars */
+    font-size: 1.05rem;
+}
+
+/* 3. Review Quote Text ("The AI Hairstyle visualizer...") */
+.comment-card p,
+.review-card p,
+.review-text,
+.feedback-text {
+    color: #4a453e !important; /* Dark readable text */
+    font-size: 0.95rem !important;
+    line-height: 1.6 !important;
+    font-style: italic !important;
+    margin: 15px 0 !important;
+}
+
+/* 4. Client Name Fix ("Ranjna Kaushal", "Induwara Nimnada") */
+.comment-card h4,
+.review-card h4,
+.client-name,
+.author-name {
+    color: #1d1b18 !important; /* Dark Charcoal Name */
+    font-weight: 700 !important;
+    font-size: 1.05rem !important;
+    margin-bottom: 2px !important;
+}
+
+/* 5. Client Role/Status ("Regular Client", "Verified Customer") */
+.comment-card small,
+.review-card small,
+.client-role,
+.author-role {
+    color: #736d66 !important; /* Soft Dark Gray Subtitle */
+    font-size: 0.85rem !important;
+    font-weight: 500 !important;
+}
+
+/* 1. Primary Action Buttons (eg: "Login to Leave a Review", "Book Now") */
+button,
+.btn,
+.btn-primary,
+a.btn,
+.btn-login,
+button[class*="review"],
+a[class*="review"] {
+    background: #1d1b18 !important; /* Rich Dark Charcoal */
+    color: #ffffff !important;
+    border: 1px solid #1d1b18 !important;
+    padding: 12px 28px !important;
+    border-radius: 30px !important; /* Soft Pill shape */
+    font-weight: 600 !important;
+    font-size: 0.9rem !important;
+    letter-spacing: 0.5px !important;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08) !important; /* Soft natural shadow */
+    transition: all 0.3s ease !important;
+    cursor: pointer !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 8px !important;
+}
+
+/* Hover Effect for Action Buttons */
+button:hover,
+.btn:hover,
+.btn-primary:hover,
+a.btn:hover,
+.btn-login:hover {
+    background: #b38728 !important; /* Shifts to Luxury Gold on Hover */
+    border-color: #b38728 !important;
+    color: #ffffff !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 6px 20px rgba(179, 135, 40, 0.25) !important;
+}
+
+/* 2. Secondary / Outline Buttons */
+.btn-outline,
+.btn-secondary {
+    background: transparent !important;
+    color: #1d1b18 !important;
+    border: 1px solid #b38728 !important;
+}
+
+.btn-outline:hover,
+.btn-secondary:hover {
+    background: #b38728 !important;
+    color: #ffffff !important;
+}
+
+/* 3. Icon inside Buttons Fix */
+button i, 
+.btn i {
+    color: #b38728 !important; /* Gold Icon */
+    font-size: 0.9rem !important;
+    transition: color 0.3s ease !important;
+}
+
+button:hover i, 
+.btn:hover i {
+    color: #ffffff !important; /* Turns White on hover */
+}
+
+.site-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    background: rgba(15, 23, 42, 0.85); /* Premium Dark Glass Background */
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    transition: all 0.3s ease;
+}
+
+.header-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 12px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* Logo Styling */
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+}
+
+.site-logo {
+    height: 42px;
+    width: auto;
+    object-fit: contain;
+}
+
+.logo-text {
+    font-size: 1.25rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: #ffffff;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Navigation Links */
+.main-nav {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+}
+
+.nav-link {
+    color: #cbd5e1;
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 500;
+    position: relative;
+    padding: 6px 0;
+    transition: color 0.3s ease;
+}
+
+.nav-link:hover,
+.nav-link.active {
+    color: #f59e0b; /* Warm Gold Accent */
+}
+
+/* Clean Line Underline Effect on Hover */
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0%;
+    height: 2px;
+    background: #f59e0b;
+    transition: width 0.3s ease;
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+    width: 100%;
+}
+
+/* Actions & Profile Controls */
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.btn-login,
+.btn-register,
+.btn-appointments,
+.btn-logout {
+    padding: 8px 18px;
+    border-radius: 6px;
+    font-size: 0.88rem;
+    font-weight: 600;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: all 0.25s ease;
+}
+
+/* Login Button */
+.btn-login {
+    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: transparent;
+}
+
+.btn-login:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: #ffffff;
+}
+
+/* Register / Primary Action */
+.btn-register {
+    background: #d97706;
+    color: #ffffff;
+    border: 1px solid #d97706;
+}
+
+.btn-register:hover {
+    background: #b45309;
+    border-color: #b45309;
+}
+
+/* User Profile Info */
+.user-profile {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.user-name {
+    color: #f8fafc;
+    font-size: 0.9rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.btn-appointments {
+    background: rgba(217, 119, 6, 0.15);
+    color: #fbbf24;
+    border: 1px solid rgba(217, 119, 6, 0.4);
+}
+
+.btn-appointments:hover {
+    background: #d97706;
+    color: #ffffff;
+}
+
+.btn-logout {
+    color: #ef4444;
+    background: rgba(239, 68, 68, 0.1);
+    border: 1px solid rgba(239, 68, 68, 0.2);
+}
+
+.btn-logout:hover {
+    background: #ef4444;
+    color: #ffffff;
+}
+
+/* 1. Header Outer Container */
+.site-header {
+    width: 100% !important;
+    position: sticky !important;
+    top: 0 !important;
+    left: 0 !important;
+    z-index: 1000 !important;
+    background: #ffffff !important;
+    backdrop-filter: blur(12px) !important;
+    border-bottom: 1px solid #e2e8f0!important;
+    box-sizing: border-box !important;
+}
+
+/* 2. Header Inner Container */
+.header-container,
+.site-header > div {
+    width: 100% !important;
+    max-width: 1400px !important;
+    margin: 0 auto !important;
+    padding: 15px 40px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    box-sizing: border-box !important;
+}
+
+/* 3. Element Spacing & Alignment */
+.logo-container {
+    display: flex !important;
+    align-items: center !important;
+    gap: 12px !important;
+}
+
+.main-nav {
+    display: flex !important;
+    align-items: center !important;
+    gap: 32px !important;
+}
+
+.header-actions {
+    display: flex !important;
+    align-items: center !important;
+    gap: 12px !important;
+}
+
+.site-header .nav-link {
+    color: #64748b !important;
+    font-weight: 500 !important;
+}
+
+.site-header .nav-link:hover,
+.site-header .nav-link.active {
+    color: #d97706 !important;
+}
+
+/* 5. Buttons Styling */
+.site-header .btn-login {
+    color: #1e293b !important;
+    background: #f1f5f9 !important;
+    border: 1px solid #cbd5e1 !important;
+}
+
+.site-header .btn-register {
+    background: linear-gradient(135deg, #d97706 0%, #a855f7 100%) !important;
+    color: #ffffff !important;
+    border: none !important;
+    box-shadow: 0 4px 12px rgba(217, 119, 6, 0.25) !important;
+}
+
+/* "SALON" Bright Gold */
+.site-header .logo-text,
+.site-header .logo-text {
+    color: #f59e0b !important;
+    -webkit-text-fill-color: #f59e0b !important;
+}
+
+/* "YOU"Pure White */
+.site-header .logo-text span {
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+}
+
+/* REGISTER BUTTON - SOLID GOLD */
+.site-header .btn-register {
+    background: #d97706 !important;
+    color: #ffffff !important;
+    border: none !important;
+    padding: 10px 24px !important;
+    border-radius: 8px !important;
+    font-weight: 600 !important;
+    box-shadow: 0 4px 12px rgba(217, 119, 6, 0.3) !important;
+    transition: all 0.3s ease !important;
+}
+
+.site-header .btn-register:hover {
+    background: #b45309 !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 6px 16px rgba(217, 119, 6, 0.4) !important;
+}
+
+/* BACKGROUND VIDEO FRAME ADJUSTMENT */
+.hero-video, 
+.hero-section video,
+#bg-video {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    
+    object-position: center 30% !important; 
+}
+
+/* SECTION BADGE VISIBILITY FIX */
+.section-badge {
+    color: #f59e0b !important; /* High contrast Gold text */
+    background: rgba(245, 158, 11, 0.12) !important; /* Soft gold tint box */
+    border: 1px solid rgba(245, 158, 11, 0.3) !important;
+    padding: 6px 18px !important;
+    border-radius: 20px !important;
+    font-size: 0.85rem !important;
+    font-weight: 600 !important;
+    letter-spacing: 2px !important;
+    display: inline-block !important;
+    margin-bottom: 15px !important;
+}
+
+/* QUAD GRID IMAGES STYLING */
+.quad-image-grid img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important; 
+}
+
+
+.quad-image-grid img:nth-child(1) { 
+    object-position: center top !important; 
+}
+
+.quad-image-grid img:nth-child(2) { 
+    object-position: center bottom !important; 
+}
+
+.quad-image-grid img:nth-child(3) { 
+    object-position: center 30% !important;
+}
+
+.quad-image-grid img:nth-child(4) { 
+    object-position: center center !important; 
+}
+
+/* SERVICES SECTION & BADGE FIX */
+.services-section {
+    max-width: 1200px !important;
+    margin: 0 auto !important;
+    padding: 60px 20px !important;
+}
+
+.side-by-side-grid {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important; 
+    gap: 40px !important;
+    align-items: center !important;
+}
+
+.side-by-side-content .section-badge {
+    display: inline-block !important;
+    width: auto !important;
+    padding: 6px 16px !important;
+    margin-bottom: 15px !important;
+    border-radius: 20px !important;
+    background: rgba(245, 158, 11, 0.15) !important;
+    color: #d97706 !important;
+    font-size: 0.8rem !important;
+    font-weight: 600 !important;
+    letter-spacing: 1px !important;
+}
+
+/* Title & Content Spacing Fix */
+.side-by-side-content .large-title {
+    margin-bottom: 25px !important;
+    line-height: 1.2 !important;
+}
+
+.purpose-block {
+    margin-bottom: 20px !important;
+}
+
+.purpose-header h3 {
+    font-size: 1.2rem !important;
+    font-weight: 600 !important;
+    color: #0f172a !important;
+    margin-bottom: 5px !important;
+}
+
+.purpose-block p {
+    color: #64748b !important;
+    line-height: 1.6 !important;
+    font-size: 0.95rem !important;
+}
+
+
+.side-by-side-grid {
+    display: grid !important;
+
+    grid-template-columns: 0.9fr 1.1fr !important; 
+    gap: 35px !important;
+    align-items: center !important;
+}
+
+/* BADGE FONT ADJUSTMENT */
+.side-by-side-content .section-badge {
+    font-size: 0.85rem !important;
+    padding: 7px 18px !important;
+}
+
+/* MAIN TITLE FONT SIZE */
+.side-by-side-content .large-title {
+    font-size: 2.6rem !important; 
+    line-height: 1.25 !important;
+    margin-bottom: 25px !important;
+}
+
+/* SERVICE SUB-HEADINGS */
+.purpose-header h3 {
+    font-size: 1.45rem !important; 
+    font-weight: 700 !important;
+    color: #0f172a !important;
+    margin-bottom: 8px !important;
+}
+
+/* PARAGRAPH TEXT */
+.purpose-block p {
+    font-size: 1.05rem !important;
+    line-height: 1.65 !important;
+    color: #475569 !important;
+}
+
+/* WIDE SCREEN LAYOUT & SPACE FIX*/
+.services-section {
+    max-width: 1400px !important; 
+    width: 92% !important;
+    margin: 0 auto !important;
+    padding: 80px 0 !important;
+}
+
+.side-by-side-grid {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important; 
+    gap: 60px !important; 
+    align-items: center !important;
+}
+
+.quad-image-grid {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 15px !important;
+    width: 100% !important;
+}
+
+.quad-image-grid img {
+    width: 100% !important;
+    height: 280px !important;  
+    object-fit: cover !important;
+    border-radius: 12px !important;
+}
+
+/* ULTRA-WIDE MONITORS (1600px+) FIX*/
+@media (min-width: 1600px) {
+    .services-section {
+        max-width: 1600px !important;
+    }
+
+    .quad-image-grid img {
+        height: 340px !important; 
+    }
+
+    .side-by-side-content .large-title {
+        font-size: 3.2rem !important;
+    }
+
+    .purpose-header h3 {
+        font-size: 1.6rem !important;
+    }
+
+    .purpose-block p {
+        font-size: 1.15rem !important;
+    }
+}
+
+/* ===== EXPERT TEAM SECTION STYLES ===== */
+.team-section {
+    max-width: 1400px !important;
+    width: 92% !important;
+    margin: 0 auto !important;
+    padding: 80px 0 !important;
+}
+
+.team-grid {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 40px !important;
+    margin-top: 40px !important;
+}
+
+.team-card {
+    background: #ffffff !important;
+    border-radius: 16px !important;
+    padding: 25px !important;
+    border: 1px solid #e2e8f0 !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04) !important;
+    text-align: center !important;
+}
+
+/* IMAGE CONTAINER HEIGHT */
+.team-img-box {
+    width: 100% !important;
+    height: 380px !important; 
+    border-radius: 12px !important;
+    overflow: hidden !important;
+    margin-bottom: 20px !important;
+}
+
+.team-img-box img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+}
+
+/*  PHOTO POSITION CONTROLS  */
+
+
+.team-grid .team-card:nth-child(1) .team-img-box img {
+    object-position: center 25% !important; 
+}
+
+
+.team-grid .team-card:nth-child(2) .team-img-box img {
+    object-position: center 25% !important; 
+}
+
+/* ===== GLOBAL HEADER FULL-WIDTH FIX ===== */
+html, body {
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow-x: hidden !important;
+}
+
+header.site-header {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    width: 100vw !important;
+    max-width: 100vw !important;
+    box-sizing: border-box !important;
+
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+
+    padding: 15px 5% !important;
+    background: #ffffff !important;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05) !important;
+    z-index: 999999 !important;
+}
+
+body {
+    padding-top: 85px !important;
+}
+
+/* --- RESPONSIVE HERO SECTION --- */
+.services-hero {
+    background: url('../uploads/images/salon/servicebg.jpeg') no-repeat center center/cover;
+    padding: 80px 20px;
+    text-align: center;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.luxury-container {
+    max-width: 800px;
+    width: 90%; /* කුඩා screens වලදී දෙපැත්තට margin තියාගෙන Auto shrink වේ */
+    margin: 0 auto;
+    background: rgba(0, 0, 0, 0.65);
+    padding: 40px 25px;
+    border-radius: 16px;
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    box-sizing: border-box;
+}
+
+.gold-subtitle {
+    color: #FFFFFF !important;
+    font-weight: 700;
+    letter-spacing: 2px;
+    font-size: clamp(0.8rem, 2vw, 0.95rem); /* Screen එක අනුව auto resize වේ */
+    display: inline-block;
+}
+
+.luxury-heading {
+    color: #FFFFFF !important;
+    /* clamp(min_size, preferred_size, max_size) -> Screen එක කුඩා වෙද්දී Text එක auto කුඩා වේ */
+    font-size: clamp(1.6rem, 4vw, 2.5rem) !important;
+    font-weight: 800;
+    margin: 15px 0;
+    line-height: 1.3;
+}
+
+.about-desc {
+    color: #FFFFFF !important;
+    font-size: clamp(0.9rem, 2.5vw, 1.05rem) !important;
+    font-weight: 400;
+    margin: 15px auto 0 auto;
+    line-height: 1.6;
+    max-width: 550px;
+    text-align: center;
+}
+
+/* --- MOBILE SPECIFIC FIXES (Media Query) --- */
+@media (max-width: 768px) {
+    .services-hero {
+        padding: 50px 15px; /* Mobile එකේදී padding අඩු කරයි */
+    }
+
+    .luxury-container {
+        padding: 25px 15px; /* Mobile එකේදී card එක ඇතුළේ ඉඩ ඉතිරි කරයි */
+        width: 95%;
+    }
+}
+
+
+
+
+
+>>>>>>> subbranch3
 

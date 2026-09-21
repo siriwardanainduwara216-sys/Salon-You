@@ -9,12 +9,20 @@ if (!isset($_SESSION['user_id']) || $_SESSION['user_role'] !== 'customer') {
 $user_id = $_SESSION['user_id'];
 $appointment_id = (int) ($_GET['id'] ?? 0);
 
+<<<<<<< HEAD
 include_once __DIR__ . '/../backend/config.php';
+=======
+require_once __DIR__ . '/../backend/config.php';
+>>>>>>> subbranch3
 global $conn;
 
 if ($appointment_id > 0) {
     // IMPORTANT: only cancel if this appointment actually belongs to the logged-in customer,
+<<<<<<< HEAD
     // and only if it's still pending or confirmed 
+=======
+    // and only if it's still pending or confirmed (not already completed/cancelled).
+>>>>>>> subbranch3
     $sql = "UPDATE appointments
             SET status = 'cancelled'
             WHERE id = ? AND user_id = ? AND status IN ('pending', 'confirmed')";

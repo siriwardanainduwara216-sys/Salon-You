@@ -16,7 +16,12 @@ $response = ['status' => 'error', 'message' => 'Invalid request method.'];
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
+<<<<<<< HEAD
     
+=======
+    // 🔐 SECURITY FIX: Public signup එකෙන් හැමවෙලේම 'customer' පමණක් සාදයි.
+    // Employees / Staff අයව register කරන්නේ Admin Dashboard එකෙන් පමණි.
+>>>>>>> subbranch3
     $role = 'customer';
 
     $full_name = trim($_POST['full_name'] ?? '');
@@ -24,21 +29,33 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $phone     = trim($_POST['phone'] ?? '');
     $password  = $_POST['password'] ?? '';
 
+<<<<<<< HEAD
     // Required Fields 
+=======
+    // 1. Required Fields හිස්දැයි බලන්න
+>>>>>>> subbranch3
     if (empty($full_name) || empty($email) || empty($phone) || empty($password)) {
         ob_end_clean();
         echo json_encode(['status' => 'error', 'message' => 'Please fill in all required fields.']);
         exit;
     }
 
+<<<<<<< HEAD
     //  Email format 
+=======
+    // 2. Email format එක නිවැරදිදැයි බලන්න
+>>>>>>> subbranch3
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         ob_end_clean();
         echo json_encode(['status' => 'error', 'message' => 'Please enter a valid email address.']);
         exit;
     }
 
+<<<<<<< HEAD
     
+=======
+    // 3. Email එක කලින් Registered ද කියා පරීක්ෂා කිරීම
+>>>>>>> subbranch3
     $check_stmt = mysqli_prepare($conn, "SELECT id FROM users WHERE email = ?");
     if ($check_stmt) {
         mysqli_stmt_bind_param($check_stmt, "s", $email);
@@ -58,11 +75,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit;
     }
 
+<<<<<<< HEAD
     // 4. OTP and Password Hash
     $otp_code        = sprintf("%06d", mt_rand(1, 999999));
     $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
     // 5. User Database Save 
+=======
+    // 4. OTP එක සහ Password Hash එක සාදා ගැනීම
+    $otp_code        = sprintf("%06d", mt_rand(1, 999999));
+    $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+
+    // 5. User ව Database එකට Save කිරීම (is_verified = 0)
+>>>>>>> subbranch3
     $insert_query = "INSERT INTO users (name, email, phone, password, role, otp_code, is_verified) VALUES (?, ?, ?, ?, ?, ?, 0)";
     $insert_stmt  = mysqli_prepare($conn, $insert_query);
 
@@ -77,7 +102,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (mysqli_stmt_execute($insert_stmt)) {
         $new_user_id = mysqli_insert_id($conn);
 
+<<<<<<< HEAD
         // 6. PHPMailer  OTP Mail
+=======
+        // 6. PHPMailer හරහා OTP Mail එක යැවීම
+>>>>>>> subbranch3
         require_once __DIR__ . '/../mailer.php';
         $mail_result = send_otp_email($email, $full_name, $otp_code);
 
@@ -89,7 +118,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $response = [
                 'status'    => 'success',
                 'message'   => 'Registration successful! Verification code sent to your email.',
+<<<<<<< HEAD
                 'debug_otp' => $otp_code, 
+=======
+                'debug_otp' => $otp_code, // Local Testing සඳහා (Production වලදී අයින් කරන්න)
+>>>>>>> subbranch3
                 'redirect'  => 'otp-verify.php'
             ];
         } else {

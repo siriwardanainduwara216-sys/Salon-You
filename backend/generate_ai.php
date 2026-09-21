@@ -1,5 +1,11 @@
 <?php
+<<<<<<< HEAD
 
+=======
+// =========================================================================
+// generate_ai.php - Local Face Shape & Hairstyle Filter Engine
+// =========================================================================
+>>>>>>> subbranch3
 session_start();
 
 header('Content-Type: application/json');
@@ -13,9 +19,15 @@ if (!isset($_SESSION['user_id'])) {
 }
 
 error_reporting(E_ALL);
+<<<<<<< HEAD
 ini_set('display_errors', 0); 
 
 
+=======
+ini_set('display_errors', 0); // Raw errors සඟවා Clean JSON ලබා දීම
+
+// 1. Config path එක (backend/config.php එක එකම folder එකේ තියෙන නිසා)
+>>>>>>> subbranch3
 require_once __DIR__ . '/config.php'; 
 
 // Check request method
@@ -45,6 +57,10 @@ if (!in_array($realMimeType, $allowedMimeTypes)) {
     exit;
 }
 
+<<<<<<< HEAD
+=======
+// 2. Uploads folder path එක backend/uploads/ වෙත සකස් කිරීම
+>>>>>>> subbranch3
 $uploadDir = __DIR__ . '/uploads/';
 if (!is_dir($uploadDir)) {
     mkdir($uploadDir, 0777, true);

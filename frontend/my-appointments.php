@@ -13,6 +13,7 @@ require_once __DIR__ . '/../backend/config.php';
 global $conn;
 
 $success_msg = isset($_GET['cancelled']) ? 'Appointment cancelled successfully.' : '';
+<<<<<<< HEAD
 if (isset($_GET['waitlisted'])) {
     $success_msg = "You've been added to the waitlist! We'll email you if this slot opens up.";
 }
@@ -130,6 +131,10 @@ while ($row = mysqli_fetch_assoc($result)) {
     $my_waitlist[] = $row;
 }
 mysqli_stmt_close($stmt);
+=======
+
+require_once __DIR__ . '/my-appointments-data.php';
+>>>>>>> subbranch3
 
 // Statuses that are still allowed to be cancelled by the customer
 $cancellable_statuses = ['pending', 'confirmed'];
@@ -142,16 +147,25 @@ $cancellable_statuses = ['pending', 'confirmed'];
     <title>My Appointments - Salon You</title>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<<<<<<< HEAD
     <link rel="stylesheet" href="frontend-css/style.css">
     <link rel="stylesheet" href="frontend-css/my-appointments.css">
 </head>
 <body>
+=======
+    <link rel="stylesheet" href="frontend-css/services.css">
+    <link rel="stylesheet" href="frontend-css/style.css">
+    <link rel="stylesheet" href="frontend-css/my-appointments.css">
+</head>
+<body class="luxury-theme">
+>>>>>>> subbranch3
 
     <header class="site-header">
         <a href="index.php" class="logo-container">
             <img src="../logo/logo.png" alt="Salon You Logo" class="site-logo">
             <span class="logo-text">SALON YOU</span>
         </a>
+<<<<<<< HEAD
         <div class="header-actions">
             <div class="user-profile">
                 <span class="user-name"><?php echo htmlspecialchars($user_name); ?></span>
@@ -162,6 +176,18 @@ $cancellable_statuses = ['pending', 'confirmed'];
                     <i class="fas fa-sign-out-alt"></i> Logout
                 </a>
             </div>
+=======
+        <nav class="main-nav">
+            <a href="index.php" class="nav-link">Home</a>
+            <a href="services.php" class="nav-link">Services</a>
+            <a href="index.php#gallery" class="nav-link">Gallery</a>
+            <a href="about.php" class="nav-link">About Us</a>
+            <a href="index.php#contact" class="nav-link">Contact</a>
+        </nav>
+        <div class="header-actions">
+            <a href="my-appointments.php" class="btn-register" style="margin-right:10px;">My Appointments</a>
+            <a href="../backend/logout.php" class="btn-register">Logout</a>
+>>>>>>> subbranch3
         </div>
     </header>
 
@@ -173,6 +199,7 @@ $cancellable_statuses = ['pending', 'confirmed'];
             <div class="alert-success"><?php echo htmlspecialchars($success_msg); ?></div>
         <?php endif; ?>
 
+<<<<<<< HEAD
         <!-- Loyalty Rewards Card -->
         <div class="loyalty-card">
             <div class="loyalty-top">
@@ -209,6 +236,8 @@ $cancellable_statuses = ['pending', 'confirmed'];
             </div>
         </div>
 
+=======
+>>>>>>> subbranch3
         <?php if (empty($my_appointments)): ?>
             <div class="empty-state">
                 <p>You haven't booked any appointments yet.</p>
@@ -222,6 +251,7 @@ $cancellable_statuses = ['pending', 'confirmed'];
                         <p>Stylist: <strong><?php echo $appt['staff_name'] ? htmlspecialchars($appt['staff_name']) : 'Unassigned'; ?></strong></p>
                         <p><?php echo $appt['appointment_date']; ?> at <?php echo date('h:i A', strtotime($appt['appointment_time'])); ?></p>
                         <p>Price: Rs. <?php echo number_format($appt['price'], 2); ?></p>
+<<<<<<< HEAD
                         <?php if (!empty($appt['full_queue'])): ?>
                             <button type="button" class="btn-view-queue" onclick="toggleQueue(<?php echo $appt['id']; ?>)">
                                 <i class="fas fa-list-ol"></i> View Today's Queue
@@ -254,6 +284,8 @@ $cancellable_statuses = ['pending', 'confirmed'];
                                 <i class="fas fa-times-circle"></i> Your appointment is cancelled
                             </p>
                         <?php endif; ?>
+=======
+>>>>>>> subbranch3
                     </div>
                     <div class="appt-actions">
                         <span class="appt-status <?php echo $appt['status']; ?>"><?php echo $appt['status']; ?></span>
@@ -267,6 +299,7 @@ $cancellable_statuses = ['pending', 'confirmed'];
                 </div>
             <?php endforeach; ?>
         <?php endif; ?>
+<<<<<<< HEAD
 
         <?php if (!empty($my_waitlist)): ?>
             <h1 style="font-size:22px; margin-top:40px;">My Waitlist</h1>
@@ -329,5 +362,9 @@ $cancellable_statuses = ['pending', 'confirmed'];
     }
     </script>
 
+=======
+    </div>
+
+>>>>>>> subbranch3
 </body>
 </html>

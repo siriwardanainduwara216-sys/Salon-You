@@ -16,7 +16,11 @@ document.addEventListener('DOMContentLoaded', function() {
             this.classList.toggle('fa-eye-slash');
         });
     }
+<<<<<<< HEAD
     // Register Form Submission 
+=======
+    // Register Form Submission (AJAX)
+>>>>>>> subbranch3
     
     const registerForm = document.getElementById('register-form');
     const alertBox     = document.getElementById('alert-box');

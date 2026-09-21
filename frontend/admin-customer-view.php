@@ -39,7 +39,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_points'])) {
     mysqli_stmt_close($stmt);
 }
 
+<<<<<<< HEAD
 // ---- Customer basic details ----
+=======
+// Customer basic details
+>>>>>>> subbranch3
 $sql = "SELECT id, name, email, phone, status, loyalty_points, created_at FROM users WHERE id = ? AND role = 'customer'";
 $stmt = mysqli_prepare($conn, $sql);
 mysqli_stmt_bind_param($stmt, "i", $customer_id);
@@ -52,7 +56,11 @@ if (!$customer) {
     exit();
 }
 
+<<<<<<< HEAD
 // ---- Booking History ----
+=======
+//Booking History 
+>>>>>>> subbranch3
 $booking_history = [];
 $sql = "SELECT a.appointment_date, a.appointment_time, a.status, s.service_name, s.price
         FROM appointments a
@@ -68,7 +76,11 @@ while ($row = mysqli_fetch_assoc($result)) {
 }
 mysqli_stmt_close($stmt);
 
+<<<<<<< HEAD
 // ---- Reviews / Feedback ----
+=======
+// Reviews / Feedback 
+>>>>>>> subbranch3
 $reviews = [];
 $sql = "SELECT rating, comment, created_at FROM reviews WHERE user_id = ? ORDER BY created_at DESC";
 $stmt = mysqli_prepare($conn, $sql);
@@ -98,6 +110,7 @@ mysqli_stmt_close($stmt);
             <li><a href="admin-staff.php"><i class="fas fa-users"></i><span> Staff Management</span></a></li>
             <li class="active"><a href="admin-customers.php"><i class="fas fa-user-friends"></i><span> Customer Management</span></a></li>
             <li><a href="admin-appointments.php"><i class="fas fa-calendar-check"></i><span> Appointments</span></a></li>
+<<<<<<< HEAD
              <li><a href="admin-queue.php"><i class="fas fa-list-ol"></i><span> Today's Queue</span></a></li>
             <li><a href="admin-services.php"><i class="fas fa-cut"></i><span> Services</span></a></li>
             <li><a href="admin-products.php"><i class="fas fa-pump-soap"></i><span> Product</span></a></li>
@@ -106,6 +119,11 @@ mysqli_stmt_close($stmt);
             <li><a href="admin-billing.php"><i class="fas fa-money-bill"></i><span> Billing & Payments</span></a></li>
             <li><a href="admin-reports.php"><i class="fas fa-file-invoice-dollar"></i><span> Reports</span></a></li>
             <li><a href="admin-closed-dates.php"><i class="fas fa-calendar-times"></i><span> Closed Dates</span></a></li>
+=======
+            <li><a href="admin-inventory.php"><i class="fas fa-box"></i><span> Inventory</span></a></li>
+            <li><a href="admin-billing.php"><i class="fas fa-money-bill"></i><span> Billing & Payments</span></a></li>
+            <li><a href="admin-reports.php"><i class="fas fa-file-invoice-dollar"></i><span> Reports</span></a></li>
+>>>>>>> subbranch3
             <li><a href="admin-notifications.php"><i class="fas fa-bell"></i><span> Notifications</span></a></li>
             <li><a href="../backend/logout.php"><i class="fas fa-sign-out-alt"></i><span> Logout</span></a></li>
         </ul>
@@ -123,7 +141,11 @@ mysqli_stmt_close($stmt);
         <?php if ($success_msg): ?><div class="alert alert-success"><?php echo htmlspecialchars($success_msg); ?></div><?php endif; ?>
         <?php if ($error_msg): ?><div class="alert alert-error"><?php echo htmlspecialchars($error_msg); ?></div><?php endif; ?>
 
+<<<<<<< HEAD
         <!-- Basic Info -->
+=======
+        
+>>>>>>> subbranch3
         <div class="panel">
             <h4>Basic Details</h4>
             <div class="profile-grid">
@@ -144,7 +166,11 @@ mysqli_stmt_close($stmt);
             </form>
         </div>
 
+<<<<<<< HEAD
         <!-- Booking History -->
+=======
+        <!--Booking History -->
+>>>>>>> subbranch3
         <div class="panel">
             <h4>Booking History (<?php echo count($booking_history); ?>)</h4>
             <div class="table-wrap">
@@ -154,7 +180,11 @@ mysqli_stmt_close($stmt);
                     </thead>
                     <tbody>
                         <?php if (empty($booking_history)): ?>
+<<<<<<< HEAD
                             <tr><td colspan="5" class="no-data">No bookings found.</td></tr>
+=======
+                            <tr><td colspan="5" style="color: var(--text-muted); text-align:center;">No bookings found.</td></tr>
+>>>>>>> subbranch3
                         <?php else: ?>
                             <?php foreach ($booking_history as $b): ?>
                                 <tr>
@@ -175,7 +205,11 @@ mysqli_stmt_close($stmt);
         <div class="panel">
             <h4>Feedback & Reviews (<?php echo count($reviews); ?>)</h4>
             <?php if (empty($reviews)): ?>
+<<<<<<< HEAD
                 <p class="no-data-text">No reviews found.</p>
+=======
+                <p style="color: var(--text-muted); font-size: 14px;">No reviews found.</p>
+>>>>>>> subbranch3
             <?php else: ?>
                 <?php foreach ($reviews as $r): ?>
                     <div class="review-item">

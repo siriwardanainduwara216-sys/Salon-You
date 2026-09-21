@@ -9,6 +9,7 @@ $user_name = $_SESSION['user_name'] ?? 'Guest User';
 
 // Correct Relative Path to Config File
 require_once __DIR__ . '/../backend/config.php';
+<<<<<<< HEAD
 
 // ---- Fetch today's queue position for this customer 
 $today_queue_appt = null;
@@ -43,6 +44,8 @@ if ($is_logged_in && $user_role === 'customer') {
         mysqli_stmt_close($stmt);
     }
 }
+=======
+>>>>>>> subbranch3
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -50,6 +53,7 @@ if ($is_logged_in && $user_role === 'customer') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Salon You - Management System</title>
+<<<<<<< HEAD
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="frontend-css/style.css">
@@ -64,6 +68,80 @@ if ($is_logged_in && $user_role === 'customer') {
             background: #0b0f19 !important;
             width: 100% !important;
             display: block !important;
+=======
+    
+    <!-- Fonts & Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- CSS Stylesheets -->
+    <link rel="stylesheet" href="frontend-css/style.css?v=<?php echo time(); ?>">
+
+    <!-- Custom Styles -->
+    <style>
+        body {
+            padding-top: 80px !important; /* Header overlay prevention */
+        }
+
+        .hero-section {
+            position: relative !important;
+        }
+
+        /* Video darkness layer */
+        .hero-section::after {
+            content: '' !important;
+            position: absolute !important;
+            top: 0 !important;
+            left: 0 !important;
+            width: 100% !important;
+            height: 100% !important;
+            background: rgba(0, 0, 0, 0.6) !important;
+            z-index: 2 !important;
+        }
+
+        .hero-content {
+            position: relative !important;
+            z-index: 10 !important;
+        }
+
+        .hero-title, .hero-title * {
+            color: #ffffff !important;
+            text-shadow: 0 4px 15px rgba(0, 0, 0, 0.9) !important;
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #f59e0b, #fbbf24) !important;
+            -webkit-background-clip: text !important;
+            background-clip: text !important;
+            -webkit-text-fill-color: transparent !important;
+        }
+
+        .hero-subtitle {
+            color: #f1f5f9 !important;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.9) !important;
+        }
+
+        .welcome-badge {
+            color: #fbbf24 !important;
+            background: rgba(0, 0, 0, 0.5) !important;
+            border: 1px solid rgba(251, 191, 36, 0.6) !important;
+        }
+
+        .btn-secondary {
+            background: rgba(0, 0, 0, 0.6) !important;
+            color: #ffffff !important;
+            border: 1px solid rgba(255, 255, 255, 0.5) !important;
+        }
+
+        /* ===== AI RECOMMENDER STYLES ===== */
+        #ai-recommender {
+            padding: 60px 20px !important;
+            text-align: center !important;
+            background: #f8fafc !important;
+            width: 100% !important;
+            display: block !important;
+            border-top: 1px solid #e2e8f0 !important;
+>>>>>>> subbranch3
         }
 
         #ai-recommender .section-header {
@@ -72,12 +150,22 @@ if ($is_logged_in && $user_role === 'customer') {
         }
 
         #ai-recommender .section-title {
+<<<<<<< HEAD
             color: #ffffff !important;
             font-size: 2.2rem !important;
         }
 
         #ai-recommender .section-subtitle {
             color: #94a3b8 !important;
+=======
+            color: #0f172a !important;
+            font-size: 2.2rem !important;
+            font-weight: 700 !important;
+        }
+
+        #ai-recommender .section-subtitle {
+            color: #64748b !important;
+>>>>>>> subbranch3
         }
 
         #ai-recommender-card {
@@ -86,8 +174,13 @@ if ($is_logged_in && $user_role === 'customer') {
         }
 
         #ai-recommender .ai-upload-box {
+<<<<<<< HEAD
             border: 2px dashed #a855f7 !important;
             background: #111827 !important;
+=======
+            border: 2px dashed #d97706 !important;
+            background: #ffffff !important;
+>>>>>>> subbranch3
             border-radius: 20px !important;
             padding: 40px 25px !important;
             cursor: pointer !important;
@@ -97,6 +190,7 @@ if ($is_logged_in && $user_role === 'customer') {
             flex-direction: column !important;
             align-items: center !important;
             justify-content: center !important;
+<<<<<<< HEAD
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5) !important;
         }
 
@@ -104,42 +198,73 @@ if ($is_logged_in && $user_role === 'customer') {
             border-color: #ec4899 !important;
             background: #1f2937 !important;
             box-shadow: 0 0 25px rgba(168, 85, 247, 0.4) !important;
+=======
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05) !important;
+        }
+
+        #ai-recommender .ai-upload-box:hover {
+            border-color: #b45309 !important;
+            background: #fffbe2 !important;
+            box-shadow: 0 12px 25px rgba(217, 119, 6, 0.15) !important;
+>>>>>>> subbranch3
             transform: translateY(-3px) !important;
         }
 
         #ai-recommender .upload-icon-wrapper {
             width: 70px !important;
             height: 70px !important;
+<<<<<<< HEAD
             background: rgba(168, 85, 247, 0.15) !important;
+=======
+            background: rgba(217, 119, 6, 0.1) !important;
+>>>>>>> subbranch3
             border-radius: 50% !important;
             display: flex !important;
             align-items: center !important;
             justify-content: center !important;
             margin: 0 auto 15px auto !important;
             font-size: 30px !important;
+<<<<<<< HEAD
             color: #c084fc !important;
             border: 1px solid rgba(168, 85, 247, 0.3) !important;
+=======
+            color: #d97706 !important;
+            border: 1px solid rgba(217, 119, 6, 0.25) !important;
+>>>>>>> subbranch3
         }
 
         #ai-recommender h3 {
             font-size: 1.2rem !important;
+<<<<<<< HEAD
             color: #ffffff !important;
+=======
+            color: #1e293b !important;
+>>>>>>> subbranch3
             margin-bottom: 8px !important;
             font-weight: 600 !important;
         }
 
         #ai-recommender h3 span {
+<<<<<<< HEAD
             color: #c084fc !important;
+=======
+            color: #d97706 !important;
+>>>>>>> subbranch3
             text-decoration: underline !important;
         }
 
         #ai-recommender p {
+<<<<<<< HEAD
             color: #94a3b8 !important;
+=======
+            color: #64748b !important;
+>>>>>>> subbranch3
             font-size: 0.88rem !important;
             margin-bottom: 20px !important;
         }
     </style>
 </head>
+<<<<<<< HEAD
 
 <body>
     <!-- HEADER SECTION -->
@@ -216,6 +341,26 @@ if ($is_logged_in && $user_role === 'customer') {
 
             <!-- Hero Content -->
             <div class="hero-content" style="position: relative; z-index: 3; text-align: center;">
+=======
+<body>
+
+    <!-- SHARED HEADER INCLUDE WITH ACTIVE PAGE STATE -->
+    <?php 
+    $active_page = 'home';
+    include 'header.php'; 
+    ?>
+
+    <main class="main-container">
+        <!-- 1. HERO SECTION WITH BACKGROUND VIDEO -->
+        <section class="hero-section">
+            <video autoplay loop muted playsinline class="hero-bg-video">
+                <source src="../uploads/videos/bg-video.mp4" type="video/mp4">
+            </video>
+
+            <div class="hero-overlay"></div>
+
+            <div class="hero-content">
+>>>>>>> subbranch3
                 <span class="welcome-badge">Welcome to Salon You</span>
                 <h1 class="hero-title">WHERE EXPERT CARE MEETS <br><span class="gradient-text">LUXURY BEAUTY</span></h1>
                 <p class="hero-subtitle">Book your next appointment today and experience the best ever salon service.</p>
@@ -226,7 +371,11 @@ if ($is_logged_in && $user_role === 'customer') {
             </div>
         </section>
 
+<<<<<<< HEAD
         <!-- AI RECOMMENDER SECTION -->
+=======
+        <!-- 2. AI RECOMMENDER SECTION -->
+>>>>>>> subbranch3
         <section id="ai-recommender" class="section-container">
             <div class="section-header text-center">
                 <span class="section-badge"><i class="fas fa-magic"></i> AI POWERED</span>
@@ -234,10 +383,15 @@ if ($is_logged_in && $user_role === 'customer') {
                 <p class="section-subtitle">Upload your selfie to analyze face shape and get a 360 hairstyle preview.</p>
             </div>
             
+<<<<<<< HEAD
             <!-- Hidden File Input -->
             <input type="file" id="ai-photo-input" accept="image/*" onchange="analyzeFaceShape()" hidden>
             
             <!-- Dropzone Box -->
+=======
+            <input type="file" id="ai-photo-input" accept="image/*" onchange="analyzeFaceShape()" hidden>
+            
+>>>>>>> subbranch3
             <div id="ai-recommender-card">
                 <div class="ai-upload-box" onclick="document.getElementById('ai-photo-input').click()">
                     <div class="upload-icon-wrapper">
@@ -259,6 +413,7 @@ if ($is_logged_in && $user_role === 'customer') {
             </div>
         </section>
 
+<<<<<<< HEAD
         <!-- BRAND / STORY HERO BANNER -->
         <section class="hero-section" style="background-image: url('../uploads/images/salon/hero-bg.jpg'); background-size: cover; background-position: center; padding: 80px 20px;">
             <div class="hero-content text-center">
@@ -268,15 +423,31 @@ if ($is_logged_in && $user_role === 'customer') {
                 <div class="hero-btns" style="margin-top: 20px;">
                     <a href="#ai-recommender" class="btn-primary"><i class="fas fa-magic"></i> Try AI Mirror</a>
                     <a href="about.php" class="btn-secondary"><i class="fas fa-arrow-down"></i> Explore Our Story</a>
+=======
+        <!-- 3. SECONDARY BANNER -->
+        <section class="hero-section" style="background-image: linear-gradient(rgba(15, 23, 42, 0.35), rgba(15, 23, 42, 0.45)), url('/Salon-You-subbranch1/uploads/images/salon/salon1.jpeg') !important; background-size: cover !important; background-position: center !important; min-height: 80vh;">
+            <div class="hero-content text-center">
+                <span class="section-badge">WELCOME TO SALON YOU</span>
+                <h1 class="hero-title">Redefining Your <span class="gradient-text">Beauty & Style</span></h1>
+                <p class="hero-subtitle">AI technology and the services of top-tier stylists under one roof.</p>
+                <div class="hero-btns" style="margin-top: 20px;">
+                    <a href="#ai-recommender" class="btn-primary">Try AI Mirror</a>
+                    <a href="about.php" class="btn-secondary">Explore Our Story</a>
+>>>>>>> subbranch3
                 </div>
             </div>
         </section>
 
+<<<<<<< HEAD
         <!-- SERVICES SHOWCASE SECTION -->
+=======
+        <!-- 4. SERVICES SHOWCASE SECTION -->
+>>>>>>> subbranch3
         <section class="section-container services-section">
             <div class="side-by-side-grid">
                 <div class="quad-image-grid">
                     <img src="../uploads/images/salon/service-1.jpg" alt="Hair Styling"> 
+<<<<<<< HEAD
                     <img src="../uploads/images/salon/service-2.jpg" alt="Skin Care"> 
                     <img src="../uploads/images/salon/service-3.jpg" alt="Makeup"> 
                     <img src="../uploads/images/salon/service-4.jpg" alt="Nail Art"> 
@@ -284,11 +455,23 @@ if ($is_logged_in && $user_role === 'customer') {
 
                 <div class="side-by-side-content">
                     <span class="section-badge"><i class="fas fa-cut"></i> WHAT WE OFFER</span>
+=======
+                    <img src="../uploads/images/salon/home2.jpg" alt="Skin Care"> 
+                    <img src="../uploads/images/salon/home1.jpg" alt="Makeup"> 
+                    <img src="../uploads/images/salon/home3.jpg" alt="Nail Art"> 
+                </div>
+
+                <div class="side-by-side-content">
+                    <span class="section-badge">WHAT WE OFFER</span>
+>>>>>>> subbranch3
                     <h2 class="large-title">Our Premium <span class="gradient-text">Services</span></h2>
 
                     <div class="purpose-block">
                         <div class="purpose-header">
+<<<<<<< HEAD
                             <i class="fas fa-magic purpose-icon-inline"></i>
+=======
+>>>>>>> subbranch3
                             <h3>Hair Care & Styling</h3>
                         </div>
                         <p class="large-text">
@@ -298,7 +481,10 @@ if ($is_logged_in && $user_role === 'customer') {
 
                     <div class="purpose-block">
                         <div class="purpose-header">
+<<<<<<< HEAD
                             <i class="fas fa-spa purpose-icon-inline"></i>
+=======
+>>>>>>> subbranch3
                             <h3>Skin & Beauty Treatments</h3>
                         </div>
                         <p class="large-text">
@@ -309,10 +495,17 @@ if ($is_logged_in && $user_role === 'customer') {
             </div>
         </section>
 
+<<<<<<< HEAD
         <!-- PRODUCTS SECTION -->
         <section class="section-container products-section">
             <div class="section-header text-center">
                 <span class="section-badge"><i class="fas fa-pump-soap"></i> EXCLUSIVE PRODUCTS</span>
+=======
+        <!-- 5. PRODUCTS SECTION -->
+        <section class="section-container products-section">
+            <div class="section-header text-center">
+                <span class="section-badge">EXCLUSIVE PRODUCTS</span>
+>>>>>>> subbranch3
                 <h2 class="large-title">Our Quality <span class="gradient-text">Beauty Products</span></h2>
             </div>
 
@@ -335,7 +528,11 @@ if ($is_logged_in && $user_role === 'customer') {
             </div>
         </section>
 
+<<<<<<< HEAD
         <!-- EXPERT TEAM SECTION -->
+=======
+        <!-- 6. EXPERT TEAM SECTION -->
+>>>>>>> subbranch3
         <section class="section-container team-section">
             <div class="section-header text-center">
                 <span class="section-badge"><i class="fas fa-users"></i> EXPERT STYLISTS</span>
@@ -345,30 +542,52 @@ if ($is_logged_in && $user_role === 'customer') {
             <div class="team-grid">
                 <div class="team-card">
                     <div class="team-img-box">
+<<<<<<< HEAD
                         <img src="../uploads/images/salon/service-1.jpg" alt="Team Member 1" onerror="this.src='https://via.placeholder.com/300x400?text=Senior+Stylist'">
                     </div>
                    <h3 class="name-text" style="margin-left: 50px !important;">Senior Hair Designer</h3>
                     <p class="intro-text">Leading hairstylists with over 8 years of experience.</p>
+=======
+                        <img src="../uploads/images/salon/owner2.jpg" alt="Team Member 1" onerror="this.src='https://via.placeholder.com/300x400?text=Senior+Stylist'">
+                    </div>
+                    <h3>Senior Hair Designer</h3>
+                    <p class="large-text">Leading hairstylists with over 8 years of experience.</p>
+>>>>>>> subbranch3
                 </div>
 
                 <div class="team-card">
                     <div class="team-img-box">
+<<<<<<< HEAD
                         <img src="../uploads/images/salon/service-1.jpg" alt="Team Member 2" onerror="this.src='https://via.placeholder.com/300x400?text=Beauty+Expert'">
                     </div>
                     <h3 class="name-text" style="margin-left: 50px !important;">Skin & Bridal Specialist</h3>
                     <p class="intro-text">International-level experts in beauty and bridal styling.</p>
+=======
+                        <img src="../uploads/images/salon/owner1.jpg" alt="Team Member 2" onerror="this.src='https://via.placeholder.com/300x400?text=Beauty+Expert'">
+                    </div>
+                    <h3>Skin & Bridal Specialist</h3>
+                    <p class="large-text">International-level experts in beauty and bridal styling.</p>
+>>>>>>> subbranch3
                 </div>
             </div>
         </section>
 
+<<<<<<< HEAD
         <!-- CLIENT FEEDBACK & REVIEWS SECTION -->
         <section class="section-container comment-section">
             <div class="section-header text-center">
                 <span class="section-badge"><i class="fas fa-star"></i> CLIENT FEEDBACK</span>
+=======
+        <!-- 7. CLIENT FEEDBACK & REVIEWS SECTION -->
+        <section class="section-container comment-section">
+            <div class="section-header text-center">
+                <span class="section-badge">CLIENT FEEDBACK</span>
+>>>>>>> subbranch3
                 <h2 class="large-title">What Our <span class="gradient-text">Clients Say</span></h2>
                 
                 <div style="margin-top: 15px;">
                     <?php if ($is_logged_in && $user_role === 'customer'): ?>
+<<<<<<< HEAD
                         <!-- Show review button only to logged-in customers -->
                         <a href="leave-review.php" class="btn-primary" style="display: inline-block;">
                             <i class="fas fa-pen"></i> Leave a Review
@@ -377,6 +596,14 @@ if ($is_logged_in && $user_role === 'customer') {
                         <!-- Guests get redirected to login -->
                         <button type="button" onclick="alert('Please login or register to leave a review!'); window.location.href='login.php';" class="btn-primary">
                             <i class="fas fa-lock"></i> Login to Leave a Review
+=======
+                        <a href="leave-review.php" class="btn-primary" style="display: inline-block;">
+                            Leave a Review
+                        </a>
+                    <?php elseif (!$is_logged_in): ?>
+                        <button type="button" onclick="alert('Please login or register to leave a review!'); window.location.href='login.php';" class="btn-primary">
+                            Login to Leave a Review
+>>>>>>> subbranch3
                         </button>
                     <?php endif; ?>
                 </div>
@@ -442,6 +669,12 @@ if ($is_logged_in && $user_role === 'customer') {
         </section>
     </main>
 
+<<<<<<< HEAD
+=======
+    <!-- FOOTER COMPONENT LINK -->
+    <?php include_once __DIR__ . '/footer.php'; ?>
+
+>>>>>>> subbranch3
     <!-- SCRIPTS -->
     <script src="frontend-java-script/script.js"></script>
     <script src="frontend-java-script/comment.js"></script>

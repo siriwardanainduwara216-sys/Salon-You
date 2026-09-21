@@ -16,7 +16,11 @@ $admin_name = $_SESSION['user_name'];
 require_once __DIR__ . '/../backend/config.php';
 global $conn;
 
+<<<<<<< HEAD
 require_once __DIR__ . '/../backend/admin-notification-data.php';
+=======
+require_once __DIR__ . '/admin-notifications-data.php';
+>>>>>>> subbranch3
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -25,6 +29,10 @@ require_once __DIR__ . '/../backend/admin-notification-data.php';
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Salon You - Notifications</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<<<<<<< HEAD
+=======
+<!-- External CSS Link -->
+>>>>>>> subbranch3
 <link rel="stylesheet" href="frontend-css/notification.css">
 </head>
 <body> 
@@ -36,6 +44,7 @@ require_once __DIR__ . '/../backend/admin-notification-data.php';
             <li><a href="admin-staff.php"><i class="fas fa-users"></i><span> Staff Management</span></a></li>
             <li><a href="admin-customers.php"><i class="fas fa-user-friends"></i><span> Customer Management</span></a></li>
             <li><a href="admin-appointments.php"><i class="fas fa-calendar-check"></i><span> Appointments</span></a></li>
+<<<<<<< HEAD
             <li><a href="admin-queue.php"><i class="fas fa-list-ol"></i><span> Today's Queue</span></a></li>
             <li><a href="admin-services.php"><i class="fas fa-cut"></i><span> Services</span></a></li>
             <li><a href="admin-products.php"><i class="fas fa-pump-soap"></i><span> Product</span></a></li>
@@ -44,6 +53,9 @@ require_once __DIR__ . '/../backend/admin-notification-data.php';
             <li><a href="admin-products.php"><i class="fas fa-pump-soap"></i><span> Products</span></a></li>
             <li><a href="admin-product-orders.php"><i class="fas fa-shopping-basket"></i><span> Product Orders</span></a></li>
             <li><a href="admin-closed-dates.php"><i class="fas fa-calendar-times"></i><span> Closed Dates</span></a></li>
+=======
+            <li><a href="admin-inventory.php"><i class="fas fa-box"></i><span> Inventory</span></a></li>
+>>>>>>> subbranch3
             <li><a href="admin-billing.php"><i class="fas fa-money-bill"></i><span> Billing & Payments</span></a></li>
             <li><a href="admin-reports.php"><i class="fas fa-file-invoice-dollar"></i><span> Reports</span></a></li>
             <li class="active"><a href="admin-notifications.php"><i class="fas fa-bell"></i><span> Notifications</span>
@@ -59,6 +71,7 @@ require_once __DIR__ . '/../backend/admin-notification-data.php';
 
         <div class="page-header"><h2>Notifications</h2></div>
 
+<<<<<<< HEAD
         <!-- Low Stock Alerts (Inventory & Products) -->
         <div class="panel">
             <div class="panel-header">
@@ -67,6 +80,16 @@ require_once __DIR__ . '/../backend/admin-notification-data.php';
             </div>
             <?php if (empty($low_stock_items) && empty($low_stock_products)): ?>
                 <p class="empty-msg">All items and products are well stocked.</p>
+=======
+        <!-- Low Stock Alerts -->
+        <div class="panel">
+            <div class="panel-header">
+                <h4><i class="fas fa-box" style="color: var(--danger-red);"></i> Low Stock Alerts</h4>
+                <span class="count-badge"><?php echo count($low_stock_items); ?></span>
+            </div>
+            <?php if (empty($low_stock_items)): ?>
+                <p class="empty-msg">All inventory items are well stocked.</p>
+>>>>>>> subbranch3
             <?php else: ?>
                 <?php foreach ($low_stock_items as $item): ?>
                     <div class="notif-item urgent">
@@ -77,6 +100,7 @@ require_once __DIR__ . '/../backend/admin-notification-data.php';
                         <div class="notif-action"><a href="admin-inventory.php">Restock →</a></div>
                     </div>
                 <?php endforeach; ?>
+<<<<<<< HEAD
 
                 <?php foreach ($low_stock_products ?? [] as $product): ?>
                     <div class="notif-item urgent">
@@ -108,6 +132,8 @@ require_once __DIR__ . '/../backend/admin-notification-data.php';
                         <div class="notif-action"><a href="admin-product-orders.php">View →</a></div>
                     </div>
                 <?php endforeach; ?>
+=======
+>>>>>>> subbranch3
             <?php endif; ?>
         </div>
 

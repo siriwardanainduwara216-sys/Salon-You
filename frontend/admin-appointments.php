@@ -19,6 +19,10 @@ global $conn;
 $success_msg = '';
 $error_msg = '';
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> subbranch3
 // UPDATE APPOINTMENT STATUS
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_status'])) {
@@ -29,6 +33,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_status'])) {
     if (!in_array($new_status, $allowed_statuses)) {
         $error_msg = "Invalid status value.";
     } else {
+<<<<<<< HEAD
         // Fetch the CURRENT status first, so we only deduct inventory
         // the first time this appointment becomes "completed" (never twice).
         $sql = "SELECT status, service_id FROM appointments WHERE id = ?";
@@ -40,12 +45,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_status'])) {
 
         $was_already_completed = $current && $current['status'] === 'completed';
 
+=======
+>>>>>>> subbranch3
         $sql = "UPDATE appointments SET status = ? WHERE id = ?";
         $stmt = mysqli_prepare($conn, $sql);
         mysqli_stmt_bind_param($stmt, "si", $new_status, $appointment_id);
         if (mysqli_stmt_execute($stmt)) {
             $success_msg = "Appointment status updated successfully!";
 
+<<<<<<< HEAD
             // ---- Deduct inventory + log usage, only on first transition to "completed" ----
             if ($new_status === 'completed' && !$was_already_completed && $current) {
                 $service_id = $current['service_id'];
@@ -85,6 +93,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_status'])) {
                 mysqli_stmt_close($usage_stmt);
             }
 
+=======
+>>>>>>> subbranch3
             // Send a confirmation email to the customer when the appointment is confirmed
             if ($new_status === 'confirmed') {
                 $sql = "SELECT u.name AS customer_name, u.email AS customer_email,
@@ -104,7 +114,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_status'])) {
                 if ($info) {
                     require_once __DIR__ . '/../backend/mailer.php';
                     $staff_name = $info['staff_name'] ?? 'Our Stylist';
+<<<<<<< HEAD
                     $mail_result = send_appointment_confirmation_email(
+=======
+                    send_appointment_confirmation_email(
+>>>>>>> subbranch3
                         $info['customer_email'],
                         $info['customer_name'],
                         $info['service_name'],
@@ -112,6 +126,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_status'])) {
                         $info['appointment_date'],
                         $info['appointment_time']
                     );
+<<<<<<< HEAD
 
                     if (!$mail_result['status']) {
                         $error_msg = "Status updated, but email failed: " . $mail_result['error'];
@@ -131,6 +146,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_status'])) {
                 if ($slot && $slot['staff_id']) {
                     require_once __DIR__ . '/../waitlist-helper.php';
                     notify_waitlist_if_available($conn, $slot['staff_id'], $slot['appointment_date'], $slot['appointment_time']);
+=======
+>>>>>>> subbranch3
                 }
             }
         } else {
@@ -140,6 +157,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_status'])) {
     }
 }
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> subbranch3
 // ASSIGN STAFF TO APPOINTMENT
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['assign_staff'])) {
@@ -157,14 +178,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['assign_staff'])) {
     mysqli_stmt_close($stmt);
 }
 
+<<<<<<< HEAD
 // Active status filter (from URL, defaults to 'all') 
+=======
+// ---- Active status filter (from URL, defaults to 'all') ----
+>>>>>>> subbranch3
 $status_filter = $_GET['status'] ?? 'all';
 $allowed_filters = ['all', 'pending', 'confirmed', 'completed', 'cancelled'];
 if (!in_array($status_filter, $allowed_filters)) {
     $status_filter = 'all';
 }
 
+<<<<<<< HEAD
 require_once __DIR__ . '/../backend/admin-appointments-data.php';
+=======
+require_once __DIR__ . '/admin-appointments-data.php';
+>>>>>>> subbranch3
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -173,6 +202,10 @@ require_once __DIR__ . '/../backend/admin-appointments-data.php';
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Salon You - Appointment Tracking</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<<<<<<< HEAD
+=======
+<!-- External CSS Link -->
+>>>>>>> subbranch3
 <link rel="stylesheet" href="frontend-css/appoinment.css">
 </head>
 <body>
@@ -184,6 +217,7 @@ require_once __DIR__ . '/../backend/admin-appointments-data.php';
             <li><a href="admin-staff.php"><i class="fas fa-users"></i><span> Staff Management</span></a></li>
             <li><a href="admin-customers.php"><i class="fas fa-user-friends"></i><span> Customer Management</span></a></li>
             <li class="active"><a href="admin-appointments.php"><i class="fas fa-calendar-check"></i><span> Appointments</span></a></li>
+<<<<<<< HEAD
             <li><a href="admin-queue.php"><i class="fas fa-list-ol"></i><span> Today's Queue</span></a></li>
             <li><a href="admin-services.php"><i class="fas fa-cut"></i><span> Services</span></a></li>
             <li><a href="admin-products.php"><i class="fas fa-pump-soap"></i><span> Product</span></a></li>
@@ -192,6 +226,12 @@ require_once __DIR__ . '/../backend/admin-appointments-data.php';
             <li><a href="admin-billing.php"><i class="fas fa-money-bill"></i><span> Billing & Payments</span></a></li>
             <li><a href="admin-reports.php"><i class="fas fa-file-invoice-dollar"></i><span> Reports</span></a></li>
             <li><a href="admin-closed-dates.php"><i class="fas fa-calendar-times"></i><span> Closed Dates</span></a></li>
+=======
+            <li><a href="admin-services.php"><i class="fas fa-cut"></i><span> Services</span></a></li>
+            <li><a href="admin-inventory.php"><i class="fas fa-box"></i><span> Inventory</span></a></li>
+            <li><a href="admin-billing.php"><i class="fas fa-money-bill"></i><span> Billing & Payments</span></a></li>
+            <li><a href="admin-reports.php"><i class="fas fa-file-invoice-dollar"></i><span> Reports</span></a></li>
+>>>>>>> subbranch3
             <li><a href="admin-notifications.php"><i class="fas fa-bell"></i><span> Notifications</span></a></li>
             <li><a href="../backend/logout.php"><i class="fas fa-sign-out-alt"></i><span> Logout</span></a></li>
         </ul>
@@ -244,7 +284,11 @@ require_once __DIR__ . '/../backend/admin-appointments-data.php';
                     </thead>
                     <tbody>
                         <?php if (empty($appointments_list)): ?>
+<<<<<<< HEAD
                             <tr><td colspan="9" class="no-data">No appointments found.</td></tr>
+=======
+                            <tr><td colspan="9" style="color: var(--text-muted); text-align:center;">No appointments found.</td></tr>
+>>>>>>> subbranch3
                         <?php else: ?>
                             <?php foreach ($appointments_list as $appt): ?>
                                 <tr id="appt-<?php echo $appt['id']; ?>">
@@ -255,8 +299,13 @@ require_once __DIR__ . '/../backend/admin-appointments-data.php';
                                     <td><?php echo $appt['appointment_date']; ?></td>
                                     <td><?php echo date('h:i A', strtotime($appt['appointment_time'])); ?></td>
                                     <td>
+<<<<<<< HEAD
                                         <?php echo $appt['staff_name'] ? htmlspecialchars($appt['staff_name']) : '<span class="unassigned-text">Unassigned</span>'; ?>
                                         <button type="button" onclick="toggleStaffAssign(<?php echo $appt['id']; ?>)" class="edit-btn">
+=======
+                                        <?php echo $appt['staff_name'] ? htmlspecialchars($appt['staff_name']) : '<span style="color: var(--text-muted);">Unassigned</span>'; ?>
+                                        <button type="button" onclick="toggleStaffAssign(<?php echo $appt['id']; ?>)" style="background:none; border:none; color:var(--accent-blue); cursor:pointer; font-size:12px; margin-left:4px;">
+>>>>>>> subbranch3
                                             <i class="fas fa-edit"></i>
                                         </button>
                                     </td>
@@ -277,7 +326,11 @@ require_once __DIR__ . '/../backend/admin-appointments-data.php';
                                 <!-- Staff Assignment Row -->
                                 <tr class="staff-assign-row" id="staff-assign-<?php echo $appt['id']; ?>" style="display: none;">
                                     <td colspan="9">
+<<<<<<< HEAD
                                         <form method="POST" action="admin-appointments.php?status=<?php echo $status_filter; ?>" class="staff-assign-form">
+=======
+                                        <form method="POST" action="admin-appointments.php?status=<?php echo $status_filter; ?>" style="display:flex; gap:10px; align-items:center;">
+>>>>>>> subbranch3
                                             <input type="hidden" name="appointment_id" value="<?php echo $appt['id']; ?>">
                                             <select name="staff_id">
                                                 <option value="">-- Unassign --</option>
@@ -287,8 +340,13 @@ require_once __DIR__ . '/../backend/admin-appointments-data.php';
                                                     </option>
                                                 <?php endforeach; ?>
                                             </select>
+<<<<<<< HEAD
                                             <button type="submit" name="assign_staff" class="btn-assign-save">Assign</button>
                                             <button type="button" onclick="toggleStaffAssign(<?php echo $appt['id']; ?>)" class="btn-assign-cancel">Cancel</button>
+=======
+                                            <button type="submit" name="assign_staff" style="background: var(--accent-blue); color: white; border: none; padding: 6px 12px; border-radius: 4px; cursor: pointer;">Assign</button>
+                                            <button type="button" onclick="toggleStaffAssign(<?php echo $appt['id']; ?>)" style="background: var(--border-color); color: var(--text-main); border: none; padding: 6px 12px; border-radius: 4px; cursor: pointer;">Cancel</button>
+>>>>>>> subbranch3
                                         </form>
                                     </td>
                                 </tr>
@@ -300,6 +358,7 @@ require_once __DIR__ . '/../backend/admin-appointments-data.php';
         </div>
     </div>
 </div>
+<<<<<<< HEAD
 
 <!-- Inline JavaScript Code -->
 <script>
@@ -311,6 +370,15 @@ function toggleStaffAssign(appointmentId) {
         } else {
             row.style.display = 'none';
         }
+=======
+<script>
+function toggleStaffAssign(appointmentId) {
+    const row = document.getElementById('staff-assign-' + appointmentId);
+    if (row.style.display === 'none') {
+        row.style.display = 'table-row';
+    } else {
+        row.style.display = 'none';
+>>>>>>> subbranch3
     }
 }
 </script>

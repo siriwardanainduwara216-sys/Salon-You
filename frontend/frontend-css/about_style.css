@@ -1,5 +1,6 @@
 
 
+<<<<<<< HEAD
 /*page hero section */
 .page-hero {
     padding: 6rem 1.5rem 3rem 1.5rem;
@@ -181,10 +182,231 @@
 }
 
 .vm-img2 {
+=======
+/* ==========================================
+   2. FULL-WIDTH HERO BANNER STYLING
+   ========================================== */
+.about-hero-banner {
+    position: relative;
+    width: 100%;
+    min-height: 450px;
+    margin-top: 0 !important;
+    padding-top: 100px;
+    padding-bottom: 60px;
+    padding-left: 8%;
+    padding-right: 8%;
+    background-repeat: no-repeat;
+    background-position: 80% center;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    box-sizing: border-box;
+}
+
+.about-hero-banner .hero-overlay {
+    display: none;
+}
+
+/* Hero Content Styling (Left Aligned & White Text) */
+.hero-banner-content {
+    position: relative;
+    z-index: 2;
+    max-width: 650px;
+    text-align: left;
+}
+
+.hero-banner-title {
+    font-size: 3.2rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+    color: #ffffff !important;
+    line-height: 1.2;
+    text-shadow: 0 3px 12px rgba(0, 0, 0, 0.85);
+}
+
+.hero-banner-title .highlight {
+    color: #ffffff !important;
+    text-shadow: 0 3px 12px rgba(0, 0, 0, 0.85);
+}
+
+.hero-banner-subtitle {
+    font-size: 1.2rem;
+    color: #ffffff !important;
+    line-height: 1.6;
+    margin: 0;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.85);
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .about-hero-banner {
+        min-height: 320px;
+        padding-top: 80px;
+        padding-left: 5%;
+        padding-right: 5%;
+    }
+    
+    .hero-banner-title {
+        font-size: 2.2rem;
+    }
+
+    .hero-banner-subtitle {
+        font-size: 1rem;
+    }
+}
+/* ==========================================
+   3. OUR JOURNEY SECTION (LARGE FONTS)
+   ========================================== */
+.our-journey-section {
+    padding: 60px 8%;
+    background-color: #ffffff;
+    box-sizing: border-box;
+}
+
+.journey-main-title {
+    text-align: center;
+    font-size: 2.8rem;
+    font-weight: 700;
+    color: #0f172a;
+    margin-bottom: 50px;
+}
+
+.journey-container {
+    max-width: 1150px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 55px;
+}
+
+.journey-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: center;
+}
+
+.journey-images-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.journey-media {
+    width: 100%;
+    height: 300px;
+    overflow: hidden;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+.journey-media img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     display: block;
+    transition: transform 0.4s ease;
+}
+
+.journey-media:hover img {
+    transform: scale(1.03);
+}
+
+/* Paragraph Font Size & Spacing */
+.journey-text {
+    font-size: 1.3rem;
+    color: #334155;
+    font-weight: 400;
+}
+
+/* Mobile Responsive */
+@media (max-width: 850px) {
+    .journey-row {
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
+
+    .bottom-row .journey-text {
+        order: 1;
+    }
+    
+    .bottom-row .journey-media {
+        order: 2;
+    }
+
+    .journey-images-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .journey-main-title {
+        font-size: 2.2rem;
+    }
+
+    .journey-text {
+        font-size: 1.05rem;
+    }
+
+    
+}
+
+/* ==========================================
+   5. FOUNDER / WELCOME MESSAGE SECTION
+   ========================================== */
+.founder-section {
+    width: 100%;
+    background-color: #ffffff;
+    padding: 60px 0 80px 0;
+    box-sizing: border-box;
+}
+
+.founder-container {
+    max-width: 100%;
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    align-items: center;
+}
+
+.founder-content {
+    padding: 40px 8% 40px 12%;
+}
+
+.founder-message {
+    font-size: 1.4rem;
+    line-height: 1.85;
+    color: #334155;
+    margin-bottom: 30px;
+    font-weight: 600;
+}
+
+.founder-name {
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: #0f172a;
+    margin-bottom: 5px;
+    letter-spacing: -0.5px;
+}
+
+.founder-title {
+    font-size: rem;
+    color: #64748b;
+    font-weight: 600;
+}
+
+/* Founder Right Image Styling */
+.founder-image-box {
+    width: 100%;
+    height: 550px;
+    overflow: hidden;
+    object-position: center 5%;
+}
+
+.founder-image-box img {
+>>>>>>> subbranch3
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+<<<<<<< HEAD
     transition: transform 0.5s ease;
 }
 
@@ -229,10 +451,178 @@
 
     .vm-img-box2 {
         min-height: 300px;
+=======
+      object-position: center 10%;
+}
+
+/* Mobile Responsive Adjustments */
+@media (max-width: 900px) {
+    .founder-container {
+        grid-template-columns: 1fr;
+    }
+
+    .founder-content {
+        padding: 40px 6%;
+    }
+
+    .founder-image-box {
+        height: 400px;
+    }
+
+    .founder-name {
+        font-size: 1.8rem;
+    }
+}
+
+/* ==========================================
+   6. VISION & MISSION (DARK SPLIT SECTION)
+   ========================================== */
+.vision-mission-dark-section {
+    width: 100%;
+    background-color: #000000; /* Pure Black Background */
+    color: #ffffff;
+    padding: 80px 0;
+    box-sizing: border-box;
+}
+
+.vm-dark-container {
+    max-width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+}
+
+/* Left Image Box */
+.vm-dark-image-box {
+    width: 100%;
+    height: 500px;
+    overflow: hidden;
+}
+
+.vm-dark-image-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    object-position: center 15%;
+}
+
+/* Right Content Box */
+.vm-dark-content {
+    padding: 40px 10% 40px 8%;
+}
+
+.vm-dark-title {
+    font-size: 2.8rem;
+    font-weight: 700;
+    color: #e68f05 !important;
+    margin-bottom: 30px;
+    letter-spacing: -0.5px;
+}
+
+.vm-dark-text {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #ffffff !important;
+}
+
+.vm-dark-text strong {
+    color: #ffffff !important;
+    font-weight: 700;
+}
+/* Mobile Responsive */
+@media (max-width: 900px) {
+    .vm-dark-container {
+        grid-template-columns: 1fr;
+    }
+
+    .vm-dark-content {
+        padding: 40px 6%;
+    }
+
+    .vm-dark-image-box {
+        height: 350px;
+    }
+
+    .vm-dark-title {
+        font-size: 2.2rem;
+    }
+}
+
+/* ==========================================
+   7. OUR COMMITMENT SECTION
+   ========================================== */
+.commitment-section {
+    width: 100%;
+    background-color: #ffffff;
+    padding: 70px 8%;
+    box-sizing: border-box;
+}
+
+.commitment-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.commitment-title {
+    font-size: 2.8rem;
+    font-weight: 700;
+    color: #0f172a;
+    margin-bottom: 20px;
+    letter-spacing: -0.5px;
+}
+
+.commitment-desc {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #334155;
+    max-width: 850px;
+    margin: 0 auto 40px auto;
+}
+
+.commitment-image-box {
+    width: 100%;
+    height: 480px;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.commitment-image-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+}
+
+.commitment-image-box:hover img {
+    transform: scale(1.02);
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .commitment-section {
+        padding: 50px 5%;
+    }
+
+    .commitment-title {
+        font-size: 2.2rem;
+    }
+
+    .commitment-desc {
+        font-size: 1rem;
+        margin-bottom: 25px;
+    }
+
+    .commitment-image-box {
+>>>>>>> subbranch3
         height: 300px;
     }
 }
 
+<<<<<<< HEAD
 @media (max-width: 576px) {
     .page-hero {
         padding: 4rem 1rem 2rem 1rem;
@@ -267,3 +657,180 @@
     gap: 10px;
     text-decoration: none;
 }
+=======
+/* ==========================================
+   8. MODERN DARK FOOTER STYLING (CORRECTED COLOURS)
+   ========================================== */
+.main-footer {
+    width: 100%;
+    background-color: #000000;
+    color: #ffffff;
+    padding: 70px 8% 30px 8%;
+    box-sizing: border-box;
+}
+
+.footer-container {
+    max-width: 1250px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.2fr 1fr 1.5fr 1fr;
+    gap: 40px;
+    align-items: start;
+}
+
+/* Brand Logo - Gold Accent Colour */
+.footer-logo h2 {
+    font-size: 2.2rem;
+    font-weight: 800;
+    letter-spacing: 2px;
+    color: #e68f05 !important; /* SALON YOU -> Gold Colour */
+    margin-bottom: 25px;
+}
+
+.social-icons {
+    display: flex;
+    gap: 15px;
+}
+
+.social-btn {
+    width: 38px;
+    height: 38px;
+    background-color: #111111;
+    border: 1px solid #333333;
+    border-radius: 8px;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.social-btn:hover {
+    background-color: #e68f05;
+    border-color: #e68f05;
+    color: #000000;
+}
+
+/* Section Headings (QUICK LINKS / CONTACT US) - Gold Accent Colour */
+.footer-heading {
+    color: #e68f05 !important; /* QUICK LINKS & CONTACT US -> Gold Colour */
+    font-size: 1.05rem;
+    font-weight: 700;
+    margin-bottom: 25px;
+    letter-spacing: 1px;
+}
+
+/* Navigation Links */
+.footer-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-links li {
+    margin-bottom: 14px;
+}
+
+.footer-links a {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    letter-spacing: 0.5px;
+    transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+    color: #e68f05;
+}
+
+/* Contact Info Items */
+.contact-item {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 22px;
+    align-items: flex-start;
+}
+
+.contact-icon {
+    color: #e68f05; /* Icon Colour -> Gold */
+    font-size: 1.3rem;
+    margin-top: 3px;
+}
+
+/* Original Grey Sub-labels (OPENING TIMES / OUR LOCATION / OUR PHONE) */
+.info-label {
+    display: block;
+    font-size: 0.85rem;
+    color: #94a3b8 !important; /* පරණ Grey Colour එකට මාරු කළා */
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    margin-bottom: 4px;
+}
+
+.contact-item p {
+    margin: 0;
+    color: #ffffff;
+    font-size: 0.95rem;
+    font-weight: 600;
+}
+
+/* Phone Section */
+.phone-box {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.phone-icon {
+    color: #e68f05;
+    font-size: 1.5rem;
+}
+
+.phone-number {
+    color: #ffffff;
+    font-size: 1.1rem;
+    font-weight: 700;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.phone-number:hover {
+    color: #e68f05;
+}
+
+/* Footer Bottom Copyright Bar */
+.footer-bottom {
+    max-width: 1250px;
+    margin: 50px auto 0 auto;
+    padding-top: 25px;
+    border-top: 1px solid #222222;
+    text-align: right;
+}
+
+.footer-bottom p {
+    color: #888888 !important; /* Modern Subtle Grey */
+    font-size: 0.85rem;
+    margin: 0;
+}
+
+/* Mobile Responsive */
+@media (max-width: 992px) {
+    .footer-container {
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+    }
+}
+
+@media (max-width: 600px) {
+    .footer-container {
+        grid-template-columns: 1fr;
+    }
+
+    .footer-bottom {
+        text-align: center;
+    }
+}
+
+>>>>>>> subbranch3

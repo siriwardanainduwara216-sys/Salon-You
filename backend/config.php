@@ -22,7 +22,11 @@ if (!$conn) {
 mysqli_set_charset($conn, "utf8mb4");
 
 
+<<<<<<< HEAD
 // Sanitize user input 
+=======
+// Sanitize user input (security)
+>>>>>>> subbranch3
 function sanitize_input($data) {
     global $conn;
     $data = trim($data); // Remove extra spaces
@@ -45,7 +49,11 @@ function requireLogin() {
 }
 
 
+<<<<<<< HEAD
 // Check user role 
+=======
+// Check user role (Admin/Customer)
+>>>>>>> subbranch3
 function requireRole($role) {
     requireLogin(); // Must be logged in first
     
@@ -56,7 +64,11 @@ function requireRole($role) {
 }
 
 
+<<<<<<< HEAD
 // Send JSON response 
+=======
+// Send JSON response (for AJAX)
+>>>>>>> subbranch3
 function jsonResponse($success, $message = "") {
     header('Content-Type: application/json');
     

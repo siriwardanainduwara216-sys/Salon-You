@@ -1,4 +1,5 @@
 <?php
+<<<<<<< HEAD
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
@@ -13,6 +14,17 @@ $is_customer = $is_logged_in && ($_SESSION['user_role'] ?? '') === 'customer';
 $staff_list = $staff_list ?? [];
 $services_by_category = $services_by_category ?? [];
 $closed_dates = $closed_dates ?? [];
+=======
+session_start();
+require_once __DIR__ . '/../backend/config.php';
+global $conn;
+require_once __DIR__ . '/services-data.php';
+
+$active_page = 'services';
+
+$is_logged_in = isset($_SESSION['user_id']);
+$is_customer = $is_logged_in && $_SESSION['user_role'] === 'customer';
+>>>>>>> subbranch3
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -20,6 +32,7 @@ $closed_dates = $closed_dates ?? [];
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Our Services - Salon You</title>
+<<<<<<< HEAD
     
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -115,10 +128,50 @@ $closed_dates = $closed_dates ?? [];
         margin-bottom: 15px;
         font-size: 0.95rem;
     }
+=======
+
+    <!-- Google Fonts & FontAwesome -->
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="frontend-css/style.css">
+    <link rel="stylesheet" href="frontend-css/services.css?v=2.0">
+    
+    <style>
+        /* BRAND BAR & CONTAINER WIDTH INCREASE */
+        .brand-bar .luxury-container,
+        .services-list-section .luxury-container {
+            max-width: 1400px !important;
+            width: 95% !important;
+        }
+
+        /* 3 CARDS PER ROW */
+        .services-grid {
+            max-width: 1400px !important;
+            display: grid !important;
+            grid-template-columns: repeat(3, 1fr) !important;
+            gap: 25px !important;
+        }
+
+        /* RESPONSIVE BREAKPOINTS */
+        @media (max-width: 992px) {
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr) !important;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .services-grid {
+                grid-template-columns: 1fr !important;
+            }
+        }
+>>>>>>> subbranch3
     </style>
 </head>
 <body class="luxury-theme">
 
+<<<<<<< HEAD
     <!-- NAVIGATION HEADER -->
     <header class="site-header">
         <a href="index.php" class="logo-container">
@@ -202,21 +255,62 @@ $closed_dates = $closed_dates ?? [];
     </div>
 
     <!-- STYLIST SELECTION -->
+=======
+    <!-- INCLUDE HEADER COMPONENT -->
+    <?php include_once __DIR__ . '/header.php'; ?>
+
+    <!-- SERVICES HERO -->
+   <section class="services-hero" style="background: url('../uploads/images/salon/servicebg2.jpeg') no-repeat center 20%/cover; padding: 120px 20px; text-align: center;">
+        <div class="luxury-container text-center" style="max-width: 1050px; margin: 0 auto; background: rgba(0, 0, 0, 0.65); padding: 55px 45px; border-radius: 20px; backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.2); box-shadow: 0 15px 35px rgba(0,0,0,0.6);">
+            
+            <!-- SUBTITLE -->
+            <span class="gold-subtitle" style="color: #FFD700 !important; font-weight: 700; letter-spacing: 3px; font-size: 1.15rem; display: inline-block;">OUR SERVICES</span>
+            
+            <!-- MAIN HEADING -->
+            <h1 class="luxury-heading" style="color: #FFFFFF !important; font-size: 3.3rem; font-weight: 800; margin: 20px 0; line-height: 1.25;">EXCLUSIVE HAIR & BEAUTY <br><span class="gold-text" style="color: #FFD700 !important;">SERVICES</span></h1>
+            
+            <!-- PARAGRAPH -->
+            <p class="about-desc" style="color: #FFFFFF !important; font-size: 1.25rem; font-weight: 400; margin: 20px auto 0 auto; line-height: 1.6; max-width: 750px; text-align: center;">We use only the finest products, carefully selected for their quality and performance.</p>
+            
+        </div>
+    </section>
+
+    <!-- STYLIST SELECTION SECTION -->
+>>>>>>> subbranch3
     <section class="stylist-section">
         <div class="luxury-container text-center">
             <span class="gold-subtitle">OUR TEAM</span>
             <h2 class="luxury-heading">MEET OUR <span class="gold-text">STYLISTS</span></h2>
             <p class="about-desc">Browse our expert team below, then click on any service you'd like to book.</p>
 
+<<<<<<< HEAD
             <div class="stylist-grid" id="stylist-grid">
+=======
+            <!-- Stylists Cards Grid -->
+            <div class="stylist-grid">
+>>>>>>> subbranch3
                 <?php if (empty($staff_list)): ?>
                     <p style="color:#888;">No stylists available right now.</p>
                 <?php else: ?>
                     <?php foreach ($staff_list as $index => $staff): ?>
+<<<<<<< HEAD
                         <div class="stylist-card" data-staff-id="<?php echo $staff['id']; ?>" data-staff-name="<?php echo htmlspecialchars($staff['name']); ?>">
                             <div class="stylist-img-box">
                                 <img src="../uploads/images/salon/stylist-<?php echo ($index % 2) + 1; ?>.jpg" alt="<?php echo htmlspecialchars($staff['name']); ?>">
                                 <span class="badge-selected"><i class="fas fa-check-circle"></i> Selected</span>
+=======
+                        <?php 
+                            $staff_image = !empty($staff['image']) 
+                                ? $staff['image'] 
+                                : ('owner' . (2 - ($index % 2)) . '.jpg');
+                        ?>
+                        <div class="stylist-card" data-staff-id="<?php echo $staff['id']; ?>" data-staff-name="<?php echo htmlspecialchars($staff['name']); ?>">
+                            <div class="stylist-img-box">
+                                <img src="/Salon-You-subbranch1/uploads/images/salon/<?php echo htmlspecialchars($staff_image); ?>" 
+                                     alt="<?php echo htmlspecialchars($staff['name']); ?>"
+                                     onerror="this.src='/Salon-You-subbranch1/uploads/images/salon/salon1.jpeg'">
+                                <span class="badge-selected">Selected</span>
+>>>>>>> subbranch3
                             </div>
                             <div class="stylist-info">
                                 <h3><?php echo htmlspecialchars($staff['name']); ?></h3>
@@ -229,6 +323,7 @@ $closed_dates = $closed_dates ?? [];
         </div>
     </section>
 
+<<<<<<< HEAD
     <!-- CATEGORY SELECTION TABS -->
     <section class="brand-bar">
         <div class="luxury-container text-center" style="padding-top: 20px;">
@@ -236,6 +331,15 @@ $closed_dates = $closed_dates ?? [];
             <p class="about-desc">Tap any service below to choose your stylist, date and time. Tap the gold "Preview" button on a card to try it with AI first.</p>
         </div>
         <div class="luxury-container brand-grid" id="category-tabs">
+=======
+    <!-- INTERACTIVE CATEGORY TABS BAR -->
+    <section class="brand-bar">
+        <div class="luxury-container text-center" style="padding-top: 20px;">
+            <span class="gold-subtitle">PICK A SERVICE</span>
+            <p class="about-desc">Tap any service below to choose your stylist, date and time.</p>
+        </div>
+        <div class="luxury-container brand-grid">
+>>>>>>> subbranch3
             <button class="category-btn active" data-category="mens-haircuts">
                 <i class="fas fa-scissors"></i> MEN'S HAIRCUTS
             </button>
@@ -259,7 +363,11 @@ $closed_dates = $closed_dates ?? [];
         <div class="luxury-container">
             <div class="services-grid" id="services-container">
                 <?php foreach ($services_by_category as $category => $service_list): ?>
+<<<<<<< HEAD
                     <?php if ($category === 'other') continue; ?>
+=======
+                    <?php if ($category === 'other') continue; // legacy generic services not shown in tabs ?>
+>>>>>>> subbranch3
                     <?php foreach ($service_list as $service): ?>
                         <div class="luxury-service-card"
                              data-category="<?php echo htmlspecialchars($category); ?>"
@@ -280,11 +388,14 @@ $closed_dates = $closed_dates ?? [];
                             </div>
                             <div class="card-body">
                                 <h3><?php echo htmlspecialchars($service['service_name']); ?></h3>
+<<<<<<< HEAD
                                 <?php if ($category !== 'facials'): ?>
                                     <button type="button" class="btn-ai-card-preview" data-ai-preview-btn>
                                         <i class="fas fa-magic"></i> Preview
                                     </button>
                                 <?php endif; ?>
+=======
+>>>>>>> subbranch3
                             </div>
                         </div>
                     <?php endforeach; ?>
@@ -293,7 +404,11 @@ $closed_dates = $closed_dates ?? [];
         </div>
     </section>
 
+<<<<<<< HEAD
     <!-- BOOKING SELECTION MODAL -->
+=======
+    <!-- BOOKING MODAL -->
+>>>>>>> subbranch3
     <div class="modal-overlay" id="modal-overlay">
         <div class="booking-modal">
             <button class="modal-close" id="modal-close-btn">&times;</button>
@@ -315,6 +430,7 @@ $closed_dates = $closed_dates ?? [];
                 <input type="date" id="modal-date" required min="<?php echo date('Y-m-d'); ?>">
             </div>
 
+<<<<<<< HEAD
             <div id="busy-times-box" class="busy-times-box" style="display:none;">
                 <p><i class="fas fa-info-circle"></i> Already booked on this date:</p>
                 <div id="busy-times-list"></div>
@@ -338,6 +454,11 @@ $closed_dates = $closed_dates ?? [];
                         <option value="45">:45</option>
                     </select>
                 </div>
+=======
+            <div class="modal-field">
+                <label>Time</label>
+                <input type="time" id="modal-time" required>
+>>>>>>> subbranch3
             </div>
 
             <button class="btn-confirm-booking" id="confirm-booking-btn">
@@ -348,6 +469,7 @@ $closed_dates = $closed_dates ?? [];
 
     <div class="booking-alert" id="booking-alert"></div>
 
+<<<<<<< HEAD
     <!-- CLIENT INTERACTION SCRIPTS -->
     <script type="module">
 import { InferenceClient } from "https://cdn.jsdelivr.net/npm/@huggingface/inference@4/+esm";
@@ -540,6 +662,100 @@ if (confirmBookingBtn) {
         // Busy Time Validation Check
         if (isTimeSlotBusy(time)) {
             showBookingAlert('This time is already booked for the selected stylist. Please choose a different time.');
+=======
+    <script>
+    const isLoggedIn = <?php echo $is_logged_in ? 'true' : 'false'; ?>;
+    const isCustomer = <?php echo $is_customer ? 'true' : 'false'; ?>;
+
+    let selectedServiceId = null;
+    let preselectedStaffId = '';
+
+    const modalOverlay = document.getElementById('modal-overlay');
+    const modalServiceName = document.getElementById('modal-service-name');
+    const modalServicePrice = document.getElementById('modal-service-price');
+    const modalStylistSelect = document.getElementById('modal-stylist-select');
+    const modalDate = document.getElementById('modal-date');
+    const modalTime = document.getElementById('modal-time');
+
+    // Stylist selection
+    document.querySelectorAll('.stylist-card').forEach(card => {
+        card.addEventListener('click', function() {
+            document.querySelectorAll('.stylist-card').forEach(c => c.classList.remove('active'));
+            this.classList.add('active');
+            preselectedStaffId = this.getAttribute('data-staff-id');
+        });
+    });
+
+    // Category tab filtering
+    document.querySelectorAll('.category-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+            document.querySelectorAll('.category-btn').forEach(b => b.classList.remove('active'));
+            this.classList.add('active');
+            const category = this.getAttribute('data-category');
+            document.querySelectorAll('.luxury-service-card').forEach(card => {
+                card.style.display = (card.getAttribute('data-category') === category) ? '' : 'none';
+            });
+        });
+    });
+
+    // Open booking modal
+    document.querySelectorAll('.luxury-service-card').forEach(card => {
+        card.addEventListener('click', function() {
+            selectedServiceId = this.getAttribute('data-service-id');
+            const serviceName = this.getAttribute('data-service');
+            const price = this.getAttribute('data-price');
+
+            modalServiceName.textContent = serviceName;
+            modalServicePrice.textContent = 'Rs. ' + price;
+            modalStylistSelect.value = preselectedStaffId;
+            modalDate.value = '';
+            modalTime.value = '';
+
+            modalOverlay.classList.add('show');
+        });
+    });
+
+    // Close modal
+    document.getElementById('modal-close-btn').addEventListener('click', closeModal);
+    modalOverlay.addEventListener('click', function(e) {
+        if (e.target === modalOverlay) closeModal();
+    });
+    function closeModal() {
+        modalOverlay.classList.remove('show');
+    }
+
+    function showAlert(message, isError = false) {
+        const alertBox = document.getElementById('booking-alert');
+        alertBox.textContent = message;
+        alertBox.className = 'booking-alert' + (isError ? ' error' : '');
+        alertBox.style.display = 'block';
+        setTimeout(() => { alertBox.style.display = 'none'; }, 4000);
+    }
+
+    // Confirm booking
+    document.getElementById('confirm-booking-btn').addEventListener('click', function() {
+        const staffId = modalStylistSelect.value;
+        const date = modalDate.value;
+        const time = modalTime.value;
+
+        if (!staffId) {
+            showAlert('Please choose a stylist.', true);
+            return;
+        }
+        if (!date || !time) {
+            showAlert('Please select a date and time.', true);
+            return;
+        }
+
+        if (!isLoggedIn) {
+            showAlert('Please login to book an appointment. Redirecting...', true);
+            setTimeout(() => { window.location.href = 'login.php'; }, 1800);
+            return;
+        }
+
+        if (!isCustomer) {
+            showAlert('Only customer accounts can book appointments.', true);
+>>>>>>> subbranch3
             return;
         }
 
@@ -549,9 +765,15 @@ if (confirmBookingBtn) {
 
         const fields = {
             staff_id: staffId,
+<<<<<<< HEAD
             service_id: selectedService.id,
             appointment_date: date,
             appointment_time: time,
+=======
+            service_id: selectedServiceId,
+            appointment_date: date,
+            appointment_time: time
+>>>>>>> subbranch3
         };
 
         for (const key in fields) {
@@ -565,6 +787,7 @@ if (confirmBookingBtn) {
         document.body.appendChild(form);
         form.submit();
     });
+<<<<<<< HEAD
 }
 
 function showBookingAlert(message) {
@@ -657,5 +880,12 @@ if (proceedToBookBtn) {
 }
     </script>
 
+=======
+    </script>
+
+     <!-- FOOTER COMPONENT LINK -->
+    <?php include_once __DIR__ . '/footer.php'; ?>
+
+>>>>>>> subbranch3
 </body>
 </html>

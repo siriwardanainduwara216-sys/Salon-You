@@ -22,11 +22,19 @@ if ($staff_id <= 0) {
     exit();
 }
 
+<<<<<<< HEAD
 // ---- Date range filter 
 $date_from = $_GET['date_from'] ?? date('Y-m-d', strtotime('-30 days'));
 $date_to = $_GET['date_to'] ?? date('Y-m-d');
 
 require_once __DIR__ . '/../backend/admin-staff-report-data.php';
+=======
+// ---- Date range filter (defaults to the last 30 days if not specified) ----
+$date_from = $_GET['date_from'] ?? date('Y-m-d', strtotime('-30 days'));
+$date_to = $_GET['date_to'] ?? date('Y-m-d');
+
+require_once __DIR__ . '/admin-staff-report-data.php';
+>>>>>>> subbranch3
 
 if (!$staff_info) {
     header("Location: admin-staff.php");
@@ -39,6 +47,10 @@ if (!$staff_info) {
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Salon You - Staff Report</title>
+<<<<<<< HEAD
+=======
+<!-- FontAwesome Icons -->
+>>>>>>> subbranch3
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <!-- External CSS Link -->
 <link rel="stylesheet" href="frontend-css/staff-report.css">
@@ -52,6 +64,7 @@ if (!$staff_info) {
             <li class="active"><a href="admin-staff.php"><i class="fas fa-users"></i><span> Staff Management</span></a></li>
             <li><a href="admin-customers.php"><i class="fas fa-user-friends"></i><span> Customer Management</span></a></li>
             <li><a href="admin-appointments.php"><i class="fas fa-calendar-check"></i><span> Appointments</span></a></li>
+<<<<<<< HEAD
              <li><a href="admin-queue.php"><i class="fas fa-list-ol"></i><span> Today's Queue</span></a></li>  
             <li><a href="admin-services.php"><i class="fas fa-cut"></i><span> Services</span></a></li>
              <li><a href="admin-products.php"><i class="fas fa-pump-soap"></i><span> Product</span></a></li>
@@ -60,6 +73,11 @@ if (!$staff_info) {
             <li><a href="admin-billing.php"><i class="fas fa-money-bill"></i><span> Billing & Payments</span></a></li>
             <li><a href="admin-reports.php"><i class="fas fa-file-invoice-dollar"></i><span> Reports</span></a></li>
             <li><a href="admin-closed-dates.php"><i class="fas fa-calendar-times"></i><span> Closed Dates</span></a></li>
+=======
+            <li><a href="admin-inventory.php"><i class="fas fa-box"></i><span> Inventory</span></a></li>
+            <li><a href="admin-billing.php"><i class="fas fa-money-bill"></i><span> Billing & Payments</span></a></li>
+            <li><a href="admin-reports.php"><i class="fas fa-file-invoice-dollar"></i><span> Reports</span></a></li>
+>>>>>>> subbranch3
             <li><a href="admin-notifications.php"><i class="fas fa-bell"></i><span> Notifications</span></a></li>
             <li><a href="../backend/logout.php"><i class="fas fa-sign-out-alt"></i><span> Logout</span></a></li>
         </ul>
@@ -129,7 +147,11 @@ if (!$staff_info) {
                     </thead>
                     <tbody>
                         <?php if (empty($staff_services)): ?>
+<<<<<<< HEAD
                             <tr><td colspan="6" class="no-data-cell">No completed services in this date range.</td></tr>
+=======
+                            <tr><td colspan="6" style="color: var(--text-muted); text-align:center;">No completed services in this date range.</td></tr>
+>>>>>>> subbranch3
                         <?php else: ?>
                             <?php foreach ($staff_services as $item): ?>
                                 <tr>

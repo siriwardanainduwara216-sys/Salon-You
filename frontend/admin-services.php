@@ -19,7 +19,11 @@ global $conn;
 $success_msg = '';
 $error_msg = '';
 
+<<<<<<< HEAD
 // The physical folder where uploaded service images are stored
+=======
+// The physical folder (on disk) where uploaded service images are stored
+>>>>>>> subbranch3
 $upload_dir = __DIR__ . '/../uploads/images/services/';
 // The web-relative path stored in the database (root-relative, no leading slash)
 $upload_db_prefix = 'uploads/images/services/';
@@ -61,8 +65,14 @@ function handle_image_upload($file, $upload_dir, $upload_db_prefix, &$error_msg)
     }
 }
 
+<<<<<<< HEAD
 // ADD NEW SERVICE
 
+=======
+// ============================================================
+// ADD NEW SERVICE
+// ============================================================
+>>>>>>> subbranch3
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_service'])) {
     $service_name = trim($_POST['service_name']);
     $category = $_POST['category'];
@@ -88,8 +98,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_service'])) {
     }
 }
 
+<<<<<<< HEAD
 // UPDATE SERVICE
 
+=======
+// ============================================================
+// UPDATE SERVICE
+// ============================================================
+>>>>>>> subbranch3
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_service'])) {
     $service_id = (int) $_POST['service_id'];
     $service_name = trim($_POST['service_name']);
@@ -120,8 +136,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_service'])) {
     }
 }
 
+<<<<<<< HEAD
 // DELETE SERVICE
 
+=======
+// ============================================================
+// DELETE SERVICE
+// ============================================================
+>>>>>>> subbranch3
 if (isset($_GET['delete_id'])) {
     $delete_id = (int) $_GET['delete_id'];
 
@@ -144,7 +166,11 @@ if (isset($_GET['delete_id'])) {
     mysqli_stmt_close($stmt);
 }
 
+<<<<<<< HEAD
 require_once __DIR__ . '/../backend/admin-services-data.php';
+=======
+require_once __DIR__ . '/admin-services-data.php';
+>>>>>>> subbranch3
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -153,6 +179,10 @@ require_once __DIR__ . '/../backend/admin-services-data.php';
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Salon You - Manage Services</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<<<<<<< HEAD
+=======
+<!-- External CSS Link -->
+>>>>>>> subbranch3
 <link rel="stylesheet" href="frontend-css/admin-services.css">
 </head>
 <body>
@@ -164,10 +194,14 @@ require_once __DIR__ . '/../backend/admin-services-data.php';
             <li><a href="admin-staff.php"><i class="fas fa-users"></i><span> Staff Management</span></a></li>
             <li><a href="admin-customers.php"><i class="fas fa-user-friends"></i><span> Customer Management</span></a></li>
             <li><a href="admin-appointments.php"><i class="fas fa-calendar-check"></i><span> Appointments</span></a></li>
+<<<<<<< HEAD
              <li><a href="admin-queue.php"><i class="fas fa-list-ol"></i><span> Today's Queue</span></a></li>
             <li class="active"><a href="admin-services.php"><i class="fas fa-cut"></i><span> Services</span></a></li>
             <li><a href="admin-products.php"><i class="fas fa-pump-soap"></i><span> Product</span></a></li>
             <li><a href="admin-product-orders.php"><i class="fas fa-shopping-basket"></i><span> Product Orders</span></a></li>
+=======
+            <li class="active"><a href="admin-services.php"><i class="fas fa-cut"></i><span> Services</span></a></li>
+>>>>>>> subbranch3
             <li><a href="admin-inventory.php"><i class="fas fa-box"></i><span> Inventory</span></a></li>
             <li><a href="admin-billing.php"><i class="fas fa-money-bill"></i><span> Billing & Payments</span></a></li>
             <li><a href="admin-reports.php"><i class="fas fa-file-invoice-dollar"></i><span> Reports</span></a></li>

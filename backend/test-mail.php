@@ -1,5 +1,17 @@
 <?php
+<<<<<<< HEAD
 
+=======
+// ============================================================
+// test-mail.php
+// Standalone test - sends a test OTP email directly, bypassing
+// the registration form entirely. Helps isolate whether the
+// problem is network/DNS related or something in the form flow.
+//
+// IMPORTANT: Delete this file once testing is done - it should
+// never be left on a live/production server.
+// ============================================================
+>>>>>>> subbranch3
 
 require_once __DIR__ . '/mailer.php';
 

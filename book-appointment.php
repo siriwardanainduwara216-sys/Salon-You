@@ -62,6 +62,7 @@ if (!$error) {
     }
 }
 
+<<<<<<< HEAD
 // ---- Verify the appointment time is within business hours (9 AM - 5 PM) ----
 if (!$error) {
     if ($appointment_time < '09:00' || $appointment_time > '17:00') {
@@ -99,6 +100,8 @@ if (!$error) {
     mysqli_stmt_close($stmt);
 }
 
+=======
+>>>>>>> subbranch3
 // ---- Insert the appointment ----
 if (!$error) {
     $sql = "INSERT INTO appointments (user_id, staff_id, service_id, appointment_date, appointment_time, status)

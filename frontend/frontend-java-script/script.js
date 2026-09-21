@@ -1,6 +1,12 @@
+<<<<<<< HEAD
 
 // AI Hairstyle Recommender Engine 
 
+=======
+// =========================================================================
+// AI Hairstyle Recommender Engine (Standard Vanilla CSS Version)
+// =========================================================================
+>>>>>>> subbranch3
 
 async function analyzeFaceShape() {
     const photoInput = document.getElementById('ai-photo-input');
@@ -23,6 +29,12 @@ async function analyzeFaceShape() {
     const formData = new FormData();
     formData.append('image', photoInput.files[0]);
 
+<<<<<<< HEAD
+=======
+    // -----------------------------------------------------------------
+    // 404 Error වැළැක්වීමට Path එක Dynamic ලෙස backend/generate_ai.php වෙත සැකසීම
+    // -----------------------------------------------------------------
+>>>>>>> subbranch3
     const currentPath = window.location.pathname;
     let aiUrl = '../backend/generate_ai.php';
 

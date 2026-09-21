@@ -24,9 +24,15 @@ global $conn;
 $success_msg = '';
 $error_msg = '';
 
+<<<<<<< HEAD
 
 // ADD NEW STAFF 
 
+=======
+// ============================================================
+// ADD NEW STAFF (Form submit eka methanata enawa)
+// ============================================================
+>>>>>>> subbranch3
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_staff'])) {
 
     $name     = trim($_POST['name']);
@@ -65,9 +71,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_staff'])) {
     }
 }
 
+<<<<<<< HEAD
 
 // DELETE STAFF
 
+=======
+// ============================================================
+// DELETE STAFF
+// ============================================================
+>>>>>>> subbranch3
 if (isset($_GET['delete_id'])) {
     $delete_id = (int) $_GET['delete_id'];
     $delete_sql = "DELETE FROM users WHERE id = ? AND role = 'employee'";
@@ -83,7 +95,11 @@ if (isset($_GET['delete_id'])) {
 }
 
 // 4. Staff list eka fetch karanawa
+<<<<<<< HEAD
 require_once __DIR__ . '/../backend/admin-staff-data.php';
+=======
+require_once __DIR__ . '/admin-staff-data.php';
+>>>>>>> subbranch3
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -109,6 +125,7 @@ require_once __DIR__ . '/../backend/admin-staff-data.php';
             <li class="active"><a href="admin-staff.php"><i class="fas fa-users"></i><span> Staff Management</span></a></li>
             <li><a href="admin-customers.php"><i class="fas fa-user-friends"></i><span> Customer Management</span></a></li>
             <li><a href="admin-appointments.php"><i class="fas fa-calendar-check"></i><span> Appointments</span></a></li>
+<<<<<<< HEAD
              <li><a href="admin-queue.php"><i class="fas fa-list-ol"></i><span> Today's Queue</span></a></li>  
             <li><a href="admin-services.php"><i class="fas fa-cut"></i><span> Services</span></a></li>
              <li><a href="admin-products.php"><i class="fas fa-pump-soap"></i><span> Product</span></a></li>
@@ -117,6 +134,11 @@ require_once __DIR__ . '/../backend/admin-staff-data.php';
             <li><a href="admin-billing.php"><i class="fas fa-money-bill"></i><span> Billing & Payments</span></a></li>
             <li><a href="admin-reports.php"><i class="fas fa-file-invoice-dollar"></i><span> Reports</span></a></li>
             <li><a href="admin-closed-dates.php"><i class="fas fa-calendar-times"></i><span> Closed Dates</span></a></li>
+=======
+            <li><a href="admin-inventory.php"><i class="fas fa-box"></i><span> Inventory</span></a></li>
+            <li><a href="admin-billing.php"><i class="fas fa-money-bill"></i><span> Billing & Payments</span></a></li>
+            <li><a href="admin-reports.php"><i class="fas fa-file-invoice-dollar"></i><span> Reports</span></a></li>
+>>>>>>> subbranch3
             <li><a href="admin-notifications.php"><i class="fas fa-bell"></i><span> Notifications</span></a></li>
             <li><a href="../backend/logout.php"><i class="fas fa-sign-out-alt"></i><span> Logout</span></a></li>
         </ul>
@@ -195,7 +217,11 @@ require_once __DIR__ . '/../backend/admin-staff-data.php';
                     </thead>
                     <tbody>
                         <?php if (empty($staff_list)): ?>
+<<<<<<< HEAD
                             <tr><td colspan="6" class="no-data">No staff members found.</td></tr>
+=======
+                            <tr><td colspan="6" style="color: var(--text-muted); text-align:center;">No staff members found.</td></tr>
+>>>>>>> subbranch3
                         <?php else: ?>
                             <?php foreach ($staff_list as $staff): ?>
                                 <tr>

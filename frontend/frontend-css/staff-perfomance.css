@@ -15,7 +15,11 @@
     margin: 0; 
     padding: 0; 
     box-sizing: border-box; 
+<<<<<<< HEAD
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+=======
+    font-family: 'Segoe UI', sans-serif; 
+>>>>>>> subbranch3
 }
 
 body { 
@@ -28,7 +32,11 @@ body {
     min-height: 100vh; 
 }
 
+<<<<<<< HEAD
 /* Sidebar Styling */
+=======
+/* Sidebar Navigation */
+>>>>>>> subbranch3
 .sidebar { 
     width: 250px; 
     background-color: var(--card-bg); 
@@ -46,7 +54,10 @@ body {
 .sidebar-header h2 { 
     color: var(--accent-purple); 
     font-size: 20px; 
+<<<<<<< HEAD
     font-weight: 700; 
+=======
+>>>>>>> subbranch3
 }
 
 .sidebar-header p { 
@@ -68,7 +79,10 @@ body {
     text-decoration: none; 
     font-size: 14px; 
     border-left: 3px solid transparent; 
+<<<<<<< HEAD
     transition: all 0.2s ease; 
+=======
+>>>>>>> subbranch3
 }
 
 .sidebar-menu li a:hover, 
@@ -83,7 +97,11 @@ body {
     text-align: center; 
 }
 
+<<<<<<< HEAD
 /* Main Workspace */
+=======
+/* Main Content Area */
+>>>>>>> subbranch3
 .main-content { 
     flex: 1; 
     padding: 25px 30px; 
@@ -103,10 +121,16 @@ body {
 
 .page-header h2 { 
     font-size: 22px; 
+<<<<<<< HEAD
     font-weight: 600; 
 }
 
 /* KPI Cards Grid */
+=======
+}
+
+/* Summary Cards */
+>>>>>>> subbranch3
 .cards-row { 
     display: grid; 
     grid-template-columns: repeat(2, 1fr); 
@@ -136,7 +160,11 @@ body {
 .card.purple .card-number { color: var(--accent-purple); }
 .card.green .card-number { color: var(--success-green); }
 
+<<<<<<< HEAD
 /* Performance Panels */
+=======
+/* Panel & Staff Cards Layout */
+>>>>>>> subbranch3
 .panel { 
     background-color: var(--card-bg); 
     border: 1px solid var(--border-color); 
@@ -148,20 +176,29 @@ body {
 .panel h4 { 
     font-size: 15px; 
     margin-bottom: 15px; 
+<<<<<<< HEAD
     font-weight: 600; 
+=======
+>>>>>>> subbranch3
 }
 
 .staff-card { 
     background: var(--bg-dark); 
     border: 1px solid var(--border-color); 
     border-radius: 8px; 
+<<<<<<< HEAD
     padding: 18px; 
     margin-bottom: 14px; 
+=======
+    padding: 16px; 
+    margin-bottom: 12px; 
+>>>>>>> subbranch3
 }
 
 .staff-card-header { 
     display: flex; 
     justify-content: space-between; 
+<<<<<<< HEAD
     align-items: flex-start; 
     margin-bottom: 14px; 
 }
@@ -170,17 +207,31 @@ body {
     font-size: 16px; 
     font-weight: 600; 
     color: var(--text-main); 
+=======
+    align-items: start; 
+    margin-bottom: 12px; 
+}
+
+.staff-name { 
+    font-size: 15px; 
+    font-weight: 600; 
+>>>>>>> subbranch3
 }
 
 .staff-contact { 
     font-size: 12px; 
     color: var(--text-muted); 
+<<<<<<< HEAD
     margin-top: 3px; 
+=======
+    margin-top: 2px; 
+>>>>>>> subbranch3
 }
 
 .rating-badge { 
     background: var(--accent-amber); 
     color: #000; 
+<<<<<<< HEAD
     padding: 4px 10px; 
     border-radius: 6px; 
     font-size: 12px; 
@@ -193,26 +244,45 @@ body {
 .rating-badge.no-rating { 
     background: rgba(255, 255, 255, 0.08); 
     color: var(--text-muted); 
+=======
+    padding: 4px 8px; 
+    border-radius: 4px; 
+    font-size: 12px; 
+    font-weight: 600; 
+>>>>>>> subbranch3
 }
 
 .staff-metrics { 
     display: grid; 
     grid-template-columns: repeat(3, 1fr); 
     gap: 12px; 
+<<<<<<< HEAD
     margin-bottom: 14px; 
+=======
+    margin-bottom: 12px; 
+>>>>>>> subbranch3
 }
 
 .metric-item { 
     text-align: center; 
+<<<<<<< HEAD
     padding: 10px; 
     background: rgba(255,255,255,0.02); 
     border: 1px solid rgba(255, 255, 255, 0.03); 
+=======
+    padding: 8px; 
+    background: rgba(255, 255, 255, 0.02); 
+>>>>>>> subbranch3
     border-radius: 6px; 
 }
 
 .metric-value { 
     font-size: 18px; 
+<<<<<<< HEAD
     font-weight: 700; 
+=======
+    font-weight: 600; 
+>>>>>>> subbranch3
     color: var(--accent-purple); 
 }
 
@@ -222,6 +292,7 @@ body {
     margin-top: 4px; 
 }
 
+<<<<<<< HEAD
 /* Progress Metrics */
 .bar-group { 
     display: flex; 
@@ -231,18 +302,31 @@ body {
 
 .bar-row { 
     margin-bottom: 2px; 
+=======
+/* Progress Bars */
+.bar-row { 
+    margin-bottom: 10px; 
+>>>>>>> subbranch3
 }
 
 .bar-label { 
     display: flex; 
     justify-content: space-between; 
     font-size: 12px; 
+<<<<<<< HEAD
     margin-bottom: 5px; 
+=======
+    margin-bottom: 4px; 
+>>>>>>> subbranch3
     color: var(--text-muted); 
 }
 
 .bar-track { 
+<<<<<<< HEAD
     background: rgba(255,255,255,0.05); 
+=======
+    background: rgba(255, 255, 255, 0.05); 
+>>>>>>> subbranch3
     border-radius: 4px; 
     height: 8px; 
     overflow: hidden; 
@@ -252,6 +336,7 @@ body {
     background: var(--accent-purple); 
     height: 100%; 
     border-radius: 4px; 
+<<<<<<< HEAD
     transition: width 0.4s ease; 
 }
 
@@ -260,6 +345,11 @@ body {
 }
 
 /* Responsive UI */
+=======
+}
+
+/* Responsive Media Queries */
+>>>>>>> subbranch3
 @media (max-width: 900px) {
     .sidebar { width: 70px; }
     .sidebar-header p, .sidebar-menu li a span { display: none; }
@@ -274,6 +364,11 @@ body {
     .sidebar-menu li a { flex-direction: column; gap: 4px; padding: 8px 12px; font-size: 10px; white-space: nowrap; border-left: none; border-bottom: 3px solid transparent; }
     .sidebar-menu li a:hover, .sidebar-menu li.active a { border-left: none; border-bottom: 3px solid var(--accent-purple); }
     .cards-row { grid-template-columns: 1fr; }
+<<<<<<< HEAD
     .staff-metrics { grid-template-columns: 1fr; gap: 8px; }
     .staff-card-header { flex-direction: column; gap: 8px; }
+=======
+    .staff-metrics { grid-template-columns: repeat(3, 1fr); }
+    .staff-card-header { flex-direction: column; }
+>>>>>>> subbranch3
 }

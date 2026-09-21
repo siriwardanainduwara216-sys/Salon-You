@@ -1,5 +1,9 @@
 function initCommentSlider() {
+<<<<<<< HEAD
     const track = document.getElementById("commenttrack");
+=======
+    const track = document.getElementById("commentTrack");
+>>>>>>> subbranch3
     const cards = document.querySelectorAll(".comment-card");
     const wrapper = document.querySelector(".comment-slider-wrapper");
 
