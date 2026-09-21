@@ -60,12 +60,63 @@ if ($is_logged_in && $user_role === 'customer') {
 
     <!-- Custom Styles -->
     <style>
+        :root {
+            --header-h: 80px; /* height of the fixed header (change here if the header is taller/shorter) */
+            --banner-dark: 0.22; /* banner darkness: 0 = brightest, 0.6 = old dark look */
+        }
+
         body {
-            padding-top: 80px !important; /* Header overlay prevention */
+            padding-top: var(--header-h) !important; /* Header overlay prevention */
         }
 
         .hero-section {
             position: relative !important;
+        }
+
+        /* ===== FULL-SCREEN BANNERS ===== */
+        /* style.css has a "section.hero-section" rule that turns every hero into a boxed card
+           (max-width 1500px, margins, rounded corners, purple border, 580px height).
+           The rules below (higher specificity) undo that for the two home-page banners only. */
+
+        /* 1st banner = exactly the visible screen below the fixed header */
+        .hero-section.hero-fullscreen {
+            width: 100% !important;
+            max-width: none !important;
+            margin: 0 !important;
+            padding: 40px 20px !important;
+            border: none !important;
+            border-radius: 0 !important;
+            box-shadow: none !important;
+            animation: none !important;
+            min-height: calc(100vh - var(--header-h)) !important;
+            min-height: calc(100dvh - var(--header-h)) !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            overflow: hidden !important;
+            box-sizing: border-box !important;
+        }
+
+        /* 2nd banner = the whole screen height */
+        .hero-section.hero-fullscreen.hero-fullscreen-second {
+            min-height: 100vh !important;
+            min-height: 100dvh !important;
+        }
+
+        /* extra overlay from style.css removed so the banners stay bright */
+        .hero-section.hero-fullscreen .hero-overlay {
+            background: transparent !important;
+        }
+
+        /* Background video always covers the full banner */
+        .hero-section.hero-fullscreen .hero-bg-video {
+            position: absolute !important;
+            top: 0 !important;
+            left: 0 !important;
+            width: 100% !important;
+            height: 100% !important;
+            object-fit: cover !important;
+            z-index: 1 !important;
         }
 
         /* Video darkness layer */
@@ -76,7 +127,7 @@ if ($is_logged_in && $user_role === 'customer') {
             left: 0 !important;
             width: 100% !important;
             height: 100% !important;
-            background: rgba(0, 0, 0, 0.6) !important;
+            background: rgba(0, 0, 0, var(--banner-dark)) !important;
             z-index: 2 !important;
         }
 
@@ -232,8 +283,8 @@ if ($is_logged_in && $user_role === 'customer') {
     <?php endif; ?>
 
     <main class="main-container">
-        <!-- 1. HERO SECTION WITH BACKGROUND VIDEO -->
-        <section class="hero-section">
+        <!-- 1. HERO SECTION WITH BACKGROUND VIDEO (FULL SCREEN) -->
+        <section class="hero-section hero-fullscreen">
             <video autoplay loop muted playsinline class="hero-bg-video">
                 <source src="../uploads/videos/bg-video.mp4" type="video/mp4">
             </video>
@@ -282,8 +333,8 @@ if ($is_logged_in && $user_role === 'customer') {
             </div>
         </section>
 
-        <!-- 3. SECONDARY BANNER -->
-        <section class="hero-section" style="background-image: linear-gradient(rgba(15, 23, 42, 0.35), rgba(15, 23, 42, 0.45)), url('../uploads/images/salon/hero-bg.jpg') !important; background-size: cover !important; background-position: center !important; min-height: 80vh;">
+        <!-- 3. SECONDARY BANNER (FULL SCREEN) -->
+        <section class="hero-section hero-fullscreen hero-fullscreen-second" style="background-image: linear-gradient(rgba(15, 23, 42, 0.05), rgba(15, 23, 42, 0.1)), url('../uploads/images/salon/hero-bg.jpg') !important; background-size: cover !important; background-position: center !important; background-repeat: no-repeat !important;">
             <div class="hero-content text-center">
                 <span class="section-badge">WELCOME TO SALON YOU</span>
                 <h1 class="hero-title">Redefining Your <span class="gradient-text">Beauty & Style</span></h1>
@@ -366,7 +417,7 @@ if ($is_logged_in && $user_role === 'customer') {
             <div class="team-grid">
                 <div class="team-card">
                     <div class="team-img-box">
-                        <img src="../uploads/images/salon/service-1.jpg" alt="Team Member 1" onerror="this.src='https://via.placeholder.com/300x400?text=Senior+Stylist'">
+                        <img src="../uploads/images/salon/owner2.jpg" alt="Team Member 1" onerror="this.src='https://via.placeholder.com/300x400?text=Senior+Stylist'">
                     </div>
                     <h3>Senior Hair Designer</h3>
                     <p class="large-text">Leading hairstylists with over 8 years of experience.</p>
@@ -374,7 +425,7 @@ if ($is_logged_in && $user_role === 'customer') {
 
                 <div class="team-card">
                     <div class="team-img-box">
-                        <img src="../uploads/images/salon/service-1.jpg" alt="Team Member 2" onerror="this.src='https://via.placeholder.com/300x400?text=Beauty+Expert'">
+                        <img src="../uploads/images/salon/owner1.jpg" alt="Team Member 2" onerror="this.src='https://via.placeholder.com/300x400?text=Beauty+Expert'">
                     </div>
                     <h3>Skin & Bridal Specialist</h3>
                     <p class="large-text">International-level experts in beauty and bridal styling.</p>

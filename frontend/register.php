@@ -15,16 +15,35 @@ if (isset($_SESSION['user_id'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register - Salon You</title>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="frontend-css/register.css">
+    <!-- style.css first, register.css last so the register styles win -->
     <link rel="stylesheet" href="frontend-css/style.css">
+    <link rel="stylesheet" href="frontend-css/register.css?v=<?php echo time(); ?>">
 </head>
 <body class="auth-body">
 
     <div class="auth-container">
+
+        <!-- LEFT: Luxury visual panel (hidden on mobile) -->
+        <div class="auth-visual" style="background-image: url('../uploads/images/salon/hero-bg.jpg');">
+            <span class="auth-eyebrow">Welcome to Salon You</span>
+
+            <div class="auth-visual-body">
+                <h2>Where Expert Care Meets <span>Luxury Beauty</span></h2>
+                <p>Create your account to book appointments, choose your favourite stylist and preview your next look before you sit in the chair.</p>
+
+                <ul class="auth-features">
+                    <li><i class="fas fa-magic"></i> AI Hairstyle Preview</li>
+                    <li><i class="fas fa-users"></i> Expert Stylists</li>
+                    <li><i class="fas fa-calendar-check"></i> Easy Online Booking</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- RIGHT: Registration form -->
         <div class="auth-card">
-            
+
             <!-- Auth Header -->
             <div class="auth-header">
                 <a href="index.php" class="logo">SALON <span class="gradient-text">YOU</span></a>
@@ -37,11 +56,11 @@ if (isset($_SESSION['user_id'])) {
 
             <!-- Registration Form -->
             <form id="register-form" autocomplete="off">
-                
+
                 <!-- Full Name Field -->
                 <div class="form-group">
                     <label for="full_name"><i class="fas fa-user"></i> Full Name</label>
-                    <input type="text" name="full_name" id="full_name" class="form-control" placeholder="saloon you" required>
+                    <input type="text" name="full_name" id="full_name" class="form-control" placeholder="Your full name" required>
                 </div>
 
                 <!-- Email Field -->

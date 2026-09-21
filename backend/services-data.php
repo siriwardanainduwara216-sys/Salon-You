@@ -51,3 +51,19 @@ if ($result = mysqli_query($conn, $sql)) {
         $closed_dates[$row['closed_date']] = $row['reason'];
     }
 }
+
+// ---- All staff members (Hardcoded) ----
+$staff_list = [
+    [
+        'id' => 1,
+        'name' => 'Sahan Madhawa',
+        'role' => 'Master Stylist',
+        'image' => 'owner2.jpg'
+    ],
+    [
+        'id' => 2,
+        'name' => 'Supun Prabath',
+        'role' => 'Senior Hair Stylist',
+        'image' => 'owner1.jpg'
+    ]
+];

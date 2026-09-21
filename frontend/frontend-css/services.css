@@ -87,3 +87,66 @@
     font-size: 1rem;
 }
 
+/* ---- STYLIST SECTION BOX (Wheat/Cream Tone) ---- */
+    .stylist-section,
+    .stylist-section .luxury-container,
+    .luxury-container.stylist-container {
+        background: #fdf6ec !important; /* Soft warm wheat / cream tone */
+        background-color: #fdf6ec !important;
+        border: 1px solid rgba(212, 175, 55, 0.3) !important;
+        border-radius: 16px !important;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08) !important;
+        padding: 40px 20px !important;
+    }
+
+    .stylist-section h2, 
+    .stylist-section h3.stylist-title-main {
+        color: #1e293b !important;
+    }
+    
+    .stylist-section p {
+        color: #475569 !important;
+    }
+
+    /* ---- CARDS THAWA USA (HEIGHT INCREASE) & WHEAT THEME ---- */
+    .stylist-grid {
+        display: grid !important;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)) !important;
+        gap: 30px !important;
+        margin-top: 30px !important;
+    }
+
+    .stylist-card {
+        background: #ffffff !important; /* Card eka white/cream wage clean look ekakata */
+        border-radius: 14px !important;
+        padding: 15px !important;
+        border: 1px solid #e2d9cc !important;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.04);
+    }
+
+    .stylist-card:hover {
+        transform: translateY(-5px);
+        border-color: #d4af37 !important;
+        box-shadow: 0 12px 25px rgba(212, 175, 55, 0.2);
+    }
+
+    .stylist-card .stylist-img-box {
+        width: 100% !important;
+        height: 340px !important; /* Card eke height eka wadi kala */
+        position: relative !important;
+        overflow: hidden !important;
+        border-radius: 10px !important;
+        background-color: #f1ebd9 !important;
+    }
+
+    .stylist-card .stylist-img-box img {
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: cover !important;
+        display: block !important;
+    }
+
+    
+
