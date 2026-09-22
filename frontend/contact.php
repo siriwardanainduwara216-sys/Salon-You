@@ -56,28 +56,29 @@ $user_name    = $_SESSION['user_name'] ?? 'Guest User';
                     <div class="info-item">
                         <div class="info-icon"><i class="fas fa-map-marker-alt"></i></div>
                         <div class="info-text">
-                            No.6, Pagoda Road, Nugegoda, 10250, Sri Lanka.[cite: 3]
+                            Maththegama/Ku/Bopitiya
                         </div>
                     </div>
 
                     <div class="info-item">
                         <div class="info-icon"><i class="far fa-clock"></i></div>
                         <div class="info-text">
-                            9.00 AM - 07.00 PM Tuesday - Sunday[cite: 3]
+                            9.00 AM - 10.00 PM Everyday
                         </div>
                     </div>
 
                     <div class="info-item">
                         <div class="info-icon"><i class="fas fa-phone-alt"></i></div>
                         <div class="info-text">
-                            +94 77 388 5122[cite: 3]
+                            +94 77 903 4502
+                            +94 74 148 5124
                         </div>
                     </div>
 
                     <div class="info-item">
                         <div class="info-icon"><i class="far fa-envelope"></i></div>
                         <div class="info-text">
-                            salonyou@gmail.com
+                            salonyou123@gmail.com
                         </div>
                     </div>
                 </div>

@@ -114,7 +114,7 @@
 
 .contact-text p {
     margin: 0;
-    color: #aaaaaa;
+    color: #d4d4d4;
     font-size: 0.85rem;
     line-height: 1.4;
 }
@@ -134,7 +134,7 @@
 .phone-text span {
     display: block;
     font-size: 0.8rem;
-    color: #aaaaaa;
+    color: #d4d4d4;
     letter-spacing: 1px;
 }
 
@@ -156,7 +156,7 @@
 
 .footer-bottom p {
     margin: 0;
-    color: #aaaaaa;
+    color: #d4d4d4;
     font-size: 0.85rem;
 }
 
@@ -185,9 +185,9 @@
         <div class="footer-logo">
             <h2>SALON YOU</h2>
             <div class="social-icons">
-                <a href="#" class="social-btn"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://www.facebook.com/share/19YocfRUR9/?mibextid=wwXIfr" class="social-btn" target="_blank"><i class="fab fa-facebook-f"></i></a>
                 <a href="#" class="social-btn"><i class="fab fa-instagram"></i></a>
-                <a href="#" class="social-btn"><i class="fab fa-tiktok"></i></a>
+                <a href="https://www.tiktok.com/@salon.you8?_r=1&_t=ZS-99wq11v8ZbL" class="social-btn" target="_blank"><i class="fab fa-tiktok"></i></a>
             </div>
         </div>
 
@@ -211,7 +211,7 @@
                 <i class="far fa-clock contact-icon"></i>
                 <div class="contact-text">
                     <strong>OPENING TIMES</strong>
-                    <p>Tuesday - Sunday: 9:00am - 7:00pm</p>
+                    <p>Everyday: 9:00am - 10:00pm</p>
                 </div>
             </div>
 
@@ -219,7 +219,7 @@
                 <i class="fas fa-home contact-icon"></i>
                 <div class="contact-text">
                     <strong>OUR LOCATION</strong>
-                    <p>No.6, Pagoda Road, Nugegoda, 10250, Sri Lanka.</p>
+                    <p>Maththegama/Ku/Bopitiya.</p>
                 </div>
             </div>
         </div>
@@ -230,7 +230,8 @@
                 <i class="fas fa-phone-alt phone-icon"></i>
                 <div class="phone-text">
                     <span>OUR PHONE</span>
-                    <h4>+94 77 388 5122</h4>
+                    <h4>+94 77 903 4502</h4>
+                    <h4>+94 74 148 5124</h4>
                 </div>
             </div>
         </div>

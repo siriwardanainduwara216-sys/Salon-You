@@ -1,0 +1,420 @@
+/* =========================================================
+   DARK MODE OVERRIDE
+   Put this file at: frontend-css/dark-mode.css
+   Loaded on every page (linked from indexheader.php).
+   Everything here is scoped under body.dark-mode so it only
+   applies when the toggle turns dark mode on.
+   ========================================================= */
+
+body.dark-mode {
+    background-color: #0f172a !important;
+    color: #e2e8f0 !important;
+}
+
+/* ---------- Header ---------- */
+body.dark-mode .site-header,
+body.dark-mode header.site-header {
+    background: rgba(15, 23, 42, 0.92) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+}
+
+body.dark-mode .logo-text,
+body.dark-mode .nav-link {
+    color: #e2e8f0 !important;
+}
+
+body.dark-mode .nav-link:hover,
+body.dark-mode .nav-link.active {
+    color: #d4af37 !important;
+}
+
+body.dark-mode .btn-login {
+    background: rgba(255, 255, 255, 0.06) !important;
+    color: #e2e8f0 !important;
+    border-color: rgba(255, 255, 255, 0.2) !important;
+}
+
+/* ---------- Generic sections / containers ---------- */
+body.dark-mode .services-list-section,
+body.dark-mode .stylist-section,
+body.dark-mode .brand-bar,
+body.dark-mode #ai-recommender,
+body.dark-mode .section-container {
+    background: #0f172a !important;
+}
+
+body.dark-mode .luxury-container,
+body.dark-mode .about-desc,
+body.dark-mode p,
+body.dark-mode .purpose-block p,
+body.dark-mode .section-desc,
+body.dark-mode div[class*="desc"] {
+    color: #94a3b8 !important;
+}
+
+body.dark-mode h1,
+body.dark-mode h2,
+body.dark-mode h3,
+body.dark-mode h4,
+body.dark-mode .luxury-heading,
+body.dark-mode .large-title,
+body.dark-mode .section-title,
+body.dark-mode .card-body h3,
+body.dark-mode .stylist-info h3,
+body.dark-mode .purpose-header h3 {
+    color: #f1f5f9 !important;
+}
+
+/* ---------- Service & stylist cards ---------- */
+body.dark-mode .luxury-service-card,
+body.dark-mode .stylist-card,
+body.dark-mode .product-card,
+body.dark-mode .team-card,
+body.dark-mode .treatment-card,
+body.dark-mode .color-radio-card,
+body.dark-mode .color-group {
+    background: #1e293b !important;
+    border-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+body.dark-mode .luxury-price {
+    background: linear-gradient(135deg, #d4af37, #aa7c11) !important;
+    color: #0f172a !important;
+}
+
+/* ---------- Category buttons ---------- */
+body.dark-mode .category-btn {
+    background: #1e293b !important;
+    color: #e2e8f0 !important;
+    border-color: rgba(212, 175, 55, 0.35) !important;
+}
+
+body.dark-mode .category-btn.active {
+    background: linear-gradient(135deg, #d4af37, #aa7c11) !important;
+    color: #0f172a !important;
+}
+
+/* ---------- Buttons ---------- */
+body.dark-mode button,
+body.dark-mode .btn,
+body.dark-mode .btn-primary {
+    background: linear-gradient(135deg, #d4af37, #aa7c11) !important;
+    color: #0f172a !important;
+    border-color: transparent !important;
+}
+
+body.dark-mode .btn-secondary {
+    background: rgba(255, 255, 255, 0.06) !important;
+    color: #e2e8f0 !important;
+    border-color: rgba(255, 255, 255, 0.2) !important;
+}
+
+/* ---------- Review / comment cards ---------- */
+body.dark-mode .comment-card,
+body.dark-mode .review-card,
+body.dark-mode .feedback-card,
+body.dark-mode .testimonial-card {
+    background: #1e293b !important;
+    border-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+body.dark-mode .comment-card p,
+body.dark-mode .review-text {
+    color: #cbd5e1 !important;
+}
+
+body.dark-mode .comment-card h4,
+body.dark-mode .client-name {
+    color: #f1f5f9 !important;
+}
+
+/* ---------- Login / Register (auth) pages ---------- */
+body.dark-mode.auth-body {
+    background: #0f172a !important;
+}
+
+body.dark-mode .auth-container,
+body.dark-mode .auth-card {
+    background: #1e293b !important;
+    border-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+body.dark-mode .auth-header h2,
+body.dark-mode .auth-header .logo {
+    color: #f1f5f9 !important;
+}
+
+body.dark-mode .form-group label {
+    color: #cbd5e1 !important;
+}
+
+body.dark-mode .form-control {
+    background: #0f172a !important;
+    border-color: rgba(255, 255, 255, 0.12) !important;
+    color: #f1f5f9 !important;
+}
+
+body.dark-mode .form-control::placeholder {
+    color: #64748b !important;
+}
+
+body.dark-mode .auth-footer {
+    border-top-color: rgba(255, 255, 255, 0.08) !important;
+    color: #94a3b8 !important;
+}
+
+/* ---------- Footer ---------- */
+body.dark-mode footer,
+body.dark-mode .site-footer {
+    background: #0b1220 !important;
+    color: #94a3b8 !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.06) !important;
+}
+
+/* ---------- Theme toggle button ---------- */
+.theme-toggle-btn {
+    background: rgba(212, 175, 55, 0.12);
+    border: 1px solid rgba(212, 175, 55, 0.4);
+    color: #b38728;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: transform 0.3s ease, background 0.3s ease;
+    margin-left: 10px;
+}
+
+.theme-toggle-btn:hover {
+    transform: rotate(15deg);
+}
+
+body.dark-mode .theme-toggle-btn {
+    background: rgba(212, 175, 55, 0.18);
+    color: #f3d675;
+    border-color: rgba(212, 175, 55, 0.5);
+}
+
+/* smooth transition when switching modes */
+body, .site-header, .luxury-service-card, .stylist-card, .form-control,
+.category-btn, .comment-card, .auth-card {
+    transition: background-color 0.35s ease, color 0.35s ease, border-color 0.35s ease;
+}
+
+/* =========================================================
+   GALLERY / ABOUT / CONTACT PAGES
+   (these pages use their own CSS files with hardcoded light
+   colors, so they need their own dark-mode overrides here)
+   ========================================================= */
+
+/* ---------- Shared hero banners (about-hero-banner / gallery-hero-section) ---------- */
+body.dark-mode .about-hero-banner .hero-overlay,
+body.dark-mode .gallery-hero-section::before {
+    background: rgba(0, 0, 0, 0.55) !important;
+}
+
+body.dark-mode .hero-banner-title,
+body.dark-mode .gallery-hero-title {
+    color: #f8fafc !important;
+}
+
+body.dark-mode .hero-banner-subtitle,
+body.dark-mode .gallery-hero-subtitle {
+    color: #cbd5e1 !important;
+}
+
+/* ---------- Gallery page ---------- */
+body.dark-mode .gallery-main-section,
+body.dark-mode .gallery-container {
+    background: #0f172a !important;
+}
+
+body.dark-mode .gallery-header-text .section-title,
+body.dark-mode .category-title {
+    color: #f1f5f9 !important;
+}
+
+body.dark-mode .gallery-header-text .section-subtitle {
+    color: #94a3b8 !important;
+}
+
+body.dark-mode .category-title i {
+    color: #d4af37 !important;
+}
+
+body.dark-mode .gallery-card {
+    background: #1e293b !important;
+    border-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+body.dark-mode .see-more-btn {
+    background: #1e293b !important;
+    color: #e2e8f0 !important;
+    border-color: rgba(212, 175, 55, 0.35) !important;
+}
+
+body.dark-mode .see-more-btn:hover {
+    background: linear-gradient(135deg, #d4af37, #aa7c11) !important;
+    color: #0f172a !important;
+}
+
+body.dark-mode .swiper-pagination-bullet {
+    background: #94a3b8 !important;
+    opacity: 0.6 !important;
+}
+
+body.dark-mode .swiper-pagination-bullet-active {
+    background: #d4af37 !important;
+    opacity: 1 !important;
+}
+
+/* ---------- About page ---------- */
+body.dark-mode .our-journey-section,
+body.dark-mode .founder-section,
+body.dark-mode .commitment-section {
+    background: #0f172a !important;
+}
+
+body.dark-mode .journey-main-title,
+body.dark-mode .commitment-title,
+body.dark-mode .founder-name {
+    color: #f1f5f9 !important;
+}
+
+body.dark-mode .journey-text p,
+body.dark-mode .commitment-desc,
+body.dark-mode .founder-message,
+body.dark-mode .founder-title {
+    color: #94a3b8 !important;
+}
+
+body.dark-mode .vision-mission-dark-section {
+    background: #0b1220 !important;
+}
+
+body.dark-mode .vm-dark-title {
+    color: #f1f5f9 !important;
+}
+
+body.dark-mode .vm-dark-text {
+    color: #94a3b8 !important;
+}
+
+body.dark-mode .vm-dark-text strong {
+    color: #d4af37 !important;
+}
+
+/* ---------- Contact page ---------- */
+body.dark-mode .contact-main-section,
+body.dark-mode .contact-container {
+    background: #0f172a !important;
+}
+
+body.dark-mode .col-title {
+    color: #f1f5f9 !important;
+}
+
+body.dark-mode .col-desc {
+    color: #94a3b8 !important;
+}
+
+body.dark-mode .info-item {
+    background: #1e293b !important;
+    border-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+body.dark-mode .info-text {
+    color: #cbd5e1 !important;
+}
+
+body.dark-mode .info-icon {
+    color: #d4af37 !important;
+}
+
+body.dark-mode .custom-contact-form input,
+body.dark-mode .custom-contact-form textarea {
+    background: #1e293b !important;
+    border-color: rgba(255, 255, 255, 0.12) !important;
+    color: #f1f5f9 !important;
+}
+
+body.dark-mode .custom-contact-form input::placeholder,
+body.dark-mode .custom-contact-form textarea::placeholder {
+    color: #64748b !important;
+}
+
+body.dark-mode .btn-submit-msg {
+    background: linear-gradient(135deg, #d4af37, #aa7c11) !important;
+    color: #0f172a !important;
+    border: none !important;
+}
+
+body.dark-mode .map-section {
+    background: #0b1220 !important;
+    filter: grayscale(0.3) brightness(0.9) contrast(1.05) !important;
+}
+
+/* =========================================================
+   HOMEPAGE — CREAM/GOLD LUXURY REDESIGN (index.php)
+   These classes were added directly in index.php's inline
+   <style> block with light cream/white backgrounds and had
+   no dark-mode counterpart, so dark mode was showing bright
+   boxes on top of the dark page. Overriding them here.
+   ========================================================= */
+
+/* Page wrapper + the repeating text/image blocks
+   (intro statement, Our Services, Our Products, Our Team) */
+body.dark-mode .main-container,
+body.dark-mode .minimal-section,
+body.dark-mode .owners-strip-section,
+body.dark-mode .comment-section {
+    background: #0f172a !important;
+}
+
+/* "Browse Our Gallery" feature panel next to the hero */
+body.dark-mode .gallery-feature-text {
+    background: linear-gradient(160deg, #1e293b 0%, #0f172a 100%) !important;
+}
+
+body.dark-mode .gallery-feature-text p {
+    color: #94a3b8 !important;
+}
+
+/* Meet the Owners mini-cards */
+body.dark-mode .owner-mini-card {
+    background: #1e293b !important;
+    border-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+/* AI Hairstyle Recommender upload box */
+body.dark-mode .ai-upload-box {
+    background: #1e293b !important;
+    border-color: rgba(212, 175, 55, 0.35) !important;
+    box-shadow: none !important;
+}
+
+body.dark-mode .ai-upload-box:hover {
+    background: #243347 !important;
+    border-color: #d4af37 !important;
+}
+
+body.dark-mode .upload-icon-wrapper {
+    background: rgba(212, 175, 55, 0.15) !important;
+    border-color: rgba(212, 175, 55, 0.35) !important;
+    color: #f3d675 !important;
+}
+
+/* Gold section badge pill (AI POWERED / CLIENT FEEDBACK) */
+body.dark-mode .section-badge {
+    color: #f3d675 !important;
+    background: rgba(212, 175, 55, 0.15) !important;
+    border-color: rgba(212, 175, 55, 0.4) !important;
+}
+
+/* Keep the caption over the Products image readable on dark */
+body.dark-mode .minimal-media-caption {
+    text-shadow: 0 3px 14px rgba(0, 0, 0, 0.9) !important;
+}
