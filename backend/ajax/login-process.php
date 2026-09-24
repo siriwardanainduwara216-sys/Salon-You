@@ -1,5 +1,5 @@
 <?php
-ob_start(); 
+ob_start();
 
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
@@ -15,6 +15,16 @@ global $conn;
 if (!$conn && isset($GLOBALS['conn'])) {
     $conn = $GLOBALS['conn'];
 }
+
+
+// Role-based redirect pages. Change the file names here if needed.
+
+$role_redirects = [
+    'admin'    => 'admin-dashboard.php',
+    'staff'    => 'staff-dashboard.php',   
+    'customer' => 'index.php'
+];
+$default_redirect = 'index.php';
 
 $response = ['status' => 'error', 'message' => 'Invalid request method.'];
 
@@ -47,7 +57,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // Password Verification Check
             if (password_verify($password, $user['password'])) {
 
-                // OTP Verification Check (Verify වී නැත්නම් OTP Page එකට Redirect කරයි)
+                // OTP Verification Check
                 if ((int)$user['is_verified'] !== 1) {
                     $_SESSION['temp_user_id']    = $user['id'];
                     $_SESSION['temp_user_email'] = $user['email'];
@@ -64,12 +74,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 }
 
                 // Successful Login - Set Active Session Variables
+                session_regenerate_id(true);
                 $_SESSION['user_id']   = $user['id'];
                 $_SESSION['user_name'] = $user['name'];
                 $_SESSION['user_role'] = $user['role'];
 
-                // Role-Based Redirection Page Destination
-                $redirect_page = ($user['role'] === 'admin') ? 'admin-dashboard.php' : 'index.php';
+                // Role-Based Redirection (admin / staff / customer)
+                $role          = strtolower(trim($user['role']));
+                $redirect_page = $role_redirects[$role] ?? $default_redirect;
 
                 mysqli_stmt_close($stmt);
                 ob_end_clean();

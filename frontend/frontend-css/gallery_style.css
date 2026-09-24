@@ -4,14 +4,20 @@
 
 /* HERO BANNER SECTION */
 .gallery-hero-section {
-    position: relative;
+     position: relative;
     width: 100%;
-    min-height: 420px;
-    background-size: cover;
-    background-position: center 20%;
+    min-height: 450px;
+    margin-top: 0 !important;
+    padding-top: 100px;
+    padding-bottom: 60px;
+    padding-left: 8%;
+    padding-right: 8%;
     background-repeat: no-repeat;
+    background-position: 80% center;
+    background-size: cover;
     display: flex;
     align-items: center;
+    justify-content: flex-start;
     box-sizing: border-box;
 }
 
@@ -25,16 +31,19 @@
 }
 
 .gallery-hero-content {
-    max-width: 550px;
+   position: relative;
+    z-index: 2;
+    max-width: 650px;
+    text-align: left;
 }
 
 .gallery-hero-title {
     font-size: 3.2rem;
-    font-weight: 800;
+    font-weight: 700;
+    margin-bottom: 15px;
     color: #ffffff !important;
-    margin-bottom: 12px;
     line-height: 1.2;
-    text-shadow: 0px 2px 10px rgba(0, 0, 0, 0.5);
+    text-shadow: 0 3px 12px rgba(0, 0, 0, 0.85);
 }
 
 .gallery-hero-subtitle {
@@ -249,5 +258,48 @@
 
     .category-section.expanded-grid .swiper-wrapper {
         grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)) !important;
+    }
+}
+
+/* Card Height Adjustment */
+.main-auto-slider .swiper-slide {
+    height: auto !important;
+}
+
+.gallery-card {
+    height: 480px !important;
+    position: relative;
+    border-radius: 16px;
+    overflow: hidden;
+}
+
+.gallery-card img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+}
+/* Card Height Adjustment for Main Auto Slider */
+.main-auto-slider .swiper-slide {
+    height: auto !important;
+}
+
+/* Increase Image Card Height */
+.gallery-card {
+    height: 550px !important; /* Mawninaama haa yottoo 550px */
+    position: relative;
+    border-radius: 16px;
+    overflow: hidden;
+}
+
+.gallery-card img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+}
+
+/* Mobile Responsive Height Adjustment */
+@media (max-width: 768px) {
+    .gallery-card {
+        height: 420px !important;
     }
 }

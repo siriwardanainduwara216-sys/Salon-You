@@ -11,7 +11,7 @@ if ($result = mysqli_query($conn, $sql)) {
     }
 }
 
-// Category labels shown in the dropdown / badges
+// Category labels shown in the dropdown  badges
 $category_labels = [
     'mens-haircuts'   => "Men's Haircuts",
     'beard-cuts'      => 'Beard Cuts',

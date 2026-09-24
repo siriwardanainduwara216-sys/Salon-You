@@ -1,8 +1,6 @@
 <?php
 
-// admin-queue-data.php
-// Fetches today's appointments grouped by stylist, in time order.
-// $conn must be set before including this file.
+
 
 $queue_by_staff = [];
 

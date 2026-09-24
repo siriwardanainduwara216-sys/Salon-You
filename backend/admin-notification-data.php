@@ -12,7 +12,7 @@ if ($result = mysqli_query($conn, $sql)) {
         $low_stock_items[] = $row;
     }
 }
-//Low stock products (retail catalog)
+//Low stock products 
 $low_stock_products = [];
 $sql = "SELECT id, product_name, stock_quantity
         FROM products
@@ -53,7 +53,7 @@ if ($result = mysqli_query($conn, $sql)) {
     }
 }
 
-//Today's confirmed/pending appointments 
+//Today confirmed/pending appointments 
 $today_appointments = [];
 $sql = "SELECT a.id, a.appointment_time, a.status,
                u.name AS customer_name, s.service_name

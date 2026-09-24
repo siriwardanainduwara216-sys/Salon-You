@@ -57,48 +57,48 @@ $user_name    = $_SESSION['user_name'] ?? 'Guest User';
 
                 <div class="swiper main-auto-slider">
                     <div class="swiper-wrapper">
+
                         <div class="swiper-slide">
                             <div class="gallery-card">
-                                <img src="../uploads/images/salon/servicebg2.jpeg" alt="Featured Style 1">
-                                <div class="card-overlay">
-                                    <h3 class="card-title">Modern Style & Finish</h3>
-                                    <span class="card-badge">FEATURED</span>
-                                </div>
+                                <img src="../uploads/images/salon/gallery/gallery1.jpeg" alt="Baby Cut 1">
                             </div>
                         </div>
+
                         <div class="swiper-slide">
                             <div class="gallery-card">
-                                <img src="../uploads/images/salon/about_header.jpeg" alt="Featured Style 2">
-                                <div class="card-overlay">
-                                    <h3 class="card-title">Premium Hair Coloring</h3>
-                                    <span class="card-badge">POPULAR</span>
-                                </div>
+                                <img src="../uploads/images/salon/gallery/womens_colour3.jpeg" alt="Baby Cut 2">
                             </div>
                         </div>
+
                         <div class="swiper-slide">
                             <div class="gallery-card">
-                                <img src="../uploads/images/salon/contactbg.jpeg" alt="Featured Style 3">
-                                <div class="card-overlay">
-                                    <h3 class="card-title">Precision Cut & Grooming</h3>
-                                    <span class="card-badge">NEW</span>
-                                </div>
+                                <img src="../uploads/images/salon/gallery/colour8.jpeg" alt="Baby Cut 3">
                             </div>
                         </div>
+
                         <div class="swiper-slide">
                             <div class="gallery-card">
-                                <img src="../uploads/images/salon/servicebg2.jpeg" alt="Featured Style 4">
-                                <div class="card-overlay">
-                                    <h3 class="card-title">Creative Hair Styling</h3>
-                                    <span class="card-badge">TRENDING</span>
-                                </div>
+                                <img src="../uploads/images/salon/gallery/baby6.jpeg" alt="Baby Cut 4">
                             </div>
                         </div>
+
+                        <div class="swiper-slide">
+                            <div class="gallery-card">
+                                <img src="../uploads/images/salon/gallery/cut3.jpeg" alt="Baby Cut 4">
+                            </div>
+                        </div>
+
+                        <div class="swiper-slide">
+                            <div class="gallery-card">
+                                <img src="../uploads/images/salon/gallery/womens_colour2.jpeg" alt="Baby Cut 4">
+                            </div>
+                        </div>
+
                     </div>
                     <!-- Pagination Dots -->
                     <div class="swiper-pagination main-slider-pagination"></div>
                 </div>
             </div>
-
 
             <!-- CATEGORY 1: HAIR CUTS -->
             <div class="category-section" id="cat-haircuts">
@@ -115,56 +115,132 @@ $user_name    = $_SESSION['user_name'] ?? 'Guest User';
                     <div class="swiper-wrapper">
                         <div class="swiper-slide">
                             <div class="gallery-card">
-                                <img src="../uploads/images/salon/servicebg2.jpeg" alt="Modern Fade Cut">
-                                <div class="card-overlay">
-                                    <h3 class="card-title">Modern Fade Cut</h3>
-                                    <span class="card-badge">FEATURED</span>
-                                </div>
+                                <img src="../uploads/images/salon/gallery/gallery1.jpeg" alt="Modern Fade Cut">
                             </div>
                         </div>
                         <div class="swiper-slide">
                             <div class="gallery-card">
-                                <img src="../uploads/images/salon/about_header.jpeg" alt="Classic Gents Trim">
-                                <div class="card-overlay">
-                                    <h3 class="card-title">Classic Gents Trim</h3>
-                                    <span class="card-badge">NEW</span>
-                                </div>
+                                <img src="../uploads/images/salon/gallery/cut1.jpeg" alt="Classic Gents Trim">
                             </div>
                         </div>
                         <div class="swiper-slide">
                             <div class="gallery-card">
-                                <img src="../uploads/images/salon/contactbg.jpeg" alt="Textured Crop Cut">
-                                <div class="card-overlay">
-                                    <h3 class="card-title">Textured Crop Cut</h3>
-                                    <span class="card-badge">POPULAR</span>
-                                </div>
+                                <img src="../uploads/images/salon/gallery/cut2.jpeg" alt="Textured Crop Cut">
                             </div>
                         </div>
                         <div class="swiper-slide">
                             <div class="gallery-card">
-                                <img src="../uploads/images/salon/servicebg2.jpeg" alt="Beard & Hair Combo">
-                                <div class="card-overlay">
-                                    <h3 class="card-title">Beard & Hair Combo</h3>
-                                    <span class="card-badge">TRENDING</span>
-                                </div>
+                                <img src="../uploads/images/salon/gallery/cut3.jpeg" alt="Beard & Hair Combo">
                             </div>
                         </div>
                         <div class="swiper-slide">
                             <div class="gallery-card">
-                                <img src="../uploads/images/salon/about_header.jpeg" alt="Buzz Cut Styling">
-                                <div class="card-overlay">
-                                    <h3 class="card-title">Buzz Cut & Lineup</h3>
-                                    <span class="card-badge">NEW</span>
-                                </div>
+                                <img src="../uploads/images/salon/gallery/gallery2.jpeg" alt="Beard & Hair Combo">
                             </div>
                         </div>
                         <div class="swiper-slide">
                             <div class="gallery-card">
-                                <img src="../uploads/images/salon/contactbg.jpeg" alt="Gentlemen Pompadour">
-                                <div class="card-overlay">
-                                    <h3 class="card-title">Gentlemen Pompadour</h3>
-                                    <span class="card-badge">POPULAR</span>
-                                </div>
+                                <img src="../uploads/images/salon/gallery/cut4.jpeg" alt="Buzz Cut Styling">
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="gallery-card">
+                                <img src="../uploads/images/salon/gallery/cut5.jpeg" alt="Gentlemen Pompadour">
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="gallery-card">
+                                <img src="../uploads/images/salon/gallery/cut6.jpeg" alt="Gentlemen Pompadour">
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="gallery-card">
+                                <img src="../uploads/images/salon/gallery/cut7.jpeg" alt="Gentlemen Pompadour">
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="gallery-card">
+                                <img src="../uploads/images/salon/gallery/cut9.jpeg" alt="Gentlemen Pompadour">
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="gallery-card">
+                                <img src="../uploads/images/salon/gallery/cut10.jpeg" alt="Gentlemen Pompadour">
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="gallery-card">
+                                <img src="../uploads/images/salon/gallery/cut11.jpeg" alt="Gentlemen Pompadour">
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="gallery-card">
+                                <img src="../uploads/images/salon/gallery/cut12.jpeg" alt="Gentlemen Pompadour">
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="gallery-card">
+                                <img src="../uploads/images/salon/gallery/cut13.jpeg" alt="Gentlemen Pompadour">
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="gallery-card">
+                                <img src="../uploads/images/salon/gallery/cut15.jpeg" alt="Gentlemen Pompadour">
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="gallery-card">
+                                <img src="../uploads/images/salon/gallery/cut16.jpeg" alt="Gentlemen Pompadour">
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="gallery-card">
+                                <img src="../uploads/images/salon/gallery/cut19.jpeg" alt="Gentlemen Pompadour">
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="gallery-card">
+                                <img src="../uploads/images/salon/gallery/cut20.jpeg" alt="Gentlemen Pompadour">
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="gallery-card">
+                                <img src="../uploads/images/salon/gallery/cut21.jpeg" alt="Gentlemen Pompadour">
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="gallery-card">
+                                <img src="../uploads/images/salon/gallery/cut22.jpeg" alt="Gentlemen Pompadour">
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="gallery-card">
+                                <img src="../uploads/images/salon/gallery/cut23.jpeg" alt="Gentlemen Pompadour">
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="gallery-card">
+                                <img src="../uploads/images/salon/gallery/cut24.jpeg" alt="Gentlemen Pompadour">
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="gallery-card">
+                                <img src="../uploads/images/salon/gallery/cut25.jpeg" alt="Gentlemen Pompadour">
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="gallery-card">
+                                <img src="../uploads/images/salon/gallery/cut26.jpeg" alt="Gentlemen Pompadour">
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="gallery-card">
+                                <img src="../uploads/images/salon/gallery/cut27.jpeg" alt="Gentlemen Pompadour">
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="gallery-card">
+                                <img src="../uploads/images/salon/gallery/cut28.jpeg" alt="Gentlemen Pompadour">
                             </div>
                         </div>
                     </div>
@@ -172,11 +248,11 @@ $user_name    = $_SESSION['user_name'] ?? 'Guest User';
             </div>
 
 
-            <!-- CATEGORY 2: HAIR COLOURING -->
+            <!-- CATEGORY 2: Men's HAIR COLOURING -->
             <div class="category-section" id="cat-colouring">
                 <div class="category-header">
                     <h2 class="category-title">
-                        <i class="fa-solid fa-wand-magic-sparkles"></i> Hair Colouring
+                        <i class="fa-solid fa-wand-magic-sparkles"></i>Men's Hair Colouring
                     </h2>
                     <button class="see-more-btn" onclick="toggleCategory('cat-colouring', colouringSwiper)">
                         <span>See More</span> <i class="fa-solid fa-chevron-down"></i>
@@ -187,47 +263,47 @@ $user_name    = $_SESSION['user_name'] ?? 'Guest User';
                     <div class="swiper-wrapper">
                         <div class="swiper-slide">
                             <div class="gallery-card">
-                                <img src="../uploads/images/salon/about_header.jpeg" alt="Balayage Blonde">
-                                <div class="card-overlay">
-                                    <h3 class="card-title">Balayage Blonde Highlights</h3>
-                                    <span class="card-badge">POPULAR</span>
-                                </div>
+                                <img src="../uploads/images/salon/gallery/colour2.jpeg" alt="Balayage Blonde">
                             </div>
                         </div>
                         <div class="swiper-slide">
                             <div class="gallery-card">
-                                <img src="../uploads/images/salon/contactbg.jpeg" alt="Ash Brown Color">
-                                <div class="card-overlay">
-                                    <h3 class="card-title">Ash Brown Transformation</h3>
-                                    <span class="card-badge">TRENDING</span>
-                                </div>
+                                <img src="../uploads/images/salon/gallery/colour4.jpeg" alt="Ash Brown Color">
                             </div>
                         </div>
                         <div class="swiper-slide">
                             <div class="gallery-card">
-                                <img src="../uploads/images/salon/servicebg2.jpeg" alt="Burgundy Red Glow">
-                                <div class="card-overlay">
-                                    <h3 class="card-title">Burgundy Red Glow</h3>
-                                    <span class="card-badge">FEATURED</span>
-                                </div>
+                                <img src="../uploads/images/salon/gallery/colour5.jpeg" alt="Burgundy Red Glow">
                             </div>
                         </div>
                         <div class="swiper-slide">
                             <div class="gallery-card">
-                                <img src="../uploads/images/salon/about_header.jpeg" alt="Ombre Color Shift">
-                                <div class="card-overlay">
-                                    <h3 class="card-title">Ombre Color Shift</h3>
-                                    <span class="card-badge">NEW</span>
-                                </div>
+                                <img src="../uploads/images/salon/gallery/colour6.jpeg" alt="Ombre Color Shift">
                             </div>
                         </div>
                         <div class="swiper-slide">
                             <div class="gallery-card">
-                                <img src="../uploads/images/salon/contactbg.jpeg" alt="Platinum Blonde">
-                                <div class="card-overlay">
-                                    <h3 class="card-title">Platinum Blonde Gloss</h3>
-                                    <span class="card-badge">TRENDING</span>
-                                </div>
+                                <img src="../uploads/images/salon/gallery/colour7.jpeg" alt="Platinum Blonde">
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="gallery-card">
+                                <img src="../uploads/images/salon/gallery/colour8.jpeg" alt="Platinum Blonde">
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="gallery-card">
+                                <img src="../uploads/images/salon/gallery/colour9.jpeg" alt="Platinum Blonde">
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="gallery-card">
+                                <img src="../uploads/images/salon/gallery/cut8.jpeg" alt="Platinum Blonde">
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="gallery-card">
+                                <img src="../uploads/images/salon/gallery/cut26.jpeg" alt="Platinum Blonde">
                             </div>
                         </div>
                     </div>
@@ -250,47 +326,74 @@ $user_name    = $_SESSION['user_name'] ?? 'Guest User';
                     <div class="swiper-wrapper">
                         <div class="swiper-slide">
                             <div class="gallery-card">
-                                <img src="../uploads/images/salon/contactbg.jpeg" alt="Layered Bob Cut">
-                                <div class="card-overlay">
-                                    <h3 class="card-title">Layered Bob Cut</h3>
-                                    <span class="card-badge">FEATURED</span>
-                                </div>
+                                <img src="../uploads/images/salon/gallery/womens6.jpeg" alt="Layered Bob Cut">
                             </div>
                         </div>
                         <div class="swiper-slide">
                             <div class="gallery-card">
-                                <img src="../uploads/images/salon/servicebg2.jpeg" alt="Modern Pixie Cut">
-                                <div class="card-overlay">
-                                    <h3 class="card-title">Modern Pixie Cut</h3>
-                                    <span class="card-badge">NEW</span>
-                                </div>
+                                <img src="../uploads/images/salon/gallery/womens5.jpeg" alt="Modern Pixie Cut">
                             </div>
                         </div>
                         <div class="swiper-slide">
                             <div class="gallery-card">
-                                <img src="../uploads/images/salon/about_header.jpeg" alt="Long Feather Cut">
-                                <div class="card-overlay">
-                                    <h3 class="card-title">Long Feather Cut</h3>
-                                    <span class="card-badge">POPULAR</span>
-                                </div>
+                                <img src="../uploads/images/salon/gallery/womens4.jpeg" alt="Long Feather Cut">
                             </div>
                         </div>
                         <div class="swiper-slide">
                             <div class="gallery-card">
-                                <img src="../uploads/images/salon/contactbg.jpeg" alt="Curtain Bangs">
-                                <div class="card-overlay">
-                                    <h3 class="card-title">Curtain Bangs Styling</h3>
-                                    <span class="card-badge">TRENDING</span>
-                                </div>
+                                <img src="../uploads/images/salon/gallery/womens3.jpeg" alt="Curtain Bangs">
                             </div>
                         </div>
                         <div class="swiper-slide">
                             <div class="gallery-card">
-                                <img src="../uploads/images/salon/servicebg2.jpeg" alt="Asymmetrical Bob">
-                                <div class="card-overlay">
-                                    <h3 class="card-title">Asymmetrical Bob Cut</h3>
-                                    <span class="card-badge">NEW</span>
-                                </div>
+                                <img src="../uploads/images/salon/gallery/womens2.jpeg" alt="Asymmetrical Bob">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CATEGORY 4: WOMEN'S COLOUR -->
+            <div class="category-section" id="cat-womens-colour">
+                <div class="category-header">
+                    <h2 class="category-title">
+                        <i class="fa-solid fa-person-dress"></i> Women's Coloring
+                    </h2>
+                    <button class="see-more-btn" onclick="toggleCategory('cat-womens-colour', womensColourSwiper)">
+                        <span>See More</span> <i class="fa-solid fa-chevron-down"></i>
+                    </button>
+                </div>
+
+                <div class="swiper slider-womens-colour">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <div class="gallery-card">
+                                <img src="../uploads/images/salon/gallery/womens_colour1.jpeg" alt="Women's Colour 1">
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="gallery-card">
+                                <img src="../uploads/images/salon/gallery/womens_colour2.jpeg" alt="Women's Colour 2">
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="gallery-card">
+                                <img src="../uploads/images/salon/gallery/womens_colour3.jpeg" alt="Women's Colour 3">
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="gallery-card">
+                                <img src="../uploads/images/salon/gallery/womens_colour4.jpeg" alt="Women's Colour 4">
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="gallery-card">
+                                <img src="../uploads/images/salon/gallery/womens_colour5.jpeg" alt="Women's Colour 5">
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="gallery-card">
+                                <img src="../uploads/images/salon/gallery/womens_colour6.jpeg" alt="Women's Colour 6">
                             </div>
                         </div>
                     </div>
@@ -323,7 +426,7 @@ $user_name    = $_SESSION['user_name'] ?? 'Guest User';
             },
             breakpoints: {
                 640: { slidesPerView: 2, spaceBetween: 20 },
-                1024: { slidesPerView: 3, spaceBetween: 25 },
+                1024: { slidesPerView: 4, spaceBetween: 20 },
             },
         });
 
@@ -333,7 +436,7 @@ $user_name    = $_SESSION['user_name'] ?? 'Guest User';
             spaceBetween: 20,
             breakpoints: {
                 640: { slidesPerView: 2, spaceBetween: 20 },
-                1024: { slidesPerView: 3, spaceBetween: 25 },
+                1024: { slidesPerView: 4, spaceBetween: 20 },
             },
         });
 
@@ -342,7 +445,7 @@ $user_name    = $_SESSION['user_name'] ?? 'Guest User';
             spaceBetween: 20,
             breakpoints: {
                 640: { slidesPerView: 2, spaceBetween: 20 },
-                1024: { slidesPerView: 3, spaceBetween: 25 },
+                1024: { slidesPerView: 4, spaceBetween: 20 },
             },
         });
 
@@ -351,7 +454,16 @@ $user_name    = $_SESSION['user_name'] ?? 'Guest User';
             spaceBetween: 20,
             breakpoints: {
                 640: { slidesPerView: 2, spaceBetween: 20 },
-                1024: { slidesPerView: 3, spaceBetween: 25 },
+                1024: { slidesPerView: 4, spaceBetween: 20 },
+            },
+        });
+
+        let womensColourSwiper = new Swiper(".slider-womens-colour", {
+            slidesPerView: 1,
+            spaceBetween: 20,
+            breakpoints: {
+                640: { slidesPerView: 2, spaceBetween: 20 },
+                1024: { slidesPerView: 4, spaceBetween: 20 },
             },
         });
 

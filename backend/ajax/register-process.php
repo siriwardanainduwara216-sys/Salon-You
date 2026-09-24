@@ -63,7 +63,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
     // 5. User Database Save 
-    $insert_query = "INSERT INTO users (name, email, phone, password, role, otp_code, is_verified) VALUES (?, ?, ?, ?, ?, ?, 0)";
+    $insert_query = "INSERT INTO users (name, email, phone, password, role, otp_code, is_verified) VALUES (?, ?, ?, ?, ?, ?, 1)";
     $insert_stmt  = mysqli_prepare($conn, $insert_query);
 
     if (!$insert_stmt) {

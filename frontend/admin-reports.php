@@ -76,6 +76,7 @@ foreach ($top_products as $p) {
             <li><a href="admin-billing.php"><i class="fas fa-money-bill"></i><span> Billing & Payments</span></a></li>
             <li class="active"><a href="admin-reports.php"><i class="fas fa-file-invoice-dollar"></i><span> Reports</span></a></li>
             <li><a href="admin-closed-dates.php"><i class="fas fa-calendar-times"></i><span> Closed Dates</span></a></li>
+            
             <li><a href="admin-notifications.php"><i class="fas fa-bell"></i><span> Notifications</span></a></li>
             <li><a href="../backend/logout.php"><i class="fas fa-sign-out-alt"></i><span> Logout</span></a></li>
         </ul>

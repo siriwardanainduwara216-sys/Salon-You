@@ -1,10 +1,8 @@
 <?php
 
-// services-data.php
-// Fetches all services  and staff members.
-// $conn must be set before including this file.
 
-// ---- All services, grouped by category ----
+
+// All services, grouped by category 
 $services_by_category = [
     'mens-haircuts' => [],
     'beard-cuts' => [],
@@ -25,7 +23,7 @@ if ($result = mysqli_query($conn, $sql)) {
     }
 }
 
-// ---- All staff members (employees) ----
+//All staff members 
 $staff_list = [];
 $sql = "SELECT id, name FROM users WHERE role = 'employee' AND status = 'active' ORDER BY name ASC";
 if ($result = mysqli_query($conn, $sql)) {
@@ -34,7 +32,7 @@ if ($result = mysqli_query($conn, $sql)) {
     }
 }
 
-// ---- Category display labels ----
+//Category display labels 
 $category_labels = [
     'mens-haircuts'   => "Men's Haircuts",
     'beard-cuts'      => 'Beard Cuts',
@@ -43,7 +41,7 @@ $category_labels = [
     'facials'         => 'Facials',
 ];
 
-// ---- Upcoming closed dates (Poya days, holidays) - used to block booking on those days ----
+// Upcoming closed dates (Poya days, holidays) - used to block booking on those days 
 $closed_dates = [];
 $sql = "SELECT closed_date, reason FROM salon_closed_dates WHERE closed_date >= CURDATE()";
 if ($result = mysqli_query($conn, $sql)) {
@@ -51,3 +49,4 @@ if ($result = mysqli_query($conn, $sql)) {
         $closed_dates[$row['closed_date']] = $row['reason'];
     }
 }
+

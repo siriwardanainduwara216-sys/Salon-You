@@ -12,6 +12,9 @@ if (!isset($active_page)) {
 }
 ?>
 
+<!-- DARK MODE STYLESHEET (loaded on every page via this header include) -->
+<link rel="stylesheet" href="frontend-css/dark-mode.css?v=<?php echo time(); ?>">
+
 <!-- HEADER SPECIFIC STYLING FIX (BLACK THEME) -->
 <style>
     header.site-header {
@@ -116,7 +119,6 @@ if (!isset($active_page)) {
         padding: 8px 18px !important;
         border-radius: 6px !important;
         font-weight: 600 !important;
-        text-decoration: none !important;
         border: 1px solid #ffffff !important;
         transition: all 0.3s ease !important;
     }
@@ -124,6 +126,28 @@ if (!isset($active_page)) {
     header.site-header .btn-register:hover {
         background: #ffffff !important;
         color: #000000 !important;
+    }
+
+    /* THEME TOGGLE BUTTON (sits on the black header, so it always uses the light-on-dark look) */
+    header.site-header .theme-toggle-btn {
+        background: rgba(230, 143, 5, 0.15) !important;
+        border: 1px solid rgba(230, 143, 5, 0.5) !important;
+        color: #e68f05 !important;
+        width: 38px !important;
+        height: 38px !important;
+        border-radius: 50% !important;
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        cursor: pointer !important;
+        font-size: 0.95rem !important;
+        margin-left: 4px !important;
+        transition: transform 0.3s ease, background 0.3s ease !important;
+    }
+
+    header.site-header .theme-toggle-btn:hover {
+        background: rgba(230, 143, 5, 0.28) !important;
+        transform: rotate(15deg) !important;
     }
 </style>
 
@@ -147,6 +171,11 @@ if (!isset($active_page)) {
 
     <!-- RIGHT: Action Buttons / Profile -->
     <div class="header-actions">
+        <!-- DARK / LIGHT MODE TOGGLE (always visible, logged in or not) -->
+        <button type="button" id="theme-toggle-btn" class="theme-toggle-btn" title="Toggle dark mode">
+            <i class="fas fa-moon"></i>
+        </button>
+
         <?php if (!$is_logged_in): ?>
             <a href="login.php" class="btn-login">Login</a>
             <a href="register.php" class="btn-register">Register</a>
@@ -163,3 +192,6 @@ if (!isset($active_page)) {
         <?php endif; ?>
     </div>
 </header>
+
+<!-- THEME TOGGLE SCRIPT (loaded once here, applies to every page that includes this header) -->
+<script src="frontend-java-script/theme-toggle.js"></script>

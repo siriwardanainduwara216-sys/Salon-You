@@ -24,6 +24,16 @@ global $conn;
 
 // 5. All dashboard data queries live in a separate file
 require_once __DIR__ . '/../backend/admin-dashboard-data.php';
+
+// 6. Unread customer messages (contact form)
+$unread_messages = 0;
+$check_tbl = mysqli_query($conn, "SHOW TABLES LIKE 'contact_messages'");
+if ($check_tbl && mysqli_num_rows($check_tbl) > 0) {
+    $res_unread = mysqli_query($conn, "SELECT COUNT(*) AS c FROM contact_messages WHERE status = 'new'");
+    if ($res_unread) {
+        $unread_messages = (int)mysqli_fetch_assoc($res_unread)['c'];
+    }
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -34,6 +44,24 @@ require_once __DIR__ . '/../backend/admin-dashboard-data.php';
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <!-- External CSS File Link -->
 <link rel="stylesheet" href="frontend-css/dashboard.css">
+<style>
+    /* Bigger cards for Total Revenue and Product Revenue */
+    .cards-row .card.card-large {
+        flex: 2 1 320px;          /* if .cards-row is flex: takes double width */
+        grid-column: span 2;      /* if .cards-row is grid: spans two columns */
+        min-width: 280px;
+        padding: 28px 30px;
+        min-height: 140px;
+    }
+    .cards-row .card.card-large h4 {
+        font-size: 17px;
+    }
+    .cards-row .card.card-large .card-number {
+        font-size: 34px;
+        line-height: 1.2;
+        word-break: break-word;
+    }
+</style>
 </head>
 <body>
 
@@ -58,6 +86,13 @@ require_once __DIR__ . '/../backend/admin-dashboard-data.php';
             <li><a href="admin-billing.php"><i class="fas fa-money-bill"></i><span> Billing & Payments</span></a></li>
             <li><a href="admin-reports.php"><i class="fas fa-file-invoice-dollar"></i><span> Reports</span></a></li>
             <li><a href="admin-closed-dates.php"><i class="fas fa-calendar-times"></i><span> Closed Dates</span></a></li>
+            <li>
+                <a href="admin-messages.php"><i class="fas fa-envelope"></i><span> Messages</span>
+                    <?php if ($unread_messages > 0): ?>
+                        <span class="badge low" style="margin-left:6px;"><?php echo $unread_messages; ?></span>
+                    <?php endif; ?>
+                </a>
+            </li>
             <li><a href="admin-notifications.php"><i class="fas fa-bell"></i><span> Notifications</span></a></li>
             <li><a href="../backend/logout.php"><i class="fas fa-sign-out-alt"></i><span> Logout</span></a></li>
         </ul>
@@ -95,13 +130,17 @@ require_once __DIR__ . '/../backend/admin-dashboard-data.php';
                     <h4>This Month</h4>
                     <p class="card-number"><?php echo $month_count; ?></p>
                 </div>
-                <div class="card green">
+                <div class="card green card-large">
                     <h4>Total Revenue</h4>
                     <p class="card-number">Rs. <?php echo number_format($total_revenue, 2); ?></p>
                 </div>
                 <div class="card purple">
                     <h4>Total Customers</h4>
                     <p class="card-number"><?php echo $total_customers; ?></p>
+                </div>
+                <div class="card amber" style="cursor:pointer;" onclick="window.location.href='admin-messages.php?filter=new'">
+                    <h4>New Messages</h4>
+                    <p class="card-number"><?php echo $unread_messages; ?></p>
                 </div>
             </div>
 
@@ -121,7 +160,7 @@ require_once __DIR__ . '/../backend/admin-dashboard-data.php';
                     <h4>This Month</h4>
                     <p class="card-number"><?php echo $products_month_count; ?></p>
                 </div>
-                <div class="card green">
+                <div class="card green card-large">
                     <h4>Product Revenue</h4>
                     <p class="card-number">Rs. <?php echo number_format($product_revenue, 2); ?></p>
                 </div>

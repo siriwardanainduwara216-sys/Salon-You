@@ -22,7 +22,7 @@ if ($result = mysqli_query($conn, $sql)) {
     $month_count = mysqli_fetch_assoc($result)['total'];
 }
 
-//Total Revenue
+
 //Total Revenue
 $total_revenue = 0;
 $sql = "SELECT SUM(s.price) AS total

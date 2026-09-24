@@ -8,14 +8,16 @@ global $conn;
 
 require_once __DIR__ . '/../backend/products-data.php';
 
-$is_logged_in = isset($_SESSION['user_id']);
-$is_customer = $is_logged_in && ($_SESSION['user_role'] ?? '') === 'customer';
+$is_logged_in = isset($_SESSION['user_id']);$is_customer = $is_logged_in && ($_SESSION['user_role'] ?? '') === 'customer';
 
-// Cart count for the header badge
+// Active page indicator for header highlight
+$active_page = 'products';
+
+// Cart count for badge display
 $cart_count = 0;
 if (isset($_SESSION['cart'])) {
-    foreach ($_SESSION['cart'] as $qty) {
-        $cart_count += $qty;
+    foreach ($_SESSION['cart'] as$qty) {
+        $cart_count +=$qty;
     }
 }
 ?>
@@ -28,131 +30,125 @@ if (isset($_SESSION['cart'])) {
 
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="frontend-css/services.css">
+    
+    <!-- Shared Site Styles -->
     <link rel="stylesheet" href="frontend-css/style.css">
+    <link rel="stylesheet" href="frontend-css/services.css">
+    <link rel="stylesheet" href="frontend-css/products.css">
 
     <style>
-    .cart-btn {
-        position: relative;
-        background: #d4af37;
-        color: #1a1a1a;
-        border: none;
-        padding: 10px 18px;
-        border-radius: 8px;
-        font-weight: 600;
-        cursor: pointer;
-        font-size: 14px;
+    /* Outer Section Setup with Extra Inner Padding */
+    body.luxury-theme section.services-list-section {
+        width: 100% !important;
+        max-width: 100% !important;
+        background: transparent !important;
+        background-color: transparent !important;
+        border: none !important;
+        box-shadow: none !important;
+        padding: 40px 50px !important; 
+        box-sizing: border-box !important;
     }
-    .cart-badge {
-        position: absolute;
-        top: -8px;
-        right: -8px;
-        background: #ef4444;
-        color: #fff;
-        font-size: 11px;
-        font-weight: 700;
-        width: 20px;
-        height: 20px;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-    .product-desc {
-        color: #9a9aa5;
-        font-size: 12px;
-        margin-top: 6px;
-        display: -webkit-box;
-        -webkit-line-clamp: 2;
-        -webkit-box-orient: vertical;
-        overflow: hidden;
-    }
-    .cart-item-row {
-        display: flex;
-        align-items: center;
-        gap: 12px;
-        padding: 12px 0;
-        border-bottom: 1px solid #2c2d35;
-    }
-    .cart-item-row img {
-        width: 50px; height: 50px; object-fit: cover; border-radius: 8px;
-    }
-    .cart-item-info { flex: 1; }
-    .cart-item-info h4 { font-size: 14px; margin-bottom: 2px; }
-    .cart-item-info span { font-size: 12px; color: #9a9aa5; }
-    .qty-controls { display: flex; align-items: center; gap: 8px; }
-    .qty-controls button {
-        background: #2c2d35; color: #fff; border: none; width: 26px; height: 26px;
-        border-radius: 6px; cursor: pointer; font-size: 14px;
-    }
-    .cart-total-row {
-        display: flex; justify-content: space-between; font-size: 16px;
-        font-weight: 700; color: #d4af37; margin-top: 16px; padding-top: 16px;
-        border-top: 1px solid #2c2d35;
-    }
-    .empty-cart-msg { color: #9a9aa5; font-size: 14px; text-align: center; padding: 20px 0; }
 
-    .payment-options {
-    display: flex;
-    gap: 10px;
-    margin-top: 16px;
-}
-.payment-options button {
-    flex: 1;
-    padding: 12px;
-    border-radius: 8px;
-    border: none;
-    cursor: pointer;
-    font-weight: 600;
-    font-size: 13px;
-}
-.btn-cash {
-    background: #2c2d35;
-    color: #fff;
-}
-.btn-online {
-    background: #d4af37;
-    color: #1a1a1a;
-}
+    /* Container Spacing */
+    body.luxury-theme div.luxury-container {
+        width: 100% !important;
+        max-width: 100% !important;
+        background: transparent !important;
+        background-color: transparent !important;
+        border: none !important;
+        box-shadow: none !important;
+        padding: 0 !important;
+        margin: 0 auto !important;
+    }
+
+    /* Grid Layout: 5 Products in 1 Line */
+    body.luxury-theme div.services-grid {
+        display: grid !important;
+        grid-template-columns: repeat(5, 1fr) !important;
+        gap: 20px !important;
+        width: 100% !important;
+    }
+
+    /* Card Container with Inner Framing Padding */
+    body.luxury-theme div.luxury-service-card {
+        width: 100% !important;
+        background: #ffffff !important;
+        border: 1px solid #e0e0e0 !important;
+        border-radius: 16px !important;
+        padding: 8px !important;
+        margin: 0 !important;
+        overflow: hidden !important;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08) !important;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: space-between !important;
+        box-sizing: border-box !important;
+    }
+
+    /* Image Box with Rounded Corners */
+    body.luxury-theme div.luxury-service-card div.card-img-box {
+        width: 100% !important;
+        height: 220px !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        overflow: hidden !important;
+        border-radius: 12px !important;
+        background-color: #f5f5f5 !important;
+        position: relative !important;
+    }
+
+    /* Image Fill */
+    body.luxury-theme div.luxury-service-card div.card-img-box img {
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: cover !important;
+        display: block !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        border-radius: 12px !important;
+    }
+
+    /* Card Content Padding */
+    body.luxury-theme div.luxury-service-card div.card-body {
+        padding: 12px 6px 6px 6px !important;
+    }
+
+    /* Mobile & Tablet Responsive Layout */
+    @media (max-width: 1200px) {
+        body.luxury-theme div.services-grid {
+            grid-template-columns: repeat(3, 1fr) !important;
+        }
+    }
+
+    @media (max-width: 768px) {
+        body.luxury-theme div.services-grid {
+            grid-template-columns: repeat(2, 1fr) !important;
+        }
+        body.luxury-theme section.services-list-section {
+            padding: 20px 15px !important;
+        }
+    }
     </style>
 </head>
 <body class="luxury-theme">
 
-    <!-- NAVIGATION HEADER -->
-    <header class="site-header">
-        <a href="index.php" class="logo-container">
-            <img src="../logo/logo.png" alt="Salon You Logo" class="site-logo">
-            <span class="logo-text">SALON YOU</span>
-        </a>
+    <!-- INCLUDE SHARED HEADER -->
+    <?php include_once __DIR__ . '/indexheader.php'; ?>
 
-        <nav class="main-nav">
-            <a href="index.php" class="nav-link">Home</a>
-            <a href="services.php" class="nav-link">Services</a>
-            <a href="products.php" class="nav-link active">products</a>
-            <a href="index.php#gallery" class="nav-link">Gallery</a>
-            <a href="about.php" class="nav-link">About Us</a>
-            <a href="#contact" class="nav-link">Contact</a>
-        </nav>
+    <!-- FLOATING SHOPPING CART BUTTON -->
+    <button type="button" class="cart-btn-fixed" id="openCartBtn">
+        <i class="fas fa-shopping-cart"></i> View Cart
+        <span class="cart-badge" id="cartBadge" style="<?php echo $cart_count > 0 ? '' : 'display:none;'; ?>"><?php echo $cart_count; ?></span>
+    </button>
 
-        <div class="header-actions" style="display:flex; align-items:center; gap:12px;">
-            <button type="button" class="cart-btn" id="openCartBtn">
-                <i class="fas fa-shopping-cart"></i> Cart
-                <span class="cart-badge" id="cartBadge" style="<?php echo $cart_count > 0 ? '' : 'display:none;'; ?>"><?php echo $cart_count; ?></span>
-            </button>
-            <?php if ($is_logged_in): ?>
-                <a href="../backend/logout.php" class="btn-register">Logout</a>
-            <?php else: ?>
-                <a href="../register.php" class="btn-register">Register</a>
-            <?php endif; ?>
-        </div>
-    </header>
-
-    <!-- PRODUCTS HERO -->
-    <section class="services-hero">
-        <div class="luxury-container text-center">
-            <span class="gold-subtitle">SHOP OUR PRODUCTS</span>
-            <h1 class="luxury-heading">SALON <span class="gold-text">ESSENTIALS</span></h1>
-            <p class="about-desc">Take the salon experience home with our curated beauty products.</p>
+    <!-- NEW PRODUCTS HERO BANNER SECTION -->
+    <section class="products-hero-section">
+        <div class="products-hero-overlay">
+            <div class="products-hero-content">
+                <span class="products-hero-subtitle">OUR PRODUCTS</span>
+                <h1 class="products-hero-title">EXCLUSIVE HAIR & BEAUTY PRODUCTS</h1>
+                <p class="products-hero-description">We use only the finest products, carefully selected for their quality and performance.</p>
+            </div>
         </div>
     </section>
 
@@ -163,29 +159,44 @@ if (isset($_SESSION['cart'])) {
                 <p style="text-align:center; color:#9a9aa5; padding:40px 0;">No products available right now. Check back soon!</p>
             <?php else: ?>
                 <div class="services-grid" id="products-container">
-                    <?php foreach ($active_products as $product): ?>
+                    <?php foreach ($active_products as $product):$p_id = $product['id'];$p_name = $product['item_name'] ?? $product['product_name'] ?? 'Product';
+                        $p_price =$product['price'] ?? 0;
+                       $p_qty = (int)($product['stock_quantity'] ?? 0);$p_category = $product['category'] ?? '';$p_img = !empty($product['image_url']) ? trim($product['image_url'], '/') : '';
+                    ?>
                         <div class="luxury-service-card"
-                             data-product-id="<?php echo $product['id']; ?>"
-                             data-product-name="<?php echo htmlspecialchars($product['product_name']); ?>"
-                             data-price="<?php echo $product['price']; ?>">
+                             data-product-id="<?php echo $p_id; ?>"
+                             data-product-name="<?php echo htmlspecialchars($p_name); ?>"
+                             data-price="<?php echo $p_price; ?>">
                             <div class="card-img-box">
-                                <?php if (!empty($product['image_url'])): ?>
-                                    <img src="../<?php echo htmlspecialchars($product['image_url']); ?>" alt="<?php echo htmlspecialchars($product['product_name']); ?>">
+                                <?php if (!empty($p_img)): ?>
+                                    <img src="../<?php echo htmlspecialchars($p_img); ?>" 
+                                         alt="<?php echo htmlspecialchars($p_name); ?>"
+                                         onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                                    <div class="card-icon-placeholder" style="display:none;">
+                                        <i class="fas fa-pump-soap"></i>
+                                    </div>
                                 <?php else: ?>
                                     <div class="card-icon-placeholder">
                                         <i class="fas fa-pump-soap"></i>
                                     </div>
                                 <?php endif; ?>
-                                <span class="luxury-price">Rs. <?php echo number_format($product['price'], 2); ?></span>
+                                <span class="luxury-price">Rs. <?php echo number_format($p_price, 2); ?></span>
                             </div>
                             <div class="card-body" style="flex-direction: column; align-items: stretch;">
-                                <h3><?php echo htmlspecialchars($product['product_name']); ?></h3>
-                                <?php if (!empty($product['description'])): ?>
-                                    <p class="product-desc"><?php echo htmlspecialchars($product['description']); ?></p>
+                                <h3><?php echo htmlspecialchars($p_name); ?></h3>
+                                <?php if (!empty($p_category)): ?>
+                                    <p class="product-desc">Category: <?php echo htmlspecialchars($p_category); ?></p>
                                 <?php endif; ?>
-                                <button type="button" class="btn-confirm-booking" style="margin-top:10px;" data-add-to-cart>
-                                    <i class="fas fa-cart-plus"></i> Add to Cart
-                                </button>
+                                
+                                <?php if ($p_qty > 0): ?>
+                                    <button type="button" class="btn-confirm-booking" style="margin-top:10px;" data-add-to-cart>
+                                        <i class="fas fa-cart-plus"></i> Add to Cart
+                                    </button>
+                                <?php else: ?>
+                                    <button type="button" class="btn-confirm-booking" style="margin-top:10px; opacity: 0.5; cursor: not-allowed;" disabled>
+                                        <i class="fas fa-ban"></i> Out of Stock
+                                    </button>
+                                <?php endif; ?>
                             </div>
                         </div>
                     <?php endforeach; ?>
@@ -228,7 +239,10 @@ if (isset($_SESSION['cart'])) {
 
     <div class="booking-alert" id="cart-alert"></div>
 
-   <script src="https://www.payhere.lk/lib/payhere.js"></script>
+    <!-- INCLUDE SHARED FOOTER -->
+    <?php include_once __DIR__ . '/indexfooter.php'; ?>
+
+    <script src="https://www.payhere.lk/lib/payhere.js"></script>
     <script>
     const isLoggedIn = <?php echo $is_customer ? 'true' : 'false'; ?>;
     const cartOverlay = document.getElementById('cart-overlay');
@@ -237,7 +251,6 @@ if (isset($_SESSION['cart'])) {
     const cartBadge = document.getElementById('cartBadge');
     const cartItemsList = document.getElementById('cart-items-list');
     const cartTotalAmount = document.getElementById('cart-total-amount');
-    const placeOrderBtn = document.getElementById('place-order-btn');
     const cartAlert = document.getElementById('cart-alert');
     const productsContainer = document.getElementById('products-container');
 
@@ -294,7 +307,7 @@ if (isset($_SESSION['cart'])) {
 
         cartItemsList.innerHTML = data.items.map(item => `
             <div class="cart-item-row" data-product-id="${item.id}">
-                <img src="${item.image_url ? '../' + item.image_url : 'https://via.placeholder.com/50'}" alt="${item.product_name}">
+                <img src="${item.image_url ? '../' + item.image_url.replace(/^\/+/, '') : 'https://via.placeholder.com/50'}" alt="${item.product_name}">
                 <div class="cart-item-info">
                     <h4>${item.product_name}</h4>
                     <span>Rs. ${parseFloat(item.price).toFixed(2)} each</span>
@@ -383,7 +396,6 @@ if (isset($_SESSION['cart'])) {
             return;
         }
 
-        // Step 1: create the order in the database (status: pending, payment_method: online)
         const response = await fetch('place-order.php', {
             method: 'POST',
             headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
@@ -396,7 +408,6 @@ if (isset($_SESSION['cart'])) {
             return;
         }
 
-        // Step 2: get PayHere payment details (hash, merchant id, etc.) for this order
         const payResponse = await fetch(`payhere-init.php?order_id=${data.order_id}`);
         const payData = await payResponse.json();
 
@@ -405,9 +416,7 @@ if (isset($_SESSION['cart'])) {
             return;
         }
 
-        // Step 3: open the PayHere payment popup
         payhere.onCompleted = function (orderId) {
-            // TESTING ONLY: client-side confirmation. Move to server-side notify_url for production.
             fetch('payhere-confirm-testing.php?order_id=' + orderId)
                 .then(() => {
                     cartOverlay.classList.remove('show');
@@ -427,8 +436,6 @@ if (isset($_SESSION['cart'])) {
 
         payhere.startPayment(payData.payment);
     });
-
-    
     </script>
 
 </body>

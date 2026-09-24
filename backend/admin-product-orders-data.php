@@ -127,7 +127,7 @@ while ($row = mysqli_fetch_assoc($result)) {
 }
 mysqli_stmt_close($stmt);
 
-// ---- Counts for the filter tabs (within the selected date range) ----
+// Counts for the filter tabs (within the selected date range)
 $status_counts = ['all' => 0, 'pending' => 0, 'ready' => 0, 'completed' => 0, 'cancelled' => 0];
 $sql = "SELECT status, COUNT(*) AS total FROM product_orders WHERE created_at BETWEEN ? AND ? GROUP BY status";
 $stmt = mysqli_prepare($conn, $sql);

@@ -19,7 +19,7 @@ if ($result = mysqli_query($conn, $sql)) {
     }
 }
 
-//  Existing service-inventory usage mappings
+//  Existing service inventory usage mappings
 $usage_list = [];
 $sql = "SELECT siu.id, siu.uses_consumed, s.service_name, i.item_name, i.unit
         FROM service_inventory_usage siu

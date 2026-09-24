@@ -31,146 +31,758 @@ $closed_dates = $closed_dates ?? [];
     <link rel="stylesheet" href="frontend-css/style.css">
     <link rel="stylesheet" href="frontend-css/services.css?v=2.0">
     <link rel="stylesheet" href="frontend-css/services-modal.css">
+<style>
 
-    <style>
-        /* BRAND BAR & CONTAINER WIDTH INCREASE */
-        .brand-bar .luxury-container,
-        .services-list-section .luxury-container {
-            max-width: 1400px !important;
-            width: 95% !important;
-        }
+/* ==========================================
+   1. FULL-WIDTH PREMIUM ASH SECTIONS & CONTAINERS
+   ========================================== */
+.brand-bar,
+.services-list-section,
+.stylist-section {
+    width: 100vw !important;
+    position: relative !important;
+    left: 50% !important;
+    right: 50% !important;
+    margin-left: -50vw !important;
+    margin-right: -50vw !important;
+    background: #f4f6f8 !important;
+    background-color: #f4f6f8 !important;
+    padding: 40px 0 !important;
+    border-radius: 0 !important;
+    border: none !important;
+    box-shadow: none !important;
+}
 
-        /* 3 CARDS PER ROW */
-        .services-grid {
-            max-width: 1400px !important;
-            display: grid !important;
-            grid-template-columns: repeat(3, 1fr) !important;
-            gap: 25px !important;
-        }
+.brand-bar .luxury-container,
+.services-list-section .luxury-container,
+.stylist-section .luxury-container,
+.stylist-section .stylist-container {
+    max-width: 1400px !important;
+    width: 92% !important;
+    margin: 0 auto !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    border: none !important;
+    padding: 0 !important;
+}
 
-        /* RESPONSIVE BREAKPOINTS */
-        @media (max-width: 992px) {
-            .services-grid {
-                grid-template-columns: repeat(2, 1fr) !important;
-            }
-        }
+/* ==========================================
+   2. SECTION HEADINGS & INSTRUCTIONS (CENTER & BOLD)
+   ========================================== */
+.brand-bar,
+.brand-bar .luxury-container,
+.services-filter-section {
+    text-align: center !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 100% !important;
+}
 
-        @media (max-width: 600px) {
-            .services-grid {
-                grid-template-columns: 1fr !important;
-            }
-        }
+.brand-bar h2,
+.brand-bar h3,
+.brand-bar .section-title,
+.stylist-section h2,
+.stylist-section h3.stylist-title-main {
+    font-size: 2.1rem !important;
+    font-weight: 800 !important;
+    color: #0f172a !important;
+    text-align: center !important;
+    margin-bottom: 8px !important;
+    letter-spacing: 0.5px;
+}
 
-        /* AI PREVIEW BUTTON - sits next to the haircut name, not on the image */
-        .card-body {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 10px;
-        }
+.brand-bar p,
+.brand-bar .section-desc,
+.stylist-section p {
+    font-size: 1.1rem !important;
+    font-weight: 500 !important;
+    color: #475569 !important;
+    text-align: center !important;
+    max-width: 850px !important;
+    margin: 0 auto 15px auto !important;
+    line-height: 1.5 !important;
+}
 
-        .btn-ai-card-preview {
-            background: linear-gradient(135deg, #d4af37, #996515) !important;
-            color: #0f172a !important;
-            border: none !important;
-            border-radius: 20px !important;
-            padding: 6px 12px !important;
-            font-size: 0.75rem !important;
-            font-weight: 700;
-            cursor: pointer;
-            box-shadow: 0 2px 8px rgba(212, 175, 55, 0.4);
-            transition: all 0.2s ease;
-            white-space: nowrap;
-            flex-shrink: 0;
-        }
+/* ==========================================
+   3. CATEGORY BUTTONS - CENTERED INSIDE THE BOX
+   ========================================== */
+#category-tabs,
+.category-buttons,
+.services-category-tabs {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    justify-content: center !important;
+    align-items: center !important;
+    gap: 12px !important;
+    width: 100% !important;
+    max-width: 1400px !important;
+    margin: 15px auto 30px auto !important;
+    padding: 5px 15px 12px 15px !important;
+    overflow-x: auto !important;
+    scrollbar-width: thin;
+}
 
-        .btn-ai-card-preview i {
-            color: #0f172a !important;
-        }
+/* Custom scrollbar styling */
+#category-tabs::-webkit-scrollbar,
+.category-buttons::-webkit-scrollbar,
+.services-category-tabs::-webkit-scrollbar {
+    height: 5px;
+}
 
-        .btn-ai-card-preview:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(212, 175, 55, 0.6);
-        }
+#category-tabs::-webkit-scrollbar-thumb,
+.category-buttons::-webkit-scrollbar-thumb,
+.services-category-tabs::-webkit-scrollbar-thumb {
+    background: rgba(212, 175, 55, 0.4);
+    border-radius: 10px;
+}
 
-        /* AI modal buttons (keep their own colours over the global button style) */
-        #aiVisualizerModal #submitBtn {
-            background: linear-gradient(135deg, #d4af37, #aa7c11) !important;
-            color: #000 !important;
-            border: none !important;
-            border-radius: 6px !important;
-        }
+#category-tabs .category-btn,
+.category-btn,
+.services-category-tabs button {
+    background: linear-gradient(135deg, #1e293b, #0f172a) !important;
+    color: #f8fafc !important;
+    border: 1px solid rgba(212, 175, 55, 0.4) !important;
+    border-radius: 30px !important;
+    padding: 10px 22px !important;
+    font-size: 0.9rem !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.5px !important;
+    cursor: pointer !important;
+    white-space: nowrap !important;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08) !important;
+    flex-shrink: 0 !important;
+    transition: all 0.3s ease !important;
+}
 
-        #aiVisualizerModal #submitBtn i {
-            color: #000 !important;
-        }
+#category-tabs .category-btn:hover,
+.category-btn:hover,
+.services-category-tabs button:hover,
+#category-tabs .category-btn.active,
+.category-btn.active,
+.services-category-tabs button.active {
+    background: linear-gradient(135deg, #d4af37, #aa7c11) !important;
+    color: #0f172a !important;
+    border-color: #d4af37 !important;
+    transform: translateY(-3px) !important;
+    box-shadow: 0 6px 20px rgba(212, 175, 55, 0.35) !important;
+}
 
-        #aiVisualizerModal #proceedToBookBtn {
-            background: #22c55e !important;
-            color: #fff !important;
-            border: none !important;
-            border-radius: 6px !important;
-        }
+#category-tabs .category-btn i,
+.category-btn i,
+.services-category-tabs button i {
+    color: #d4af37 !important;
+    margin-right: 8px !important;
+    transition: color 0.3s ease;
+}
 
-        .ai-modal {
-            position: fixed;
-            z-index: 10000;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.85);
-            backdrop-filter: blur(5px);
-        }
+#category-tabs .category-btn:hover i,
+#category-tabs .category-btn.active i,
+.category-btn:hover i,
+.services-category-tabs button:hover i,
+.category-btn.active i,
+.services-category-tabs button.active i {
+    color: #0f172a !important;
+}
 
-        .ai-modal-content {
-            background-color: #0f172a;
-            border: 1px solid rgba(212, 175, 55, 0.3);
-            color: #ffffff;
-            margin: 4% auto;
-            padding: 25px;
-            width: 90%;
-            max-width: 460px;
-            border-radius: 12px;
-            position: relative;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
-            max-height: 85vh;
-            overflow-y: auto;
-        }
+/* ==========================================
+   4. SERVICE CARDS - FORCED TALLER HEIGHT
+   ========================================== */
+.services-grid {
+    max-width: 1400px !important;
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 25px !important;
+    margin-top: 10px !important;
+    width: 100% !important;
+}
 
-        #outputImage {
-            max-width: 100%; 
-            max-height: 320px;
-            object-fit: contain;
-            border-radius: 10px; 
-            box-shadow: 0 4px 15px rgba(0,0,0,0.5); 
-            border: 1px solid #d4af37;
-        }
+.service-card,
+.services-grid .card,
+.luxury-service-card {
+    background: #ffffff !important;
+    border: 1px solid #cbd5e1 !important;
+    border-radius: 16px !important;
+    padding: 24px !important;
+    min-height: 660px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: space-between !important;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05) !important;
+    transition: all 0.3s ease;
+}
 
-        .close-ai-modal {
-            position: absolute;
-            right: 18px;
-            top: 12px;
-            font-size: 26px;
-            cursor: pointer;
-            color: #94a3b8;
-        }
+/* FIX: category filter uses this class to hide cards.
+   Two classes = higher specificity than the rule above, so this wins. */
+.luxury-service-card.is-hidden,
+.service-card.is-hidden {
+    display: none !important;
+}
 
-        .close-ai-modal:hover {
-            color: #fff;
-        }
+.service-card:hover,
+.luxury-service-card:hover {
+    transform: translateY(-5px);
+    border-color: #d4af37 !important;
+    box-shadow: 0 12px 28px rgba(212, 175, 55, 0.22);
+}
 
-        .ai-selected-style-label {
-            background: rgba(212, 175, 55, 0.1);
-            border: 1px solid rgba(212, 175, 55, 0.3);
-            color: #d4af37;
-            padding: 10px 14px;
-            border-radius: 8px;
-            font-weight: 600;
-            margin-bottom: 15px;
-            font-size: 0.95rem;
-        }
-    </style>
+.service-card .img-box,
+.service-card .card-img-top,
+.services-grid .img-box,
+.card-img-box {
+    width: 100% !important;
+    height: 450px !important;
+    background-color: #ffffff !important;
+    border-radius: 12px !important;
+    overflow: hidden !important;
+    position: relative !important;
+    flex-shrink: 0 !important;
+}
+
+.service-card .img-box img,
+.services-grid .img-box img,
+.card-img-box img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    object-position: center 20% !important;
+}
+
+/* ==========================================
+   5. STYLIST CARDS & IMAGES
+   ========================================== */
+.stylist-grid {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)) !important;
+    gap: 35px !important;
+    margin-top: 30px !important;
+    justify-content: center !important;
+}
+
+.stylist-card {
+    background: #ffffff !important;
+    border-radius: 16px !important;
+    padding: 16px !important;
+    border: 1px solid #cbd5e1 !important;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+}
+
+.stylist-card:hover {
+    transform: translateY(-6px);
+    border-color: #d4af37 !important;
+    box-shadow: 0 12px 28px rgba(212, 175, 55, 0.25);
+}
+
+/* FIX: name was white on a white card */
+.stylist-card .stylist-info h3 {
+    color: #0f172a !important;
+    font-size: 1.1rem;
+}
+
+.stylist-card .stylist-info .stylist-role {
+    color: #aa7c11 !important;
+    font-size: 0.85rem;
+}
+
+.stylist-card .stylist-img-box {
+    width: 100% !important;
+    height: 420px !important;
+    position: relative !important;
+    overflow: hidden !important;
+    border-radius: 12px !important;
+    background-color: #ffffff !important;
+}
+
+.stylist-card .stylist-img-box img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    object-position: center 20% !important;
+    display: block !important;
+}
+
+/* ==========================================
+   6. CARD BODY & AI PREVIEW BUTTON
+   ========================================== */
+.card-body {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    gap: 10px !important;
+    padding: 15px 0 5px 0 !important;
+    width: 100% !important;
+}
+
+.btn-ai-card-preview {
+    background: linear-gradient(135deg, #d4af37, #996515) !important;
+    color: #0f172a !important;
+    border: none !important;
+    border-radius: 20px !important;
+    padding: 7px 14px !important;
+    font-size: 0.75rem !important;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(212, 175, 55, 0.4);
+    transition: all 0.2s ease;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+.btn-ai-card-preview i {
+    color: #0f172a !important;
+}
+
+.btn-ai-card-preview:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(212, 175, 55, 0.6);
+}
+
+/* ==========================================
+   7. AI MODAL & PREVIEW BOXES
+   ========================================== */
+.ai-modal {
+    position: fixed;
+    z-index: 10000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(5px);
+}
+
+.ai-modal-content {
+    background-color: #0f172a;
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    color: #ffffff;
+    margin: 4% auto;
+    padding: 25px;
+    width: 90%;
+    max-width: 520px;
+    border-radius: 12px;
+    position: relative;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+    max-height: 85vh;
+    overflow-y: auto;
+}
+
+#aiVisualizerModal #submitBtn {
+    background: linear-gradient(135deg, #d4af37, #aa7c11) !important;
+    color: #000 !important;
+    border: none !important;
+    border-radius: 6px !important;
+}
+
+#aiVisualizerModal #submitBtn i {
+    color: #000 !important;
+}
+
+#aiVisualizerModal #proceedToBookBtn {
+    background: #22c55e !important;
+    color: #fff !important;
+    border: none !important;
+    border-radius: 6px !important;
+}
+
+.ai-preview-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-top: 10px;
+}
+
+.preview-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #1e293b;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid rgba(212, 175, 55, 0.3);
+}
+
+.preview-label {
+    font-size: 0.8rem;
+    font-weight: bold;
+    color: #d4af37;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+}
+
+.preview-box img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 6px;
+    border: 1px solid #334155;
+}
+
+.close-ai-modal {
+    position: absolute;
+    right: 18px;
+    top: 12px;
+    font-size: 26px;
+    cursor: pointer;
+    color: #94a3b8;
+}
+
+.close-ai-modal:hover {
+    color: #fff;
+}
+
+.ai-selected-style-label {
+    background: rgba(212, 175, 55, 0.1);
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    color: #d4af37;
+    padding: 10px 14px;
+    border-radius: 8px;
+    font-weight: 600;
+    margin-bottom: 15px;
+    font-size: 0.95rem;
+}
+
+/* ==========================================
+   8. RESPONSIVE BREAKPOINTS
+   ========================================== */
+@media (max-width: 992px) {
+    .services-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+}
+
+@media (max-width: 600px) {
+    .services-grid {
+        grid-template-columns: 1fr !important;
+    }
+    #category-tabs,
+    .category-buttons,
+    .services-category-tabs {
+        justify-content: flex-start !important;
+        overflow-x: auto !important;
+        flex-wrap: nowrap !important;
+        padding-bottom: 10px !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .ai-preview-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ==========================================
+   9. PREMIUM DESIGN UPGRADE
+   ========================================== */
+
+/* --- Section background: soft luxury gradient --- */
+.services-list-section {
+    background: linear-gradient(180deg, #f4f6f8 0%, #e9edf2 100%) !important;
+    padding: 55px 0 70px 0 !important;
+}
+
+.services-grid {
+    gap: 34px !important;
+}
+
+/* --- Card shell --- */
+.luxury-service-card {
+    position: relative !important;
+    overflow: hidden !important;
+    padding: 18px 18px 22px 18px !important;
+    border: 1px solid rgba(212, 175, 55, 0.28) !important;
+    border-radius: 20px !important;
+    background: linear-gradient(180deg, #ffffff 0%, #fbfaf6 100%) !important;
+    box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08) !important;
+    cursor: pointer;
+    animation: cardFadeUp 0.55s ease both;
+    transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease !important;
+}
+
+/* gold accent bar on top of every card */
+.luxury-service-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #aa7c11, #d4af37, #f3d675, #d4af37, #aa7c11);
+    z-index: 3;
+}
+
+/* "Book" hint line at the bottom of the card */
+.luxury-service-card::after {
+    content: "TAP TO SELECT  \2192";
+    display: block;
+    margin-top: 14px;
+    padding-top: 14px;
+    border-top: 1px dashed rgba(212, 175, 55, 0.55);
+    text-align: center;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    color: #aa7c11;
+    transition: color 0.3s ease, letter-spacing 0.3s ease;
+}
+
+.luxury-service-card.selected::after {
+    content: "\2713  SELECTED - TAP TO REMOVE";
+    color: #16a34a;
+}
+
+.luxury-service-card:hover {
+    transform: translateY(-9px) !important;
+    border-color: #d4af37 !important;
+    box-shadow: 0 22px 45px rgba(212, 175, 55, 0.28), 0 6px 14px rgba(15, 23, 42, 0.08) !important;
+}
+
+.luxury-service-card:hover::after {
+    color: #0f172a;
+    letter-spacing: 3.5px;
+}
+
+/* selected state */
+.luxury-service-card.selected {
+    border-color: #d4af37 !important;
+    box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.35), 0 22px 45px rgba(212, 175, 55, 0.3) !important;
+}
+
+/* --- Image area --- */
+.luxury-service-card .card-img-box {
+    border-radius: 14px !important;
+    background: linear-gradient(135deg, #1e293b, #0f172a) !important;
+    border: none !important;
+    padding: 0 !important;
+    box-sizing: border-box !important;
+}
+
+.luxury-service-card .card-img-box img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    object-position: center 20% !important;
+    display: block !important;
+    border-radius: 0 !important;
+}
+
+.luxury-service-card .card-icon-placeholder {
+    border-radius: 0;
+}
+
+.luxury-service-card .card-img-box img {
+    transition: transform 0.7s ease !important;
+}
+
+.luxury-service-card:hover .card-img-box img {
+    transform: scale(1.07);
+}
+
+/* price = gold pill on the image */
+.luxury-service-card .luxury-price {
+    position: absolute !important;
+    right: 12px !important;
+    bottom: 12px !important;
+    z-index: 2 !important;
+    background: linear-gradient(135deg, #d4af37, #aa7c11) !important;
+    color: #0f172a !important;
+    font-weight: 800 !important;
+    font-size: 0.95rem !important;
+    letter-spacing: 0.5px;
+    padding: 7px 16px !important;
+    border-radius: 30px !important;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35) !important;
+}
+
+/* "Selected" badge (visibility controlled by .selected on the card) */
+.luxury-service-card .badge-selected {
+    position: absolute !important;
+    top: 12px !important;
+    left: 12px !important;
+    z-index: 4 !important;
+    background: #22c55e !important;
+    color: #ffffff !important;
+    font-size: 0.75rem !important;
+    font-weight: 700 !important;
+    padding: 5px 12px !important;
+    border-radius: 20px !important;
+    display: none !important;
+}
+
+.luxury-service-card.selected .badge-selected {
+    display: inline-flex !important;
+    align-items: center;
+    gap: 4px;
+}
+
+/* placeholder when a service has no image */
+.luxury-service-card .card-icon-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: radial-gradient(circle at 50% 40%, #1e293b, #0b1220);
+}
+
+.luxury-service-card .card-icon-placeholder i {
+    font-size: 4.2rem;
+    color: #d4af37;
+    filter: drop-shadow(0 4px 12px rgba(212, 175, 55, 0.45));
+}
+
+/* --- Card text --- */
+.luxury-service-card .card-body {
+    padding: 20px 4px 0 4px !important;
+}
+
+.luxury-service-card .card-body h3 {
+    flex: 1;
+    margin: 0;
+    font-family: 'Cinzel', serif;
+    font-size: 1.15rem;
+    font-weight: 700;
+    letter-spacing: 0.8px;
+    line-height: 1.4;
+    color: #0f172a;
+    text-align: left;
+}
+
+/* --- Smooth entrance when a category is opened (staggered) --- */
+@keyframes cardFadeUp {
+    from { opacity: 0; transform: translateY(26px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+.luxury-service-card:nth-child(3n+2) { animation-delay: 0.08s; }
+.luxury-service-card:nth-child(3n+3) { animation-delay: 0.16s; }
+
+/* --- Category buttons: a little more presence --- */
+#category-tabs .category-btn {
+    padding: 12px 26px !important;
+    font-size: 0.95rem !important;
+}
+
+/* --- Stylist cards: same premium touch --- */
+.stylist-card {
+    border: 1px solid rgba(212, 175, 55, 0.28) !important;
+    border-radius: 20px !important;
+}
+
+.stylist-card.selected,
+.stylist-card.active {
+    border-color: #d4af37 !important;
+    box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.35), 0 16px 34px rgba(212, 175, 55, 0.25) !important;
+}
+
+/* --- Mobile tuning for the taller cards --- */
+@media (max-width: 600px) {
+    .luxury-service-card {
+        min-height: 580px !important;
+    }
+    .luxury-service-card .card-img-box {
+        height: 380px !important;
+    }
+}
+
+/* ==========================================
+   10. MULTI-SERVICE SELECTION: FLOATING BAR + MODAL LIST
+   ========================================== */
+.booking-bar {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: min(94%, 680px);
+    background: #0f172a;
+    border: 1px solid rgba(212, 175, 55, 0.6);
+    border-radius: 14px;
+    padding: 12px 18px;
+    display: none;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+    z-index: 9000;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+    color: #fff;
+}
+
+.booking-bar-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    font-size: 0.95rem;
+}
+
+.booking-bar-info i,
+.booking-bar-info strong {
+    color: #d4af37;
+}
+
+.booking-bar-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.bar-btn-clear,
+.bar-btn-book {
+    border: none;
+    border-radius: 8px;
+    padding: 9px 16px;
+    font-weight: 700;
+    font-size: 0.85rem;
+    cursor: pointer;
+}
+
+.bar-btn-clear {
+    background: transparent;
+    color: #94a3b8;
+    border: 1px solid #334155;
+}
+
+.bar-btn-book {
+    background: linear-gradient(135deg, #d4af37, #aa7c11);
+    color: #000;
+}
+
+.modal-services-list {
+    list-style: none;
+    margin: 10px 0 14px;
+    padding: 0;
+    max-height: 170px;
+    overflow-y: auto;
+}
+
+.modal-services-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 4px;
+    border-bottom: 1px solid rgba(128, 128, 128, 0.3);
+    font-size: 0.92rem;
+}
+
+.modal-services-list .svc-price {
+    white-space: nowrap;
+    opacity: 0.85;
+}
+
+.modal-services-list .svc-remove {
+    background: transparent;
+    border: none;
+    color: #ef4444;
+    font-size: 1.1rem;
+    cursor: pointer;
+    line-height: 1;
+}
+
+</style>
 </head>
 <body class="luxury-theme">
 
@@ -178,18 +790,11 @@ $closed_dates = $closed_dates ?? [];
     <?php include_once __DIR__ . '/indexheader.php'; ?>
 
     <!-- SERVICES HERO -->
-   <section class="services-hero" style="background: url('../uploads/images/salon/servicebg2.jpeg') no-repeat center 20%/cover; padding: 120px 20px; text-align: center;">
+    <section class="services-hero" style="background: url('../uploads/images/salon/servicebg2.jpeg') no-repeat center 20%/cover; padding: 120px 20px; text-align: center;">
         <div class="luxury-container text-center" style="max-width: 1050px; margin: 0 auto; background: rgba(0, 0, 0, 0.65); padding: 55px 45px; border-radius: 20px; backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.2); box-shadow: 0 15px 35px rgba(0,0,0,0.6);">
-            
-            <!-- SUBTITLE -->
             <span class="gold-subtitle" style="color: #FFD700 !important; font-weight: 700; letter-spacing: 3px; font-size: 1.15rem; display: inline-block;">OUR SERVICES</span>
-            
-            <!-- MAIN HEADING -->
             <h1 class="luxury-heading" style="color: #FFFFFF !important; font-size: 3.3rem; font-weight: 800; margin: 20px 0; line-height: 1.25;">EXCLUSIVE HAIR & BEAUTY <br><span class="gold-text" style="color: #FFD700 !important;">SERVICES</span></h1>
-            
-            <!-- PARAGRAPH -->
             <p class="about-desc" style="color: #FFFFFF !important; font-size: 1.25rem; font-weight: 400; margin: 20px auto 0 auto; line-height: 1.6; max-width: 750px; text-align: center;">We use only the finest products, carefully selected for their quality and performance.</p>
-            
         </div>
     </section>
 
@@ -207,7 +812,7 @@ $closed_dates = $closed_dates ?? [];
             <div class="ai-selected-style-label" id="aiSelectedStyleLabel">
                 Style: -
             </div>
-            
+
             <form id="aiHairstyleForm">
                 <div class="form-group" style="margin-bottom: 20px; text-align: left;">
                     <label style="display: block; margin-bottom: 5px; color: #ddd; font-weight: 500;">Upload Your Selfie:</label>
@@ -229,12 +834,27 @@ $closed_dates = $closed_dates ?? [];
                 <p style="margin-top: 10px; font-size: 0.9rem;">AI is processing your image... (takes 5-15s)</p>
             </div>
 
+            <!-- BEFORE / AFTER SIDE-BY-SIDE RESULT CONTAINER -->
             <div id="resultContainer" style="display:none; margin-top: 20px; text-align: center;">
-                <h3 style="color: #fff; font-size: 1.1rem; margin-bottom: 10px;">Your Aftermath Preview:</h3>
-                <img id="outputImage" src="" alt="AI Hairstyle Preview">
-                <div style="margin-top: 15px;">
+                <h3 style="color: #fff; font-size: 1.1rem; margin-bottom: 15px;">Your Hairstyle Preview:</h3>
+
+                <div class="ai-preview-grid">
+                    <!-- Box 1: Original Image -->
+                    <div class="preview-box">
+                        <span class="preview-label">Original (Before)</span>
+                        <img id="inputPreviewImage" src="" alt="Original Selfie">
+                    </div>
+
+                    <!-- Box 2: AI Generated Image -->
+                    <div class="preview-box">
+                        <span class="preview-label">AI Preview (After)</span>
+                        <img id="outputImage" src="" alt="AI Hairstyle Preview">
+                    </div>
+                </div>
+
+                <div style="margin-top: 20px;">
                     <button type="button" id="proceedToBookBtn" style="background: #22c55e; color: #fff; padding: 10px 20px; border: none; border-radius: 6px; cursor: pointer; font-weight: 600;">
-                        Book This Style
+                        Add This Style & Book
                     </button>
                 </div>
             </div>
@@ -254,21 +874,31 @@ $closed_dates = $closed_dates ?? [];
                     <p style="color:#888;">No stylists available right now.</p>
                 <?php else: ?>
                     <?php foreach ($staff_list as $index => $staff): ?>
-                        <?php 
-                            $staff_image = !empty($staff['image']) 
-                                ? $staff['image'] 
-                                : ('stylist-' . (($index % 2) + 1) . '.jpg');
+                        <?php
+                            $raw_img = !empty($staff['image']) ? trim($staff['image']) : '';
+
+                            if (!empty($raw_img)) {
+                                $clean_img = ltrim($raw_img, '/.');
+                                if (strpos($clean_img, 'uploads/') !== false) {
+                                    $staff_img_url = '../' . $clean_img;
+                                } else {
+                                    $staff_img_url = '../uploads/images/salon/' . $clean_img;
+                                }
+                            } else {
+                                $default_name = 'stylist-' . (($index % 2) + 1) . '.jpg';
+                                $staff_img_url = '../uploads/images/salon/' . $default_name;
+                            }
                         ?>
                         <div class="stylist-card" data-staff-id="<?php echo $staff['id']; ?>" data-staff-name="<?php echo htmlspecialchars($staff['name']); ?>">
                             <div class="stylist-img-box">
-                                <img src="../uploads/images/salon/<?php echo htmlspecialchars($staff_image); ?>" 
+                                <img src="<?php echo htmlspecialchars($staff_img_url); ?>"
                                      alt="<?php echo htmlspecialchars($staff['name']); ?>"
-                                     onerror="this.src='../uploads/images/salon/owner1.jpg'">
+                                     onerror="this.onerror=null; this.src='https://ui-avatars.com/api/?name=<?php echo urlencode($staff['name']); ?>&background=d4af37&color=000&size=250';">
                                 <span class="badge-selected">Selected</span>
                             </div>
-                            <div class="stylist-info">
+                            <div class="stylist-info" style="margin-top:10px;">
                                 <h3><?php echo htmlspecialchars($staff['name']); ?></h3>
-                                <p class="stylist-role">Hair Stylist</p>
+                                <p class="stylist-role"><?php echo htmlspecialchars($staff['role'] ?? 'Hair Stylist'); ?></p>
                             </div>
                         </div>
                     <?php endforeach; ?>
@@ -280,23 +910,23 @@ $closed_dates = $closed_dates ?? [];
     <!-- INTERACTIVE CATEGORY TABS BAR -->
     <section class="brand-bar">
         <div class="luxury-container text-center" style="padding-top: 20px;">
-            <span class="gold-subtitle">PICK A SERVICE</span>
-            <p class="about-desc">Tap any service below to choose your stylist, date and time. Tap the gold "Preview" button on a card to try it with AI first.</p>
+            <span class="gold-subtitle">PICK YOUR SERVICES</span>
+            <p class="about-desc">Tap as many services as you like (tap again to remove), then use the bar at the bottom to book them all together. Tap the gold "Preview" button on a card to try it with AI first.</p>
         </div>
         <div class="luxury-container brand-grid" id="category-tabs">
-            <button class="category-btn active" data-category="mens-haircuts">
+            <button type="button" class="category-btn active" data-category="mens-haircuts">
                 <i class="fas fa-scissors"></i> MEN'S HAIRCUTS
             </button>
-            <button class="category-btn" data-category="beard-cuts">
+            <button type="button" class="category-btn" data-category="beard-cuts">
                 <i class="fas fa-user-ninja"></i> BEARD CUTS
             </button>
-            <button class="category-btn" data-category="ladies-haircuts">
+            <button type="button" class="category-btn" data-category="ladies-haircuts">
                 <i class="fas fa-female"></i> LADIES HAIRCUTS
             </button>
-            <button class="category-btn" data-category="coloring">
+            <button type="button" class="category-btn" data-category="coloring">
                 <i class="fas fa-paint-brush"></i> COLORING
             </button>
-            <button class="category-btn" data-category="facials">
+            <button type="button" class="category-btn" data-category="facials">
                 <i class="fas fa-spa"></i> FACIALS
             </button>
         </div>
@@ -307,14 +937,13 @@ $closed_dates = $closed_dates ?? [];
         <div class="luxury-container">
             <div class="services-grid" id="services-container">
                 <?php foreach ($services_by_category as $category => $service_list): ?>
-                    <?php if ($category === 'other') continue; // legacy generic services not shown in tabs ?>
+                    <?php if ($category === 'other') continue; ?>
                     <?php foreach ($service_list as $service): ?>
-                        <div class="luxury-service-card"
+                        <div class="luxury-service-card<?php echo $category === 'mens-haircuts' ? '' : ' is-hidden'; ?>"
                              data-category="<?php echo htmlspecialchars($category); ?>"
                              data-service-id="<?php echo $service['id']; ?>"
                              data-service="<?php echo htmlspecialchars($service['service_name']); ?>"
-                             data-price="<?php echo $service['price']; ?>"
-                             style="<?php echo $category === 'mens-haircuts' ? '' : 'display:none;'; ?>">
+                             data-price="<?php echo $service['price']; ?>">
                             <div class="card-img-box">
                                 <?php if (!empty($service['image_url'])): ?>
                                     <img src="../<?php echo htmlspecialchars($service['image_url']); ?>" alt="<?php echo htmlspecialchars($service['service_name']); ?>">
@@ -341,11 +970,26 @@ $closed_dates = $closed_dates ?? [];
         </div>
     </section>
 
+    <!-- FLOATING BAR: shows selected services count + total -->
+    <div class="booking-bar" id="booking-bar">
+        <div class="booking-bar-info">
+            <i class="fas fa-shopping-bag"></i>
+            <span id="bar-count">0 services selected</span>
+            <strong id="bar-total">Rs. 0.00</strong>
+        </div>
+        <div class="booking-bar-actions">
+            <button type="button" class="bar-btn-clear" id="bar-clear">Clear</button>
+            <button type="button" class="bar-btn-book" id="bar-book"><i class="fas fa-calendar-check"></i> Book Selected</button>
+        </div>
+    </div>
+
     <!-- BOOKING SELECTION MODAL -->
     <div class="modal-overlay" id="modal-overlay">
         <div class="booking-modal">
             <button class="modal-close" id="modal-close-btn">&times;</button>
-            <h3 id="modal-service-name">-</h3>
+            <h3 id="modal-service-name">Your Selected Services</h3>
+
+            <ul class="modal-services-list" id="modal-services-list"></ul>
             <p class="modal-price" id="modal-service-price">-</p>
 
             <div class="modal-field">
@@ -369,12 +1013,15 @@ $closed_dates = $closed_dates ?? [];
             </div>
 
             <div class="modal-field">
-                <label>Time (Business hours: 9:00 AM - 5:00 PM)</label>
+                <label>Start Time (Business hours: 9:00 AM - 5:00 PM)</label>
                 <div style="display:flex; gap:10px;">
                     <select id="modal-hour" required style="flex:1;">
                         <option value="">Hour</option>
                         <?php for ($h = 9; $h <= 16; $h++): ?>
-                            <?php $label = $h <= 12 ? $h . ' AM' : ($h - 12) . ' PM'; if ($h == 12) $label = '12 PM'; ?>
+                            <?php
+                                $label = $h <= 12 ? $h . ' AM' : ($h - 12) . ' PM';
+                                if ($h == 12) $label = '12 PM';
+                            ?>
                             <option value="<?php echo str_pad($h, 2, '0', STR_PAD_LEFT); ?>"><?php echo $label; ?></option>
                         <?php endfor; ?>
                     </select>
@@ -406,17 +1053,25 @@ import { InferenceClient } from "https://cdn.jsdelivr.net/npm/@huggingface/infer
 const isLoggedIn = <?php echo $is_logged_in ? 'true' : 'false'; ?>;
 const isCustomer = <?php echo $is_customer ? 'true' : 'false'; ?>;
 
-let selectedService = { id: null, name: null, price: null };
+// All services the customer has ticked: id -> { id, name, price }
+const selectedServices = new Map();
 let selectedStaffId = null;
 
 const categoryTabs = document.getElementById('category-tabs');
 const servicesContainer = document.getElementById('services-container');
 const stylistGrid = document.getElementById('stylist-grid');
 
+const bookingBar = document.getElementById('booking-bar');
+const barCount = document.getElementById('bar-count');
+const barTotal = document.getElementById('bar-total');
+const barClear = document.getElementById('bar-clear');
+const barBook = document.getElementById('bar-book');
+
 const modalOverlay = document.getElementById('modal-overlay');
 const modalCloseBtn = document.getElementById('modal-close-btn');
 const modalServiceName = document.getElementById('modal-service-name');
 const modalServicePrice = document.getElementById('modal-service-price');
+const modalServicesList = document.getElementById('modal-services-list');
 const modalStylistSelect = document.getElementById('modal-stylist-select');
 const modalDate = document.getElementById('modal-date');
 const modalHour = document.getElementById('modal-hour');
@@ -430,6 +1085,28 @@ const aiFormHandler = document.getElementById('aiHairstyleForm');
 const aiSelectedStyleLabel = document.getElementById('aiSelectedStyleLabel');
 const proceedToBookBtn = document.getElementById('proceedToBookBtn');
 
+/* ------------------------------------------
+   CATEGORY FILTER
+   (uses the .is-hidden class, not inline display)
+   ------------------------------------------ */
+function applyCategory(category) {
+    if (!servicesContainer) return;
+
+    let matches = 0;
+    servicesContainer.querySelectorAll('.luxury-service-card').forEach(card => {
+        const show = card.dataset.category === category;
+        card.classList.toggle('is-hidden', !show);
+        if (show) matches++;
+    });
+
+    if (matches === 0) {
+        const available = [...new Set(
+            [...servicesContainer.querySelectorAll('.luxury-service-card')].map(c => c.dataset.category)
+        )];
+        console.warn('No services found for category "' + category + '". Categories available in the page:', available);
+    }
+}
+
 if (categoryTabs) {
     categoryTabs.addEventListener('click', function (e) {
         const btn = e.target.closest('.category-btn');
@@ -438,19 +1115,21 @@ if (categoryTabs) {
         categoryTabs.querySelectorAll('.category-btn').forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
 
-        const category = btn.dataset.category;
-        servicesContainer.querySelectorAll('.luxury-service-card').forEach(card => {
-            card.style.display = (card.dataset.category === category) ? '' : 'none';
-        });
+        applyCategory(btn.dataset.category);
     });
+
+    const initialBtn = categoryTabs.querySelector('.category-btn.active');
+    if (initialBtn) applyCategory(initialBtn.dataset.category);
 }
 
+/* ------------------------------------------
+   STYLIST SELECTION
+   ------------------------------------------ */
 if (stylistGrid) {
     stylistGrid.addEventListener('click', function (e) {
         const card = e.target.closest('.stylist-card');
         if (!card) return;
 
-        // 'active' is used by the new stylesheet, 'selected' by the older one
         stylistGrid.querySelectorAll('.stylist-card').forEach(c => c.classList.remove('selected', 'active'));
         card.classList.add('selected', 'active');
 
@@ -461,56 +1140,175 @@ if (stylistGrid) {
     });
 }
 
+/* ------------------------------------------
+   MULTI-SERVICE SELECTION HELPERS
+   ------------------------------------------ */
+function formatRs(amount) {
+    return 'Rs. ' + amount.toFixed(2);
+}
+
+function getTotal() {
+    let total = 0;
+    selectedServices.forEach(s => { total += parseFloat(s.price) || 0; });
+    return total;
+}
+
+function findCard(serviceId) {
+    return servicesContainer.querySelector(`.luxury-service-card[data-service-id="${serviceId}"]`);
+}
+
+function isBookingModalOpen() {
+    return modalOverlay.style.display === 'flex';
+}
+
+function updateBookingBar() {
+    const n = selectedServices.size;
+    barCount.textContent = n + (n === 1 ? ' service selected' : ' services selected');
+    barTotal.textContent = formatRs(getTotal());
+    bookingBar.style.display = (n > 0 && !isBookingModalOpen()) ? 'flex' : 'none';
+}
+
+function selectService(card) {
+    const id = card.dataset.serviceId;
+    selectedServices.set(id, {
+        id: id,
+        name: card.dataset.service,
+        price: card.dataset.price,
+    });
+    card.classList.add('selected');
+}
+
+function deselectService(id) {
+    selectedServices.delete(id);
+    const card = findCard(id);
+    if (card) card.classList.remove('selected');
+}
+
+function toggleService(card) {
+    const id = card.dataset.serviceId;
+    if (selectedServices.has(id)) {
+        deselectService(id);
+    } else {
+        selectService(card);
+    }
+    updateBookingBar();
+}
+
+/* ------------------------------------------
+   BOOKING MODAL
+   ------------------------------------------ */
+function renderModalServices() {
+    modalServicesList.innerHTML = '';
+
+    selectedServices.forEach(service => {
+        const li = document.createElement('li');
+
+        const nameSpan = document.createElement('span');
+        nameSpan.textContent = service.name;
+
+        const right = document.createElement('span');
+        const priceSpan = document.createElement('span');
+        priceSpan.className = 'svc-price';
+        priceSpan.textContent = formatRs(parseFloat(service.price));
+
+        const removeBtn = document.createElement('button');
+        removeBtn.type = 'button';
+        removeBtn.className = 'svc-remove';
+        removeBtn.title = 'Remove';
+        removeBtn.innerHTML = '&times;';
+        removeBtn.addEventListener('click', () => {
+            deselectService(service.id);
+            if (selectedServices.size === 0) {
+                closeBookingModal();
+            } else {
+                renderModalServices();
+            }
+        });
+
+        right.appendChild(priceSpan);
+        right.appendChild(document.createTextNode(' '));
+        right.appendChild(removeBtn);
+
+        li.appendChild(nameSpan);
+        li.appendChild(right);
+        modalServicesList.appendChild(li);
+    });
+
+    const n = selectedServices.size;
+    modalServiceName.textContent = 'Your Selected Services (' + n + ')';
+    modalServicePrice.textContent = 'Total: ' + formatRs(getTotal());
+}
+
+function openBookingModal() {
+    if (selectedServices.size === 0) {
+        showBookingAlert('Please select at least one service first.');
+        return;
+    }
+
+    renderModalServices();
+
+    if (selectedStaffId && !modalStylistSelect.value) {
+        modalStylistSelect.value = selectedStaffId;
+    }
+
+    modalOverlay.style.display = 'flex';
+    updateBookingBar();
+}
+
+function closeBookingModal() {
+    modalOverlay.style.display = 'none';
+    updateBookingBar();
+}
+
+/* ------------------------------------------
+   SERVICE CARD CLICK  (single handler)
+   - Preview button  -> opens AI modal only
+   - Anywhere else   -> ticks / unticks the service
+   ------------------------------------------ */
 if (servicesContainer) {
     servicesContainer.addEventListener('click', function (e) {
         const card = e.target.closest('.luxury-service-card');
         if (!card) return;
 
-        servicesContainer.querySelectorAll('.luxury-service-card').forEach(c => c.classList.remove('selected'));
-        card.classList.add('selected');
+        // 1) AI Preview button (does not change the selection)
+        const previewBtn = e.target.closest('[data-ai-preview-btn]');
+        if (previewBtn) {
+            const serviceName = card.dataset.service;
+            const serviceId = card.dataset.serviceId;
 
-        selectedService = {
-            id: card.dataset.serviceId,
-            name: card.dataset.service,
-            price: card.dataset.price,
-        };
+            document.getElementById('stylePreference').value = serviceName;
+            document.getElementById('aiServiceId').value = serviceId;
+            aiSelectedStyleLabel.textContent = 'Style: ' + serviceName;
 
-        modalServiceName.textContent = selectedService.name;
-        modalServicePrice.textContent = 'Rs. ' + parseFloat(selectedService.price).toFixed(2);
+            document.getElementById('errorMessage').style.display = 'none';
+            document.getElementById('resultContainer').style.display = 'none';
+            document.getElementById('customerPhoto').value = '';
 
-        if (selectedStaffId) {
-            modalStylistSelect.value = selectedStaffId;
+            aiModal.style.display = 'block';
+            return; // do NOT toggle selection
         }
 
-        modalOverlay.style.display = 'flex';
+        // 2) Normal card click -> tick / untick
+        toggleService(card);
     });
 }
 
-if (servicesContainer) {
-    servicesContainer.addEventListener('click', function (e) {
-        const previewBtn = e.target.closest('[data-ai-preview-btn]');
-        if (!previewBtn) return;
-
-        e.stopPropagation();
-
-        const card = previewBtn.closest('.luxury-service-card');
-        const serviceName = card.dataset.service;
-        const serviceId = card.dataset.serviceId;
-
-        document.getElementById('stylePreference').value = serviceName;
-        document.getElementById('aiServiceId').value = serviceId;
-        aiSelectedStyleLabel.textContent = 'Style: ' + serviceName;
-
-        document.getElementById('errorMessage').style.display = 'none';
-        document.getElementById('resultContainer').style.display = 'none';
-        document.getElementById('customerPhoto').value = '';
-
-        aiModal.style.display = 'block';
+/* ------------------------------------------
+   FLOATING BAR BUTTONS
+   ------------------------------------------ */
+if (barBook) {
+    barBook.addEventListener('click', openBookingModal);
+}
+if (barClear) {
+    barClear.addEventListener('click', () => {
+        Array.from(selectedServices.keys()).forEach(deselectService);
+        updateBookingBar();
     });
-
 }
 
-// ---------- CHECK STYLIST AVAILABILITY FOR SELECTED DATE ----------
+/* ------------------------------------------
+   CHECK STYLIST AVAILABILITY
+   ------------------------------------------ */
 let currentBusySlots = [];
 
 async function fetchBusyTimes() {
@@ -526,7 +1324,7 @@ async function fetchBusyTimes() {
     }
 
     try {
-        const response = await fetch(`check-availability.php?staff_id=${staffId}&date=${date}`);
+        const response = await fetch(`../check-availability.php?staff_id=${staffId}&date=${date}`);
         const data = await response.json();
         currentBusySlots = data.busy_slots || [];
 
@@ -552,20 +1350,23 @@ if (modalDate) {
     modalDate.addEventListener('change', fetchBusyTimes);
 }
 
-// Returns true if the given HH:MM time falls inside any busy slot
 function isTimeSlotBusy(time) {
     return currentBusySlots.some(slot => time >= slot.start && time < slot.end);
 }
 
+
 if (modalCloseBtn) {
-    modalCloseBtn.addEventListener('click', () => { modalOverlay.style.display = 'none'; });
+    modalCloseBtn.addEventListener('click', closeBookingModal);
 }
 if (modalOverlay) {
     modalOverlay.addEventListener('click', function (e) {
-        if (e.target === modalOverlay) modalOverlay.style.display = 'none';
+        if (e.target === modalOverlay) closeBookingModal();
     });
 }
 
+/* ------------------------------------------
+   CONFIRM BOOKING (all selected services)
+   ------------------------------------------ */
 if (confirmBookingBtn) {
     confirmBookingBtn.addEventListener('click', function () {
         const staffId = modalStylistSelect.value;
@@ -573,8 +1374,8 @@ if (confirmBookingBtn) {
         const hour = modalHour.value;
         const minute = modalMinute.value;
 
-        if (!selectedService.id) {
-            showBookingAlert('Please select a service first.');
+        if (selectedServices.size === 0) {
+            showBookingAlert('Please select at least one service.');
             return;
         }
         if (!staffId) {
@@ -590,7 +1391,6 @@ if (confirmBookingBtn) {
             return;
         }
 
-        // Login / role checks
         if (!isLoggedIn) {
             showBookingAlert('Please login to book an appointment. Redirecting...');
             setTimeout(() => { window.location.href = 'login.php'; }, 1800);
@@ -603,30 +1403,33 @@ if (confirmBookingBtn) {
 
         const time = hour + ':' + minute;
 
-        // Busy Time Validation Check
         if (isTimeSlotBusy(time)) {
             showBookingAlert('This time is already booked for the selected stylist. Please choose a different time.');
             return;
         }
 
+        const serviceIds = Array.from(selectedServices.keys());
+
         const form = document.createElement('form');
         form.method = 'POST';
         form.action = '../book-appointment.php';
 
-        const fields = {
-            staff_id: staffId,
-            service_id: selectedService.id,
-            appointment_date: date,
-            appointment_time: time,
-        };
-
-        for (const key in fields) {
+        const addField = (name, value) => {
             const input = document.createElement('input');
             input.type = 'hidden';
-            input.name = key;
-            input.value = fields[key];
+            input.name = name;
+            input.value = value;
             form.appendChild(input);
-        }
+        };
+
+        addField('staff_id', staffId);
+        addField('appointment_date', date);
+        addField('appointment_time', time);
+
+        // Every selected service is sent as service_ids[]
+        serviceIds.forEach(id => addField('service_ids[]', id));
+        // First service also sent as service_id (kept for backward compatibility)
+        addField('service_id', serviceIds[0]);
 
         document.body.appendChild(form);
         form.submit();
@@ -641,6 +1444,9 @@ function showBookingAlert(message, isError = true) {
     setTimeout(() => { bookingAlert.style.display = 'none'; }, 4000);
 }
 
+/* ------------------------------------------
+   AI HAIRSTYLE VISUALIZER
+   ------------------------------------------ */
 if (closeAiBtn) {
     closeAiBtn.addEventListener('click', () => { aiModal.style.display = 'none'; });
 }
@@ -653,6 +1459,7 @@ if (aiFormHandler) {
         const loadingSpinner = document.getElementById('loadingSpinner');
         const resultContainer = document.getElementById('resultContainer');
         const outputImage = document.getElementById('outputImage');
+        const inputPreviewImage = document.getElementById('inputPreviewImage');
         const errorMessage = document.getElementById('errorMessage');
 
         const styleInput = document.getElementById('stylePreference').value;
@@ -664,12 +1471,18 @@ if (aiFormHandler) {
             return;
         }
 
+        // Display Original Photo
+        inputPreviewImage.src = URL.createObjectURL(photoInput);
+
         errorMessage.style.display = 'none';
         resultContainer.style.display = 'none';
         loadingSpinner.style.display = 'block';
         submitBtn.disabled = true;
 
-       const apiToken = "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";
+        // SECURITY: the old token was exposed in the page source. Revoke it on
+        // Hugging Face and create a NEW one. Best practice is to move this call
+        // to a PHP backend file so the token never reaches the browser.
+        const apiToken = "PASTE_YOUR_NEW_HF_TOKEN_HERE";
         const client = new InferenceClient(apiToken);
 
         try {
@@ -699,27 +1512,19 @@ if (aiFormHandler) {
     });
 }
 
+// "Add This Style & Book": add the previewed service to the selection, then open the booking modal
 if (proceedToBookBtn) {
     proceedToBookBtn.addEventListener('click', () => {
         const serviceId = document.getElementById('aiServiceId').value;
-        const card = servicesContainer.querySelector(`.luxury-service-card[data-service-id="${serviceId}"]`);
+        const card = findCard(serviceId);
 
-        if (card) {
-            selectedService = {
-                id: card.dataset.serviceId,
-                name: card.dataset.service,
-                price: card.dataset.price,
-            };
-            modalServiceName.textContent = selectedService.name;
-            modalServicePrice.textContent = 'Rs. ' + parseFloat(selectedService.price).toFixed(2);
-
-            if (selectedStaffId) {
-                modalStylistSelect.value = selectedStaffId;
-            }
+        if (card && !selectedServices.has(serviceId)) {
+            selectService(card);
+            updateBookingBar();
         }
 
         aiModal.style.display = 'none';
-        modalOverlay.style.display = 'flex';
+        openBookingModal();
     });
 }
     </script>

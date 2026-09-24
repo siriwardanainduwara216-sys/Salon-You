@@ -21,8 +21,6 @@ $active_page = 'about';
     <!-- Google Fonts & FontAwesome -->
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-    <!-- EXTERNAL CSS FILES -->
     <link rel="stylesheet" href="frontend-css/style.css?v=<?php echo time(); ?>">
     <link rel="stylesheet" href="frontend-css/about_style.css?v=<?php echo time(); ?>">
 </head>

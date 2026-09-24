@@ -14,16 +14,47 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     exit();
 }
 
-$user_id = $_SESSION['user_id'];
+$user_id = (int) $_SESSION['user_id'];
 $staff_id = (int) ($_POST['staff_id'] ?? 0);
-$service_id = (int) ($_POST['service_id'] ?? 0);
 $appointment_date = trim($_POST['appointment_date'] ?? '');
 $appointment_time = trim($_POST['appointment_time'] ?? '');
 
+// ---- Selected services: service_ids[] (multi) or service_id (old single form) ----
+$raw_ids = $_POST['service_ids'] ?? [];
+if (!is_array($raw_ids)) {
+    $raw_ids = [$raw_ids];
+}
+if (empty($raw_ids) && isset($_POST['service_id'])) {
+    $raw_ids = [$_POST['service_id']];
+}
+
+$service_ids = [];
+foreach ($raw_ids as $rid) {
+    $id = (int) $rid;
+    if ($id > 0 && !in_array($id, $service_ids, true)) {
+        $service_ids[] = $id;
+    }
+}
+
+$MAX_SERVICES = 10;
 $error = '';
 
-if ($staff_id <= 0 || $service_id <= 0 || $appointment_date === '' || $appointment_time === '') {
+if ($staff_id <= 0 || empty($service_ids) || $appointment_date === '' || $appointment_time === '') {
     $error = 'Missing booking details. Please try again.';
+} elseif (count($service_ids) > $MAX_SERVICES) {
+    $error = 'You can book up to ' . $MAX_SERVICES . ' services at once.';
+}
+
+// ---- Validate date and time format ----
+if (!$error) {
+    $date_obj = DateTime::createFromFormat('Y-m-d', $appointment_date);
+    if (!$date_obj || $date_obj->format('Y-m-d') !== $appointment_date) {
+        $error = 'Invalid date. Please try again.';
+    } elseif ($appointment_date < date('Y-m-d')) {
+        $error = 'You cannot book an appointment in the past.';
+    } elseif (!preg_match('/^([01]\d|2[0-3]):[0-5]\d$/', $appointment_time)) {
+        $error = 'Invalid time. Please try again.';
+    }
 }
 
 // ---- Verify the staff member exists ----
@@ -43,29 +74,67 @@ if (!$error) {
     }
 }
 
-// ---- Verify the service exists (price always comes from the database, never the form) ----
-$service_name = '';
-$service_price = null;
+// ---- Verify every service exists (price + duration always come from the database) ----
+$services = [];
 if (!$error) {
-    $sql = "SELECT service_name, price FROM services WHERE id = ?";
+    $sql = "SELECT service_name, price, duration_mins FROM services WHERE id = ?";
     $stmt = mysqli_prepare($conn, $sql);
-    mysqli_stmt_bind_param($stmt, "i", $service_id);
-    mysqli_stmt_execute($stmt);
-    $row = mysqli_fetch_assoc(mysqli_stmt_get_result($stmt));
-    mysqli_stmt_close($stmt);
+    $current_id = 0;
+    mysqli_stmt_bind_param($stmt, "i", $current_id);
 
-    if ($row) {
-        $service_name = $row['service_name'];
-        $service_price = $row['price'];
-    } else {
-        $error = 'Selected service could not be found. Please go back and select again.';
+    foreach ($service_ids as $sid) {
+        $current_id = $sid;
+        mysqli_stmt_execute($stmt);
+        $row = mysqli_fetch_assoc(mysqli_stmt_get_result($stmt));
+
+        if (!$row) {
+            $error = 'One of the selected services could not be found. Please go back and select again.';
+            break;
+        }
+
+        $duration = (int) $row['duration_mins'];
+        if ($duration <= 0) {
+            $duration = 30; // fallback if a service has no duration set
+        }
+
+        $services[] = [
+            'id' => $sid,
+            'name' => $row['service_name'],
+            'price' => (float) $row['price'],
+            'duration' => $duration,
+        ];
+    }
+    mysqli_stmt_close($stmt);
+}
+
+// ---- Build the schedule: services run back-to-back with the same stylist ----
+$slots = [];
+if (!$error) {
+    $cursor = strtotime($appointment_date . ' ' . $appointment_time);
+
+    foreach ($services as $svc) {
+        $start = $cursor;
+        $end = $start + ($svc['duration'] * 60);
+
+        $slots[] = [
+            'service' => $svc,
+            'start_ts' => $start,
+            'end_ts' => $end,
+            'start_time' => date('H:i', $start),
+        ];
+        $cursor = $end;
     }
 }
 
-// ---- Verify the appointment time is within business hours (9 AM - 5 PM) ----
+// ---- Verify each appointment starts within business hours (9 AM - 5 PM) ----
 if (!$error) {
-    if ($appointment_time < '09:00' || $appointment_time > '17:00') {
-        $error = 'Appointments are only available between 9:00 AM and 5:00 PM.';
+    foreach ($slots as $slot) {
+        if ($slot['start_time'] < '09:00' || $slot['start_time'] > '17:00') {
+            $error = 'Appointments are only available between 9:00 AM and 5:00 PM. '
+                   . '"' . $slot['service']['name'] . '" would start at ' . date('g:i A', $slot['start_ts'])
+                   . '. Please choose an earlier start time or fewer services.';
+            break;
+        }
     }
 }
 
@@ -83,43 +152,96 @@ if (!$error) {
     }
 }
 
-// ---- Check this stylist isn't already booked at this exact date and time ----
+// ---- Check the stylist is free for every time range (overlap check) ----
 if (!$error) {
-    $sql = "SELECT id FROM appointments
-            WHERE staff_id = ? AND appointment_date = ? AND appointment_time = ?
-            AND status IN ('pending', 'confirmed')";
+    $sql = "SELECT a.appointment_time, s.duration_mins
+            FROM appointments a
+            JOIN services s ON a.service_id = s.id
+            WHERE a.staff_id = ? AND a.appointment_date = ?
+            AND a.status IN ('pending', 'confirmed')";
     $stmt = mysqli_prepare($conn, $sql);
-    mysqli_stmt_bind_param($stmt, "iss", $staff_id, $appointment_date, $appointment_time);
+    mysqli_stmt_bind_param($stmt, "is", $staff_id, $appointment_date);
     mysqli_stmt_execute($stmt);
-    mysqli_stmt_store_result($stmt);
+    $result = mysqli_stmt_get_result($stmt);
 
-    if (mysqli_stmt_num_rows($stmt) > 0) {
-        $error = 'This time slot is already booked for the selected stylist. Please choose a different time or stylist.';
+    $existing = [];
+    while ($row = mysqli_fetch_assoc($result)) {
+        $ex_start = strtotime($appointment_date . ' ' . $row['appointment_time']);
+        $ex_duration = (int) $row['duration_mins'];
+        if ($ex_duration <= 0) {
+            $ex_duration = 30;
+        }
+        $existing[] = ['start' => $ex_start, 'end' => $ex_start + ($ex_duration * 60)];
     }
     mysqli_stmt_close($stmt);
+
+    foreach ($slots as $slot) {
+        foreach ($existing as $ex) {
+            if ($slot['start_ts'] < $ex['end'] && $slot['end_ts'] > $ex['start']) {
+                $error = 'This time is already booked for the selected stylist: "'
+                       . $slot['service']['name'] . '" (' . date('g:i A', $slot['start_ts'])
+                       . ' - ' . date('g:i A', $slot['end_ts'])
+                       . ') clashes with an existing booking. Please choose a different start time or stylist.';
+                break 2;
+            }
+        }
+    }
 }
 
-// ---- Insert the appointment ----
+// ---- Insert all appointments together (all or nothing) ----
 if (!$error) {
-    $sql = "INSERT INTO appointments (user_id, staff_id, service_id, appointment_date, appointment_time, status)
-            VALUES (?, ?, ?, ?, ?, 'pending')";
-    $stmt = mysqli_prepare($conn, $sql);
-    mysqli_stmt_bind_param($stmt, "iiiss", $user_id, $staff_id, $service_id, $appointment_date, $appointment_time);
+    try {
+        mysqli_begin_transaction($conn);
 
-    if (mysqli_stmt_execute($stmt)) {
+        $sql = "INSERT INTO appointments (user_id, staff_id, service_id, appointment_date, appointment_time, status)
+                VALUES (?, ?, ?, ?, ?, 'pending')";
+        $stmt = mysqli_prepare($conn, $sql);
+
+        $b_service_id = 0;
+        $b_time = '';
+        mysqli_stmt_bind_param($stmt, "iiiss", $user_id, $staff_id, $b_service_id, $appointment_date, $b_time);
+
+        foreach ($slots as $slot) {
+            $b_service_id = $slot['service']['id'];
+            $b_time = $slot['start_time'];
+
+            if (!mysqli_stmt_execute($stmt)) {
+                throw new Exception(mysqli_stmt_error($stmt));
+            }
+        }
+        mysqli_stmt_close($stmt);
+        mysqli_commit($conn);
+
+        // ---- Data for the success page ----
+        $names = [];
+        $total = 0;
+        $items = [];
+        foreach ($slots as $slot) {
+            $names[] = $slot['service']['name'];
+            $total += $slot['service']['price'];
+            $items[] = [
+                'service' => $slot['service']['name'],
+                'price' => $slot['service']['price'],
+                'time' => $slot['start_time'],
+                'end_time' => date('H:i', $slot['end_ts']),
+            ];
+        }
+
         $_SESSION['last_booking'] = [
             'stylist' => $staff_name,
-            'service' => $service_name,
-            'price' => $service_price,
+            'service' => implode(', ', $names),   // old key: all service names joined
+            'price' => $total,                    // old key: total price
             'date' => $appointment_date,
-            'time' => $appointment_time,
+            'time' => $slots[0]['start_time'],    // old key: start time of the first service
+            'items' => $items,                    // new: per-service schedule
         ];
-        mysqli_stmt_close($stmt);
+
         header("Location: booking-success.php");
         exit();
-    } else {
-        $error = 'Something went wrong while saving your booking: ' . mysqli_error($conn);
-        mysqli_stmt_close($stmt);
+    } catch (Throwable $e) {
+        mysqli_rollback($conn);
+        error_log('Booking failed: ' . $e->getMessage());
+        $error = 'Something went wrong while saving your booking. Please try again.';
     }
 }
 
